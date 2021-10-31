@@ -5,6 +5,9 @@
 #include <mpc/stdfundamental.hpp>
 
 namespace mpc {
+  // copyable_box
+  // https://github.com/llvm/llvm-project/blob/main/libcxx/include/__ranges/copyable_box.h
+
   // copyable_box allows turning a type that is copy-constructible (but maybe not copy-assignable)
   // into a type that is both copy-constructible and copy-assignable. It does that by introducing an
   // empty state and basically doing destroy-then-copy-construct in the assignment operator. The
