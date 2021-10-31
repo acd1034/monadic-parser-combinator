@@ -1,6 +1,6 @@
 # Action items
 ## tier 1
-[ ] GitHub repogitory 作る
+[x] GitHub repogitory 作る
 
 ## tier 2
 [x] `stateT` の (a, s) は `tuple-like` と決めるか? → Yes
@@ -10,7 +10,9 @@
 [x] `stateT` 修正
   [x] struct stateT<S, Fn> : identity<Fn>
   [x] make_stateT<S>(fn) と書けるようにする
-[ ] `type State s a = StateT s Identity a` 実装するか?
+[ ] `type State s a = StateT s Identity a` 実装するか? → Yes
+[ ] `fst`, `snd`
+[ ] `gets` or `get2`
 
 ## tier 3
 [ ] `class... Args` に対し、 `std::size_t... Idx` は変 (`Idcs` であるべき?)

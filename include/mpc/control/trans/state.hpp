@@ -9,7 +9,12 @@
 namespace mpc {
   // stateT
   // https://hackage.haskell.org/package/transformers-0.6.0.2/docs/Control-Monad-Trans-State-Lazy.html
+  // [x] stateT
+  // [x] StateT
+  // [x] make_stateT
+  // [x] run_stateT
 
+  /// newtype StateT s m a = StateT { runStateT :: s -> m (a,s) }
   template <class S, copy_constructible_object Fn>
   requires std::invocable<Fn, S> and monad<std::invoke_result_t<Fn, S>>
   struct stateT : identity<Fn> {
@@ -48,6 +53,15 @@ namespace mpc {
   inline constexpr perfect_forwarded_t<detail::make_stateT_op<S>> make_stateT{};
   inline constexpr perfect_forwarded_t<detail::run_stateT_op> run_stateT{};
 
+  // instances:
+  // [x] functor
+  // [x] monad
+  // [x] applicative
+  // [ ] alternative
+  // [ ] monad_trans
+
+  // clang-format off
+
   /// instance (Monad m) => Monad (StateT s m) where
   ///     m >>= k  = StateT $ \ s -> do
   ///         ~(a, s') <- runStateT m s
@@ -57,7 +71,6 @@ namespace mpc {
     /// (>>=)  :: forall a b. m a -> (a -> m b) -> m b -- infixl 1
     struct bind_op {
       struct nested_closure {
-        // clang-format off
         template <class F, class U>
         constexpr auto operator()(F&& f, U&& u) const
         // FIXME
@@ -71,7 +84,6 @@ namespace mpc {
           return      run_stateT % std::invoke(std::forward<F>(f), std::forward<decltype(a)>(a))
                                  % std::forward<decltype(s)>(s);
         }
-        // clang-format on
       };
 
       struct closure {
@@ -107,8 +119,6 @@ namespace mpc {
 
     static constexpr bind_op bind{};
   };
-
-  // clang-format off
 
   /// instance (Functor m) => Functor (StateT s m) where
   ///     fmap f m = StateT $ \ s ->
