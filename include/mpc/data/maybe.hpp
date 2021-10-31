@@ -2,6 +2,7 @@
 #pragma once
 #include <functional>
 #include <variant>
+#include <mpc/control/alternative.hpp>
 #include <mpc/control/monad.hpp>
 #include <mpc/functional/perfect_forward.hpp>
 #include <mpc/utility/alternative_value_t.hpp>

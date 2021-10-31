@@ -5,7 +5,10 @@
 #include <mpc/functional/perfect_forward.hpp>
 
 namespace mpc {
-  /// class Alternative f where
+  // alternative
+  // https://hackage.haskell.org/package/base-4.16.0.0/docs/Control-Applicative.html
+
+  /// class Applicative f => Alternative f where
   template <class>
   struct alternative_traits;
 
