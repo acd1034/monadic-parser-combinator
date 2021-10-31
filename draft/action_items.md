@@ -3,14 +3,13 @@
 [ ] GitHub repogitory 作る
 
 ## tier 2
-[ ] `stateT` の (a, s) は `tuple-like` と決めるか?
-[ ] `copyable_box`
-[ ] `identity` 修正
-  [ ] identity<T> の T の制約
-  [ ] instance は copyable_box<T>
-[ ] `stateT` 修正
-  [ ] struct stateT<S, Fn> : identity<Fn>
-  [ ] make_stateT<S>(fn) と書けるようにする
+[x] `stateT` の (a, s) は `tuple-like` と決めるか? → Yes
+[x] `identity` 修正
+  [x] identity<T> の T の制約
+  [x] instance は copyable_box<T>
+[x] `stateT` 修正
+  [x] struct stateT<S, Fn> : identity<Fn>
+  [x] make_stateT<S>(fn) と書けるようにする
 [ ] `type State s a = StateT s Identity a` 実装するか?
 
 ## tier 3

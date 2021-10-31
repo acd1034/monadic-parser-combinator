@@ -3,18 +3,31 @@
 #include <functional> // std::invoke
 #include <mpc/control/monad.hpp>
 #include <mpc/functional/perfect_forward.hpp>
+#include <mpc/utility/copyable_box.hpp>
 
 namespace mpc {
-  template <class T>
+  // identity
+  // https://hackage.haskell.org/package/base-4.16.0.0/docs/Data-Functor-Identity.html
+
+  /// newtype Identity a = Identity { runIdentity :: a }
+  template <copy_constructible_object T>
   struct identity {
   private:
-    T instance_{};
+    copyable_box<T> instance_{};
 
   public:
     template <class U = T>
-    constexpr identity(U&& u) : instance_{std::forward<U>(u)} {}
-    constexpr auto run_identity() const noexcept -> decltype(instance_) {
-      return instance_;
+    requires std::is_constructible_v<T, U>
+    constexpr explicit identity(U&& u) : instance_{std::in_place, std::forward<U>(u)} {}
+
+    identity(const identity&) = default;
+    identity(identity&&) = default;
+
+    constexpr const T& operator*() const noexcept {
+      return *instance_;
+    }
+    constexpr T& operator*() noexcept {
+      return *instance_;
     }
   };
 
@@ -25,7 +38,7 @@ namespace mpc {
     template <class>
     struct is_identity : std::false_type {};
 
-    template <class T>
+    template <copy_constructible_object T>
     struct is_identity<identity<T>> : std::true_type {};
   } // namespace detail
 
@@ -33,43 +46,52 @@ namespace mpc {
   concept Identity = detail::is_identity<std::remove_cvref_t<T>>::value;
 
   namespace detail {
+    struct make_identity_op {
+      template <copy_constructible_object U>
+      constexpr auto operator()(U&& u) const {
+        return identity<std::decay_t<U>>(std::forward<U>(u));
+      }
+    };
+
     struct run_identity_op {
-      template <class T>
-      constexpr auto operator()(const identity<T>& st) const noexcept
-        -> decltype((st.run_identity())) {
-        return st.run_identity();
+      template <Identity I>
+      constexpr auto operator()(I&& x) const noexcept -> decltype(*std::forward<I>(x)) {
+        return *std::forward<I>(x);
       }
     };
   } // namespace detail
 
+  inline constexpr perfect_forwarded_t<detail::make_identity_op> make_identity{};
   inline constexpr perfect_forwarded_t<detail::run_identity_op> run_identity{};
 
-  // https://hackage.haskell.org/package/base-4.15.0.0/docs/src/Data-Functor-Identity.html#Identity
+  // clang-format off
 
   /// instance Monad Identity where
   ///     m >>= k  = k (runIdentity m)
-  template <class T>
+  template <copy_constructible_object T>
   struct monad_traits<identity<T>> {
     /// (>>=)  :: forall a b. m a -> (a -> m b) -> m b -- infixl 1
     struct bind_op {
       template <Identity I, class F>
-      constexpr auto operator()(I&& x, F&& f) const //
-        -> decltype(std::invoke(std::forward<F>(f), run_identity % std::forward<I>(x))) {
-        return std::invoke(std::forward<F>(f), run_identity % std::forward<I>(x));
+      constexpr auto operator()(I&& x, F&& f) const
+        noexcept(noexcept(std::invoke(std::forward<F>(f), run_identity % std::forward<I>(x))))
+        -> decltype(      std::invoke(std::forward<F>(f), run_identity % std::forward<I>(x))) {
+        return            std::invoke(std::forward<F>(f), run_identity % std::forward<I>(x));
       }
     };
 
     static constexpr bind_op bind{};
   };
 
-  template <class T>
+  template <copy_constructible_object T>
   struct functor_traits<identity<T>> {
     // fmap  :: (a -> b) -> f a -> f b
     struct fmap_op {
       template <class F, Identity I>
-      constexpr auto operator()(F&& f, I&& x) const //
-        -> decltype(identity{std::invoke(std::forward<F>(f), run_identity % std::forward<I>(x))}) {
-        return identity{std::invoke(std::forward<F>(f), run_identity % std::forward<I>(x))};
+      constexpr auto operator()(F&& f, I&& x) const
+        noexcept(noexcept(make_identity(std::invoke(std::forward<F>(f), run_identity % std::forward<I>(x)))))
+        -> decltype(      make_identity(std::invoke(std::forward<F>(f), run_identity % std::forward<I>(x)))) {
+        return            make_identity(std::invoke(std::forward<F>(f), run_identity % std::forward<I>(x)));
       }
     };
 
@@ -77,20 +99,13 @@ namespace mpc {
     static constexpr auto replace2nd = functors::replace2nd<identity<T>>;
   };
 
-  template <class T>
+  template <copy_constructible_object T>
   struct applicative_traits<identity<T>> {
-    /// pure   :: a -> f a
-    struct pure_op {
-      template <class U>
-      constexpr auto operator()(U&& u) const {
-        return identity{std::forward<U>(u)};
-      }
-    };
-
-    static constexpr pure_op pure{};
+    static constexpr auto pure = make_identity;
     static constexpr auto seq_apply = monads::seq_apply<identity<T>>;
     static constexpr auto liftA2 = applicatives::liftA2<identity<T>>;
     static constexpr auto discard2nd = applicatives::discard2nd<identity<T>>;
     static constexpr auto discard1st = monads::discard1st<identity<T>>;
   };
+  // clang-format on
 } // namespace mpc
