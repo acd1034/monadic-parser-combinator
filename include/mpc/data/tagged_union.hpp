@@ -21,7 +21,6 @@ namespace mpc {
   using tagged_union =
     typename detail::tagged_union_impl<std::index_sequence_for<Args...>, Args...>::type;
 
-  /// FIXME: the order of the template argument is unnatural.
   template <std::size_t Idx, class T>
   constexpr nth_element_t<T, Idx> make_nth_element(T&& t) {
     return std::forward<T>(t);

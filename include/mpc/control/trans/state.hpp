@@ -1,4 +1,4 @@
-/// @file stateT.hpp
+/// @file state.hpp
 #pragma once
 #include <functional> // std::invoke
 #include <mpc/control/monad.hpp>
@@ -15,7 +15,7 @@ namespace mpc {
   // [x] run_stateT
 
   /// newtype StateT s m a = StateT { runStateT :: s -> m (a,s) }
-  template <class S, copy_constructible_object Fn>
+  template <copy_constructible_object Fn, class S>
   requires std::invocable<Fn, S> and monad<std::invoke_result_t<Fn, S>>
   struct stateT : identity<Fn> {
     using identity<Fn>::identity;
@@ -25,8 +25,8 @@ namespace mpc {
     template <class>
     struct is_stateT : std::false_type {};
 
-    template <class S, copy_constructible_object Fn>
-    struct is_stateT<stateT<S, Fn>> : std::true_type {};
+    template <copy_constructible_object Fn, class S>
+    struct is_stateT<stateT<Fn, S>> : std::true_type {};
   } // namespace detail
 
   template <class T>
@@ -37,7 +37,7 @@ namespace mpc {
     struct make_stateT_op {
       template <copy_constructible_object Fn>
       constexpr auto operator()(Fn&& f) const {
-        return stateT<std::decay_t<S>, std::decay_t<Fn>>(std::forward<Fn>(f));
+        return stateT<std::decay_t<Fn>, std::decay_t<S>>(std::forward<Fn>(f));
       }
     };
 
@@ -66,8 +66,8 @@ namespace mpc {
   ///     m >>= k  = StateT $ \ s -> do
   ///         ~(a, s') <- runStateT m s
   ///         runStateT (k a) s'
-  template <class S, copy_constructible_object Fn>
-  struct monad_traits<stateT<S, Fn>> {
+  template <copy_constructible_object Fn, class S>
+  struct monad_traits<stateT<Fn, S>> {
     /// (>>=)  :: forall a b. m a -> (a -> m b) -> m b -- infixl 1
     struct bind_op {
       struct nested_closure {
@@ -123,8 +123,8 @@ namespace mpc {
   /// instance (Functor m) => Functor (StateT s m) where
   ///     fmap f m = StateT $ \ s ->
   ///         fmap (\ ~(a, s') -> (f a, s')) $ runStateT m s
-  template <class S, copy_constructible_object Fn>
-  struct functor_traits<stateT<S, Fn>> {
+  template <copy_constructible_object Fn, class S>
+  struct functor_traits<stateT<Fn, S>> {
     // fmap  :: (a -> b) -> f a -> f b
     struct fmap_op {
       struct nested_closure {
@@ -170,7 +170,7 @@ namespace mpc {
     };
 
     static constexpr fmap_op fmap{};
-    static constexpr auto replace2nd = functors::replace2nd<stateT<S, Fn>>;
+    static constexpr auto replace2nd = functors::replace2nd<stateT<Fn, S>>;
   };
 
   /// instance (Functor m, Monad m) => Applicative (StateT s m) where
@@ -180,8 +180,8 @@ namespace mpc {
   ///         ~(x, s'') <- mx s'
   ///         return (f x, s'')
   ///     m *> k = m >>= \_ -> k
-  template <class S, copy_constructible_object Fn>
-  struct applicative_traits<stateT<S, Fn>> {
+  template <copy_constructible_object Fn, class S>
+  struct applicative_traits<stateT<Fn, S>> {
     /// pure   :: a -> f a
     struct pure_op {
       struct closure {
@@ -202,10 +202,10 @@ namespace mpc {
     };
 
     static constexpr pure_op pure{};
-    static constexpr auto seq_apply = monads::seq_apply<stateT<S, Fn>>;
-    static constexpr auto liftA2 = applicatives::liftA2<stateT<S, Fn>>;
-    static constexpr auto discard2nd = applicatives::discard2nd<stateT<S, Fn>>;
-    static constexpr auto discard1st = monads::discard1st<stateT<S, Fn>>;
+    static constexpr auto seq_apply = monads::seq_apply<stateT<Fn, S>>;
+    static constexpr auto liftA2 = applicatives::liftA2<stateT<Fn, S>>;
+    static constexpr auto discard2nd = applicatives::discard2nd<stateT<Fn, S>>;
+    static constexpr auto discard1st = monads::discard1st<stateT<Fn, S>>;
   };
   // clang-format on
 
@@ -214,8 +214,8 @@ namespace mpc {
     template <class>
     struct state_op;
 
-    template <class S, copy_constructible_object Fn>
-    struct state_op<stateT<S, Fn>> {
+    template <copy_constructible_object Fn, class S>
+    struct state_op<stateT<Fn, S>> {
       template <copy_constructible_object Fn2>
       constexpr auto operator()(Fn2&& f) const noexcept(
         noexcept(   make_stateT<S>(compose(mpc::returns<std::invoke_result_t<Fn, S>>, std::forward<Fn2>(f)))))

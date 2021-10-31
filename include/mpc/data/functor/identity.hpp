@@ -16,18 +16,31 @@ namespace mpc {
     copyable_box<T> instance_{};
 
   public:
-    template <class U = T>
-    requires std::is_constructible_v<T, U>
-    constexpr explicit identity(U&& u) : instance_{std::in_place, std::forward<U>(u)} {}
+    constexpr identity()                                   //
+      noexcept(std::is_nothrow_default_constructible_v<T>) //
+      requires std::default_initializable<T>               //
+      : instance_{std::in_place} {}
 
-    identity(const identity&) = default;
-    identity(identity&&) = default;
+    constexpr explicit identity(const T& t) //
+      noexcept(std::is_nothrow_copy_constructible_v<T>)
+      : instance_{std::in_place, t} {}
+
+    constexpr explicit identity(T&& t) //
+      noexcept(std::is_nothrow_move_constructible_v<T>)
+      : instance_{std::in_place, std::move(t)} {}
 
     constexpr const T& operator*() const noexcept {
       return *instance_;
     }
     constexpr T& operator*() noexcept {
       return *instance_;
+    }
+
+    constexpr const T* operator->() const noexcept {
+      return instance_.operator->();
+    }
+    constexpr T* operator->() noexcept {
+      return instance_.operator->();
     }
   };
 

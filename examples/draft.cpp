@@ -25,7 +25,7 @@ struct ns::traits<int> {
 };
 
 template<class S, class M>
-using deduceST = mpc::stateT<S, std::function<M(S)>>;
+using deduceST = mpc::stateT<std::function<M(S)>, S>;
 
 int main() {
   static_assert(mpc::functor<mpc::identity<int>>);
