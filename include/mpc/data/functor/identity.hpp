@@ -6,26 +6,26 @@
 #include <mpc/utility/copyable_box.hpp>
 
 namespace mpc {
-  // identity
+  // Identity
   // https://hackage.haskell.org/package/base-4.16.0.0/docs/Data-Functor-Identity.html
 
   /// newtype Identity a = Identity { runIdentity :: a }
   template <copy_constructible_object T>
-  struct identity {
+  struct Identity {
   private:
     copyable_box<T> instance_{};
 
   public:
-    constexpr identity()                                   //
+    constexpr Identity()                                   //
       noexcept(std::is_nothrow_default_constructible_v<T>) //
       requires std::default_initializable<T>               //
       : instance_{std::in_place} {}
 
-    constexpr explicit identity(const T& t) //
+    constexpr explicit Identity(const T& t) //
       noexcept(std::is_nothrow_copy_constructible_v<T>)
       : instance_{std::in_place, t} {}
 
-    constexpr explicit identity(T&& t) //
+    constexpr explicit Identity(T&& t) //
       noexcept(std::is_nothrow_move_constructible_v<T>)
       : instance_{std::in_place, std::move(t)} {}
 
@@ -45,29 +45,29 @@ namespace mpc {
   };
 
   template <class T>
-  identity(T) -> identity<T>;
+  Identity(T) -> Identity<T>;
 
   namespace detail {
     template <class>
-    struct is_identity : std::false_type {};
+    struct is_Identity : std::false_type {};
 
     template <copy_constructible_object T>
-    struct is_identity<identity<T>> : std::true_type {};
+    struct is_Identity<Identity<T>> : std::true_type {};
   } // namespace detail
 
   template <class T>
-  concept Identity = detail::is_identity<std::remove_cvref_t<T>>::value;
+  concept isIdentity = detail::is_Identity<std::remove_cvref_t<T>>::value;
 
   namespace detail {
     struct make_identity_op {
       template <copy_constructible_object U>
       constexpr auto operator()(U&& u) const {
-        return identity<std::decay_t<U>>(std::forward<U>(u));
+        return Identity<std::decay_t<U>>(std::forward<U>(u));
       }
     };
 
     struct run_identity_op {
-      template <Identity I>
+      template <isIdentity I>
       constexpr auto operator()(I&& x) const noexcept -> decltype(*std::forward<I>(x)) {
         return *std::forward<I>(x);
       }
@@ -82,10 +82,10 @@ namespace mpc {
   /// instance Monad Identity where
   ///     m >>= k  = k (runIdentity m)
   template <copy_constructible_object T>
-  struct monad_traits<identity<T>> {
+  struct monad_traits<Identity<T>> {
     /// (>>=)  :: forall a b. m a -> (a -> m b) -> m b -- infixl 1
     struct bind_op {
-      template <Identity I, class F>
+      template <isIdentity I, class F>
       constexpr auto operator()(I&& x, F&& f) const
         noexcept(noexcept(std::invoke(std::forward<F>(f), run_identity % std::forward<I>(x))))
         -> decltype(      std::invoke(std::forward<F>(f), run_identity % std::forward<I>(x))) {
@@ -97,10 +97,10 @@ namespace mpc {
   };
 
   template <copy_constructible_object T>
-  struct functor_traits<identity<T>> {
+  struct functor_traits<Identity<T>> {
     // fmap  :: (a -> b) -> f a -> f b
     struct fmap_op {
-      template <class F, Identity I>
+      template <class F, isIdentity I>
       constexpr auto operator()(F&& f, I&& x) const
         noexcept(noexcept(make_identity(std::invoke(std::forward<F>(f), run_identity % std::forward<I>(x)))))
         -> decltype(      make_identity(std::invoke(std::forward<F>(f), run_identity % std::forward<I>(x)))) {
@@ -109,16 +109,16 @@ namespace mpc {
     };
 
     static constexpr fmap_op fmap{};
-    static constexpr auto replace2nd = functors::replace2nd<identity<T>>;
+    static constexpr auto replace2nd = functors::replace2nd<Identity<T>>;
   };
 
   template <copy_constructible_object T>
-  struct applicative_traits<identity<T>> {
+  struct applicative_traits<Identity<T>> {
     static constexpr auto pure = make_identity;
-    static constexpr auto seq_apply = monads::seq_apply<identity<T>>;
-    static constexpr auto liftA2 = applicatives::liftA2<identity<T>>;
-    static constexpr auto discard2nd = applicatives::discard2nd<identity<T>>;
-    static constexpr auto discard1st = monads::discard1st<identity<T>>;
+    static constexpr auto seq_apply = monads::seq_apply<Identity<T>>;
+    static constexpr auto liftA2 = applicatives::liftA2<Identity<T>>;
+    static constexpr auto discard2nd = applicatives::discard2nd<Identity<T>>;
+    static constexpr auto discard1st = monads::discard1st<Identity<T>>;
   };
   // clang-format on
 } // namespace mpc
