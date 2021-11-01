@@ -1,4 +1,4 @@
-/// @file Either.hpp
+/// @file either.hpp
 #pragma once
 #include <functional>
 #include <variant>

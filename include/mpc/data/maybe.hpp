@@ -1,4 +1,4 @@
-/// @file Maybe.hpp
+/// @file maybe.hpp
 #pragma once
 #include <functional>
 #include <variant>

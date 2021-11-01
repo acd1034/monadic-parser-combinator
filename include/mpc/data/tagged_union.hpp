@@ -1,4 +1,4 @@
-/// @file TaggedUnion.hpp
+/// @file tagged_union.hpp
 #pragma once
 #include <variant>
 #include <mpc/utility/single.hpp>

@@ -69,7 +69,7 @@ namespace mpc {
       not requires { monad_traits<F2>::bind; } and
           requires { basic_applicative_traits<F2>::liftA2; }
     ) {
-      return basic_applicative_traits<F2>::liftA2(Identity,
+      return basic_applicative_traits<F2>::liftA2(identity,
                                                   std::forward<decltype(a1)>(a1),
                                                   std::forward<decltype(a2)>(a2));
     }
