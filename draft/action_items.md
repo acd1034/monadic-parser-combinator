@@ -10,9 +10,9 @@
 [x] `StateT` 修正
   [x] struct StateT<S, Fn> : Identity<Fn>
   [x] make_StateT<S>(fn) と書けるようにする
-[ ] `type State s a = StateT s Identity a` 実装するか? → Yes
-[ ] `fst`, `snd`
-[ ] `gets` or `get2`
+[x] `type State s a = StateT s Identity a` 実装するか? → Yes
+[x] `fst`, `snd`
+[ ] `map_StateT, with_StateT`
 
 ## tier 3
 [ ] `class... Args` に対し、 `std::size_t... Idx` は変 (`Idcs` であるべき?)
@@ -20,6 +20,7 @@
 [ ] `perfect_forwarded` → `partial_applicable` ???
 [ ] `seq_apply` → `ap` ???
 [x] `liftA, liftA3` 不要では??? → `liftA` のみ消した
+[ ] `liftA4, liftA5` ← やっぱ必要だと思う
 
 
 

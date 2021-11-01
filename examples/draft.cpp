@@ -1,6 +1,5 @@
 #include <iomanip>
 #include <iostream>
-#include <optional>
 #include <mpc/control.hpp>
 #include <mpc/data.hpp>
 #include <mpc/functional.hpp>
