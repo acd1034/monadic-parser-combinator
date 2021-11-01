@@ -1,6 +1,7 @@
 /// @file state.hpp
 #pragma once
 #include <functional> // std::invoke
+#include <mpc/control/alternative.hpp>
 #include <mpc/control/monad.hpp>
 #include <mpc/control/trans/class.hpp>
 #include <mpc/data/functor/identity.hpp>
@@ -211,6 +212,34 @@ namespace mpc {
     static constexpr auto liftA2 = applicatives::liftA2<StateT<Fn, S>>;
     static constexpr auto discard2nd = applicatives::discard2nd<StateT<Fn, S>>;
     static constexpr auto discard1st = monads::discard1st<StateT<Fn, S>>;
+  };
+
+  /// instance (Functor m, MonadPlus m) => Alternative (StateT s m) where
+  ///     empty = StateT $ \ _ -> mzero
+  ///     StateT m <|> StateT n = StateT $ \ s -> m s `mplus` n s
+  template <copy_constructible_object Fn, class S>
+  requires std::invocable<Fn, S> and alternative<std::invoke_result_t<Fn, S>>
+  struct alternative_traits<StateT<Fn, S>> {
+    struct combine_op {
+      struct closure {
+        template <isStateT ST1, isStateT ST2, class T>
+        constexpr auto operator()(ST1&& x, ST2&& y, const T& t) const
+          noexcept(noexcept(mpc::combine<decltype(run_StateT % std::forward<ST1>(x) % t)>(run_StateT % std::forward<ST1>(x) % t, run_StateT % std::forward<ST2>(y) % t)))
+          -> decltype(      mpc::combine<decltype(run_StateT % std::forward<ST1>(x) % t)>(run_StateT % std::forward<ST1>(x) % t, run_StateT % std::forward<ST2>(y) % t)) {
+          return            mpc::combine<decltype(run_StateT % std::forward<ST1>(x) % t)>(run_StateT % std::forward<ST1>(x) % t, run_StateT % std::forward<ST2>(y) % t);
+        }
+      };
+
+      template <isStateT ST1, isStateT ST2>
+      constexpr auto operator()(ST1&& x, ST2&& y) const
+        noexcept(noexcept(make_StateT<S>(perfect_forwarded_t<closure>{}(std::forward<ST1>(x), std::forward<ST2>(y)))))
+        -> decltype(      make_StateT<S>(perfect_forwarded_t<closure>{}(std::forward<ST1>(x), std::forward<ST2>(y)))) {
+        return            make_StateT<S>(perfect_forwarded_t<closure>{}(std::forward<ST1>(x), std::forward<ST2>(y)));
+      }
+    };
+
+    static constexpr auto empty = make_StateT<S>([](auto&&) { return mpc::empty<std::invoke_result_t<Fn, S>>; });
+    static constexpr combine_op combine{};
   };
 
   /// instance MonadTrans (StateT s) where
