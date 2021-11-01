@@ -2,6 +2,7 @@
 #pragma once
 #include <functional> // std::invoke
 #include <mpc/control/monad.hpp>
+#include <mpc/control/trans/class.hpp>
 #include <mpc/data/functor/identity.hpp>
 #include <mpc/functional/fst.hpp>
 #include <mpc/functional/perfect_forward.hpp>
@@ -210,6 +211,43 @@ namespace mpc {
     static constexpr auto liftA2 = applicatives::liftA2<StateT<Fn, S>>;
     static constexpr auto discard2nd = applicatives::discard2nd<StateT<Fn, S>>;
     static constexpr auto discard1st = monads::discard1st<StateT<Fn, S>>;
+  };
+
+  /// instance MonadTrans (StateT s) where
+  ///     lift m = StateT $ \ s -> do
+  ///         a <- m
+  ///         return (a, s)
+  template <copy_constructible_object Fn, class S>
+  struct monad_trans_traits<StateT<Fn, S>> {
+    /// lift :: (Monad m) => m a -> t m a
+    struct lift_op {
+      struct nested_closure {
+        template <class T, class A>
+        constexpr auto operator()(T&& t, A&& a) const
+          noexcept(noexcept(std::make_pair(std::forward<A>(a), std::forward<T>(t))))
+          -> decltype(      std::make_pair(std::forward<A>(a), std::forward<T>(t))) {
+          return            std::make_pair(std::forward<A>(a), std::forward<T>(t));
+        }
+      };
+
+      struct closure {
+        template <monad M, class T>
+        constexpr auto operator()(M&& m, T&& t) const
+          noexcept(noexcept(mpc::fmap<M>(perfect_forwarded_t<nested_closure>{}(std::forward<T>(t)), std::forward<M>(m))))
+          -> decltype(      mpc::fmap<M>(perfect_forwarded_t<nested_closure>{}(std::forward<T>(t)), std::forward<M>(m))) {
+          return            mpc::fmap<M>(perfect_forwarded_t<nested_closure>{}(std::forward<T>(t)), std::forward<M>(m));
+        }
+      };
+
+      template <monad M>
+      constexpr auto operator()(M&& m) const
+        noexcept(noexcept(make_StateT<S>(perfect_forwarded_t<closure>{}(std::forward<M>(m)))))
+        -> decltype(      make_StateT<S>(perfect_forwarded_t<closure>{}(std::forward<M>(m)))) {
+        return            make_StateT<S>(perfect_forwarded_t<closure>{}(std::forward<M>(m)));
+      }
+    };
+
+    static constexpr lift_op lift{};
   };
   // clang-format on
 

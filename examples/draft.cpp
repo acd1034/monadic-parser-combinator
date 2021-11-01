@@ -36,6 +36,7 @@ int main() {
   static_assert(mpc::functor<ST>);
   static_assert(mpc::applicative<ST>);
   static_assert(mpc::monad<ST>);
+  static_assert(mpc::monad_trans<ST>);
 
   // clang-format off
   {
