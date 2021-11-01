@@ -5,6 +5,12 @@
 #include <mpc/functional/infix.hpp>
 #include "../stdfundamental.hpp"
 
+TEST_CASE("data Identity", "[data]") {
+  static_assert(mpc::functor<mpc::Identity<int>>);
+  static_assert(mpc::applicative<mpc::Identity<int>>);
+  static_assert(mpc::monad<mpc::Identity<int>>);
+}
+
 TEST_CASE("data Maybe", "[data]") {
   { // Maybe
     using Maybe1 = mpc::Maybe<double>;
