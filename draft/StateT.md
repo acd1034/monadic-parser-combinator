@@ -1,4 +1,78 @@
-# [StateT](https://hackage.haskell.org/package/transformers-0.6.0.2/docs/src/Control.Monad.Trans.State.Lazy.html#StateT)
+# StateT
+```hs
+newtype StateT s m a = StateT { runStateT :: s -> m (a,s) }
+
+instance (Functor m, MonadPlus m) => Alternative (StateT s m) where
+    empty = StateT $ \ _ -> mzero
+    StateT m <|> StateT n = StateT $ \ s -> m s `mplus` n s
+
+instance MonadTrans (StateT s) where
+    lift m = StateT $ \ s -> do
+        a <- m
+        return (a, s)
+
+evalStateT m s = liftM fst (runStateT m s)
+
+execStateT m s = liftM snd (runStateT m s)
+
+mapStateT :: (m (a, s) -> n (b, s)) -> StateT s m a -> StateT s n b
+mapStateT f m = StateT $ f . runStateT m
+
+-- withState f m = modify f >> m
+withStateT :: (s -> s) -> StateT s m a -> StateT s m a
+withStateT f m = StateT $ runStateT m . f
+
+state :: (Monad m)
+      => (s -> (a, s))  -- ^pure state transformer
+      -> StateT s m a   -- ^equivalent state-passing computation
+state f = StateT (return . f)
+
+get :: (Monad m) => StateT s m s
+get = state $ \ s -> (s, s)
+
+put :: (Monad m) => s -> StateT s m ()
+put s = state $ \ _ -> ((), s)
+
+-- modify f = get >>= (put . f)
+modify :: (Monad m) => (s -> s) -> StateT s m ()
+modify f = state $ \ s -> ((), f s)
+
+-- modify' f = get >>= (($!) put . f)
+modify' :: (Monad m) => (s -> s) -> StateT s m ()
+modify' f = do
+    s <- get
+    put $! f s
+
+-- gets f = liftM f get
+gets :: (Monad m) => (s -> a) -> StateT s m a
+gets f = state $ \ s -> (f s, s)
+```
+
+# State
+```hs
+type State s = StateT s Identity
+
+runState m = runIdentity . runStateT m
+
+evalState m s = fst (runState m s)
+
+execState m s = snd (runState m s)
+
+mapState :: ((a, s) -> (b, s)) -> State s a -> State s b
+mapState f = mapStateT (Identity . f . runIdentity)
+
+withState = withStateT
+```
+
+# MonadTrans
+```hs
+-- https://hackage.haskell.org/package/transformers-0.6.0.2/docs/Control-Monad-Trans-Class.html
+class (forall m. Monad m => Monad (t m)) => MonadTrans t where
+    -- | Lift a computation from the argument monad to the constructed monad.
+    lift :: (Monad m) => m a -> t m a
+```
+
+# StateT
 ```hs
 -- definition
 newtype StateT state monad v =
@@ -11,20 +85,7 @@ instance (Monad monad) => Monad (StateT state monad) where
     (v, state') <- x state -- unwrap `monad` and get new value and state
     runStateT (f v) state' -- pass them to f
 
--- correct
-  StateT<State, Monad, V> {
-    using Fn = State -> Monad (V, State);
-    Fn runStateT;
-    StateT(Fn other) : runStateT(other) {}
-  };
-
 -- experiment
-  StateT<State, Monad, V> {
-    using Fn = State -> Monad (V, State);
-    Fn fn;
-    StateT(Fn fn2) : fn(fn2) {}
-  };
-
   return<StateT<State, Monad, V>> v =
     StateT{ \state -> return<Monad> (v, state); }
 
@@ -98,18 +159,4 @@ get = state $ \ s -> (s, s)
 -- | @'put' s@ sets the state within the monad to @s@.
 put :: (Monad m) => s -> StateT s m ()
 put s = state $ \ _ -> ((), s)
-```
-
-# MonadTrans
-```hs
-class MonadTrans t where
-    -- | Lift a computation from the argument monad to the constructed monad.
-    lift :: (Monad m) => m a -> t m a
-
--- StateT
--- https://hackage.haskell.org/package/transformers-0.6.0.2/docs/src/Control.Monad.Trans.State.Lazy.html#StateT
-instance MonadTrans (StateT s) where
-    lift m = StateT $ \ s -> do
-        a <- m
-        return (a, s)
 ```

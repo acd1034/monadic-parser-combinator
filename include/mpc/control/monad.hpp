@@ -151,7 +151,7 @@ namespace mpc {
     struct karrow_op {
       struct closure {
         template<class A1, class A2, class B1>
-        constexpr auto operator()(A1&& m1, A2&& m2, B1&& x) const
+        constexpr auto operator()(A1&& f, A2&& g, B1&& x) const
         noexcept(noexcept(mpc::bind<M>(std::invoke(std::forward<A1>(f), std::forward<B1>(x)), std::forward<A2>(g))))
         -> decltype(      mpc::bind<M>(std::invoke(std::forward<A1>(f), std::forward<B1>(x)), std::forward<A2>(g)))
         { return          mpc::bind<M>(std::invoke(std::forward<A1>(f), std::forward<B1>(x)), std::forward<A2>(g)); }

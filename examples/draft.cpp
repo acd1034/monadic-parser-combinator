@@ -1,7 +1,7 @@
 #include <iomanip>
 #include <iostream>
 #include <optional>
-#include <mpc/control/monad.hpp>
+#include <mpc/control.hpp>
 #include <mpc/data.hpp>
 #include <mpc/functional.hpp>
 
@@ -25,21 +25,21 @@ struct ns::traits<int> {
 };
 
 template<class S, class M>
-using deduceST = mpc::stateT<S, std::function<M(S)>>;
+using deduceST = mpc::StateT<std::function<M(S)>, S>;
 
 int main() {
-  static_assert(mpc::functor<mpc::identity<int>>);
-  static_assert(mpc::applicative<mpc::identity<int>>);
-  static_assert(mpc::monad<mpc::identity<int>>);
+  static_assert(mpc::functor<mpc::Identity<int>>);
+  static_assert(mpc::applicative<mpc::Identity<int>>);
+  static_assert(mpc::monad<mpc::Identity<int>>);
 
-  using ST = deduceST<int, mpc::identity<int>>;
+  using ST = deduceST<int, mpc::Identity<int>>;
   static_assert(mpc::functor<ST>);
   static_assert(mpc::applicative<ST>);
   static_assert(mpc::monad<ST>);
 
   // clang-format off
   {
-    auto [a, s] = mpc::run_identity(mpc::run_stateT % mpc::gets<ST> % 3);
+    auto [a, s] = mpc::run_Identity(mpc::run_StateT % mpc::get1<ST> % 3);
     std::cout << a << ' ' << s << std::endl;
   }
 
@@ -47,20 +47,20 @@ int main() {
     using Fn = decltype([](int n) { return n * 2; });
     const auto ti = mpc::fmap<ST>(
       mpc::perfect_forwarded_t<Fn>{},
-      mpc::gets<ST>
+      mpc::get1<ST>
     );
-    auto [a, s] = mpc::run_identity(mpc::run_stateT % ti % 5);
+    auto [a, s] = mpc::run_Identity(mpc::run_StateT % ti % 5);
     std::cout << a << ' ' << s << std::endl;
   }
 
   using FnTick = decltype([](int n, auto&&) { return n; });
   const auto tick = mpc::liftA2<ST>(
     mpc::perfect_forwarded_t<FnTick>{},
-    mpc::gets<ST>,
-    mpc::puts<ST> % 1
+    mpc::get1<ST>,
+    mpc::put<ST> % 1
   );
   {
-    auto [a, s] = mpc::run_identity(mpc::run_stateT % tick % 5);
+    auto [a, s] = mpc::run_Identity(mpc::run_StateT % tick % 5);
     std::cout << a << ' ' << s << std::endl;
   }
 
@@ -68,11 +68,11 @@ int main() {
     using Fn = decltype([](int n1, int n2, auto&&) { return n1 + n2; });
     const auto tock = mpc::liftA3<ST>(
       mpc::perfect_forwarded_t<Fn>{},
-      mpc::gets<ST>,
-      mpc::gets<ST>,
-      mpc::puts<ST> % 1
+      mpc::get1<ST>,
+      mpc::get1<ST>,
+      mpc::put<ST> % 1
     );
-    auto [a, s] = mpc::run_identity(mpc::run_stateT % tock % 5);
+    auto [a, s] = mpc::run_Identity(mpc::run_StateT % tock % 5);
     std::cout << a << ' ' << s << std::endl;
   }
 
@@ -83,7 +83,7 @@ int main() {
       tick,
       tick
     );
-    auto [a, s] = mpc::run_identity(mpc::run_stateT % tock % 5);
+    auto [a, s] = mpc::run_Identity(mpc::run_StateT % tock % 5);
     std::cout << a << ' ' << s << std::endl;
   }
 
@@ -95,7 +95,7 @@ int main() {
       tick,
       tick
     );
-    auto [a, s] = mpc::run_identity(mpc::run_stateT % tock % 5);
+    auto [a, s] = mpc::run_Identity(mpc::run_StateT % tock % 5);
     std::cout << a << ' ' << s << std::endl;
   }
 }

@@ -3,15 +3,19 @@
 #include <mpc/stdfundamental.hpp>
 
 namespace mpc {
+  // functor, applicative, monad
+  // https://hackage.haskell.org/package/base-4.16.0.0/docs/Control-Monad.html
+  // https://hackage.haskell.org/package/base-4.16.0.0/docs/Control-Applicative.html
+
   /// class Functor f where
   template <class>
   struct functor_traits;
 
-  /// class Applicative f where
+  /// class Functor f => Applicative f where
   template <class>
   struct applicative_traits;
 
-  /// class Monad m where
+  /// class Applicative m => Monad m where
   template <class>
   struct monad_traits;
 
