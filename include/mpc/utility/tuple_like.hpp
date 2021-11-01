@@ -2,7 +2,7 @@
 #pragma once
 #include <mpc/stdfundamental.hpp>
 
-namespace mpc::detail::tuple_like {
+namespace mpc::detail::_tuple_like {
   template <auto>
   void get(auto&) = delete;
   template <auto>
@@ -23,7 +23,7 @@ namespace mpc::detail::tuple_like {
   struct has_unqualified_get<T, std::index_sequence<Idx...>,
                              std::void_t<decltype(get<Idx>(std::declval<T>()))...>>
     : std::true_type {};
-} // namespace mpc::detail::tuple_like
+} // namespace mpc::detail::_tuple_like
 
 namespace mpc {
   /// %is_tuple_like
@@ -33,7 +33,7 @@ namespace mpc {
   /// partial specialization of `is_tuple_like`
   template <class T>
   struct is_tuple_like<T, std::void_t<decltype(std::tuple_size<T>::value)>>
-    : _and<detail::tuple_like::has_tuple_element<T>, detail::tuple_like::has_unqualified_get<T>> {};
+    : _and<detail::_tuple_like::has_tuple_element<T>, detail::_tuple_like::has_unqualified_get<T>> {};
 
   /// helper variable template for `is_tuple_like`
   template <class T>
