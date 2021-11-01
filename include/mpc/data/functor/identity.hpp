@@ -59,14 +59,14 @@ namespace mpc {
   concept isIdentity = detail::is_Identity<std::remove_cvref_t<T>>::value;
 
   namespace detail {
-    struct make_identity_op {
+    struct make_Identity_op {
       template <copy_constructible_object U>
       constexpr auto operator()(U&& u) const {
         return Identity<std::decay_t<U>>(std::forward<U>(u));
       }
     };
 
-    struct run_identity_op {
+    struct run_Identity_op {
       template <isIdentity I>
       constexpr auto operator()(I&& x) const noexcept -> decltype(*std::forward<I>(x)) {
         return *std::forward<I>(x);
@@ -74,8 +74,8 @@ namespace mpc {
     };
   } // namespace detail
 
-  inline constexpr perfect_forwarded_t<detail::make_identity_op> make_identity{};
-  inline constexpr perfect_forwarded_t<detail::run_identity_op> run_identity{};
+  inline constexpr perfect_forwarded_t<detail::make_Identity_op> make_Identity{};
+  inline constexpr perfect_forwarded_t<detail::run_Identity_op> run_Identity{};
 
   // clang-format off
 
@@ -87,9 +87,9 @@ namespace mpc {
     struct bind_op {
       template <isIdentity I, class F>
       constexpr auto operator()(I&& x, F&& f) const
-        noexcept(noexcept(std::invoke(std::forward<F>(f), run_identity % std::forward<I>(x))))
-        -> decltype(      std::invoke(std::forward<F>(f), run_identity % std::forward<I>(x))) {
-        return            std::invoke(std::forward<F>(f), run_identity % std::forward<I>(x));
+        noexcept(noexcept(std::invoke(std::forward<F>(f), run_Identity % std::forward<I>(x))))
+        -> decltype(      std::invoke(std::forward<F>(f), run_Identity % std::forward<I>(x))) {
+        return            std::invoke(std::forward<F>(f), run_Identity % std::forward<I>(x));
       }
     };
 
@@ -102,9 +102,9 @@ namespace mpc {
     struct fmap_op {
       template <class F, isIdentity I>
       constexpr auto operator()(F&& f, I&& x) const
-        noexcept(noexcept(make_identity(std::invoke(std::forward<F>(f), run_identity % std::forward<I>(x)))))
-        -> decltype(      make_identity(std::invoke(std::forward<F>(f), run_identity % std::forward<I>(x)))) {
-        return            make_identity(std::invoke(std::forward<F>(f), run_identity % std::forward<I>(x)));
+        noexcept(noexcept(make_Identity(std::invoke(std::forward<F>(f), run_Identity % std::forward<I>(x)))))
+        -> decltype(      make_Identity(std::invoke(std::forward<F>(f), run_Identity % std::forward<I>(x)))) {
+        return            make_Identity(std::invoke(std::forward<F>(f), run_Identity % std::forward<I>(x)));
       }
     };
 
@@ -114,7 +114,7 @@ namespace mpc {
 
   template <copy_constructible_object T>
   struct applicative_traits<Identity<T>> {
-    static constexpr auto pure = make_identity;
+    static constexpr auto pure = make_Identity;
     static constexpr auto seq_apply = monads::seq_apply<Identity<T>>;
     static constexpr auto liftA2 = applicatives::liftA2<Identity<T>>;
     static constexpr auto discard2nd = applicatives::discard2nd<Identity<T>>;

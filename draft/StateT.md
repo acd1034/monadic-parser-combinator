@@ -2,10 +2,14 @@
 ```hs
 newtype StateT s m a = StateT { runStateT :: s -> m (a,s) }
 
-state :: (Monad m)
-      => (s -> (a, s))  -- ^pure state transformer
-      -> StateT s m a   -- ^equivalent state-passing computation
-state f = StateT (return . f)
+instance (Functor m, MonadPlus m) => Alternative (StateT s m) where
+    empty = StateT $ \ _ -> mzero
+    StateT m <|> StateT n = StateT $ \ s -> m s `mplus` n s
+
+instance MonadTrans (StateT s) where
+    lift m = StateT $ \ s -> do
+        a <- m
+        return (a, s)
 
 evalStateT m s = liftM fst (runStateT m s)
 
@@ -18,14 +22,10 @@ mapStateT f m = StateT $ f . runStateT m
 withStateT :: (s -> s) -> StateT s m a -> StateT s m a
 withStateT f m = StateT $ runStateT m . f
 
-instance (Functor m, MonadPlus m) => Alternative (StateT s m) where
-    empty = StateT $ \ _ -> mzero
-    StateT m <|> StateT n = StateT $ \ s -> m s `mplus` n s
-
-instance MonadTrans (StateT s) where
-    lift m = StateT $ \ s -> do
-        a <- m
-        return (a, s)
+state :: (Monad m)
+      => (s -> (a, s))  -- ^pure state transformer
+      -> StateT s m a   -- ^equivalent state-passing computation
+state f = StateT (return . f)
 
 get :: (Monad m) => StateT s m s
 get = state $ \ s -> (s, s)

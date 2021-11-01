@@ -39,7 +39,7 @@ int main() {
 
   // clang-format off
   {
-    auto [a, s] = mpc::run_identity(mpc::run_stateT % mpc::get1<ST> % 3);
+    auto [a, s] = mpc::run_Identity(mpc::run_StateT % mpc::get1<ST> % 3);
     std::cout << a << ' ' << s << std::endl;
   }
 
@@ -49,7 +49,7 @@ int main() {
       mpc::perfect_forwarded_t<Fn>{},
       mpc::get1<ST>
     );
-    auto [a, s] = mpc::run_identity(mpc::run_stateT % ti % 5);
+    auto [a, s] = mpc::run_Identity(mpc::run_StateT % ti % 5);
     std::cout << a << ' ' << s << std::endl;
   }
 
@@ -60,7 +60,7 @@ int main() {
     mpc::put<ST> % 1
   );
   {
-    auto [a, s] = mpc::run_identity(mpc::run_stateT % tick % 5);
+    auto [a, s] = mpc::run_Identity(mpc::run_StateT % tick % 5);
     std::cout << a << ' ' << s << std::endl;
   }
 
@@ -72,7 +72,7 @@ int main() {
       mpc::get1<ST>,
       mpc::put<ST> % 1
     );
-    auto [a, s] = mpc::run_identity(mpc::run_stateT % tock % 5);
+    auto [a, s] = mpc::run_Identity(mpc::run_StateT % tock % 5);
     std::cout << a << ' ' << s << std::endl;
   }
 
@@ -83,7 +83,7 @@ int main() {
       tick,
       tick
     );
-    auto [a, s] = mpc::run_identity(mpc::run_stateT % tock % 5);
+    auto [a, s] = mpc::run_Identity(mpc::run_StateT % tock % 5);
     std::cout << a << ' ' << s << std::endl;
   }
 
@@ -95,7 +95,7 @@ int main() {
       tick,
       tick
     );
-    auto [a, s] = mpc::run_identity(mpc::run_stateT % tock % 5);
+    auto [a, s] = mpc::run_Identity(mpc::run_StateT % tock % 5);
     std::cout << a << ' ' << s << std::endl;
   }
 }

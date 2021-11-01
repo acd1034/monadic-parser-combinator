@@ -9,7 +9,7 @@
   [x] instance は copyable_box<T>
 [x] `StateT` 修正
   [x] struct StateT<S, Fn> : Identity<Fn>
-  [x] make_stateT<S>(fn) と書けるようにする
+  [x] make_StateT<S>(fn) と書けるようにする
 [ ] `type State s a = StateT s Identity a` 実装するか? → Yes
 [ ] `fst`, `snd`
 [ ] `gets` or `get2`
