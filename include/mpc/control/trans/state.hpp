@@ -436,7 +436,7 @@ namespace mpc {
   } // namespace cpo
 
   // State
-  // [ ] State
+  // [x] State
   // [x] isState
   // [x] make_State
   // [x] run_State
