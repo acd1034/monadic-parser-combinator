@@ -13,7 +13,6 @@
 [ ] `type State s a = StateT s Identity a` 実装するか? → Yes
 [ ] `fst`, `snd`
 [ ] `gets` or `get2`
-[ ] `StateT` `State` `state` クラスの命名規則再考
 
 ## tier 3
 [ ] `class... Args` に対し、 `std::size_t... Idx` は変 (`Idcs` であるべき?)

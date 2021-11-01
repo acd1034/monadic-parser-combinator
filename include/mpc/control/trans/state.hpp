@@ -2,7 +2,7 @@
 #pragma once
 #include <functional> // std::invoke
 #include <mpc/control/monad.hpp>
-#include <mpc/data/functor/Identity.hpp>
+#include <mpc/data/functor/identity.hpp>
 #include <mpc/functional/perfect_forward.hpp>
 #include <mpc/utility/nil.hpp>
 
