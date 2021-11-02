@@ -7,7 +7,7 @@
 #include <mpc/data/functor/identity.hpp>
 #include <mpc/functional/fst.hpp>
 #include <mpc/functional/perfect_forward.hpp>
-#include <mpc/utility/nil.hpp>
+#include <mpc/utility/unit.hpp>
 
 namespace mpc {
   // StateT
@@ -391,9 +391,9 @@ namespace mpc {
       struct closure {
         template <class T, class A>
         constexpr auto operator()(T&& t, A&&) const noexcept(
-          noexcept(   std::make_pair(nil, std::forward<T>(t))))
-          -> decltype(std::make_pair(nil, std::forward<T>(t))) {
-          return      std::make_pair(nil, std::forward<T>(t));
+          noexcept(   std::make_pair(unit, std::forward<T>(t))))
+          -> decltype(std::make_pair(unit, std::forward<T>(t))) {
+          return      std::make_pair(unit, std::forward<T>(t));
         }
       };
 
@@ -410,9 +410,9 @@ namespace mpc {
       struct closure {
         template <class Fn, class T>
         constexpr auto operator()(Fn&& f, T&& t) const noexcept(
-          noexcept(   std::make_pair(nil, std::invoke(std::forward<Fn>(f), std::forward<T>(t)))))
-          -> decltype(std::make_pair(nil, std::invoke(std::forward<Fn>(f), std::forward<T>(t)))) {
-          return      std::make_pair(nil, std::invoke(std::forward<Fn>(f), std::forward<T>(t)));
+          noexcept(   std::make_pair(unit, std::invoke(std::forward<Fn>(f), std::forward<T>(t)))))
+          -> decltype(std::make_pair(unit, std::invoke(std::forward<Fn>(f), std::forward<T>(t)))) {
+          return      std::make_pair(unit, std::invoke(std::forward<Fn>(f), std::forward<T>(t)));
         }
       };
 
