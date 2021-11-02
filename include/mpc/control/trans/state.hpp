@@ -219,14 +219,20 @@ namespace mpc {
   ///     empty = StateT $ \ _ -> mzero
   ///     StateT m <|> StateT n = StateT $ \ s -> m s `mplus` n s
   namespace detail {
+    template<class F>
+    concept has_alternative_traits_empty = requires { alternative_traits<std::remove_cvref_t<F>>::empty; };
+
+    template<class F>
+    concept has_alternative_traits_combine = requires { alternative_traits<std::remove_cvref_t<F>>::combine; };
+
     template<isStateT ST>
-    requires requires { alternative_traits<StateT_monad_t<ST>>::empty; }
+    requires has_alternative_traits_empty<StateT_monad_t<ST>>
     struct StateT_alternative_traits_empty {
       static constexpr auto empty = make_StateT<StateT_state_t<ST>>([](auto&&) { return mpc::empty<StateT_monad_t<ST>>; });
     };
 
     template<isStateT ST>
-    requires requires { alternative_traits<StateT_monad_t<ST>>::combine; }
+    requires has_alternative_traits_combine<StateT_monad_t<ST>>
     struct StateT_alternative_traits_combine {
       struct combine_op {
         struct closure {
@@ -251,18 +257,21 @@ namespace mpc {
   } // namespace detail
 
   template <copy_constructible_object Fn, class S>
-  requires requires { alternative_traits<StateT_monad_t<StateT<Fn, S>>>::empty; }
+  requires (
+    detail::has_alternative_traits_empty<StateT_monad_t<StateT<Fn, S>>> and
+    not detail::has_alternative_traits_combine<StateT_monad_t<StateT<Fn, S>>>)
   struct alternative_traits<StateT<Fn, S>> : detail::StateT_alternative_traits_empty<StateT<Fn, S>> {};
 
   template <copy_constructible_object Fn, class S>
-  requires requires { alternative_traits<StateT_monad_t<StateT<Fn, S>>>::combine; }
+  requires (
+    not detail::has_alternative_traits_empty<StateT_monad_t<StateT<Fn, S>>> and
+    detail::has_alternative_traits_combine<StateT_monad_t<StateT<Fn, S>>>)
   struct alternative_traits<StateT<Fn, S>> : detail::StateT_alternative_traits_combine<StateT<Fn, S>> {};
 
   template <copy_constructible_object Fn, class S>
-  requires requires {
-    alternative_traits<StateT_monad_t<StateT<Fn, S>>>::empty;
-    alternative_traits<StateT_monad_t<StateT<Fn, S>>>::combine;
-  }
+  requires (
+    detail::has_alternative_traits_empty<StateT_monad_t<StateT<Fn, S>>> and
+    detail::has_alternative_traits_combine<StateT_monad_t<StateT<Fn, S>>>)
   struct alternative_traits<StateT<Fn, S>> : detail::StateT_alternative_traits_empty<StateT<Fn, S>>,
                                              detail::StateT_alternative_traits_combine<StateT<Fn, S>> {};
 
