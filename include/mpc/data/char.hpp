@@ -9,73 +9,73 @@ namespace mpc {
     // https://en.cppreference.com/w/cpp/string/byte/isalnum
 
     struct isalnum_op {
-      constexpr bool operator()(unsigned char c) const noexcept(noexcept(std::isalnum(c))) {
+      bool operator()(unsigned char c) const noexcept(noexcept(std::isalnum(c))) {
         return std::isalnum(c);
       }
     };
 
     struct isalpha_op {
-      constexpr bool operator()(unsigned char c) const noexcept(noexcept(std::isalpha(c))) {
+      bool operator()(unsigned char c) const noexcept(noexcept(std::isalpha(c))) {
         return std::isalpha(c);
       }
     };
 
     struct islower_op {
-      constexpr bool operator()(unsigned char c) const noexcept(noexcept(std::islower(c))) {
+      bool operator()(unsigned char c) const noexcept(noexcept(std::islower(c))) {
         return std::islower(c);
       }
     };
 
     struct isupper_op {
-      constexpr bool operator()(unsigned char c) const noexcept(noexcept(std::isupper(c))) {
+      bool operator()(unsigned char c) const noexcept(noexcept(std::isupper(c))) {
         return std::isupper(c);
       }
     };
 
     struct isdigit_op {
-      constexpr bool operator()(unsigned char c) const noexcept(noexcept(std::isdigit(c))) {
+      bool operator()(unsigned char c) const noexcept(noexcept(std::isdigit(c))) {
         return std::isdigit(c);
       }
     };
 
     struct isxdigit_op {
-      constexpr bool operator()(unsigned char c) const noexcept(noexcept(std::isxdigit(c))) {
+      bool operator()(unsigned char c) const noexcept(noexcept(std::isxdigit(c))) {
         return std::isxdigit(c);
       }
     };
 
     struct iscntrl_op {
-      constexpr bool operator()(unsigned char c) const noexcept(noexcept(std::iscntrl(c))) {
+      bool operator()(unsigned char c) const noexcept(noexcept(std::iscntrl(c))) {
         return std::iscntrl(c);
       }
     };
 
     struct isgraph_op {
-      constexpr bool operator()(unsigned char c) const noexcept(noexcept(std::isgraph(c))) {
+      bool operator()(unsigned char c) const noexcept(noexcept(std::isgraph(c))) {
         return std::isgraph(c);
       }
     };
 
     struct isspace_op {
-      constexpr bool operator()(unsigned char c) const noexcept(noexcept(std::isspace(c))) {
+      bool operator()(unsigned char c) const noexcept(noexcept(std::isspace(c))) {
         return std::isspace(c);
       }
     };
 
     struct isblank_op {
-      constexpr bool operator()(unsigned char c) const noexcept(noexcept(std::isblank(c))) {
+      bool operator()(unsigned char c) const noexcept(noexcept(std::isblank(c))) {
         return std::isblank(c);
       }
     };
 
     struct isprint_op {
-      constexpr bool operator()(unsigned char c) const noexcept(noexcept(std::isprint(c))) {
+      bool operator()(unsigned char c) const noexcept(noexcept(std::isprint(c))) {
         return std::isprint(c);
       }
     };
 
     struct ispunct_op {
-      constexpr bool operator()(unsigned char c) const noexcept(noexcept(std::ispunct(c))) {
+      bool operator()(unsigned char c) const noexcept(noexcept(std::ispunct(c))) {
         return std::ispunct(c);
       }
     };

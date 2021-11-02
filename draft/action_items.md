@@ -12,7 +12,7 @@
   [x] make_StateT<S>(fn) と書けるようにする
 [x] `type State s a = StateT s Identity a` 実装するか? → Yes
 [x] `fst`, `snd`
-[ ] `map_StateT, with_StateT`
+[x] `map_StateT, with_StateT`
 
 ## tier 3
 [ ] `class... Args` に対し、 `std::size_t... Idx` は変 (`Idcs` であるべき?)
@@ -21,6 +21,7 @@
 [ ] `seq_apply` → `ap` ???
 [x] `liftA, liftA3` 不要では??? → `liftA` のみ消した
 [ ] `liftA4, liftA5` ← やっぱ必要だと思う
+[ ] `run_StateT % x % t` を `run_StateT(x)(t)` に書き換える (% 使えなくてもokにするため)
 
 
 
