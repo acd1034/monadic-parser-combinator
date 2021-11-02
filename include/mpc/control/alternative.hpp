@@ -12,11 +12,22 @@ namespace mpc {
   template <class>
   struct alternative_traits;
 
+  namespace detail {
+    template <class F>
+    concept has_alternative_traits_empty = requires {
+      alternative_traits<std::remove_cvref_t<F>>::empty;
+    };
+
+    template <class F>
+    concept has_alternative_traits_combine = requires {
+      alternative_traits<std::remove_cvref_t<F>>::combine;
+    };
+
+  } // namespace detail
+
   template <class F>
-  concept alternative_traits_specialized = requires {
-    alternative_traits<std::remove_cvref_t<F>>::empty;
-    alternative_traits<std::remove_cvref_t<F>>::combine;
-  };
+  concept alternative_traits_specialized =
+    detail::has_alternative_traits_empty<F> and detail::has_alternative_traits_combine<F>;
 
   template <class F>
   concept alternative = applicative<F> and alternative_traits_specialized<F>;

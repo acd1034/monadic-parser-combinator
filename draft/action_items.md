@@ -1,18 +1,11 @@
 # Action items
 ## tier 1
-[x] GitHub repogitory 作る
 
 ## tier 2
-[x] `StateT` の (a, s) は `tuple-like` と決めるか? → Yes
-[x] `Identity` 修正
-  [x] Identity<T> の T の制約
-  [x] instance は copyable_box<T>
-[x] `StateT` 修正
-  [x] struct StateT<S, Fn> : Identity<Fn>
-  [x] make_StateT<S>(fn) と書けるようにする
-[x] `type State s a = StateT s Identity a` 実装するか? → Yes
-[x] `fst`, `snd`
-[x] `map_StateT, with_StateT`
+[ ] `StateT` を `std::function` を用いて再実装
+[ ] `sequence` 修正?
+[ ] `some`, `many` in `alternative`
+[ ] `list` 周りの整備
 
 ## tier 3
 [ ] `class... Args` に対し、 `std::size_t... Idx` は変 (`Idcs` であるべき?)
@@ -21,7 +14,6 @@
 [ ] `seq_apply` → `ap` ???
 [x] `liftA, liftA3` 不要では??? → `liftA` のみ消した
 [ ] `liftA4, liftA5` ← やっぱ必要だと思う
-[ ] `run_StateT % x % t` を `run_StateT(x)(t)` に書き換える (% 使えなくてもokにするため)
 
 
 
