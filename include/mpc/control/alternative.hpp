@@ -50,7 +50,7 @@ namespace mpc {
   namespace operators::alternatives {
     // clang-format off
     template <class F1, class F2>
-    requires std::same_as<std::remove_cvref_t<F1>, std::remove_cvref_t<F2>> and requires {
+    requires /* std::same_as<std::remove_cvref_t<F1>, std::remove_cvref_t<F2>> and  */ requires {
       alternative_traits<std::remove_cvref_t<F1>>::combine;
     }
     constexpr auto operator||(F1&& a1, F2&& a2)

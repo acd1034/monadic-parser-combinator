@@ -1,6 +1,7 @@
 /// @file char.hpp
 #pragma once
 #include <cctype>
+#include <string>
 #include <mpc/functional/perfect_forward.hpp>
 
 namespace mpc {
@@ -95,4 +96,30 @@ namespace mpc {
     inline constexpr perfect_forwarded_t<detail::isprint_op> isprint{};
     inline constexpr perfect_forwarded_t<detail::ispunct_op> ispunct{};
   } // namespace cpo
+
+  template <class charT>
+  std::string quoted(charT s, charT delim = charT('\'')) {
+    return {delim, s, delim};
+  }
+
+  template <class charT>
+  std::string quoted(const charT* s, charT delim = charT('"')) {
+    return delim + std::string{s} + delim;
+  }
+
+  template <class charT, class traits>
+  std::string quoted(std::basic_string_view<charT, traits> s, charT delim = charT('"')) {
+    return delim + std::string{s} + delim;
+  }
+
+  template <class charT, class traits, class Allocator>
+  std::string quoted(const std::basic_string<charT, traits, Allocator>& s,
+                     charT delim = charT('"')) {
+    return delim + s + delim;
+  }
+
+  template <class charT, class traits, class Allocator>
+  std::string quoted(std::basic_string<charT, traits, Allocator>&& s, charT delim = charT('"')) {
+    return delim + std::move(s) + delim;
+  }
 } // namespace mpc

@@ -40,10 +40,10 @@ namespace mpc {
   template <class T>
   concept isStateT = detail::is_StateT<std::remove_cvref_t<T>>::value;
 
-  template<isStateT ST>
+  template <isStateT ST>
   using StateT_state_t = typename std::remove_cvref_t<ST>::state_type;
 
-  template<isStateT ST>
+  template <isStateT ST>
   using StateT_monad_t = typename std::remove_cvref_t<ST>::monad_type;
 
   // make_StateT, run_StateT
@@ -218,30 +218,53 @@ namespace mpc {
   /// instance (Functor m, MonadPlus m) => Alternative (StateT s m) where
   ///     empty = StateT $ \ _ -> mzero
   ///     StateT m <|> StateT n = StateT $ \ s -> m s `mplus` n s
-  template <copy_constructible_object Fn, class S>
-  requires std::invocable<Fn, S> and alternative<std::invoke_result_t<Fn, S>>
-  struct alternative_traits<StateT<Fn, S>> {
-    struct combine_op {
-      struct closure {
-        template <isStateT ST1, isStateT ST2, class T>
-        constexpr auto operator()(ST1&& x, ST2&& y, const T& t) const
-          noexcept(noexcept(mpc::combine<StateT_monad_t<ST1>>(run_StateT % std::forward<ST1>(x) % t, run_StateT % std::forward<ST2>(y) % t)))
-          -> decltype(      mpc::combine<StateT_monad_t<ST1>>(run_StateT % std::forward<ST1>(x) % t, run_StateT % std::forward<ST2>(y) % t)) {
-          return            mpc::combine<StateT_monad_t<ST1>>(run_StateT % std::forward<ST1>(x) % t, run_StateT % std::forward<ST2>(y) % t);
+  namespace detail {
+    template<isStateT ST>
+    requires requires { alternative_traits<StateT_monad_t<ST>>::empty; }
+    struct StateT_alternative_traits_empty {
+      static constexpr auto empty = make_StateT<StateT_state_t<ST>>([](auto&&) { return mpc::empty<StateT_monad_t<ST>>; });
+    };
+
+    template<isStateT ST>
+    requires requires { alternative_traits<StateT_monad_t<ST>>::combine; }
+    struct StateT_alternative_traits_combine {
+      struct combine_op {
+        struct closure {
+          template <isStateT ST1, isStateT ST2, class T>
+          constexpr auto operator()(ST1&& x, ST2&& y, const T& t) const
+            noexcept(noexcept(mpc::combine<StateT_monad_t<ST1>>(run_StateT % std::forward<ST1>(x) % t, run_StateT % std::forward<ST2>(y) % t)))
+            -> decltype(      mpc::combine<StateT_monad_t<ST1>>(run_StateT % std::forward<ST1>(x) % t, run_StateT % std::forward<ST2>(y) % t)) {
+            return            mpc::combine<StateT_monad_t<ST1>>(run_StateT % std::forward<ST1>(x) % t, run_StateT % std::forward<ST2>(y) % t);
+          }
+        };
+
+        template <isStateT ST1, isStateT ST2>
+        constexpr auto operator()(ST1&& x, ST2&& y) const
+          noexcept(noexcept(make_StateT<StateT_state_t<ST>>(perfect_forwarded_t<closure>{}(std::forward<ST1>(x), std::forward<ST2>(y)))))
+          -> decltype(      make_StateT<StateT_state_t<ST>>(perfect_forwarded_t<closure>{}(std::forward<ST1>(x), std::forward<ST2>(y)))) {
+          return            make_StateT<StateT_state_t<ST>>(perfect_forwarded_t<closure>{}(std::forward<ST1>(x), std::forward<ST2>(y)));
         }
       };
 
-      template <isStateT ST1, isStateT ST2>
-      constexpr auto operator()(ST1&& x, ST2&& y) const
-        noexcept(noexcept(make_StateT<S>(perfect_forwarded_t<closure>{}(std::forward<ST1>(x), std::forward<ST2>(y)))))
-        -> decltype(      make_StateT<S>(perfect_forwarded_t<closure>{}(std::forward<ST1>(x), std::forward<ST2>(y)))) {
-        return            make_StateT<S>(perfect_forwarded_t<closure>{}(std::forward<ST1>(x), std::forward<ST2>(y)));
-      }
+      static constexpr combine_op combine{};
     };
+  } // namespace detail
 
-    static constexpr auto empty = make_StateT<S>([](auto&&) { return mpc::empty<StateT_monad_t<StateT<Fn, S>>>; });
-    static constexpr combine_op combine{};
-  };
+  template <copy_constructible_object Fn, class S>
+  requires requires { alternative_traits<StateT_monad_t<StateT<Fn, S>>>::empty; }
+  struct alternative_traits<StateT<Fn, S>> : detail::StateT_alternative_traits_empty<StateT<Fn, S>> {};
+
+  template <copy_constructible_object Fn, class S>
+  requires requires { alternative_traits<StateT_monad_t<StateT<Fn, S>>>::combine; }
+  struct alternative_traits<StateT<Fn, S>> : detail::StateT_alternative_traits_combine<StateT<Fn, S>> {};
+
+  template <copy_constructible_object Fn, class S>
+  requires requires {
+    alternative_traits<StateT_monad_t<StateT<Fn, S>>>::empty;
+    alternative_traits<StateT_monad_t<StateT<Fn, S>>>::combine;
+  }
+  struct alternative_traits<StateT<Fn, S>> : detail::StateT_alternative_traits_empty<StateT<Fn, S>>,
+                                             detail::StateT_alternative_traits_combine<StateT<Fn, S>> {};
 
   /// instance MonadTrans (StateT s) where
   ///     lift m = StateT $ \ s -> do
@@ -463,7 +486,7 @@ namespace mpc {
   template <class T>
   concept isState = detail::is_State<std::remove_cvref_t<T>>::value;
 
-  template<isState ST>
+  template <isState ST>
   using State_state_t = typename std::remove_cvref_t<ST>::state_type;
 
   // This seems to be unnecessary because we know `State_monad_t = Identity`
