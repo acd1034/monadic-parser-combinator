@@ -21,13 +21,10 @@ namespace mpc {
 
   // clang-format off
   template <class F>
-  concept functor_traits_specialized = requires {
+  concept functor = requires {
     functor_traits<std::remove_cvref_t<F>>::fmap;
     functor_traits<std::remove_cvref_t<F>>::replace2nd;
   };
-
-  template <class F>
-  concept functor = functor_traits_specialized<F>;
 
   template <class F>
   concept applicative_traits_specialized = requires {

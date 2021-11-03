@@ -172,7 +172,7 @@ namespace mpc {
       }
     };
 
-    static constexpr auto empty = nothing;
+    static constexpr auto empty = Maybe<T1>{nothing};
     static constexpr combine_op combine{};
   };
 } // namespace mpc

@@ -1,8 +1,8 @@
-/// @file nil.hpp
+/// @file unit.hpp
 #pragma once
 #include <mpc/stdfundamental.hpp>
 
 namespace mpc {
-  using nil_t = std::tuple<>;
-  inline constexpr nil_t nil;
+  using unit_t = std::tuple<>;
+  inline constexpr unit_t unit;
 } // namespace mpc

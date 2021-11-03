@@ -69,6 +69,7 @@ FetchContent_Declare(Catch2
 FetchContent_MakeAvailable(Catch2)
 
 add_subdirectory(control)
+add_subdirectory(control/trans)
 add_subdirectory(data)
 add_subdirectory(draft)
 add_subdirectory(functional)

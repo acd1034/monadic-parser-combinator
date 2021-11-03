@@ -74,8 +74,11 @@ namespace mpc {
     };
   } // namespace detail
 
-  inline constexpr perfect_forwarded_t<detail::make_Identity_op> make_Identity{};
-  inline constexpr perfect_forwarded_t<detail::run_Identity_op> run_Identity{};
+  namespace cpo {
+    inline constexpr perfect_forwarded_t<detail::make_Identity_op> make_Identity{};
+
+    inline constexpr perfect_forwarded_t<detail::run_Identity_op> run_Identity{};
+  }
 
   // clang-format off
 
