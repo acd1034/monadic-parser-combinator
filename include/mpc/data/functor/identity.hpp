@@ -1,8 +1,7 @@
 /// @file identity.hpp
 #pragma once
-#include <functional> // std::invoke
 #include <mpc/control/monad.hpp>
-#include <mpc/functional/perfect_forward.hpp>
+#include <mpc/prelude.hpp>
 #include <mpc/utility/copyable_box.hpp>
 
 namespace mpc {
@@ -78,7 +77,7 @@ namespace mpc {
     inline constexpr perfect_forwarded_t<detail::make_Identity_op> make_Identity{};
 
     inline constexpr perfect_forwarded_t<detail::run_Identity_op> run_Identity{};
-  }
+  } // namespace cpo
 
   // clang-format off
 

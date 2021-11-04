@@ -3,7 +3,7 @@
 #include <functional>
 #include <variant>
 #include <mpc/control/monad.hpp>
-#include <mpc/functional/perfect_forward.hpp>
+#include <mpc/functional.hpp> // perfect_forward
 #include <mpc/utility/single.hpp>
 
 struct nothing_t {

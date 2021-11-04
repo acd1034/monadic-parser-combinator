@@ -1,6 +1,6 @@
 /// @file infix.hpp
 #pragma once
-#include<functional>
+#include <functional>
 #include <mpc/stdfundamental.hpp>
 
 namespace mpc {

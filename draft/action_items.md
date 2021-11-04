@@ -20,8 +20,7 @@
 ```cpp
 /// @file fname.hpp
 #pragma once
-#include <functional> // std::invoke
-#include <mpc/functional/perfect_forward.hpp>
+#include <mpc/prelude.hpp>
 
 namespace mpc {
 

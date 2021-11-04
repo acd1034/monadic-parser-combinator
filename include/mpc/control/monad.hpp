@@ -1,9 +1,8 @@
 /// @file monad.hpp
 #pragma once
-#include <functional> // std::invoke
 #include <mpc/control/basic_traits.hpp>
 #include <mpc/control/applicative.hpp>
-#include <mpc/functional/perfect_forward.hpp>
+#include <mpc/prelude.hpp>
 
 namespace mpc {
   namespace detail {

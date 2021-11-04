@@ -1,7 +1,7 @@
 /// @file operations.hpp
 #pragma once
 #include <functional> // std::plus, etc.
-#include <mpc/functional/perfect_forward.hpp>
+#include <mpc/functional.hpp> // perfect_forward
 
 namespace mpc::inline cpo {
   // Arithmetic operations

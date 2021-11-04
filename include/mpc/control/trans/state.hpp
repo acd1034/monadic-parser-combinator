@@ -5,9 +5,7 @@
 #include <mpc/control/monad.hpp>
 #include <mpc/control/trans/class.hpp>
 #include <mpc/data/functor/identity.hpp>
-#include <mpc/functional/fst.hpp>
-#include <mpc/functional/perfect_forward.hpp>
-#include <mpc/utility/unit.hpp>
+#include <mpc/prelude.hpp> // compose, fst, unit
 
 namespace mpc {
   // StateT

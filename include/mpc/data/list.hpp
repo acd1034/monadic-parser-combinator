@@ -1,13 +1,11 @@
 /// @file list.hpp
 #pragma once
-#include <algorithm>  // std::ranges::transform
-#include <functional> // std::invoke
+#include <algorithm> // std::ranges::transform
 #include <iterator>
 #include <list>
 #include <ranges> // std::ranges::input_range, etc.
 #include <mpc/control/monad.hpp>
-#include <mpc/functional/id.hpp>
-#include <mpc/functional/perfect_forward.hpp>
+#include <mpc/prelude.hpp> // id
 
 namespace mpc {
   // cons, foldr
@@ -34,14 +32,16 @@ namespace mpc {
         if (first == last) {
           return std::forward<T>(init);
         } else {
-          return std::invoke(op, *first,
-                             this->operator()(op, std::forward<T>(init), std::ranges::next(first), last));
+          return std::invoke(
+            op, *first,
+            this->operator()(op, std::forward<T>(init), std::ranges::next(first), last));
         }
       }
 
       template <class Fn, std::movable T, std::ranges::input_range R>
       constexpr auto operator()(Fn&& op, T&& init, R&& r) const -> T {
-        return this->operator()(std::forward<Fn>(op), std::forward<T>(init), std::ranges::begin(r), std::ranges::end(r));
+        return this->operator()(std::forward<Fn>(op), std::forward<T>(init), std::ranges::begin(r),
+                                std::ranges::end(r));
       }
     };
   } // namespace detail
@@ -50,7 +50,7 @@ namespace mpc {
     inline constexpr perfect_forwarded_t<detail::cons_op> cons;
 
     inline constexpr perfect_forwarded_t<detail::foldr_op> foldr;
-  }
+  } // namespace cpo
 
   // instances
   template <class T>

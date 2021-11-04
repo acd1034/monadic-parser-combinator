@@ -3,10 +3,7 @@
 #include <functional> // std::invoke
 #include <mpc/control/basic_traits.hpp>
 #include <mpc/control/functor.hpp>
-#include <mpc/functional/constant.hpp>
-#include <mpc/functional/flip.hpp>
-#include <mpc/functional/id.hpp>
-#include <mpc/functional/perfect_forward.hpp>
+#include <mpc/prelude.hpp> // constant, flip, id
 
 namespace mpc {
   namespace detail {

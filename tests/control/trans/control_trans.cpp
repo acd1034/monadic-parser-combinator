@@ -1,9 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <mpc/control/trans.hpp>
+#include <mpc/control.hpp>
 #include <mpc/data.hpp>
-#include <mpc/functional/infix.hpp>
-#include <mpc/functional/operations.hpp>
 #include "../../stdfundamental.hpp"
 
 template <class S, class M>

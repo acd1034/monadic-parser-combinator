@@ -1,7 +1,7 @@
 /// @file id.hpp
 #pragma once
 #include <functional> // std::identity
-#include <mpc/functional/perfect_forward.hpp>
+#include <mpc/functional.hpp> // perfect_forward
 
 namespace mpc {
   inline namespace cpo {

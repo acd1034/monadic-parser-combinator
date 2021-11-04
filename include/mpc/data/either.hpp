@@ -1,8 +1,8 @@
 /// @file either.hpp
 #pragma once
-#include <functional>
 #include <variant>
 #include <mpc/control/monad.hpp>
+#include <mpc/prelude.hpp>
 #include <mpc/utility/alternative_value_t.hpp>
 #include <mpc/utility/single.hpp>
 

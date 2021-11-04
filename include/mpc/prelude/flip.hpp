@@ -1,7 +1,7 @@
 /// @file compose.hpp
 #pragma once
 #include <functional> // std::invoke
-#include <mpc/functional/perfect_forward.hpp>
+#include <mpc/functional.hpp> // perfect_forward
 
 namespace mpc {
   // clang-format off

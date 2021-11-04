@@ -1,6 +1,6 @@
 /// @file constant.hpp
 #pragma once
-#include <mpc/functional/perfect_forward.hpp>
+#include <mpc/functional.hpp> // perfect_forward
 
 namespace mpc {
   namespace detail {

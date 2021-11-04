@@ -25,9 +25,4 @@ namespace mpc {
   constexpr nth_element_t<T, Idx> make_nth_element(T&& t) {
     return std::forward<T>(t);
   }
-
-  // template <class... Args>
-  // constexpr bool is_nth_element(const TaggedUnion<Args...>& tu, const std::size_t n) {
-  //   return tu.index() == n;
-  // }
 } // namespace mpc
