@@ -3,6 +3,8 @@
 #include <mpc/control/applicative.hpp>
 #include <mpc/functional/perfect_forward.hpp>
 
+// clang-format off
+
 namespace mpc {
   // alternative
   // https://hackage.haskell.org/package/base-4.16.0.0/docs/Control-Applicative.html
@@ -21,7 +23,6 @@ namespace mpc {
     concept has_alternative_traits_combine = requires {
       alternative_traits<std::remove_cvref_t<F>>::combine;
     };
-
   } // namespace detail
 
   template <class F>
@@ -31,14 +32,17 @@ namespace mpc {
   template <class F>
   concept alternative = applicative<F> and alternative_traits_specialized<F>;
 
-  namespace detail {
-    template <class F>
-    using combine_op =
-      std::remove_cvref_t<decltype(alternative_traits<std::remove_cvref_t<F>>::combine)>;
+  // class requirements
 
-    template <class F>
-    struct combine_t : perfect_forward<combine_op<F>> {
-      using perfect_forward<combine_op<F>>::perfect_forward;
+  namespace detail {
+    /// combine :: f a -> f a -> f a
+    struct combine_op {
+      template <class Fa, class Fb>
+      /* requires std::same_as<std::remove_cvref_t<Fa>, std::remove_cvref_t<Fb>> */
+      constexpr auto operator()(Fa&& fa, Fb&& fb) const noexcept(
+      noexcept(   alternative_traits<std::remove_cvref_t<Fa>>::combine(std::forward<Fa>(fa), std::forward<Fb>(fb))))
+      -> decltype(alternative_traits<std::remove_cvref_t<Fa>>::combine(std::forward<Fa>(fa), std::forward<Fb>(fb)))
+      { return    alternative_traits<std::remove_cvref_t<Fa>>::combine(std::forward<Fa>(fa), std::forward<Fb>(fb)); }
     };
   } // namespace detail
 
@@ -50,24 +54,21 @@ namespace mpc {
     }
     inline constexpr auto empty = alternative_traits<std::remove_cvref_t<F>>::empty;
 
-    /// (<|>) :: f a -> f a -> f a -- infixl 3
-    template <class F>
-    inline constexpr detail::combine_t<std::remove_cvref_t<F>> combine{};
-
-    // TODO: Implement `some`, `many`
+    /// combine :: f a -> f a -> f a -- infixl 3
+    inline constexpr perfect_forwarded_t<detail::combine_op> combine{};
   } // namespace cpo
 
   namespace operators::alternatives {
-    // clang-format off
-    template <class F1, class F2>
-    requires /* std::same_as<std::remove_cvref_t<F1>, std::remove_cvref_t<F2>> and  */ requires {
-      alternative_traits<std::remove_cvref_t<F1>>::combine;
+    template <class Fa, class Fb>
+    requires /* std::same_as<std::remove_cvref_t<Fa>, std::remove_cvref_t<Fb>> and */ requires {
+      alternative_traits<std::remove_cvref_t<Fa>>::combine;
     }
-    constexpr auto operator||(F1&& a1, F2&& a2)
-      noexcept(noexcept(mpc::combine<F1>(std::forward<F1>(a1), std::forward<F2>(a2))))
-      -> decltype(      mpc::combine<F1>(std::forward<F1>(a1), std::forward<F2>(a2))) {
-      return            mpc::combine<F1>(std::forward<F1>(a1), std::forward<F2>(a2));
+    inline constexpr auto operator||(Fa&& fa, Fb&& fb)
+      noexcept(noexcept(mpc::combine(std::forward<Fa>(fa), std::forward<Fb>(fb))))
+      -> decltype(      mpc::combine(std::forward<Fa>(fa), std::forward<Fb>(fb))) {
+      return            mpc::combine(std::forward<Fa>(fa), std::forward<Fb>(fb));
     }
-    // clang-format on
   } // namespace operators::alternatives
 } // namespace mpc
+
+// clang-format on
