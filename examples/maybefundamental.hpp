@@ -1,6 +1,6 @@
 /// @file maybefundamental.hpp
 #pragma once
-#include <functional>
+#include <functional> // std::invoke
 #include <variant>
 #include <mpc/control/monad.hpp>
 #include <mpc/functional/perfect_forward.hpp>
@@ -81,11 +81,11 @@ namespace detail {
   struct seq_apply_op {
     template <Maybe M1, Maybe M2>
     constexpr auto operator()(M1&& f, M2&& x) const //
-      -> decltype(mpc::fmap<M1>(*std::get<1>(std::forward<M1>(f)), std::forward<M2>(x))) {
+      -> decltype(mpc::fmap(*std::get<1>(std::forward<M1>(f)), std::forward<M2>(x))) {
       if (f.index() == 0) {
         return nothing;
       } else {
-        return mpc::fmap<M1>(*std::get<1>(std::forward<M1>(f)), std::forward<M2>(x));
+        return mpc::fmap(*std::get<1>(std::forward<M1>(f)), std::forward<M2>(x));
       }
     }
   };
