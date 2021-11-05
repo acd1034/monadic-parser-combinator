@@ -1,49 +1,60 @@
 /// @file functor.hpp
 #pragma once
-#include <mpc/control/basic_traits.hpp>
 #include <mpc/functional/perfect_forward.hpp>
 #include <mpc/prelude/compose.hpp>
 #include <mpc/prelude/constant.hpp>
 #include <mpc/prelude/flip.hpp>
 
 namespace mpc {
+  // functor
+  // https://hackage.haskell.org/package/base-4.16.0.0/docs/Control-Monad.html
+
+  /// class Functor f where
+  template <class>
+  struct functor_traits;
+
+  template <class F>
+  concept functor = requires {
+    functor_traits<std::remove_cvref_t<F>>::fmap;
+    functor_traits<std::remove_cvref_t<F>>::replace2nd;
+  };
+
+  // class requirements
+
   namespace detail {
-    template <class F>
-    using fmap_op = std::remove_cvref_t<decltype(functor_traits<std::remove_cvref_t<F>>::fmap)>;
-
-    template <class F>
-    using replace2nd_op =
-      std::remove_cvref_t<decltype(functor_traits<std::remove_cvref_t<F>>::replace2nd)>;
-
-    template <class F>
-    struct fmap_t : perfect_forward<fmap_op<F>> {
-      using perfect_forward<fmap_op<F>>::perfect_forward;
+    /// fmap :: (a -> b) -> f a -> f b
+    struct fmap_op {
+      template <class Fn, class Fa>
+      constexpr auto operator()(Fn&& fn, Fa&& fa) const noexcept(
+      noexcept(   functor_traits<std::remove_cvref_t<Fa>>::fmap(std::forward<Fn>(fn), std::forward<Fa>(fa))))
+      -> decltype(functor_traits<std::remove_cvref_t<Fa>>::fmap(std::forward<Fn>(fn), std::forward<Fa>(fa)))
+      { return    functor_traits<std::remove_cvref_t<Fa>>::fmap(std::forward<Fn>(fn), std::forward<Fa>(fa)); }
     };
 
-    template <class F>
-    struct replace2nd_t : perfect_forward<replace2nd_op<F>> {
-      using perfect_forward<replace2nd_op<F>>::perfect_forward;
+    /// replace2nd :: a -> f b -> f a
+    struct replace2nd_op {
+      template <class A, class Fb>
+      constexpr auto operator()(A&& a, Fb&& fb) const noexcept(
+      noexcept(   functor_traits<std::remove_cvref_t<Fb>>::replace2nd(std::forward<A>(a), std::forward<Fb>(fb))))
+      -> decltype(functor_traits<std::remove_cvref_t<Fb>>::replace2nd(std::forward<A>(a), std::forward<Fb>(fb)))
+      { return    functor_traits<std::remove_cvref_t<Fb>>::replace2nd(std::forward<A>(a), std::forward<Fb>(fb)); }
     };
   } // namespace detail
 
   inline namespace cpo {
     /// fmap :: (a -> b) -> f a -> f b
-    template <class F>
-    inline constexpr detail::fmap_t<std::remove_cvref_t<F>> fmap{};
+    inline constexpr perfect_forwarded_t<detail::fmap_op> fmap{};
 
-    /// ( $>) :: a -> f b -> f a -- infixl 4
-    template <class F>
-    inline constexpr detail::replace2nd_t<std::remove_cvref_t<F>> replace2nd{};
+    /// replace2nd :: a -> f b -> f a
+    inline constexpr perfect_forwarded_t<detail::replace2nd_op> replace2nd{};
   } // namespace cpo
 
+  // Deducibles
+
   namespace functors {
-    /// @brief ( $>) = fmap . const
+    /// @brief replace2nd = fmap . const
     /// @details If you define `functor_traits<F>::fmap`, you can deduce `replace2nd`.
-    template <class F>
-    requires requires {
-      functor_traits<std::remove_cvref_t<F>>::fmap;
-    }
-    inline constexpr auto replace2nd = compose % mpc::fmap<F> % constant;
+    inline constexpr auto replace2nd = compose(mpc::fmap, constant);
   } // namespace functors
 
   // Grobal methods
@@ -51,7 +62,6 @@ namespace mpc {
   inline namespace cpo {
     /// replace1st :: Functor f => f a -> b -> f b
     /// replace1st = flip replace2nd
-    template <functor F>
-    inline constexpr auto replace1st = flip % mpc::replace2nd<F>;
+    inline constexpr auto replace1st = flip % mpc::replace2nd;
   } // namespace cpo
 } // namespace mpc
