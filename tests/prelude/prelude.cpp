@@ -14,7 +14,7 @@ inline constexpr add_t add;
 
 TEST_CASE("prelude compose", "[prelude][compose]") {
   {
-    const auto inc = [](auto x) { return x + 1; };
+    const auto inc = [](const auto& x) { return x + 1; };
     const auto two = mpc::compose(inc, inc);
     CHECK(two(1) == 3);
   }

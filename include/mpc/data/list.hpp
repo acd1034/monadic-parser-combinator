@@ -99,7 +99,7 @@ namespace mpc {
     struct sequence_op {
       // FIXME: 本来 applicative T
       template <monad T>
-      constexpr auto operator()(const std::list<T>& l) {
+      constexpr auto operator()(const std::list<T>& l) const {
         // FIXME: 不正な方法で monad の value_type を取得している
         using U = std::remove_cvref_t<decltype(mpc::bind<T>(l.front(), id))>;
         return foldr(mpc::liftA2<T> % cons, mpc::returns<T> % std::list<U>{}, l);
