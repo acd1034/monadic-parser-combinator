@@ -4,11 +4,11 @@
 #include <mpc/stdfundamental.hpp>
 #include <mpc/utility/copyable_box.hpp>
 
+// clang-format off
+
 namespace mpc {
   // perfect_forward
   // https://github.com/llvm/llvm-project/blob/main/libcxx/include/__functional/perfect_forward.h
-
-  // clang-format off
 
   template <class, class, class...>
   struct perfect_forward_impl;
@@ -145,5 +145,6 @@ namespace mpc {
       return      this->operator()(std::forward<Arg>(arg));
     }
   };
-  // clang-format on
 } // namespace mpc
+
+// clang-format on

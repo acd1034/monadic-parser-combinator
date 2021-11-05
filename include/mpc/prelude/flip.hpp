@@ -3,8 +3,9 @@
 #include <functional> // std::invoke
 #include <mpc/functional/perfect_forward.hpp>
 
+// clang-format off
+
 namespace mpc {
-  // clang-format off
   namespace detail {
     struct flip_op {
       struct closure {
@@ -26,5 +27,6 @@ namespace mpc {
   inline namespace cpo {
     inline constexpr perfect_forwarded_t<detail::flip_op> flip;
   }
-  // clang-format on
 } // namespace mpc
+
+// clang-format on

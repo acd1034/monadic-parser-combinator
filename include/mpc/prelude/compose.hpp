@@ -3,11 +3,12 @@
 #include <functional> // std::invoke
 #include <mpc/functional/perfect_forward.hpp>
 
+// clang-format off
+
 namespace mpc {
   // compose
   // https://github.com/llvm/llvm-project/blob/main/libcxx/include/__functional/compose.h
 
-  // clang-format off
   namespace detail {
     struct compose_op {
       struct closure {
@@ -29,5 +30,6 @@ namespace mpc {
   inline namespace cpo {
     inline constexpr perfect_forwarded_t<detail::compose_op> compose;
   }
-  // clang-format on
 } // namespace mpc
+
+// clang-format on
