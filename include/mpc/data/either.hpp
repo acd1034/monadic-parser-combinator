@@ -1,5 +1,6 @@
 /// @file either.hpp
 #pragma once
+#include <functional> // std::invoke
 #include <variant>
 #include <mpc/control/monad.hpp>
 #include <mpc/prelude.hpp>

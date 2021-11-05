@@ -1,6 +1,5 @@
 /// @file applicative.hpp
 #pragma once
-#include <functional> // std::invoke
 #include <mpc/control/functor.hpp>
 #include <mpc/functional/perfect_forward.hpp>
 #include <mpc/prelude/constant.hpp>

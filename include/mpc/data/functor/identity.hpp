@@ -1,5 +1,6 @@
 /// @file identity.hpp
 #pragma once
+#include <functional> // std::invoke
 #include <mpc/control/monad.hpp>
 #include <mpc/prelude.hpp>
 #include <mpc/utility/copyable_box.hpp>

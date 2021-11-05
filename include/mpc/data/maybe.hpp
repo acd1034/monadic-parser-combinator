@@ -1,5 +1,6 @@
 /// @file maybe.hpp
 #pragma once
+#include <functional> // std::invoke
 #include <variant>
 #include <mpc/control/alternative.hpp>
 #include <mpc/control/monad.hpp>

@@ -1,6 +1,7 @@
 /// @file list.hpp
 #pragma once
-#include <algorithm> // std::ranges::transform
+#include <algorithm>  // std::ranges::transform
+#include <functional> // std::invoke
 #include <iterator>
 #include <list>
 #include <ranges> // std::ranges::input_range, etc.
