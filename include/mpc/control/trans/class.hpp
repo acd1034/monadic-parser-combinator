@@ -1,6 +1,7 @@
 /// @file class.hpp
 #pragma once
-#include <mpc/prelude.hpp>
+#include <mpc/stdfundamental.hpp>
+#include <mpc/functional/perfect_forward.hpp>
 
 namespace mpc {
   // monad_trans

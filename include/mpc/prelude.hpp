@@ -1,8 +1,5 @@
 /// @file prelude.hpp
 #pragma once
-#include <functional>         // std::invoke
-#include <mpc/functional.hpp> // perfect_forward
-
 #include <mpc/prelude/compose.hpp>
 #include <mpc/prelude/constant.hpp>
 #include <mpc/prelude/flip.hpp>

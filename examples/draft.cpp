@@ -3,7 +3,7 @@
 #include <ranges>
 #include <mpc/control.hpp>
 #include <mpc/data.hpp>
-#include <mpc/functional.hpp> // perfect_forward
+#include <mpc/functional/perfect_forward.hpp>
 using namespace std::literals;
 
 template <class T>

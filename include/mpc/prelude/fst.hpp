@@ -1,6 +1,6 @@
 /// @file fst.hpp
 #pragma once
-#include <mpc/functional.hpp> // perfect_forward
+#include <mpc/functional/perfect_forward.hpp>
 
 namespace mpc {
   namespace detail::_fst {

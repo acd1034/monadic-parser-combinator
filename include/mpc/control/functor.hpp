@@ -1,7 +1,10 @@
 /// @file functor.hpp
 #pragma once
 #include <mpc/control/basic_traits.hpp>
-#include <mpc/prelude.hpp> // compose, constant, flip
+#include <mpc/functional/perfect_forward.hpp>
+#include <mpc/prelude/compose.hpp>
+#include <mpc/prelude/constant.hpp>
+#include <mpc/prelude/flip.hpp>
 
 namespace mpc {
   namespace detail {

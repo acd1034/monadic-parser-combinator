@@ -1,5 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
+#include <mpc/functional/perfect_forward.hpp>
 #include <mpc/prelude.hpp>
 #include "../stdfundamental.hpp"
 

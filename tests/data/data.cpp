@@ -19,7 +19,7 @@ TEST_CASE("data list", "[data]") {
   {
     using Maybe1 = mpc::Maybe<int>;
     std::list m{Maybe1{mpc::make_just(1)}, Maybe1{mpc::make_just(2)}, Maybe1{mpc::make_just(3)}, Maybe1{mpc::make_just(4)}, Maybe1{mpc::make_just(5)}};
-    type_of(mpc::sequence(m));
+    // type_of(mpc::sequence(m));
     CHECK(mpc::sequence(m) == mpc::Maybe<std::list<int>>{mpc::make_just(l)});
   }
 }
