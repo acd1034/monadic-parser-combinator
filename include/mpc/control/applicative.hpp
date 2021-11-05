@@ -45,7 +45,7 @@ namespace mpc {
 
     /// seq_apply :: f (a -> b) -> f a -> f b
     struct seq_apply_op {
-      template <class Fab, class Fa, class Fb>
+      template <class Fab, class Fa>
       constexpr auto operator()(Fab&& fab, Fa&& fa) const noexcept(
       noexcept(   applicative_traits<std::remove_cvref_t<Fab>>::seq_apply(std::forward<Fab>(fab), std::forward<Fa>(fa))))
       -> decltype(applicative_traits<std::remove_cvref_t<Fab>>::seq_apply(std::forward<Fab>(fab), std::forward<Fa>(fa)))
