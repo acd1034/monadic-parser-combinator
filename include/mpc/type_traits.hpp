@@ -3,6 +3,9 @@
 #include <mpc/stdfundamental.hpp>
 
 namespace mpc::detail {
+  template <std::size_t N = 0>
+  struct empty_class {};
+
   // make_reversed_index_sequence
   // https://stackoverflow.com/questions/51408771/c-reversed-integer-sequence-implementation
 

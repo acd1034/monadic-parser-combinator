@@ -8,6 +8,7 @@
 #include <mpc/prelude/compose.hpp>
 #include <mpc/prelude/fst.hpp>
 #include <mpc/prelude/unit.hpp>
+#include <mpc/type_traits.hpp>
 
 namespace mpc {
   // StateT
@@ -105,15 +106,15 @@ namespace mpc {
         template <isStateT ST, class F, class T>
         constexpr auto operator()(ST&& x, F&& f, T&& t) const noexcept(
           noexcept(
-            mpc::bind<StateT_monad_t<ST>>(
+            mpc::bind(
             run_StateT % std::forward<ST>(x) % std::forward<T>(t),
             perfect_forwarded_t<nested_closure>{}(std::forward<F>(f)))))
           -> decltype(
-            mpc::bind<StateT_monad_t<ST>>(
+            mpc::bind(
             run_StateT % std::forward<ST>(x) % std::forward<T>(t),
             perfect_forwarded_t<nested_closure>{}(std::forward<F>(f)))) {
           return
-            mpc::bind<StateT_monad_t<ST>>(
+            mpc::bind(
             run_StateT % std::forward<ST>(x) % std::forward<T>(t),
             perfect_forwarded_t<nested_closure>{}(std::forward<F>(f)));
         }
@@ -154,15 +155,15 @@ namespace mpc {
         template <class F, isStateT ST, class T>
         constexpr auto operator()(F&& f, ST&& x, T&& t) const noexcept(
           noexcept(
-            mpc::fmap<StateT_monad_t<ST>>(
+            mpc::fmap(
             perfect_forwarded_t<nested_closure>{}(std::forward<F>(f)),
             run_StateT % std::forward<ST>(x) % std::forward<T>(t))))
           -> decltype(
-            mpc::fmap<StateT_monad_t<ST>>(
+            mpc::fmap(
             perfect_forwarded_t<nested_closure>{}(std::forward<F>(f)),
             run_StateT % std::forward<ST>(x) % std::forward<T>(t))) {
           return
-            mpc::fmap<StateT_monad_t<ST>>(
+            mpc::fmap(
             perfect_forwarded_t<nested_closure>{}(std::forward<F>(f)),
             run_StateT % std::forward<ST>(x) % std::forward<T>(t));
         }
@@ -177,7 +178,7 @@ namespace mpc {
     };
 
     static constexpr fmap_op fmap{};
-    static constexpr auto replace2nd = functors::replace2nd<StateT<Fn, S>>;
+    static constexpr auto replace2nd = functors::replace2nd;
   };
 
   /// instance (Functor m, Monad m) => Applicative (StateT s m) where
@@ -209,10 +210,10 @@ namespace mpc {
     };
 
     static constexpr pure_op pure{};
-    static constexpr auto seq_apply = monads::seq_apply<StateT<Fn, S>>;
-    static constexpr auto liftA2 = applicatives::liftA2<StateT<Fn, S>>;
-    static constexpr auto discard2nd = applicatives::discard2nd<StateT<Fn, S>>;
-    static constexpr auto discard1st = monads::discard1st<StateT<Fn, S>>;
+    static constexpr auto seq_apply = monads::seq_apply;
+    static constexpr auto liftA2 = applicatives::liftA2;
+    static constexpr auto discard2nd = applicatives::discard2nd;
+    static constexpr auto discard1st = monads::discard1st;
   };
 
   /// instance (Functor m, MonadPlus m) => Alternative (StateT s m) where
@@ -232,9 +233,9 @@ namespace mpc {
         struct closure {
           template <isStateT ST1, isStateT ST2, class T>
           constexpr auto operator()(ST1&& x, ST2&& y, const T& t) const
-            noexcept(noexcept(mpc::combine<StateT_monad_t<ST1>>(run_StateT % std::forward<ST1>(x) % t, run_StateT % std::forward<ST2>(y) % t)))
-            -> decltype(      mpc::combine<StateT_monad_t<ST1>>(run_StateT % std::forward<ST1>(x) % t, run_StateT % std::forward<ST2>(y) % t)) {
-            return            mpc::combine<StateT_monad_t<ST1>>(run_StateT % std::forward<ST1>(x) % t, run_StateT % std::forward<ST2>(y) % t);
+            noexcept(noexcept(mpc::combine(run_StateT % std::forward<ST1>(x) % t, run_StateT % std::forward<ST2>(y) % t)))
+            -> decltype(      mpc::combine(run_StateT % std::forward<ST1>(x) % t, run_StateT % std::forward<ST2>(y) % t)) {
+            return            mpc::combine(run_StateT % std::forward<ST1>(x) % t, run_StateT % std::forward<ST2>(y) % t);
           }
         };
 
@@ -250,24 +251,40 @@ namespace mpc {
     };
   } // namespace detail
 
-  template <copy_constructible_object Fn, class S>
-  requires (
-    detail::has_alternative_traits_empty<StateT_monad_t<StateT<Fn, S>>> and
-    not detail::has_alternative_traits_combine<StateT_monad_t<StateT<Fn, S>>>)
-  struct alternative_traits<StateT<Fn, S>> : detail::StateT_alternative_traits_empty<StateT<Fn, S>> {};
+  // template <copy_constructible_object Fn, class S>
+  // requires (
+  //   detail::has_alternative_traits_empty<StateT_monad_t<StateT<Fn, S>>> and
+  //   not detail::has_alternative_traits_combine<StateT_monad_t<StateT<Fn, S>>>)
+  // struct alternative_traits<StateT<Fn, S>>
+  //   : detail::StateT_alternative_traits_empty<StateT<Fn, S>> {};
+
+  // template <copy_constructible_object Fn, class S>
+  // requires (
+  //   not detail::has_alternative_traits_empty<StateT_monad_t<StateT<Fn, S>>> and
+  //   detail::has_alternative_traits_combine<StateT_monad_t<StateT<Fn, S>>>)
+  // struct alternative_traits<StateT<Fn, S>>
+  //   : detail::StateT_alternative_traits_combine<StateT<Fn, S>> {};
+
+  // template <copy_constructible_object Fn, class S>
+  // requires (
+  //   detail::has_alternative_traits_empty<StateT_monad_t<StateT<Fn, S>>> and
+  //   detail::has_alternative_traits_combine<StateT_monad_t<StateT<Fn, S>>>)
+  // struct alternative_traits<StateT<Fn, S>>
+  //   : detail::StateT_alternative_traits_empty<StateT<Fn, S>>,
+  //     detail::StateT_alternative_traits_combine<StateT<Fn, S>> {};
 
   template <copy_constructible_object Fn, class S>
-  requires (
-    not detail::has_alternative_traits_empty<StateT_monad_t<StateT<Fn, S>>> and
-    detail::has_alternative_traits_combine<StateT_monad_t<StateT<Fn, S>>>)
-  struct alternative_traits<StateT<Fn, S>> : detail::StateT_alternative_traits_combine<StateT<Fn, S>> {};
-
-  template <copy_constructible_object Fn, class S>
-  requires (
-    detail::has_alternative_traits_empty<StateT_monad_t<StateT<Fn, S>>> and
-    detail::has_alternative_traits_combine<StateT_monad_t<StateT<Fn, S>>>)
-  struct alternative_traits<StateT<Fn, S>> : detail::StateT_alternative_traits_empty<StateT<Fn, S>>,
-                                             detail::StateT_alternative_traits_combine<StateT<Fn, S>> {};
+  struct alternative_traits<StateT<Fn, S>>
+    : std::conditional_t<
+        detail::has_alternative_traits_empty<StateT_monad_t<StateT<Fn, S>>>,
+        detail::StateT_alternative_traits_empty<StateT<Fn, S>>,
+        detail::empty_class<0>
+      >,
+      std::conditional_t<
+        detail::has_alternative_traits_combine<StateT_monad_t<StateT<Fn, S>>>,
+        detail::StateT_alternative_traits_combine<StateT<Fn, S>>,
+        detail::empty_class<1>
+      > {};
 
   /// instance MonadTrans (StateT s) where
   ///     lift m = StateT $ \ s -> do
@@ -289,9 +306,9 @@ namespace mpc {
       struct closure {
         template <monad M, class T>
         constexpr auto operator()(M&& m, T&& t) const
-          noexcept(noexcept(mpc::fmap<M>(perfect_forwarded_t<nested_closure>{}(std::forward<T>(t)), std::forward<M>(m))))
-          -> decltype(      mpc::fmap<M>(perfect_forwarded_t<nested_closure>{}(std::forward<T>(t)), std::forward<M>(m))) {
-          return            mpc::fmap<M>(perfect_forwarded_t<nested_closure>{}(std::forward<T>(t)), std::forward<M>(m));
+          noexcept(noexcept(mpc::fmap(perfect_forwarded_t<nested_closure>{}(std::forward<T>(t)), std::forward<M>(m))))
+          -> decltype(      mpc::fmap(perfect_forwarded_t<nested_closure>{}(std::forward<T>(t)), std::forward<M>(m))) {
+          return            mpc::fmap(perfect_forwarded_t<nested_closure>{}(std::forward<T>(t)), std::forward<M>(m));
         }
       };
 
@@ -325,18 +342,18 @@ namespace mpc {
     struct eval_StateT_op {
       template <isStateT ST, class T>
       constexpr auto operator()(ST&& x, T&& t) const noexcept(
-        noexcept(   mpc::fmap<StateT_monad_t<ST>>(fst, run_StateT % std::forward<ST>(x) % std::forward<T>(t))))
-        -> decltype(mpc::fmap<StateT_monad_t<ST>>(fst, run_StateT % std::forward<ST>(x) % std::forward<T>(t))) {
-        return      mpc::fmap<StateT_monad_t<ST>>(fst, run_StateT % std::forward<ST>(x) % std::forward<T>(t));
+        noexcept(   mpc::fmap(fst, run_StateT % std::forward<ST>(x) % std::forward<T>(t))))
+        -> decltype(mpc::fmap(fst, run_StateT % std::forward<ST>(x) % std::forward<T>(t))) {
+        return      mpc::fmap(fst, run_StateT % std::forward<ST>(x) % std::forward<T>(t));
       }
     };
 
     struct exec_StateT_op {
       template <isStateT ST, class T>
       constexpr auto operator()(ST&& x, T&& t) const noexcept(
-        noexcept(   mpc::fmap<StateT_monad_t<ST>>(snd, run_StateT % std::forward<ST>(x) % std::forward<T>(t))))
-        -> decltype(mpc::fmap<StateT_monad_t<ST>>(snd, run_StateT % std::forward<ST>(x) % std::forward<T>(t))) {
-        return      mpc::fmap<StateT_monad_t<ST>>(snd, run_StateT % std::forward<ST>(x) % std::forward<T>(t));
+        noexcept(   mpc::fmap(snd, run_StateT % std::forward<ST>(x) % std::forward<T>(t))))
+        -> decltype(mpc::fmap(snd, run_StateT % std::forward<ST>(x) % std::forward<T>(t))) {
+        return      mpc::fmap(snd, run_StateT % std::forward<ST>(x) % std::forward<T>(t));
       }
     };
 

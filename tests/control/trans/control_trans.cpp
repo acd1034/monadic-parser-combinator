@@ -19,12 +19,12 @@ TEST_CASE("trans", "[trans][state]") {
     using Fn1 = decltype([](int n, auto&&) { return n; });
     using Fn2 = decltype([](int n1, int n2, int n3) { return n1 + n2 + n3; });
     // clang-format off
-    const auto tick = mpc::liftA2<ST>(
+    const auto tick = mpc::liftA2(
       mpc::perfect_forwarded_t<Fn1>{},
       mpc::get1<ST>,
       mpc::modify<ST> % (mpc::plus % 1)
     );
-    const auto threeTicks = mpc::liftA3<ST>(
+    const auto threeTicks = mpc::liftA<3>(
       mpc::perfect_forwarded_t<Fn2>{},
       tick,
       tick,
@@ -37,7 +37,7 @@ TEST_CASE("trans", "[trans][state]") {
   }
 }
 
-TEST_CASE("trans StateT alternative", "[trans][statet][alternative]") {
-  static_assert(mpc::alternative<deduce_StateT<int, mpc::Maybe<int>>>);
-  static_assert(not mpc::alternative<deduce_StateT<int, mpc::Identity<int>>>);
-}
+// TEST_CASE("trans StateT alternative", "[trans][statet][alternative]") {
+//   static_assert(mpc::alternative<deduce_StateT<int, mpc::Maybe<int>>>);
+//   static_assert(not mpc::alternative<deduce_StateT<int, mpc::Identity<int>>>);
+// }
