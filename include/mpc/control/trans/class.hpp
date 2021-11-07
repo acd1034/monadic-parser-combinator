@@ -17,19 +17,20 @@ namespace mpc {
   };
 
   namespace detail {
+    /// lift :: (Monad m) => m a -> t m a
     template <class TR>
-    using lift_op =
-      std::remove_cvref_t<decltype(monad_trans_traits<std::remove_cvref_t<TR>>::lift)>;
-
-    template <class TR>
-    struct lift_t : perfect_forward<lift_op<TR>> {
-      using perfect_forward<lift_op<TR>>::perfect_forward;
+    struct lift_op {
+      template <class M>
+      constexpr auto operator()(M&& m) const noexcept(
+      noexcept(   monad_trans_traits<std::remove_cvref_t<TR>>::lift(std::forward<M>(m))))
+      -> decltype(monad_trans_traits<std::remove_cvref_t<TR>>::lift(std::forward<M>(m)))
+      { return    monad_trans_traits<std::remove_cvref_t<TR>>::lift(std::forward<M>(m)); }
     };
   } // namespace detail
 
   inline namespace cpo {
     /// lift :: (Monad m) => m a -> t m a
     template <class TR>
-    inline constexpr detail::lift_t<std::remove_cvref_t<TR>> lift{};
+    inline constexpr perfect_forwarded_t<detail::lift_op<TR>> lift{};
   } // namespace cpo
 } // namespace mpc
