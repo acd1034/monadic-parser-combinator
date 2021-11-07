@@ -98,28 +98,27 @@ namespace mpc {
   } // namespace cpo
 
   template <class charT>
-  std::string quoted(charT s, charT delim = charT('\'')) {
+  std::basic_string<charT> quoted(charT s, charT delim = charT('\'')) {
     return {delim, s, delim};
   }
 
   template <class charT>
-  std::string quoted(const charT* s, charT delim = charT('"')) {
-    return delim + std::string{s} + delim;
+  auto quoted(const charT* s, charT delim = charT('"')) {
+    return std::basic_string<charT>{delim} + s + delim;
   }
 
   template <class charT, class traits>
-  std::string quoted(std::basic_string_view<charT, traits> s, charT delim = charT('"')) {
-    return delim + std::string{s} + delim;
+  auto quoted(std::basic_string_view<charT, traits> s, charT delim = charT('"')) {
+    return std::basic_string<charT, traits>{delim} + s + delim;
   }
 
   template <class charT, class traits, class Allocator>
-  std::string quoted(const std::basic_string<charT, traits, Allocator>& s,
-                     charT delim = charT('"')) {
+  auto quoted(const std::basic_string<charT, traits, Allocator>& s, charT delim = charT('"')) {
     return delim + s + delim;
   }
 
   template <class charT, class traits, class Allocator>
-  std::string quoted(std::basic_string<charT, traits, Allocator>&& s, charT delim = charT('"')) {
+  auto quoted(std::basic_string<charT, traits, Allocator>&& s, charT delim = charT('"')) {
     return delim + std::move(s) + delim;
   }
 } // namespace mpc
