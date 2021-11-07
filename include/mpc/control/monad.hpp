@@ -135,28 +135,26 @@ namespace mpc {
   namespace detail {
     /// karrow :: Monad m => (a -> m b) -> (b -> m c) -> (a -> m c)
     /// karrow f g = \x -> f x >>= g
-    template <monad M>
     struct karrow_op {
       struct closure {
         template <class Fn, class Gn, class A>
         constexpr auto operator()(Fn&& fn, Gn&& gn, A&& a) const noexcept(
-        noexcept(mpc::bind(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)), std::forward<Gn>(gn))))
-        -> decltype(      mpc::bind(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)), std::forward<Gn>(gn)))
-        { return          mpc::bind(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)), std::forward<Gn>(gn)); }
+          noexcept(   mpc::bind(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)), std::forward<Gn>(gn))))
+          -> decltype(mpc::bind(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)), std::forward<Gn>(gn)))
+          { return    mpc::bind(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)), std::forward<Gn>(gn)); }
       };
 
       template <class Fn, class Gn>
       constexpr auto operator()(Fn&& fn, Gn&& gn) const noexcept(
-      noexcept(perfect_forwarded_t<closure>{}(std::forward<Fn>(fn), std::forward<Gn>(gn))))
-      -> decltype(      perfect_forwarded_t<closure>{}(std::forward<Fn>(fn), std::forward<Gn>(gn)))
-      { return          perfect_forwarded_t<closure>{}(std::forward<Fn>(fn), std::forward<Gn>(gn)); }
+        noexcept(   perfect_forwarded_t<closure>{}(std::forward<Fn>(fn), std::forward<Gn>(gn))))
+        -> decltype(perfect_forwarded_t<closure>{}(std::forward<Fn>(fn), std::forward<Gn>(gn)))
+        { return    perfect_forwarded_t<closure>{}(std::forward<Fn>(fn), std::forward<Gn>(gn)); }
     };
   } // namespace detail
 
   inline namespace cpo {
     /// Kleisli arrows (>=>)
-    template <monad F>
-    inline constexpr perfect_forwarded_t<detail::karrow_op<std::remove_cvref_t<F>>> karrow{};
+    inline constexpr perfect_forwarded_t<detail::karrow_op> karrow{};
   } // namespace cpo
 } // namespace mpc
 

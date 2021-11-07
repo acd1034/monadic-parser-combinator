@@ -1,6 +1,5 @@
 /// @file class.hpp
 #pragma once
-#include <mpc/stdfundamental.hpp>
 #include <mpc/functional/perfect_forward.hpp>
 
 namespace mpc {
@@ -15,6 +14,8 @@ namespace mpc {
   concept monad_trans = requires {
     monad_trans_traits<std::remove_cvref_t<TR>>::lift;
   };
+
+  // class requirements
 
   namespace detail {
     /// lift :: (Monad m) => m a -> t m a
