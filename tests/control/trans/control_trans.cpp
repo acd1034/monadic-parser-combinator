@@ -13,6 +13,7 @@ TEST_CASE("trans", "[trans][state]") {
   static_assert(mpc::applicative<ST>);
   static_assert(mpc::monad<ST>);
   static_assert(mpc::monad_trans<ST>);
+  static_assert(mpc::monad_state<ST>);
   {
     // Reference:
     // https://qiita.com/sand/items/802b8c4a8ae19f04102b#3-statet%E3%83%A2%E3%83%8A%E3%83%89%E3%81%AE%E4%BD%BF%E7%94%A8%E4%BE%8B
