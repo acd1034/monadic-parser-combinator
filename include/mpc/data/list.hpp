@@ -66,7 +66,7 @@ namespace mpc {
     };
 
     static constexpr fmap_op fmap{};
-    static constexpr auto replace2nd = functors::replace2nd<std::list<T>>;
+    static constexpr auto replace2nd = functors::replace2nd;
   };
 
   template <class T>
@@ -90,9 +90,9 @@ namespace mpc {
 
     static constexpr pure_op pure{};
     static constexpr liftA2_op liftA2{};
-    static constexpr auto seq_apply = applicatives::seq_apply<std::list<T>>;
-    static constexpr auto discard2nd = applicatives::discard2nd<std::list<T>>;
-    static constexpr auto discard1st = applicatives::discard1st<std::list<T>>;
+    static constexpr auto seq_apply = applicatives::seq_apply;
+    static constexpr auto discard2nd = applicatives::discard2nd;
+    static constexpr auto discard1st = applicatives::discard1st;
   };
 
   // sequence
@@ -102,8 +102,8 @@ namespace mpc {
       template <monad T>
       constexpr auto operator()(const std::list<T>& l) const {
         // FIXME: 不正な方法で monad の value_type を取得している
-        using U = std::remove_cvref_t<decltype(mpc::bind<T>(l.front(), id))>;
-        return foldr(mpc::liftA2<T> % cons, mpc::returns<T> % std::list<U>{}, l);
+        using U = std::remove_cvref_t<decltype(mpc::bind(l.front(), id))>;
+        return foldr(mpc::liftA2 % cons, mpc::returns<T> % std::list<U>{}, l);
       }
     };
   } // namespace detail

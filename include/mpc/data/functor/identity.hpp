@@ -112,16 +112,16 @@ namespace mpc {
     };
 
     static constexpr fmap_op fmap{};
-    static constexpr auto replace2nd = functors::replace2nd<Identity<T>>;
+    static constexpr auto replace2nd = functors::replace2nd;
   };
 
   template <copy_constructible_object T>
   struct applicative_traits<Identity<T>> {
     static constexpr auto pure = make_Identity;
-    static constexpr auto seq_apply = monads::seq_apply<Identity<T>>;
-    static constexpr auto liftA2 = applicatives::liftA2<Identity<T>>;
-    static constexpr auto discard2nd = applicatives::discard2nd<Identity<T>>;
-    static constexpr auto discard1st = monads::discard1st<Identity<T>>;
+    static constexpr auto seq_apply = monads::seq_apply;
+    static constexpr auto liftA2 = applicatives::liftA2;
+    static constexpr auto discard2nd = applicatives::discard2nd;
+    static constexpr auto discard1st = monads::discard1st;
   };
   // clang-format on
 } // namespace mpc
