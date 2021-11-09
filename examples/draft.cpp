@@ -12,25 +12,6 @@ template <class T>
 template <class T>
 [[deprecated]] constexpr void type_of(T&&) {}
 
-namespace ns {
-  template <class T>
-  struct traits;
-
-  template <class T>
-  concept has_aaa = requires {
-    traits<T>::aaa;
-  };
-
-  template <has_aaa T>
-  inline constexpr auto bbb = traits<T>::aaa;
-} // namespace ns
-
-template <>
-struct ns::traits<int> {
-  static constexpr auto aaa = [](auto x) { return x; };
-  static constexpr auto bbb = ns::bbb<int>;
-};
-
 // Reference:
 // https://qiita.com/7shi/items/b8c741e78a96ea2c10fe#%E3%83%A2%E3%83%8A%E3%83%89%E5%A4%89%E6%8F%9B%E5%AD%90%E3%81%A7%E5%90%88%E6%88%90
 
@@ -40,7 +21,7 @@ using Monad = mpc::Either<std::string, V>;
 using ST = mpc::StateT<std::function<Monad<std::pair<char, S>>(S)>, S>;
 template <mpc::isStateT ST2>
 using StateT_value_in_monad_t =
-  decltype(mpc::fmap<mpc::StateT_monad_t<ST2>>(mpc::fst, std::declval<mpc::StateT_monad_t<ST2>>()));
+  decltype(mpc::fmap(mpc::fst, std::declval<mpc::StateT_monad_t<ST2>>()));
 
 template <class charT, class traits>
 inline constexpr auto decomp(std::basic_string_view<charT, traits> sv) {
@@ -66,9 +47,10 @@ struct mpc::alternative_traits<mpc::Either<std::string, V>> {
 using mpc::operators::alternatives::operator||;
 
 #define LAMBDA(lambda)                                                                             \
-  mpc::perfect_forwarded_t<decltype(lambda)> {}
+  mpc::perfect_forwarded_t<decltype(lambda)>{}
 
-const auto parseTest = LAMBDA([](const auto& st, S sv) -> void {
+
+inline constexpr auto parseTest = LAMBDA([](const auto& st, S sv) -> void {
   const auto result = mpc::eval_StateT % st % sv;
   if (result.index() == 0) {
     std::cout << mpc::quoted(sv) << ' ' << *std::get<0>(result) << std::endl;
@@ -77,27 +59,28 @@ const auto parseTest = LAMBDA([](const auto& st, S sv) -> void {
   }
 });
 
-const auto satisfy = LAMBDA(([]<class Pred>(Pred && pred) requires std::predicate<Pred, char> {
-  return mpc::make_StateT<S>(LAMBDA(([](auto pred, S sv) -> Monad<std::pair<char, S>> {
-    if (std::ranges::empty(sv)) {
-      return mpc::make_left("unexpected end of input"s);
-    } else if (auto [x, xs] = decomp(sv); not std::invoke(pred, x)) {
-      return mpc::make_left("unexpected "s + mpc::quoted(x) + ",");
-    } else {
-      return mpc::make_right(std::make_pair(x, xs));
-    }
-  }))(std::forward<Pred>(pred)));
-}));
+inline constexpr auto satisfy =
+  LAMBDA(([]<class Pred>(Pred && pred) requires std::predicate<Pred, char> {
+    return mpc::make_StateT<S>(LAMBDA(([](auto pred, S sv) -> Monad<std::pair<char, S>> {
+      if (std::ranges::empty(sv)) {
+        return mpc::make_left("unexpected end of input"s);
+      } else if (auto [x, xs] = decomp(sv); not std::invoke(pred, x)) {
+        return mpc::make_left("unexpected "s + mpc::quoted(x) + ",");
+      } else {
+        return mpc::make_right(std::make_pair(x, xs));
+      }
+    }))(std::forward<Pred>(pred)));
+  }));
 
 inline constexpr auto left =
   mpc::compose % mpc::lift<ST> % LAMBDA(([](const auto& str) -> StateT_value_in_monad_t<ST> {
     return mpc::make_left(str);
   }));
 
-const auto char1 = LAMBDA([](char c) {
+inline constexpr auto char1 = LAMBDA([](char c) {
   return satisfy % (mpc::equal_to % std::move(c)) or left % ("expecting char "s + mpc::quoted(c));
 });
-const auto anyChar = satisfy % (mpc::constant % true);
+inline constexpr auto anyChar = satisfy % (mpc::constant % true);
 const auto digit = satisfy % mpc::isdigit or left % "expecting digit"s;
 const auto alpha = satisfy % mpc::isalpha or left % "expecting alpha"s;
 
@@ -106,7 +89,7 @@ const auto alpha = satisfy % mpc::isalpha or left % "expecting alpha"s;
 // const auto test2 = mpc::sequence % std::list{anyChar, anyChar, anyChar};
 // FIXME: alpha と digit の型が異なるのでこれはできない。StateT を std::function で定義し直すべし
 // const auto test3 = mpc::sequence % std::list{alpha, digit, digit};
-const auto test4 = digit or alpha;
+inline constexpr auto test4 = digit or alpha;
 
 int main() {
   parseTest(anyChar, "");

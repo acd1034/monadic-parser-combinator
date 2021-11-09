@@ -109,7 +109,7 @@ namespace mpc {
 
   template <class charT, class traits>
   auto quoted(std::basic_string_view<charT, traits> s, charT delim = charT('"')) {
-    return std::basic_string<charT, traits>{delim} + s + delim;
+    return delim + std::basic_string<charT, traits>{s} + delim;
   }
 
   template <class charT, class traits, class Allocator>

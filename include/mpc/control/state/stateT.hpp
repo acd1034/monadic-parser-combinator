@@ -8,7 +8,6 @@
 #include <mpc/data/functor/identity.hpp>
 #include <mpc/prelude/compose.hpp>
 #include <mpc/prelude/fst.hpp>
-#include <mpc/type_traits.hpp>
 
 // clang-format off
 
@@ -220,15 +219,21 @@ namespace mpc {
   ///     empty = StateT $ \ _ -> mzero
   ///     StateT m <|> StateT n = StateT $ \ s -> m s `mplus` n s
   namespace detail {
-    template<isStateT ST>
+    template <class ST>
+    struct StateT_alternative_traits_empty {};
+
+    template <isStateT ST>
     requires has_alternative_traits_empty<StateT_monad_t<ST>>
-    struct StateT_alternative_traits_empty {
+    struct StateT_alternative_traits_empty<ST> {
       static constexpr auto empty = make_StateT<StateT_state_t<ST>>([](auto&&) { return mpc::empty<StateT_monad_t<ST>>; });
     };
 
-    template<isStateT ST>
+    template <class ST>
+    struct StateT_alternative_traits_combine {};
+
+    template <isStateT ST>
     requires has_alternative_traits_combine<StateT_monad_t<ST>>
-    struct StateT_alternative_traits_combine {
+    struct StateT_alternative_traits_combine<ST> {
       struct combine_op {
         struct closure {
           template <isStateT ST1, isStateT ST2, class T>
@@ -251,40 +256,10 @@ namespace mpc {
     };
   } // namespace detail
 
-  // template <copy_constructible_object Fn, class S>
-  // requires (
-  //   detail::has_alternative_traits_empty<StateT_monad_t<StateT<Fn, S>>> and
-  //   not detail::has_alternative_traits_combine<StateT_monad_t<StateT<Fn, S>>>)
-  // struct alternative_traits<StateT<Fn, S>>
-  //   : detail::StateT_alternative_traits_empty<StateT<Fn, S>> {};
-
-  // template <copy_constructible_object Fn, class S>
-  // requires (
-  //   not detail::has_alternative_traits_empty<StateT_monad_t<StateT<Fn, S>>> and
-  //   detail::has_alternative_traits_combine<StateT_monad_t<StateT<Fn, S>>>)
-  // struct alternative_traits<StateT<Fn, S>>
-  //   : detail::StateT_alternative_traits_combine<StateT<Fn, S>> {};
-
-  // template <copy_constructible_object Fn, class S>
-  // requires (
-  //   detail::has_alternative_traits_empty<StateT_monad_t<StateT<Fn, S>>> and
-  //   detail::has_alternative_traits_combine<StateT_monad_t<StateT<Fn, S>>>)
-  // struct alternative_traits<StateT<Fn, S>>
-  //   : detail::StateT_alternative_traits_empty<StateT<Fn, S>>,
-  //     detail::StateT_alternative_traits_combine<StateT<Fn, S>> {};
-
   template <copy_constructible_object Fn, class S>
   struct alternative_traits<StateT<Fn, S>>
-    : std::conditional_t<
-        detail::has_alternative_traits_empty<StateT_monad_t<StateT<Fn, S>>>,
-        detail::StateT_alternative_traits_empty<StateT<Fn, S>>,
-        detail::empty_class<0>
-      >,
-      std::conditional_t<
-        detail::has_alternative_traits_combine<StateT_monad_t<StateT<Fn, S>>>,
-        detail::StateT_alternative_traits_combine<StateT<Fn, S>>,
-        detail::empty_class<1>
-      > {};
+    : detail::StateT_alternative_traits_empty<StateT<Fn, S>>,
+      detail::StateT_alternative_traits_combine<StateT<Fn, S>> {};
 
   /// instance MonadTrans (StateT s) where
   ///     lift m = StateT $ \ s -> do
