@@ -3,6 +3,17 @@
 #include <mpc/stdfundamental.hpp>
 
 namespace mpc::detail {
+  // make_reversed_index_sequence
+  // https://stackoverflow.com/questions/51408771/c-reversed-integer-sequence-implementation
+
+  template <std::size_t... Idx>
+  constexpr auto reversed_index_sequence_impl(std::index_sequence<Idx...> const&)
+    -> decltype(std::index_sequence<sizeof...(Idx) - 1U - Idx...>{});
+
+  /// make_reversed_index_sequence
+  template <std::size_t N>
+  using make_reversed_index_sequence = decltype(reversed_index_sequence_impl(std::make_index_sequence<N>{}));
+
   // is_implicitly_default_constructible
   // https://github.com/llvm/llvm-project/blob/main/libcxx/include/type_traits#L3025
 

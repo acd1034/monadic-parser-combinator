@@ -2,8 +2,6 @@
 #include <catch2/catch.hpp>
 #include <mpc/control.hpp>
 #include <mpc/data.hpp>
-#include <mpc/functional/infix.hpp>
-#include <mpc/functional/operations.hpp>
 #include "../stdfundamental.hpp"
 
 TEST_CASE("data Identity", "[data]") {
@@ -20,8 +18,8 @@ TEST_CASE("data list", "[data]") {
   CHECK(mpc::foldr(mpc::plus, 0, l) == 15);
   {
     using Maybe1 = mpc::Maybe<int>;
-    std::list m{Maybe1{mpc::make_just(1)}, Maybe1{mpc::make_just(2)}, Maybe1{mpc::make_just(3)}, Maybe1{mpc::make_just(4)}, Maybe1{mpc::make_just(5)}};
-    type_of(mpc::sequence(m));
+    std::list m{Maybe1{mpc::make_just(1)}, Maybe1{mpc::make_just(2)}, Maybe1{mpc::make_just(3)},
+                Maybe1{mpc::make_just(4)}, Maybe1{mpc::make_just(5)}};
     CHECK(mpc::sequence(m) == mpc::Maybe<std::list<int>>{mpc::make_just(l)});
   }
 }
@@ -42,10 +40,7 @@ TEST_CASE("data Maybe", "[data]") {
       const Maybe1 e1{mpc::make_just(2.0)};
       const Maybe1 e2{mpc::make_just(4.0)};
       const auto f = [](const auto& x) { return x * 2; };
-
-      const mpc::detail::fmap_op<Maybe1> fmap_op;
-      CHECK(fmap_op(f, e1) == e2);
-      CHECK(mpc::fmap<Maybe1>(f, e1) == e2);
+      CHECK(mpc::fmap(f, e1) == e2);
     }
     { // applicative
       static_assert(mpc::applicative<Maybe1>);
@@ -53,20 +48,16 @@ TEST_CASE("data Maybe", "[data]") {
       const Maybe1 e2{mpc::make_just(4.0)};
       const mpc::Maybe<std::function<double(double)>> f1{
         mpc::make_just([](double x) { return x * 2; })};
-
-      CHECK(mpc::seq_apply<Maybe1>(f1, e1) == e2);
-
       const auto add =
         mpc::perfect_forwarded_t<decltype([](const auto& x, const auto& y) { return x + y; })>{};
       const auto add3 = mpc::perfect_forwarded_t<decltype(
         [](const auto& x, const auto& y, const auto& z) { return x + y + z; })>{};
-      const mpc::applicatives::detail::liftA2_op<Maybe1> liftA2_op;
-      CHECK(liftA2_op(add, e1, e1) == e2);
-      CHECK(mpc::liftA2<Maybe1>(add, e1, e1) == e2);
 
-      CHECK(mpc::liftA3<Maybe1>(add3, e1, e1, e1) == Maybe1{mpc::make_just(6.0)});
-      CHECK(mpc::liftA3<Maybe1>(add3, Maybe1{mpc::make_just(1.0)}, Maybe1{mpc::make_just(2.0)},
-                                Maybe1{mpc::make_just(3.0)})
+      CHECK(mpc::seq_apply(f1, e1) == e2);
+      CHECK(mpc::liftA2(add, e1, e1) == e2);
+      CHECK(mpc::liftA<3>(add3, e1, e1, e1) == Maybe1{mpc::make_just(6.0)});
+      CHECK(mpc::liftA<3>(add3, Maybe1{mpc::make_just(1.0)}, Maybe1{mpc::make_just(2.0)},
+                          Maybe1{mpc::make_just(3.0)})
             == Maybe1{mpc::make_just(6.0)});
     }
     { // monad
@@ -75,16 +66,15 @@ TEST_CASE("data Maybe", "[data]") {
       const Maybe1 e2{mpc::nothing};
       const auto f = [](const auto& x) { return Maybe1{mpc::make_just(x + 1)}; };
 
-      CHECK(mpc::bind<Maybe1>(e1, f) == Maybe1{mpc::make_just(3.0)});
-      CHECK(mpc::bind<Maybe1>(mpc::bind<Maybe1>(e1, f), f) == Maybe1{mpc::make_just(4.0)});
-      CHECK(mpc::bind<Maybe1>(e2, f) == e2);
-      CHECK(mpc::bind<Maybe1>(mpc::bind<Maybe1>(e2, f), f) == e2);
+      CHECK(mpc::bind(e1, f) == Maybe1{mpc::make_just(3.0)});
+      CHECK(mpc::bind(mpc::bind(e1, f), f) == Maybe1{mpc::make_just(4.0)});
+      CHECK(mpc::bind(e2, f) == e2);
+      CHECK(mpc::bind(mpc::bind(e2, f), f) == e2);
 
-      const auto bind = mpc::bind<Maybe1>;
-      CHECK(mpc::infixl(e1, bind, f) == Maybe1{mpc::make_just(3.0)});
-      CHECK(mpc::infixl(e1, bind, f, bind, f) == Maybe1{mpc::make_just(4.0)});
-      CHECK(mpc::infixl(e2, bind, f) == e2);
-      CHECK(mpc::infixl(e2, bind, f, bind, f) == e2);
+      CHECK(mpc::infixl(e1, mpc::bind, f) == Maybe1{mpc::make_just(3.0)});
+      CHECK(mpc::infixl(e1, mpc::bind, f, mpc::bind, f) == Maybe1{mpc::make_just(4.0)});
+      CHECK(mpc::infixl(e2, mpc::bind, f) == e2);
+      CHECK(mpc::infixl(e2, mpc::bind, f, mpc::bind, f) == e2);
     }
     { // alternative
       static_assert(mpc::alternative<Maybe1>);
@@ -92,8 +82,8 @@ TEST_CASE("data Maybe", "[data]") {
       const Maybe1 e2{mpc::make_just(4.0)};
       const Maybe1 e3{mpc::nothing};
 
-      CHECK(mpc::combine<Maybe1>(e1, e2) == e1);
-      CHECK(mpc::combine<Maybe1>(e3, e2) == e2);
+      CHECK(mpc::combine(e1, e2) == e1);
+      CHECK(mpc::combine(e3, e2) == e2);
 
       using mpc::operators::alternatives::operator||;
       CHECK((e1 or e2) == e1);

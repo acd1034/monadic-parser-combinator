@@ -1,14 +1,19 @@
 /// @file maybe.hpp
 #pragma once
-#include <functional>
+#include <functional> // std::invoke
 #include <variant>
 #include <mpc/control/alternative.hpp>
 #include <mpc/control/monad.hpp>
-#include <mpc/functional/perfect_forward.hpp>
+#include <mpc/prelude.hpp>
 #include <mpc/utility/alternative_value_t.hpp>
 #include <mpc/utility/single.hpp>
 
+// clang-format off
+
 namespace mpc {
+  // Maybe
+  // https://hackage.haskell.org/package/base-4.15.0.0/docs/src/GHC-Maybe.html#Maybe
+
   struct nothing_t {
     inline constexpr auto operator<=>(const nothing_t&) const = default;
   }; // struct nothing_t
@@ -38,22 +43,19 @@ namespace mpc {
   template <class T>
   concept isMaybe = detail::is_Maybe<std::remove_cvref_t<T>>::value;
 
-  // https://hackage.haskell.org/package/base-4.15.0.0/docs/src/GHC-Maybe.html#Maybe
-
   /// instance Functor Maybe where
   ///     fmap _ Nothing  = Nothing
   ///     fmap f (Just a) = Just (f a)
-  ///
   ///     _ <$ Nothing = Nothing
   ///     a <$ Just _  = Just a
   template <class T1>
   struct functor_traits<Maybe<T1>> {
-    // fmap  :: (a -> b) -> f a -> f b
+    /// fmap :: (a -> b) -> f a -> f b
     struct fmap_op {
       template <class F, isMaybe M>
       constexpr auto operator()(F&& f, M&& x) const //
-        -> Maybe<std::unwrap_ref_decay_t<decltype(std::invoke(std::forward<F>(f),
-                                                              *std::get<1>(std::forward<M>(x))))>> {
+        -> Maybe<std::unwrap_ref_decay_t<decltype(
+          std::invoke(std::forward<F>(f), *std::get<1>(std::forward<M>(x))))>> {
         if (x.index() == 0) {
           return nothing;
         } else {
@@ -62,7 +64,7 @@ namespace mpc {
       }
     };
 
-    // (<$ ) :: a -> f b -> f a
+    /// replace2nd :: a -> f b -> f a
     struct replace2nd_op {
       template <class U, isMaybe M>
       constexpr auto operator()(U&& u, M&& m) const //
@@ -84,7 +86,7 @@ namespace mpc {
   ///     Nothing  >>= _ = Nothing
   template <class T1>
   struct monad_traits<Maybe<T1>> {
-    /// (>>=)  :: forall a b. m a -> (a -> m b) -> m b -- infixl 1
+    /// bind :: forall a b. m a -> (a -> m b) -> m b
     struct bind_op {
       template <isMaybe M, class F>
       constexpr auto operator()(M&& x, F&& f) const //
@@ -102,15 +104,13 @@ namespace mpc {
 
   /// instance Applicative Maybe where
   ///     pure = Just
-  ///
-  ///     Nothing <*> _m      = Nothing
+  ///     Nothing <*> _       = Nothing
   ///     Just f  <*> m       = fmap f m
-  ///
   ///     liftA2 f (Just x) (Just y) = Just (f x y)
   ///     liftA2 _ _ _ = Nothing
   template <class T1>
   struct applicative_traits<Maybe<T1>> {
-    /// pure   :: a -> f a
+    /// pure :: a -> f a
     struct pure_op {
       template <class U>
       constexpr auto operator()(U&& u) const   //
@@ -119,15 +119,15 @@ namespace mpc {
       }
     };
 
-    /// (<*>)  :: f (a -> b) -> f a -> f b -- infixl 4
+    /// seq_apply :: f (a -> b) -> f a -> f b
     struct seq_apply_op {
       template <isMaybe M1, isMaybe M2>
       constexpr auto operator()(M1&& f, M2&& x) const //
-        -> decltype(mpc::fmap<Maybe<T1>>(*std::get<1>(std::forward<M1>(f)), std::forward<M2>(x))) {
+        -> decltype(mpc::fmap(*std::get<1>(std::forward<M1>(f)), std::forward<M2>(x))) {
         if (f.index() == 0) {
           return nothing;
         } else {
-          return mpc::fmap<Maybe<T1>>(*std::get<1>(std::forward<M1>(f)), std::forward<M2>(x));
+          return mpc::fmap(*std::get<1>(std::forward<M1>(f)), std::forward<M2>(x));
         }
       }
     };
@@ -136,14 +136,12 @@ namespace mpc {
     struct liftA2_op {
       template <class F, isMaybe M1, isMaybe M2>
       constexpr auto operator()(F&& f, M1&& m1, M2&& m2) const //
-        -> Maybe<
-          std::unwrap_ref_decay_t<decltype(std::invoke(std::forward<F>(f),                 //
-                                                       *std::get<1>(std::forward<M1>(m1)), //
-                                                       *std::get<1>(std::forward<M2>(m2))))>> {
+        -> Maybe<std::unwrap_ref_decay_t<decltype(
+          std::invoke(std::forward<F>(f), *std::get<1>(std::forward<M1>(m1)),
+                                          *std::get<1>(std::forward<M2>(m2))))>> {
         if (m1.index() == 1 and m2.index() == 1) {
-          return make_just(std::invoke(std::forward<F>(f),                 //
-                                       *std::get<1>(std::forward<M1>(m1)), //
-                                       *std::get<1>(std::forward<M2>(m2))));
+          return make_just(std::invoke(std::forward<F>(f), *std::get<1>(std::forward<M1>(m1)),
+                                                           *std::get<1>(std::forward<M2>(m2))));
         } else {
           return nothing;
         }
@@ -153,8 +151,8 @@ namespace mpc {
     static constexpr pure_op pure{};
     static constexpr seq_apply_op seq_apply{};
     static constexpr liftA2_op liftA2{};
-    static constexpr auto discard2nd = applicatives::discard2nd<Maybe<T1>>;
-    static constexpr auto discard1st = applicatives::discard1st_opt<Maybe<T1>>;
+    static constexpr auto discard2nd = applicatives::discard2nd;
+    static constexpr auto discard1st = applicatives::discard1st_opt;
   };
 
   /// instance Alternative Maybe where
@@ -176,3 +174,5 @@ namespace mpc {
     static constexpr combine_op combine{};
   };
 } // namespace mpc
+
+// clang-format on

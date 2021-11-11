@@ -72,7 +72,42 @@ class (forall m. Monad m => Monad (t m)) => MonadTrans t where
     lift :: (Monad m) => m a -> t m a
 ```
 
-# StateT
+
+# MonadState
+```hs
+-- | Minimal definition is either both of @get@ and @put@ or just @state@
+class Monad m => MonadState s m | m -> s where
+    -- | Return the state from the internals of the monad.
+    get :: m s
+    get = state (\s -> (s, s))
+
+    -- | Replace the state inside the monad.
+    put :: s -> m ()
+    put s = state (\_ -> ((), s))
+
+    -- | Embed a simple state action into the monad.
+    state :: (s -> (a, s)) -> m a
+    state f = do
+      s <- get
+      let ~(a, s') = f s
+      put s'
+      return a
+
+modify :: MonadState s m => (s -> s) -> m ()
+modify f = state (\s -> ((), f s))
+
+modify' :: MonadState s m => (s -> s) -> m ()
+modify' f = do
+  s' <- get
+  put $! f s'
+
+gets :: MonadState s m => (s -> a) -> m a
+gets f = do
+    s <- get
+    return (f s)
+```
+
+# Understanding StateT
 ```hs
 -- definition
 newtype StateT state monad v =
@@ -121,42 +156,4 @@ get3 = evalStateT $ do
 
 get3 = evalStateT $
     liftA3 (\x y z -> [x, y, z]) getch getch getch
-```
-
-# MonadState
-```hs
--- | Minimal definition is either both of @get@ and @put@ or just @state@
-class Monad m => MonadState s m | m -> s where
-    -- | Return the state from the internals of the monad.
-    get :: m s
-    get = state (\s -> (s, s))
-
-    -- | Replace the state inside the monad.
-    put :: s -> m ()
-    put s = state (\_ -> ((), s))
-
-    -- | Embed a simple state action into the monad.
-    state :: (s -> (a, s)) -> m a
-    state f = do
-      s <- get
-      let ~(a, s') = f s
-      put s'
-      return a
-
--- StateT
--- https://qiita.com/sand/items/802b8c4a8ae19f04102b
--- | Construct a state monad computation from a function.
--- (The inverse of 'runState'.)
-state :: (Monad m)
-      => (s -> (a, s))  -- ^pure state transformer
-      -> StateT s m a   -- ^equivalent state-passing computation
-state f = StateT (return . f)
-
--- | Fetch the current value of the state within the monad.
-get :: (Monad m) => StateT s m s
-get = state $ \ s -> (s, s)
-
--- | @'put' s@ sets the state within the monad to @s@.
-put :: (Monad m) => s -> StateT s m ()
-put s = state $ \ _ -> ((), s)
 ```

@@ -1,12 +1,13 @@
 /// @file infix.hpp
 #pragma once
-#include<functional>
+#include <functional> // std::invoke
 #include <mpc/stdfundamental.hpp>
+
+// clang-format off
 
 namespace mpc {
   // NOTE: `infixr` and `infixl` can be understood as `foldr`, `flodl`.
 
-  // clang-format off
   /// infixr(a1, op, a2) = op(a1, a2)
   /// infixr(a1, op, args...) = op(a1, infixr(args...))
   template<class A1, class Op, class A2>
@@ -34,5 +35,6 @@ namespace mpc {
   noexcept(noexcept(infixl(std::invoke(std::forward<Op>(op), std::forward<A1>(a1), std::forward<A2>(a2)), std::forward<Args>(args)...)))
   -> decltype(      infixl(std::invoke(std::forward<Op>(op), std::forward<A1>(a1), std::forward<A2>(a2)), std::forward<Args>(args)...))
   { return          infixl(std::invoke(std::forward<Op>(op), std::forward<A1>(a1), std::forward<A2>(a2)), std::forward<Args>(args)...); }
-  // clang-format on
 } // namespace mpc
+
+// clang-format on

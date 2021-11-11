@@ -1,174 +1,161 @@
 /// @file monad.hpp
 #pragma once
 #include <functional> // std::invoke
-#include <mpc/control/basic_traits.hpp>
 #include <mpc/control/applicative.hpp>
 #include <mpc/functional/perfect_forward.hpp>
 
-namespace mpc {
-  namespace detail {
-    template <class M>
-    using bind_op = std::remove_cvref_t<decltype(monad_traits<std::remove_cvref_t<M>>::bind)>;
+// clang-format off
 
-    template <class M>
-    struct bind_t : perfect_forward<bind_op<M>> {
-      using perfect_forward<bind_op<M>>::perfect_forward;
+namespace mpc {
+  // monad
+  // https://hackage.haskell.org/package/base-4.16.0.0/docs/Control-Monad.html
+
+  /// class Applicative m => Monad m where
+  template <class>
+  struct monad_traits;
+
+  template <class M>
+  concept monad_traits_specialized = requires {
+    monad_traits<std::remove_cvref_t<M>>::bind;
+  };
+
+  template <class M>
+  concept monad = applicative<M> and monad_traits_specialized<M>;
+
+  // class requirements
+
+  namespace detail {
+    /// bind :: forall a b. m a -> (a -> m b) -> m b
+    struct bind_op {
+      template <class Ma, class Fn>
+      constexpr auto operator()(Ma&& ma, Fn&& fn) const noexcept(
+      noexcept(   monad_traits<std::remove_cvref_t<Ma>>::bind(std::forward<Ma>(ma), std::forward<Fn>(fn))))
+      -> decltype(monad_traits<std::remove_cvref_t<Ma>>::bind(std::forward<Ma>(ma), std::forward<Fn>(fn)))
+      { return    monad_traits<std::remove_cvref_t<Ma>>::bind(std::forward<Ma>(ma), std::forward<Fn>(fn)); }
     };
   } // namespace detail
 
   inline namespace cpo {
-    /// return = pure
-    /// A mere alias for a method of Functor
+    /// @brief return = pure
+    /// @details A mere alias for a method of Applicative
     template <class M>
     requires requires {
       applicative_traits<std::remove_cvref_t<M>>::pure;
     }
     inline constexpr auto returns = mpc::pure<M>;
 
-    /// (>>=)  :: forall a b. m a -> (a -> m b) -> m b -- infixl 1
-    template <class M>
-    inline constexpr detail::bind_t<std::remove_cvref_t<M>> bind{};
+    /// bind :: forall a b. m a -> (a -> m b) -> m b
+    inline constexpr perfect_forwarded_t<detail::bind_op> bind{};
   } // namespace cpo
+
+  // Deducibles
 
   namespace monads {
     namespace detail {
-      // clang-format off
       /// fmap :: (a -> b) -> f a -> f b
       /// fmap f x = bind x (y -> return (f y))
-      template<monad_traits_specialized M>
-      requires requires { applicative_traits<std::remove_cvref_t<M>>::pure; }
       struct fmap_op {
+        template <class Ma>
         struct closure {
-          template<class A1, class B1>
-          constexpr auto operator()(A1&& f, B1&& y) const
-          noexcept(noexcept(mpc::returns<M>(std::invoke(std::forward<A1>(f), std::forward<B1>(y)))))
-          -> decltype(      mpc::returns<M>(std::invoke(std::forward<A1>(f), std::forward<B1>(y))))
-          { return          mpc::returns<M>(std::invoke(std::forward<A1>(f), std::forward<B1>(y))); }
+          template <class Fn, class A>
+          constexpr auto operator()(Fn&& fn, A&& a) const noexcept(
+          noexcept(   mpc::returns<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)))))
+          -> decltype(mpc::returns<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a))))
+          { return    mpc::returns<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a))); }
         };
 
-        template<class A1, class A2>
-        constexpr auto operator()(A1&& f, A2&& x) const
-        noexcept(noexcept(mpc::bind<M>(std::forward<A2>(x), perfect_forwarded_t<closure>{}(std::forward<A1>(f)))))
-        -> decltype(      mpc::bind<M>(std::forward<A2>(x), perfect_forwarded_t<closure>{}(std::forward<A1>(f))))
-        { return          mpc::bind<M>(std::forward<A2>(x), perfect_forwarded_t<closure>{}(std::forward<A1>(f))); }
+        template <class Fn, class Ma>
+        constexpr auto operator()(Fn&& fn, Ma&& ma) const noexcept(
+        noexcept(   mpc::bind(std::forward<Ma>(ma), perfect_forwarded_t<closure<Ma>>{}(std::forward<Fn>(fn)))))
+        -> decltype(mpc::bind(std::forward<Ma>(ma), perfect_forwarded_t<closure<Ma>>{}(std::forward<Fn>(fn))))
+        { return    mpc::bind(std::forward<Ma>(ma), perfect_forwarded_t<closure<Ma>>{}(std::forward<Fn>(fn))); }
       };
 
       /// seq_apply :: f (a -> b) -> f a -> f b
       /// seq_apply m1 m2 = bind m1 (f -> bind m2 (x -> return (f x)))
-      template<monad_traits_specialized M>
-      requires requires { applicative_traits<std::remove_cvref_t<M>>::pure; }
       struct seq_apply_op {
+        template <class Ma>
         struct nested_closure {
-          template<class B1, class B2>
-          constexpr auto operator()(B1&& f, B2&& x) const
-          noexcept(noexcept(mpc::returns<M>(std::invoke(std::forward<B1>(f), std::forward<B2>(x)))))
-          -> decltype(      mpc::returns<M>(std::invoke(std::forward<B1>(f), std::forward<B2>(x))))
-          { return          mpc::returns<M>(std::invoke(std::forward<B1>(f), std::forward<B2>(x))); }
+          template<class Fn, class A>
+          constexpr auto operator()(Fn&& fn, A&& a) const noexcept(
+          noexcept(   mpc::returns<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)))))
+          -> decltype(mpc::returns<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a))))
+          { return    mpc::returns<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a))); }
         };
 
         struct closure {
-          template<class A2, class B1>
-          constexpr auto operator()(A2&& m2, B1&& f) const
-          noexcept(noexcept(mpc::bind<M>(std::forward<A2>(m2), perfect_forwarded_t<nested_closure>{}(std::forward<B1>(f)))))
-          -> decltype(      mpc::bind<M>(std::forward<A2>(m2), perfect_forwarded_t<nested_closure>{}(std::forward<B1>(f))))
-          { return          mpc::bind<M>(std::forward<A2>(m2), perfect_forwarded_t<nested_closure>{}(std::forward<B1>(f))); }
+          template<class Ma, class Fn>
+          constexpr auto operator()(Ma&& ma, Fn&& fn) const noexcept(
+          noexcept(   mpc::bind(std::forward<Ma>(ma), perfect_forwarded_t<nested_closure<Ma>>{}(std::forward<Fn>(fn)))))
+          -> decltype(mpc::bind(std::forward<Ma>(ma), perfect_forwarded_t<nested_closure<Ma>>{}(std::forward<Fn>(fn))))
+          { return    mpc::bind(std::forward<Ma>(ma), perfect_forwarded_t<nested_closure<Ma>>{}(std::forward<Fn>(fn))); }
         };
 
-        template<class A1, class A2>
-        constexpr auto operator()(A1&& m1, A2&& m2) const
-        noexcept(noexcept(mpc::bind<M>(std::forward<A1>(m1), perfect_forwarded_t<closure>{}(std::forward<A2>(m2)))))
-        -> decltype(      mpc::bind<M>(std::forward<A1>(m1), perfect_forwarded_t<closure>{}(std::forward<A2>(m2))))
-        { return          mpc::bind<M>(std::forward<A1>(m1), perfect_forwarded_t<closure>{}(std::forward<A2>(m2))); }
+        template<class Mab, class Ma>
+        constexpr auto operator()(Mab&& mab, Ma&& ma) const noexcept(
+        noexcept(   mpc::bind(std::forward<Mab>(mab), perfect_forwarded_t<closure>{}(std::forward<Ma>(ma)))))
+        -> decltype(mpc::bind(std::forward<Mab>(mab), perfect_forwarded_t<closure>{}(std::forward<Ma>(ma))))
+        { return    mpc::bind(std::forward<Mab>(mab), perfect_forwarded_t<closure>{}(std::forward<Ma>(ma))); }
       };
 
       /// discard1st :: f a -> f b -> f b
       /// discard1st m1 m2 = bind m1 (_ -> m2)
-      template<monad_traits_specialized M>
       struct discard1st_op {
         struct closure {
-          template<class A2, class B1>
-          constexpr auto operator()(A2&& m2, B1&&) const
-          noexcept(noexcept(std::forward<A2>(m2)))
-          -> decltype(      std::forward<A2>(m2))
-          { return          std::forward<A2>(m2); }
+          template<class Mb, class A>
+          constexpr auto operator()(Mb&& mb, A&&) const noexcept(
+          noexcept(   std::forward<Mb>(mb)))
+          -> decltype(std::forward<Mb>(mb))
+          { return    std::forward<Mb>(mb); }
         };
 
-        template<class A1, class A2>
-        constexpr auto operator()(A1&& m1, A2&& m2) const
-        noexcept(noexcept(mpc::bind<M>(std::forward<A1>(m1), perfect_forwarded_t<closure>{}(std::forward<A2>(m2)))))
-        -> decltype(      mpc::bind<M>(std::forward<A1>(m1), perfect_forwarded_t<closure>{}(std::forward<A2>(m2))))
-        { return          mpc::bind<M>(std::forward<A1>(m1), perfect_forwarded_t<closure>{}(std::forward<A2>(m2))); }
+        template<class Ma, class Mb>
+        constexpr auto operator()(Ma&& ma, Mb&& mb) const noexcept(
+        noexcept(   mpc::bind(std::forward<Ma>(ma), perfect_forwarded_t<closure>{}(std::forward<Mb>(mb)))))
+        -> decltype(mpc::bind(std::forward<Ma>(ma), perfect_forwarded_t<closure>{}(std::forward<Mb>(mb))))
+        { return    mpc::bind(std::forward<Ma>(ma), perfect_forwarded_t<closure>{}(std::forward<Mb>(mb))); }
       };
-
-      template <monad_traits_specialized M>
-      requires requires { applicative_traits<std::remove_cvref_t<M>>::pure; }
-      struct fmap_t : perfect_forward<fmap_op<M>> {
-        using perfect_forward<fmap_op<M>>::perfect_forward;
-      };
-
-      template <monad_traits_specialized M>
-      requires requires { applicative_traits<std::remove_cvref_t<M>>::pure; }
-      struct seq_apply_t : perfect_forward<seq_apply_op<M>> {
-        using perfect_forward<seq_apply_op<M>>::perfect_forward;
-      };
-
-      template <monad_traits_specialized M>
-      struct discard1st_t : perfect_forward<discard1st_op<M>> {
-        using perfect_forward<discard1st_op<M>>::perfect_forward;
-      };
-      // clang-format on
     } // namespace detail
 
     /// @brief fmap f x = bind x (y -> return (f y))
     /// @details If you fully specialize `monad_traits<M>`, you can deduce `fmap`.
-    template <monad_traits_specialized M>
-    requires requires {
-      applicative_traits<std::remove_cvref_t<M>>::pure;
-    }
-    inline constexpr detail::fmap_t<std::remove_cvref_t<M>> fmap{};
+    inline constexpr perfect_forwarded_t<detail::fmap_op> fmap{};
 
     /// @brief seq_apply m1 m2 = bind m1 (f -> bind m2 (x -> return (f x)))
     /// @details If you fully specialize `monad_traits<M>`, you can deduce `seq_apply`.
-    template <monad_traits_specialized M>
-    requires requires {
-      applicative_traits<std::remove_cvref_t<M>>::pure;
-    }
-    inline constexpr detail::seq_apply_t<std::remove_cvref_t<M>> seq_apply{};
+    inline constexpr perfect_forwarded_t<detail::seq_apply_op> seq_apply{};
 
     /// @brief discard1st m1 m2 = bind m1 (_ -> m2)
     /// @details If you fully specialize `monad_traits<M>`, you can deduce `discard1st`.
-    template <monad_traits_specialized M>
-    inline constexpr detail::discard1st_t<std::remove_cvref_t<M>> discard1st{};
+    inline constexpr perfect_forwarded_t<detail::discard1st_op> discard1st{};
   } // namespace monads
 
   // Grobal methods
 
   namespace detail {
-    // clang-format off
-    /// karrow :: Monad m => (a -> m b) -> (b -> m c) -> (a -> m c) -- infixr 1
+    /// karrow :: Monad m => (a -> m b) -> (b -> m c) -> (a -> m c)
     /// karrow f g = \x -> f x >>= g
-    template<monad M>
     struct karrow_op {
       struct closure {
-        template<class A1, class A2, class B1>
-        constexpr auto operator()(A1&& f, A2&& g, B1&& x) const
-        noexcept(noexcept(mpc::bind<M>(std::invoke(std::forward<A1>(f), std::forward<B1>(x)), std::forward<A2>(g))))
-        -> decltype(      mpc::bind<M>(std::invoke(std::forward<A1>(f), std::forward<B1>(x)), std::forward<A2>(g)))
-        { return          mpc::bind<M>(std::invoke(std::forward<A1>(f), std::forward<B1>(x)), std::forward<A2>(g)); }
+        template <class Fn, class Gn, class A>
+        constexpr auto operator()(Fn&& fn, Gn&& gn, A&& a) const noexcept(
+          noexcept(   mpc::bind(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)), std::forward<Gn>(gn))))
+          -> decltype(mpc::bind(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)), std::forward<Gn>(gn)))
+          { return    mpc::bind(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)), std::forward<Gn>(gn)); }
       };
 
-      template<class A1, class A2>
-      constexpr auto operator()(A1&& f, A2&& g) const
-      noexcept(noexcept(perfect_forwarded_t<closure>{}(std::forward<A1>(f), std::forward<A2>(g))))
-      -> decltype(      perfect_forwarded_t<closure>{}(std::forward<A1>(f), std::forward<A2>(g)))
-      { return          perfect_forwarded_t<closure>{}(std::forward<A1>(f), std::forward<A2>(g)); }
+      template <class Fn, class Gn>
+      constexpr auto operator()(Fn&& fn, Gn&& gn) const noexcept(
+        noexcept(   perfect_forwarded_t<closure>{}(std::forward<Fn>(fn), std::forward<Gn>(gn))))
+        -> decltype(perfect_forwarded_t<closure>{}(std::forward<Fn>(fn), std::forward<Gn>(gn)))
+        { return    perfect_forwarded_t<closure>{}(std::forward<Fn>(fn), std::forward<Gn>(gn)); }
     };
-    // clang-format on
   } // namespace detail
 
   inline namespace cpo {
     /// Kleisli arrows (>=>)
-    template <monad F>
-    inline constexpr perfect_forwarded_t<detail::karrow_op<std::remove_cvref_t<F>>> karrow{};
+    inline constexpr perfect_forwarded_t<detail::karrow_op> karrow{};
   } // namespace cpo
 } // namespace mpc
+
+// clang-format on

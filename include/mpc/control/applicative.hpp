@@ -1,225 +1,208 @@
 /// @file applicative.hpp
 #pragma once
-#include <functional> // std::invoke
-#include <mpc/control/basic_traits.hpp>
 #include <mpc/control/functor.hpp>
-#include <mpc/functional/constant.hpp>
-#include <mpc/functional/flip.hpp>
-#include <mpc/functional/id.hpp>
 #include <mpc/functional/perfect_forward.hpp>
+#include <mpc/prelude/constant.hpp>
+#include <mpc/prelude/flip.hpp>
+#include <mpc/prelude/id.hpp>
+#include <mpc/type_traits.hpp>
+
+// clang-format off
 
 namespace mpc {
+  // applicative
+  // https://hackage.haskell.org/package/base-4.16.0.0/docs/Control-Applicative.html
+
+  /// class Functor f => Applicative f where
+  template <class>
+  struct applicative_traits;
+
+  template <class F>
+  concept applicative_traits_specialized = requires {
+    applicative_traits<std::remove_cvref_t<F>>::pure;
+    applicative_traits<std::remove_cvref_t<F>>::seq_apply;
+    applicative_traits<std::remove_cvref_t<F>>::liftA2;
+    applicative_traits<std::remove_cvref_t<F>>::discard2nd;
+    applicative_traits<std::remove_cvref_t<F>>::discard1st;
+  };
+
+  template <class F>
+  concept applicative = functor<F> and applicative_traits_specialized<F>;
+
+  // class requirements
+
   namespace detail {
+    /// pure :: a -> f a
     template <class F>
-    using pure_op = std::remove_cvref_t<decltype(applicative_traits<std::remove_cvref_t<F>>::pure)>;
-
-    template <class F>
-    using seq_apply_op =
-      std::remove_cvref_t<decltype(applicative_traits<std::remove_cvref_t<F>>::seq_apply)>;
-
-    template <class F>
-    using liftA2_op =
-      std::remove_cvref_t<decltype(applicative_traits<std::remove_cvref_t<F>>::liftA2)>;
-
-    template <class F>
-    using discard2nd_op =
-      std::remove_cvref_t<decltype(applicative_traits<std::remove_cvref_t<F>>::discard2nd)>;
-
-    template <class F>
-    using discard1st_op =
-      std::remove_cvref_t<decltype(applicative_traits<std::remove_cvref_t<F>>::discard1st)>;
-
-    template <class F>
-    struct pure_t : perfect_forward<pure_op<F>> {
-      using perfect_forward<pure_op<F>>::perfect_forward;
+    struct pure_op {
+      template <class A>
+      constexpr auto operator()(A&& a) const noexcept(
+      noexcept(   applicative_traits<std::remove_cvref_t<F>>::pure(std::forward<A>(a))))
+      -> decltype(applicative_traits<std::remove_cvref_t<F>>::pure(std::forward<A>(a)))
+      { return    applicative_traits<std::remove_cvref_t<F>>::pure(std::forward<A>(a)); }
     };
 
-    template <class F>
-    struct seq_apply_t : perfect_forward<seq_apply_op<F>> {
-      using perfect_forward<seq_apply_op<F>>::perfect_forward;
+    /// seq_apply :: f (a -> b) -> f a -> f b
+    struct seq_apply_op {
+      template <class Fab, class Fa>
+      constexpr auto operator()(Fab&& fab, Fa&& fa) const noexcept(
+      noexcept(   applicative_traits<std::remove_cvref_t<Fab>>::seq_apply(std::forward<Fab>(fab), std::forward<Fa>(fa))))
+      -> decltype(applicative_traits<std::remove_cvref_t<Fab>>::seq_apply(std::forward<Fab>(fab), std::forward<Fa>(fa)))
+      { return    applicative_traits<std::remove_cvref_t<Fab>>::seq_apply(std::forward<Fab>(fab), std::forward<Fa>(fa)); }
     };
 
-    template <class F>
-    struct liftA2_t : perfect_forward<liftA2_op<F>> {
-      using perfect_forward<liftA2_op<F>>::perfect_forward;
+    /// liftA2 :: (a -> b -> c) -> f a -> f b -> f c
+    struct liftA2_op {
+      template <class Fn, class Fa, class Fb>
+      constexpr auto operator()(Fn&& fn, Fa&& fa, Fb&& fb) const noexcept(
+      noexcept(   applicative_traits<std::remove_cvref_t<Fa>>::liftA2(std::forward<Fn>(fn), std::forward<Fa>(fa), std::forward<Fb>(fb))))
+      -> decltype(applicative_traits<std::remove_cvref_t<Fa>>::liftA2(std::forward<Fn>(fn), std::forward<Fa>(fa), std::forward<Fb>(fb)))
+      { return    applicative_traits<std::remove_cvref_t<Fa>>::liftA2(std::forward<Fn>(fn), std::forward<Fa>(fa), std::forward<Fb>(fb)); }
     };
 
-    template <class F>
-    struct discard2nd_t : perfect_forward<discard2nd_op<F>> {
-      using perfect_forward<discard2nd_op<F>>::perfect_forward;
+    /// discard2nd :: f a -> f b -> f a
+    struct discard2nd_op {
+      template <class Fa, class Fb>
+      constexpr auto operator()(Fa&& fa, Fb&& fb) const noexcept(
+      noexcept(   applicative_traits<std::remove_cvref_t<Fa>>::discard2nd(std::forward<Fa>(fa), std::forward<Fb>(fb))))
+      -> decltype(applicative_traits<std::remove_cvref_t<Fa>>::discard2nd(std::forward<Fa>(fa), std::forward<Fb>(fb)))
+      { return    applicative_traits<std::remove_cvref_t<Fa>>::discard2nd(std::forward<Fa>(fa), std::forward<Fb>(fb)); }
     };
 
-    template <class F>
-    struct discard1st_t : perfect_forward<discard1st_op<F>> {
-      using perfect_forward<discard1st_op<F>>::perfect_forward;
+    /// discard1st :: f a -> f b -> f b
+    struct discard1st_op {
+      template <class Fa, class Fb>
+      constexpr auto operator()(Fa&& fa, Fb&& fb) const noexcept(
+      noexcept(   applicative_traits<std::remove_cvref_t<Fa>>::discard1st(std::forward<Fa>(fa), std::forward<Fb>(fb))))
+      -> decltype(applicative_traits<std::remove_cvref_t<Fa>>::discard1st(std::forward<Fa>(fa), std::forward<Fb>(fb)))
+      { return    applicative_traits<std::remove_cvref_t<Fa>>::discard1st(std::forward<Fa>(fa), std::forward<Fb>(fb)); }
     };
   } // namespace detail
 
   inline namespace cpo {
-    /// pure   :: a -> f a
+    /// pure :: a -> f a
     template <class F>
-    inline constexpr detail::pure_t<std::remove_cvref_t<F>> pure{};
+    inline constexpr perfect_forwarded_t<detail::pure_op<F>> pure{};
 
-    /// (<*>)  :: f (a -> b) -> f a -> f b -- infixl 4
-    template <class F>
-    inline constexpr detail::seq_apply_t<std::remove_cvref_t<F>> seq_apply{};
+    /// seq_apply :: f (a -> b) -> f a -> f b
+    inline constexpr perfect_forwarded_t<detail::seq_apply_op> seq_apply{};
 
     /// liftA2 :: (a -> b -> c) -> f a -> f b -> f c
-    template <class F>
-    inline constexpr detail::liftA2_t<std::remove_cvref_t<F>> liftA2{};
+    inline constexpr perfect_forwarded_t<detail::liftA2_op> liftA2{};
 
-    /// ( *>)  :: f a -> f b -> f b -- infixl 4
-    template <class F>
-    inline constexpr detail::discard2nd_t<std::remove_cvref_t<F>> discard2nd{};
+    /// discard2nd :: f a -> f b -> f a
+    inline constexpr perfect_forwarded_t<detail::discard2nd_op> discard2nd{};
 
-    /// (<* )  :: f a -> f b -> f a -- infixl 4
-    template <class F>
-    inline constexpr detail::discard1st_t<std::remove_cvref_t<F>> discard1st{};
+    /// discard1st :: f a -> f b -> f b
+    inline constexpr perfect_forwarded_t<detail::discard1st_op> discard1st{};
   } // namespace cpo
+
+  // Deducibles
 
   namespace applicatives {
     namespace detail {
-      // clang-format off
       /// fmap :: (a -> b) -> f a -> f b
       /// fmap f x = seq_apply (pure f) x
-      template<applicative_traits_specialized F>
       struct fmap_op {
-        template<class A1, class A2>
-        constexpr auto operator()(A1&& f, A2&& x) const
-        noexcept(noexcept(mpc::seq_apply<F>(mpc::pure<F>(std::forward<A1>(f)), std::forward<A2>(x))))
-        -> decltype(      mpc::seq_apply<F>(mpc::pure<F>(std::forward<A1>(f)), std::forward<A2>(x)))
-        { return          mpc::seq_apply<F>(mpc::pure<F>(std::forward<A1>(f)), std::forward<A2>(x)); }
+        template <class Fn, class Fa>
+        constexpr auto operator()(Fn&& fn, Fa&& fa) const noexcept(
+        noexcept(   mpc::seq_apply(mpc::pure<Fa>(std::forward<Fn>(fn)), std::forward<Fa>(fa))))
+        -> decltype(mpc::seq_apply(mpc::pure<Fa>(std::forward<Fn>(fn)), std::forward<Fa>(fa)))
+        { return    mpc::seq_apply(mpc::pure<Fa>(std::forward<Fn>(fn)), std::forward<Fa>(fa)); }
       };
 
       /// liftA2 :: (a -> b -> c) -> f a -> f b -> f c
       /// liftA2 f x y = seq_apply (fmap f x) y
-      template<class F>
-      requires requires {
-        functor_traits<std::remove_cvref_t<F>>::fmap;
-        applicative_traits<std::remove_cvref_t<F>>::seq_apply;
-      }
       struct liftA2_op {
-        template<class A1, class A2, class A3>
-        constexpr auto operator()(A1&& f, A2&& x, A3&& y) const
-        noexcept(noexcept(mpc::seq_apply<F>(mpc::fmap<F>(std::forward<A1>(f), std::forward<A2>(x)), std::forward<A3>(y))))
-        -> decltype(      mpc::seq_apply<F>(mpc::fmap<F>(std::forward<A1>(f), std::forward<A2>(x)), std::forward<A3>(y)))
-        { return          mpc::seq_apply<F>(mpc::fmap<F>(std::forward<A1>(f), std::forward<A2>(x)), std::forward<A3>(y)); }
+        template <class Fn, class Fa, class Fb>
+        constexpr auto operator()(Fn&& fn, Fa&& fa, Fb&& fb) const noexcept(
+        noexcept(   mpc::seq_apply(mpc::fmap(std::forward<Fn>(fn), std::forward<Fa>(fa)), std::forward<Fb>(fb))))
+        -> decltype(mpc::seq_apply(mpc::fmap(std::forward<Fn>(fn), std::forward<Fa>(fa)), std::forward<Fb>(fb)))
+        { return    mpc::seq_apply(mpc::fmap(std::forward<Fn>(fn), std::forward<Fa>(fa)), std::forward<Fb>(fb)); }
       };
 
       /// discard1st_opt :: f a -> f b -> f b
       /// discard1st_opt x y = (id <$ x) <*> y
-      template<class F>
-      requires requires {
-        functor_traits<std::remove_cvref_t<F>>::replace2nd;
-        applicative_traits<std::remove_cvref_t<F>>::seq_apply;
-      }
       struct discard1st_opt_op {
-        template<class A1, class A2>
-        constexpr auto operator()(A1&& x, A2&& y) const
-        noexcept(noexcept(mpc::seq_apply<F>(mpc::replace2nd<F>(id, std::forward<A1>(x)), std::forward<A2>(y))))
-        -> decltype(      mpc::seq_apply<F>(mpc::replace2nd<F>(id, std::forward<A1>(x)), std::forward<A2>(y)))
-        { return          mpc::seq_apply<F>(mpc::replace2nd<F>(id, std::forward<A1>(x)), std::forward<A2>(y)); }
+        template <class Fa, class Fb>
+        constexpr auto operator()(Fa&& fa, Fb&& fb) const noexcept(
+        noexcept(   mpc::seq_apply(mpc::replace2nd(id, std::forward<Fa>(fa)), std::forward<Fb>(fb))))
+        -> decltype(mpc::seq_apply(mpc::replace2nd(id, std::forward<Fa>(fa)), std::forward<Fb>(fb)))
+        { return    mpc::seq_apply(mpc::replace2nd(id, std::forward<Fa>(fa)), std::forward<Fb>(fb)); }
       };
-
-      template <applicative_traits_specialized F>
-      struct fmap_t : perfect_forward<fmap_op<F>> {
-        using perfect_forward<fmap_op<F>>::perfect_forward;
-      };
-
-      template <class F>
-      requires requires {
-        functor_traits<std::remove_cvref_t<F>>::fmap;
-        applicative_traits<std::remove_cvref_t<F>>::seq_apply;
-      }
-      struct liftA2_t : perfect_forward<liftA2_op<F>> {
-        using perfect_forward<liftA2_op<F>>::perfect_forward;
-      };
-
-      template <class F>
-      requires requires {
-        functor_traits<std::remove_cvref_t<F>>::replace2nd;
-        applicative_traits<std::remove_cvref_t<F>>::seq_apply;
-      }
-      struct discard1st_opt_t : perfect_forward<discard1st_opt_op<F>> {
-        using perfect_forward<discard1st_opt_op<F>>::perfect_forward;
-      };
-      // clang-format on
     } // namespace detail
 
     /// @brief fmap f x = seq_apply (pure f) x
     /// @details If you fully specialize `applicative_traits<F>`, you can deduce `fmap`.
-    template <applicative_traits_specialized F>
-    inline constexpr detail::fmap_t<std::remove_cvref_t<F>> fmap{};
+    inline constexpr perfect_forwarded_t<detail::fmap_op> fmap{};
 
     /// @brief seq_apply = liftA2 id
     /// @details If you define `applicative_traits<F>::liftA2`, you can deduce `seq_apply`.
-    template <class F>
-    requires requires {
-      applicative_traits<std::remove_cvref_t<F>>::liftA2;
-    }
-    inline constexpr auto seq_apply = mpc::liftA2<F> % id;
+    inline constexpr auto seq_apply = mpc::liftA2 % id;
 
     /// @brief liftA2 f x y = seq_apply (fmap f x) y
     /// @details If you define `applicative_traits<F>::seq_apply`, you can deduce `liftA2`.
-    template <class F>
-    requires requires {
-      functor_traits<std::remove_cvref_t<F>>::fmap;
-      applicative_traits<std::remove_cvref_t<F>>::seq_apply;
-    }
-    inline constexpr detail::liftA2_t<std::remove_cvref_t<F>> liftA2{};
+    inline constexpr perfect_forwarded_t<detail::liftA2_op> liftA2{};
 
     /// @brief discard2nd = liftA2 const
     /// @details If you define `applicative_traits<F>::seq_apply` and
     /// `applicative_traits<F>::liftA2`, you can deduce `discard2nd`.
-    template <class F>
-    requires requires {
-      applicative_traits<std::remove_cvref_t<F>>::liftA2;
-    }
-    inline constexpr auto discard2nd = mpc::liftA2<F> % constant;
+    inline constexpr auto discard2nd = mpc::liftA2 % constant;
 
     /// @brief discard1st = liftA2 (flip const)
     /// @details If you define `applicative_traits<F>::seq_apply` and
     /// `applicative_traits<F>::liftA2`, you can deduce `discard1st`.
-    template <class F>
-    requires requires {
-      applicative_traits<std::remove_cvref_t<F>>::liftA2;
-    }
-    inline constexpr auto discard1st = mpc::liftA2<F> % (flip % constant);
+    inline constexpr auto discard1st = mpc::liftA2 % (flip % constant);
 
     /// @brief discard1st_opt x y = seq_apply (id <$ x) y
     /// @details If you optimize `functor_traits<F>::replace2nd`, you can deduce optimized
     /// `discard1st`.
-    template <class F>
-    requires requires {
-      functor_traits<std::remove_cvref_t<F>>::replace2nd;
-      applicative_traits<std::remove_cvref_t<F>>::seq_apply;
-    }
-    inline constexpr detail::discard1st_opt_t<std::remove_cvref_t<F>> discard1st_opt{};
+    inline constexpr perfect_forwarded_t<detail::discard1st_opt_op> discard1st_opt{};
   } // namespace applicatives
 
   // Grobal methods
 
   namespace detail {
-    // clang-format off
-    template<applicative F>
-    struct liftA3_op {
-      /// liftA3 :: Applicative f => (a -> b -> c -> d) -> f a -> f b -> f c -> f d
-      /// liftA3 f a b c = liftA2 f a b <*> c
-      template<class A1, class A2, class A3, class A4>
-      constexpr auto operator()(A1&& f, A2&& a, A3&& b, A4&& c) const
-      noexcept(noexcept(mpc::seq_apply<F>(mpc::liftA2<F>(std::forward<A1>(f), std::forward<A2>(a), std::forward<A3>(b)), std::forward<A4>(c))))
-      -> decltype(      mpc::seq_apply<F>(mpc::liftA2<F>(std::forward<A1>(f), std::forward<A2>(a), std::forward<A3>(b)), std::forward<A4>(c)))
-      { return          mpc::seq_apply<F>(mpc::liftA2<F>(std::forward<A1>(f), std::forward<A2>(a), std::forward<A3>(b)), std::forward<A4>(c)); }
+    template <class Fn, class Fa, class Fb>
+    constexpr auto reversed_liftA(Fb&& fb, Fa&& fa, Fn&& fn) noexcept(
+    noexcept(   mpc::liftA2(std::forward<Fn>(fn), std::forward<Fa>(fa), std::forward<Fb>(fb))))
+    -> decltype(mpc::liftA2(std::forward<Fn>(fn), std::forward<Fa>(fa), std::forward<Fb>(fb)))
+    { return    mpc::liftA2(std::forward<Fn>(fn), std::forward<Fa>(fa), std::forward<Fb>(fb)); }
+
+    template <class Fz, class... Args>
+    requires (sizeof...(Args) > 2)
+    constexpr auto reversed_liftA(Fz&& fz, Args&&... args) noexcept(
+    noexcept(   mpc::seq_apply(reversed_liftA(std::forward<Args>(args)...), std::forward<Fz>(fz))))
+    -> decltype(mpc::seq_apply(reversed_liftA(std::forward<Args>(args)...), std::forward<Fz>(fz)))
+    { return    mpc::seq_apply(reversed_liftA(std::forward<Args>(args)...), std::forward<Fz>(fz)); }
+
+    template <std::size_t N, class = make_reversed_index_sequence<N + 1>>
+    struct liftA_op;
+
+    template <std::size_t N, std::size_t... Idx>
+    requires (N > 2)
+    struct liftA_op<N, std::index_sequence<Idx...>> {
+      template <class Bound>
+      constexpr auto operator()(Bound&& bound) const noexcept(
+      noexcept(   reversed_liftA(std::get<Idx>(std::forward<Bound>(bound))...)))
+      -> decltype(reversed_liftA(std::get<Idx>(std::forward<Bound>(bound))...))
+      { return    reversed_liftA(std::get<Idx>(std::forward<Bound>(bound))...); }
+
+      template <class... Args>
+      requires (sizeof...(Args) == N + 1)
+      constexpr auto operator()(Args&&... args) const noexcept(
+      noexcept(   this->operator()(std::forward_as_tuple(std::forward<Args>(args)...))))
+      -> decltype(this->operator()(std::forward_as_tuple(std::forward<Args>(args)...)))
+      { return    this->operator()(std::forward_as_tuple(std::forward<Args>(args)...)); }
     };
-    // clang-format on
   } // namespace detail
 
   inline namespace cpo {
-    /// liftA3 f a b c = liftA2 f a b <*> c
-    template <applicative F>
-    inline constexpr perfect_forwarded_t<detail::liftA3_op<std::remove_cvref_t<F>>> liftA3{};
-
-    // liftA4 f a b c d = liftA3 f a b c <*> d
-    // liftA5 f a b c d e = liftA4 f a b c d <*> e
+    /// liftA :: Applicative f => (a -> b -> .. -> z) -> f a -> f b -> .. -> f z
+    template <std::size_t N>
+    requires (N > 1)
+    inline constexpr perfect_forwarded_t<detail::liftA_op<N>> liftA{};
   } // namespace cpo
 } // namespace mpc
+
+// clang-format on
