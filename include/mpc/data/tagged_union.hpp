@@ -9,17 +9,17 @@ namespace mpc {
 
   namespace detail {
     template <class, class...>
-    struct TaggedUnionImpl;
+    struct tagged_union_impl;
 
     template <std::size_t... Idx, class... Args>
-    struct TaggedUnionImpl<std::index_sequence<Idx...>, Args...> {
+    struct tagged_union_impl<std::index_sequence<Idx...>, Args...> {
       using type = std::variant<nth_element_t<Args, Idx>...>;
     };
   } // namespace detail
 
   template <class... Args>
-  using TaggedUnion =
-    typename detail::TaggedUnionImpl<std::index_sequence_for<Args...>, Args...>::type;
+  using tagged_union =
+    typename detail::tagged_union_impl<std::index_sequence_for<Args...>, Args...>::type;
 
   template <std::size_t Idx, class T>
   constexpr nth_element_t<T, Idx> make_nth_element(T&& t) {

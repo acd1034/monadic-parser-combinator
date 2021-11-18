@@ -17,7 +17,7 @@ template <class T>
 
 using S = std::string_view;
 template <class V>
-using Monad = mpc::Either<std::string, V>;
+using Monad = mpc::either<std::string, V>;
 using ST = mpc::StateT<std::function<Monad<std::pair<char, S>>(S)>, S>;
 template <mpc::isStateT ST2>
 using StateT_value_in_monad_t =
@@ -29,9 +29,9 @@ inline constexpr auto decomp(std::basic_string_view<charT, traits> sv) {
 }
 
 template <class V>
-struct mpc::alternative_traits<mpc::Either<std::string, V>> {
+struct mpc::alternative_traits<mpc::either<std::string, V>> {
   static constexpr auto combine = [](const auto& m1,
-                                     const auto& m2) -> mpc::Either<std::string, V> {
+                                     const auto& m2) -> mpc::either<std::string, V> {
     if (m1.index() == 0) {
       if (m2.index() == 0) {
         return mpc::make_left(*std::get<0>(m1) + ' ' + *std::get<0>(m2));
@@ -128,10 +128,10 @@ const auto char1 = LAMBDA([](const char& c) {
 
 // (2)
                                                                              // ここの型を正しく
-Either<left-value-type, right-value-type> にしないと動かない
+either<left-value-type, right-value-type> にしないと動かない
                                                                              //
 v~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ const auto left = mpc::compose % mpc::lift<ST> % LAMBDA(([](const
-auto& str) -> mpc::Either<std::string, char> { return mpc::make_left(str);
+auto& str) -> mpc::either<std::string, char> { return mpc::make_left(str);
                   }));
 
 // (3)
