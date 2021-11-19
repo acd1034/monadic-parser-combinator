@@ -21,13 +21,11 @@ namespace mpc {
       requires std::default_initializable<T>               //
       : instance_{std::in_place} {}
 
-    constexpr explicit Identity(const T& t) //
-      noexcept(std::is_nothrow_copy_constructible_v<T>)
-      : instance_{std::in_place, t} {}
-
-    constexpr explicit Identity(T&& t) //
-      noexcept(std::is_nothrow_move_constructible_v<T>)
-      : instance_{std::in_place, std::move(t)} {}
+    template <class U = T>
+    requires std::constructible_from<T, U&&>
+    constexpr explicit Identity(U&& u) //
+      noexcept(std::is_nothrow_constructible_v<T, U&&>)
+      : instance_{std::in_place, std::forward<U>(u)} {}
 
     constexpr const T& operator*() const noexcept {
       return *instance_;
@@ -49,14 +47,14 @@ namespace mpc {
 
   namespace detail {
     template <class>
-    struct is_Identity : std::false_type {};
+    struct is_Identity_impl : std::false_type {};
 
     template <copy_constructible_object T>
-    struct is_Identity<Identity<T>> : std::true_type {};
+    struct is_Identity_impl<Identity<T>> : std::true_type {};
   } // namespace detail
 
   template <class T>
-  concept isIdentity = detail::is_Identity<std::remove_cvref_t<T>>::value;
+  concept is_Identity = detail::is_Identity_impl<std::remove_cvref_t<T>>::value;
 
   namespace detail {
     struct make_Identity_op {
@@ -67,7 +65,7 @@ namespace mpc {
     };
 
     struct run_Identity_op {
-      template <isIdentity I>
+      template <is_Identity I>
       constexpr auto operator()(I&& x) const noexcept -> decltype(*std::forward<I>(x)) {
         return *std::forward<I>(x);
       }
@@ -88,7 +86,7 @@ namespace mpc {
   struct monad_traits<Identity<T>> {
     /// (>>=)  :: forall a b. m a -> (a -> m b) -> m b -- infixl 1
     struct bind_op {
-      template <isIdentity I, class F>
+      template <is_Identity I, class F>
       constexpr auto operator()(I&& x, F&& f) const
         noexcept(noexcept(std::invoke(std::forward<F>(f), run_Identity % std::forward<I>(x))))
         -> decltype(      std::invoke(std::forward<F>(f), run_Identity % std::forward<I>(x))) {
@@ -103,7 +101,7 @@ namespace mpc {
   struct functor_traits<Identity<T>> {
     // fmap  :: (a -> b) -> f a -> f b
     struct fmap_op {
-      template <class F, isIdentity I>
+      template <class F, is_Identity I>
       constexpr auto operator()(F&& f, I&& x) const
         noexcept(noexcept(make_Identity(std::invoke(std::forward<F>(f), run_Identity % std::forward<I>(x)))))
         -> decltype(      make_Identity(std::invoke(std::forward<F>(f), run_Identity % std::forward<I>(x)))) {
