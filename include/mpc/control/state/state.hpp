@@ -18,7 +18,7 @@ namespace mpc {
 
   /// type State s = StateT s Identity
   template <copy_constructible_object Fn, class S>
-  requires std::invocable<Fn, S> and isIdentity<std::invoke_result_t<Fn, S>>
+  requires std::invocable<Fn, S> and is_Identity<std::invoke_result_t<Fn, S>>
   using State = StateT<Fn, S>;
 
   // isState
@@ -27,7 +27,7 @@ namespace mpc {
     struct is_State : std::false_type {};
 
     template <copy_constructible_object Fn, class S>
-    requires std::invocable<Fn, S> and isIdentity<std::invoke_result_t<Fn, S>>
+    requires std::invocable<Fn, S> and is_Identity<std::invoke_result_t<Fn, S>>
     struct is_State<StateT<Fn, S>> : std::true_type {
     };
   } // namespace detail
