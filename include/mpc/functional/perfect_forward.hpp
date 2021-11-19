@@ -97,9 +97,9 @@ namespace mpc {
 
     template <class... Args, class = std::enable_if_t<!std::is_invocable_v<Op, Bound..., Args...>>>
     constexpr auto operator()(Args&&... args) && noexcept(
-      noexcept(   perfect_forward<Op, Bound..., Args...>(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...)))
-      -> decltype(perfect_forward<Op, Bound..., Args...>(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...)) {
-      return      perfect_forward<Op, Bound..., Args...>(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...);
+      noexcept(   perfect_forward<Op, Bound..., Args...>(op_, std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...)))
+      -> decltype(perfect_forward<Op, Bound..., Args...>(op_, std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...)) {
+      return      perfect_forward<Op, Bound..., Args...>(op_, std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...);
     }
 
     template <class... Args, class = std::enable_if_t<std::is_invocable_v<Op const, Bound const..., Args...>>>
@@ -111,9 +111,9 @@ namespace mpc {
 
     template <class... Args, class = std::enable_if_t<!std::is_invocable_v<Op const, Bound const..., Args...>>>
     constexpr auto operator()(Args&&... args) const&& noexcept(
-      noexcept(   perfect_forward<Op, Bound const..., Args...>(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...)))
-      -> decltype(perfect_forward<Op, Bound const..., Args...>(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...)) {
-      return      perfect_forward<Op, Bound const..., Args...>(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...);
+      noexcept(   perfect_forward<Op, Bound const..., Args...>(op_, std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...)))
+      -> decltype(perfect_forward<Op, Bound const..., Args...>(op_, std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...)) {
+      return      perfect_forward<Op, Bound const..., Args...>(op_, std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...);
     }
 
     // operator%
