@@ -89,7 +89,7 @@ const auto alpha = satisfy % mpc::isalpha or left % "expecting alpha"s;
 // const auto test2 = mpc::sequence % std::list{anyChar, anyChar, anyChar};
 // FIXME: alpha と digit の型が異なるのでこれはできない。StateT を std::function で定義し直すべし
 // const auto test3 = mpc::sequence % std::list{alpha, digit, digit};
-inline constexpr auto test4 = digit or alpha;
+const auto test4 = digit or alpha;
 
 int main() {
   parseTest(anyChar, "");
