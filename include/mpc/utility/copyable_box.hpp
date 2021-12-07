@@ -36,8 +36,8 @@ namespace mpc {
       noexcept(std::is_nothrow_default_constructible_v<T>) //
       requires std::default_initializable<T> : instance_(std::in_place) {}
 
-    copyable_box(copyable_box const&) = default;
-    copyable_box(copyable_box&&) = default;
+    constexpr copyable_box(copyable_box const&) = default;
+    constexpr copyable_box(copyable_box&&) = default;
 
     constexpr copyable_box&
     operator=(copyable_box const& other) noexcept(std::is_nothrow_copy_constructible_v<T>) {
@@ -49,7 +49,7 @@ namespace mpc {
       return *this;
     }
 
-    copyable_box& operator=(copyable_box&&) requires std::movable<T>
+    constexpr copyable_box& operator=(copyable_box&&) requires std::movable<T>
     = default;
 
     constexpr copyable_box&
@@ -121,13 +121,13 @@ namespace mpc {
       noexcept(std::is_nothrow_default_constructible_v<T>) //
       requires std::default_initializable<T> : instance_() {}
 
-    copyable_box(copyable_box const&) = default;
-    copyable_box(copyable_box&&) = default;
+    constexpr copyable_box(copyable_box const&) = default;
+    constexpr copyable_box(copyable_box&&) = default;
 
     // Implementation of assignment operators in case we perform optimization (1)
-    copyable_box& operator=(copyable_box const&) requires std::copyable<T>
+    constexpr copyable_box& operator=(copyable_box const&) requires std::copyable<T>
     = default;
-    copyable_box& operator=(copyable_box&&) requires std::movable<T>
+    constexpr copyable_box& operator=(copyable_box&&) requires std::movable<T>
     = default;
 
     // Implementation of assignment operators in case we perform optimization (2)

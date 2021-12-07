@@ -17,9 +17,9 @@ template <class T>
 
 using S = std::string_view;
 template <class V>
-using Monad = mpc::Either<std::string, V>;
+using Monad = mpc::either<std::string, V>;
 using ST = mpc::StateT<std::function<Monad<std::pair<char, S>>(S)>, S>;
-template <mpc::isStateT ST2>
+template <mpc::is_StateT ST2>
 using StateT_value_in_monad_t =
   decltype(mpc::fmap(mpc::fst, std::declval<mpc::StateT_monad_t<ST2>>()));
 
@@ -29,9 +29,9 @@ inline constexpr auto decomp(std::basic_string_view<charT, traits> sv) {
 }
 
 template <class V>
-struct mpc::alternative_traits<mpc::Either<std::string, V>> {
+struct mpc::alternative_traits<mpc::either<std::string, V>> {
   static constexpr auto combine = [](const auto& m1,
-                                     const auto& m2) -> mpc::Either<std::string, V> {
+                                     const auto& m2) -> mpc::either<std::string, V> {
     if (m1.index() == 0) {
       if (m2.index() == 0) {
         return mpc::make_left(*std::get<0>(m1) + ' ' + *std::get<0>(m2));
@@ -89,7 +89,7 @@ const auto alpha = satisfy % mpc::isalpha or left % "expecting alpha"s;
 // const auto test2 = mpc::sequence % std::list{anyChar, anyChar, anyChar};
 // FIXME: alpha と digit の型が異なるのでこれはできない。StateT を std::function で定義し直すべし
 // const auto test3 = mpc::sequence % std::list{alpha, digit, digit};
-inline constexpr auto test4 = digit or alpha;
+const auto test4 = digit or alpha;
 
 int main() {
   parseTest(anyChar, "");
@@ -112,30 +112,3 @@ int main() {
   parseTest(test4, "1");
   parseTest(test4, "!"); // NG
 }
-
-/*
-// (1)
-template <mpc::monad_trans ST>                                      // StateT_value_t<ST> が必要
-inline constexpr auto                                               //
-v~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ left = mpc::compose % mpc::lift<ST> % LAMBDA(([](const auto& str) ->
-Monad<mpc::StateT_value_t<ST>> { return mpc::make_left(str);
-         }));
-
-const auto char1 = LAMBDA([](const char& c) {
-  return satisfy % (mpc::equal_to % c) or left<decltype(satisfy % (mpc::equal_to % c))> % ("not char
-"s + c);
-});
-
-// (2)
-                                                                             // ここの型を正しく
-Either<left-value-type, right-value-type> にしないと動かない
-                                                                             //
-v~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ const auto left = mpc::compose % mpc::lift<ST> % LAMBDA(([](const
-auto& str) -> mpc::Either<std::string, char> { return mpc::make_left(str);
-                  }));
-
-// (3)
-//                           v~~~~~~~~~~ char にすると dangling reference (コピー渡しNG)
-const auto char1 = LAMBDA([](const char& c) { return satisfy % (mpc::equal_to % c) or left %
-("expecting char "s + mpc::quoted(c)); });
-*/

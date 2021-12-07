@@ -11,7 +11,7 @@
 // clang-format off
 
 namespace mpc {
-  // Maybe
+  // maybe
   // https://hackage.haskell.org/package/base-4.15.0.0/docs/src/GHC-Maybe.html#Maybe
 
   struct nothing_t {
@@ -30,18 +30,18 @@ namespace mpc {
 
   /// data Maybe a = Nothing | Just a
   template <class T>
-  using Maybe = std::variant<nothing_t, just_t<T>>;
+  using maybe = std::variant<nothing_t, just_t<T>>;
 
   namespace detail {
     template <class>
-    struct is_Maybe : std::false_type {};
+    struct is_maybe_impl : std::false_type {};
 
     template <class T>
-    struct is_Maybe<Maybe<T>> : std::true_type {};
+    struct is_maybe_impl<maybe<T>> : std::true_type {};
   } // namespace detail
 
   template <class T>
-  concept isMaybe = detail::is_Maybe<std::remove_cvref_t<T>>::value;
+  concept is_maybe = detail::is_maybe_impl<std::remove_cvref_t<T>>::value;
 
   /// instance Functor Maybe where
   ///     fmap _ Nothing  = Nothing
@@ -49,12 +49,12 @@ namespace mpc {
   ///     _ <$ Nothing = Nothing
   ///     a <$ Just _  = Just a
   template <class T1>
-  struct functor_traits<Maybe<T1>> {
+  struct functor_traits<maybe<T1>> {
     /// fmap :: (a -> b) -> f a -> f b
     struct fmap_op {
-      template <class F, isMaybe M>
+      template <class F, is_maybe M>
       constexpr auto operator()(F&& f, M&& x) const //
-        -> Maybe<std::unwrap_ref_decay_t<decltype(
+        -> maybe<std::unwrap_ref_decay_t<decltype(
           std::invoke(std::forward<F>(f), *std::get<1>(std::forward<M>(x))))>> {
         if (x.index() == 0) {
           return nothing;
@@ -66,9 +66,9 @@ namespace mpc {
 
     /// replace2nd :: a -> f b -> f a
     struct replace2nd_op {
-      template <class U, isMaybe M>
+      template <class U, is_maybe M>
       constexpr auto operator()(U&& u, M&& m) const //
-        -> Maybe<std::unwrap_ref_decay_t<U&&>> {
+        -> maybe<std::unwrap_ref_decay_t<U&&>> {
         if (m.index() == 0) {
           return nothing;
         } else {
@@ -85,10 +85,10 @@ namespace mpc {
   ///     (Just x) >>= k = k x
   ///     Nothing  >>= _ = Nothing
   template <class T1>
-  struct monad_traits<Maybe<T1>> {
+  struct monad_traits<maybe<T1>> {
     /// bind :: forall a b. m a -> (a -> m b) -> m b
     struct bind_op {
-      template <isMaybe M, class F>
+      template <is_maybe M, class F>
       constexpr auto operator()(M&& x, F&& f) const //
         -> decltype(std::invoke(std::forward<F>(f), *std::get<1>(std::forward<M>(x)))) {
         if (x.index() == 0) {
@@ -109,19 +109,19 @@ namespace mpc {
   ///     liftA2 f (Just x) (Just y) = Just (f x y)
   ///     liftA2 _ _ _ = Nothing
   template <class T1>
-  struct applicative_traits<Maybe<T1>> {
+  struct applicative_traits<maybe<T1>> {
     /// pure :: a -> f a
     struct pure_op {
       template <class U>
       constexpr auto operator()(U&& u) const   //
-        -> Maybe<std::unwrap_ref_decay_t<U>> { //
+        -> maybe<std::unwrap_ref_decay_t<U>> { //
         return make_just(std::forward<U>(u));
       }
     };
 
     /// seq_apply :: f (a -> b) -> f a -> f b
     struct seq_apply_op {
-      template <isMaybe M1, isMaybe M2>
+      template <is_maybe M1, is_maybe M2>
       constexpr auto operator()(M1&& f, M2&& x) const //
         -> decltype(mpc::fmap(*std::get<1>(std::forward<M1>(f)), std::forward<M2>(x))) {
         if (f.index() == 0) {
@@ -134,9 +134,9 @@ namespace mpc {
 
     /// liftA2 :: (a -> b -> c) -> f a -> f b -> f c
     struct liftA2_op {
-      template <class F, isMaybe M1, isMaybe M2>
+      template <class F, is_maybe M1, is_maybe M2>
       constexpr auto operator()(F&& f, M1&& m1, M2&& m2) const //
-        -> Maybe<std::unwrap_ref_decay_t<decltype(
+        -> maybe<std::unwrap_ref_decay_t<decltype(
           std::invoke(std::forward<F>(f), *std::get<1>(std::forward<M1>(m1)),
                                           *std::get<1>(std::forward<M2>(m2))))>> {
         if (m1.index() == 1 and m2.index() == 1) {
@@ -160,9 +160,9 @@ namespace mpc {
   ///     Nothing <|> r = r
   ///     l       <|> _ = l
   template <class T1>
-  struct alternative_traits<Maybe<T1>> {
+  struct alternative_traits<maybe<T1>> {
     struct combine_op {
-      template <isMaybe M1, isMaybe M2>
+      template <is_maybe M1, is_maybe M2>
       requires std::same_as<std::remove_cvref_t<M1>, std::remove_cvref_t<M2>>
       constexpr auto operator()(M1&& m1, M2&& m2) const //
         -> std::remove_cvref_t<M1> {
@@ -170,7 +170,7 @@ namespace mpc {
       }
     };
 
-    static constexpr auto empty = Maybe<T1>{nothing};
+    static constexpr auto empty = maybe<T1>{nothing};
     static constexpr combine_op combine{};
   };
 } // namespace mpc

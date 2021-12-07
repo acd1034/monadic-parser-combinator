@@ -39,6 +39,6 @@ TEST_CASE("trans", "[trans][state]") {
 }
 
 // TEST_CASE("trans StateT alternative", "[trans][statet][alternative]") {
-//   static_assert(mpc::alternative<deduce_StateT<int, mpc::Maybe<int>>>);
+//   static_assert(mpc::alternative<deduce_StateT<int, mpc::maybe<int>>>);
 //   static_assert(not mpc::alternative<deduce_StateT<int, mpc::Identity<int>>>);
 // }

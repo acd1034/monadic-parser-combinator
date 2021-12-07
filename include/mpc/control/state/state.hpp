@@ -2,6 +2,7 @@
 #pragma once
 #include <functional> // std::invoke
 #include <mpc/control/state/stateT.hpp>
+#include <mpc/data/functor/identity.hpp>
 #include <mpc/prelude/compose.hpp>
 #include <mpc/prelude/fst.hpp>
 
@@ -18,7 +19,7 @@ namespace mpc {
 
   /// type State s = StateT s Identity
   template <copy_constructible_object Fn, class S>
-  requires std::invocable<Fn, S> and isIdentity<std::invoke_result_t<Fn, S>>
+  requires std::invocable<Fn, S> and is_Identity<std::invoke_result_t<Fn, S>>
   using State = StateT<Fn, S>;
 
   // isState
@@ -27,7 +28,7 @@ namespace mpc {
     struct is_State : std::false_type {};
 
     template <copy_constructible_object Fn, class S>
-    requires std::invocable<Fn, S> and isIdentity<std::invoke_result_t<Fn, S>>
+    requires std::invocable<Fn, S> and is_Identity<std::invoke_result_t<Fn, S>>
     struct is_State<StateT<Fn, S>> : std::true_type {
     };
   } // namespace detail
@@ -36,11 +37,10 @@ namespace mpc {
   concept isState = detail::is_State<std::remove_cvref_t<T>>::value;
 
   template <isState ST>
-  using State_state_t = typename std::remove_cvref_t<ST>::state_type;
+  using State_state_t = StateT_state_t<ST>;
 
-  // This seems to be unnecessary because we know `State_monad_t = Identity`
-  // template<isState ST>
-  // using State_monad_t = typename std::remove_cvref_t<ST>::monad_type;
+  template<isState ST>
+  using State_monad_t = StateT_monad_t<ST>;
 
   // make_State, run_State
   namespace detail {

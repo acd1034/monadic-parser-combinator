@@ -29,27 +29,27 @@ namespace mpc {
     std::tuple<Bound...> bound_{};
 
   public:
-    explicit constexpr perfect_forward_impl()
+    constexpr explicit perfect_forward_impl()
     requires std::default_initializable<Op> and (sizeof...(Bound) == 0) = default;
 
     template <class... BoundArgs,
               class = std::enable_if_t<std::is_constructible_v<std::tuple<Bound...>, BoundArgs&&...>>>
-    explicit constexpr perfect_forward_impl(Op const& op, BoundArgs&&... bound)
+    constexpr explicit perfect_forward_impl(Op const& op, BoundArgs&&... bound)
       : op_(std::in_place, op), bound_(std::forward<BoundArgs>(bound)...) {}
 
     template <class... BoundArgs,
               class = std::enable_if_t<std::is_constructible_v<std::tuple<Bound...>, BoundArgs&&...>>>
-    explicit constexpr perfect_forward_impl(Op&& op, BoundArgs&&... bound)
+    constexpr explicit perfect_forward_impl(Op&& op, BoundArgs&&... bound)
       : op_(std::in_place, std::move(op)), bound_(std::forward<BoundArgs>(bound)...) {}
 
     template <class... BoundArgs,
               class = std::enable_if_t<std::is_constructible_v<std::tuple<Bound...>, BoundArgs&&...>>>
-    explicit constexpr perfect_forward_impl(copyable_box<Op> const& op, BoundArgs&&... bound)
+    constexpr explicit perfect_forward_impl(copyable_box<Op> const& op, BoundArgs&&... bound)
       : op_(op), bound_(std::forward<BoundArgs>(bound)...) {}
 
     template <class... BoundArgs,
               class = std::enable_if_t<std::is_constructible_v<std::tuple<Bound...>, BoundArgs&&...>>>
-    explicit constexpr perfect_forward_impl(copyable_box<Op>&& op, BoundArgs&&... bound)
+    constexpr explicit perfect_forward_impl(copyable_box<Op>&& op, BoundArgs&&... bound)
       : op_(std::move(op)), bound_(std::forward<BoundArgs>(bound)...) {}
 
     perfect_forward_impl(perfect_forward_impl const&) = default;
@@ -59,21 +59,26 @@ namespace mpc {
     perfect_forward_impl& operator=(perfect_forward_impl&&) = default;
 
     // operator()
-    template <class... Args, class = std::enable_if_t<std::is_invocable_v<Op, Bound&..., Args...>>>
+    template <class... Args,
+              class = std::enable_if_t<std::is_invocable_v<Op&, Bound&..., Args...>>>
     constexpr auto operator()(Args&&... args) & noexcept(
       noexcept(   std::invoke(*op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...)))
       -> decltype(std::invoke(*op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...)) {
       return      std::invoke(*op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...);
     }
 
-    template <class... Args, class = std::enable_if_t<!std::is_invocable_v<Op, Bound&..., Args...>>>
+    // WORKAROUND: define `PF` because of GCC bug (sorry, unimplemented: mangling typename_type)
+    template <class... Args,
+              class PF = perfect_forward<Op, Bound..., std::decay_t<Args>...>,
+              class = std::enable_if_t<!std::is_invocable_v<Op&, Bound&..., Args...>>>
     constexpr auto operator()(Args&&... args) & noexcept(
-      noexcept(   perfect_forward<Op, Bound..., Args...>(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...)))
-      -> decltype(perfect_forward<Op, Bound..., Args...>(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...)) {
-      return      perfect_forward<Op, Bound..., Args...>(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...);
+      noexcept(   PF(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...)))
+      -> decltype(PF(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...)) {
+      return      PF(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...);
     }
 
-    template <class... Args, class = std::enable_if_t<std::is_invocable_v<Op const, Bound const&..., Args...>>>
+    template <class... Args,
+              class = std::enable_if_t<std::is_invocable_v<Op const&, Bound const&..., Args...>>>
     constexpr auto operator()(Args&&... args) const& noexcept(
       noexcept(   std::invoke(*op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...)))
       -> decltype(std::invoke(*op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...)) {
@@ -81,39 +86,46 @@ namespace mpc {
     }
 
     template <class... Args,
-              class = std::enable_if_t<!std::is_invocable_v<Op const, Bound const&..., Args...>>>
+              class PF = perfect_forward<Op, Bound..., std::decay_t<Args>...>,
+              class = std::enable_if_t<!std::is_invocable_v<Op const&, Bound const&..., Args...>>>
     constexpr auto operator()(Args&&... args) const& noexcept(
-      noexcept(   perfect_forward<Op, Bound const..., Args...>(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...)))
-      -> decltype(perfect_forward<Op, Bound const..., Args...>(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...)) {
-      return      perfect_forward<Op, Bound const..., Args...>(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...);
+      noexcept(   PF(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...)))
+      -> decltype(PF(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...)) {
+      return      PF(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...);
     }
 
-    template <class... Args, class = std::enable_if_t<std::is_invocable_v<Op, Bound..., Args...>>>
+    template <class... Args,
+              class = std::enable_if_t<std::is_invocable_v<Op, Bound..., Args...>>>
     constexpr auto operator()(Args&&... args) && noexcept(
-      noexcept(   std::invoke(*op_, std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...)))
-      -> decltype(std::invoke(*op_, std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...)) {
-      return      std::invoke(*op_, std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...);
+      noexcept(   std::invoke(*std::move(op_), std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...)))
+      -> decltype(std::invoke(*std::move(op_), std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...)) {
+      return      std::invoke(*std::move(op_), std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...);
     }
 
-    template <class... Args, class = std::enable_if_t<!std::is_invocable_v<Op, Bound..., Args...>>>
+    template <class... Args,
+              class PF = perfect_forward<Op, Bound..., std::decay_t<Args>...>,
+              class = std::enable_if_t<!std::is_invocable_v<Op, Bound..., Args...>>>
     constexpr auto operator()(Args&&... args) && noexcept(
-      noexcept(   perfect_forward<Op, Bound..., Args...>(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...)))
-      -> decltype(perfect_forward<Op, Bound..., Args...>(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...)) {
-      return      perfect_forward<Op, Bound..., Args...>(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...);
+      noexcept(   PF(std::move(op_), std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...)))
+      -> decltype(PF(std::move(op_), std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...)) {
+      return      PF(std::move(op_), std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...);
     }
 
-    template <class... Args, class = std::enable_if_t<std::is_invocable_v<Op const, Bound const..., Args...>>>
+    template <class... Args,
+              class = std::enable_if_t<std::is_invocable_v<Op const, Bound const..., Args...>>>
     constexpr auto operator()(Args&&... args) const&& noexcept(
-      noexcept(   std::invoke(*op_, std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...)))
-      -> decltype(std::invoke(*op_, std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...)) {
-      return      std::invoke(*op_, std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...);
+      noexcept(   std::invoke(*std::move(op_), std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...)))
+      -> decltype(std::invoke(*std::move(op_), std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...)) {
+      return      std::invoke(*std::move(op_), std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...);
     }
 
-    template <class... Args, class = std::enable_if_t<!std::is_invocable_v<Op const, Bound const..., Args...>>>
+    template <class... Args,
+              class PF = perfect_forward<Op, Bound..., std::decay_t<Args>...>,
+              class = std::enable_if_t<!std::is_invocable_v<Op const, Bound const..., Args...>>>
     constexpr auto operator()(Args&&... args) const&& noexcept(
-      noexcept(   perfect_forward<Op, Bound const..., Args...>(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...)))
-      -> decltype(perfect_forward<Op, Bound const..., Args...>(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...)) {
-      return      perfect_forward<Op, Bound const..., Args...>(op_, std::get<Idx>(bound_)..., std::forward<Args>(args)...);
+      noexcept(   PF(std::move(op_), std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...)))
+      -> decltype(PF(std::move(op_), std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...)) {
+      return      PF(std::move(op_), std::get<Idx>(std::move(bound_))..., std::forward<Args>(args)...);
     }
 
     // operator%

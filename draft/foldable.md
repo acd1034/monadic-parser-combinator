@@ -1,3 +1,4 @@
+```hs
 traverse :: Applicative f => (a -> f b) -> t a -> f (t b)
     {-# INLINE traverse #-}  -- See Note [Inline default methods]
     traverse f = sequenceA . fmap f
@@ -51,3 +52,4 @@ instance Foldable [] where
 foldr            :: (a -> b -> b) -> b -> [a] -> b
 foldr _ z []     =  z
 foldr f z (x:xs) =  f x (foldr f z xs)
+```
