@@ -112,30 +112,3 @@ int main() {
   parseTest(test4, "1");
   parseTest(test4, "!"); // NG
 }
-
-/*
-// (1)
-template <mpc::monad_trans ST>                                      // StateT_value_t<ST> が必要
-inline constexpr auto                                               //
-v~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ left = mpc::compose % mpc::lift<ST> % LAMBDA(([](const auto& str) ->
-Monad<mpc::StateT_value_t<ST>> { return mpc::make_left(str);
-         }));
-
-const auto char1 = LAMBDA([](const char& c) {
-  return satisfy % (mpc::equal_to % c) or left<decltype(satisfy % (mpc::equal_to % c))> % ("not char
-"s + c);
-});
-
-// (2)
-                                                                             // ここの型を正しく
-either<left-value-type, right-value-type> にしないと動かない
-                                                                             //
-v~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ const auto left = mpc::compose % mpc::lift<ST> % LAMBDA(([](const
-auto& str) -> mpc::either<std::string, char> { return mpc::make_left(str);
-                  }));
-
-// (3)
-//                           v~~~~~~~~~~ char にすると dangling reference (コピー渡しNG)
-const auto char1 = LAMBDA([](const char& c) { return satisfy % (mpc::equal_to % c) or left %
-("expecting char "s + mpc::quoted(c)); });
-*/

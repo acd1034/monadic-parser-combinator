@@ -16,6 +16,7 @@ namespace mpc {
           { return    std::invoke(std::forward<Fn>(f), std::forward<U>(u), std::forward<T>(t), std::forward<Args>(args)...); }
       };
 
+      // NOTE: You cannot write as `perfect_forwarded_t<closure>{}(std::forward<Fn>(f))`.
       template<class Fn>
       constexpr auto operator()(Fn&& f) const noexcept(
         noexcept(   perfect_forwarded_t<closure, std::decay_t<Fn>>(closure{}, std::forward<Fn>(f))))
