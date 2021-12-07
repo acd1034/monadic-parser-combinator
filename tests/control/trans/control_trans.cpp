@@ -5,7 +5,7 @@
 #include "../../stdfundamental.hpp"
 
 template <class S, class M>
-using deduce_StateT = mpc::StateT<std::function<M(S)>, S>;
+using deduce_StateT = mpc::StateT<const std::decay_t<S>&, M>;
 
 TEST_CASE("trans", "[trans][state]") {
   using ST = deduce_StateT<int, mpc::Identity<int>>;

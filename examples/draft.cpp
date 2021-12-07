@@ -18,7 +18,7 @@ template <class T>
 using S = std::string_view;
 template <class V>
 using Monad = mpc::either<std::string, V>;
-using ST = mpc::StateT<std::function<Monad<std::pair<char, S>>(S)>, S>;
+using ST = mpc::StateT<S, Monad<std::pair<char, S>>>;
 template <mpc::is_StateT ST2>
 using StateT_value_in_monad_t =
   decltype(mpc::fmap(mpc::fst, std::declval<mpc::StateT_monad_t<ST2>>()));

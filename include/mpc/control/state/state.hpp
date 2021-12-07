@@ -18,19 +18,16 @@ namespace mpc {
   // [x] run_State
 
   /// type State s = StateT s Identity
-  template <copy_constructible_object Fn, class S>
-  requires std::invocable<Fn, S> and is_Identity<std::invoke_result_t<Fn, S>>
-  using State = StateT<Fn, S>;
+  template <class S, is_Identity M>
+  using State = StateT<S, M>;
 
   // isState
   namespace detail {
     template <class>
     struct is_State : std::false_type {};
 
-    template <copy_constructible_object Fn, class S>
-    requires std::invocable<Fn, S> and is_Identity<std::invoke_result_t<Fn, S>>
-    struct is_State<StateT<Fn, S>> : std::true_type {
-    };
+    template <class S, is_Identity M>
+    struct is_State<StateT<S, M>> : std::true_type {};
   } // namespace detail
 
   template <class T>
@@ -44,6 +41,16 @@ namespace mpc {
 
   // make_State, run_State
   namespace detail {
+    template <class S>
+    struct make_State_op {
+      template <class Fn>
+      requires std::invocable<std::decay_t<Fn>, const std::decay_t<S>&> and is_Identity<std::invoke_result_t<std::decay_t<Fn>, const std::decay_t<S>&>>
+      constexpr auto operator()(Fn&& f) const {
+        using M = std::invoke_result_t<std::decay_t<Fn>, const std::decay_t<S>&>;
+        return State<const std::decay_t<S>&, M>(std::forward<Fn>(f));
+      }
+    };
+
     struct run_State_op {
       template <isState ST>
       constexpr auto operator()(ST&& x) const noexcept
@@ -55,7 +62,7 @@ namespace mpc {
 
   namespace cpo {
     template <class S>
-    inline constexpr auto make_State = make_StateT<S>;
+    inline constexpr perfect_forwarded_t<detail::make_State_op<S>> make_State{};
 
     inline constexpr perfect_forwarded_t<detail::run_State_op> run_State{};
   } // namespace cpo
