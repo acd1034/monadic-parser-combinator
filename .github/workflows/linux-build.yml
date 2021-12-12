@@ -17,20 +17,26 @@ jobs:
       matrix:
         compiler:
           - g++-11
-          - clang++-13
+          # - clang++-13
         build_type: [Debug]
         std: [20]
         include:
           - compiler: g++-11
-            other_pkgs: gcc-11
-          - compiler: clang++-13
-            other_pkgs: clang-13
+            other_pkgs: g++-11
+          # - compiler: clang++-13
+          #   other_pkgs: clang-13
 
     steps:
     - uses: actions/checkout@v2
 
+    - run: sudo apt search g++
+    - run: sudo apt search g++-11
+    - run: sudo apt search clang++
+    - run: sudo apt search clang++-12
+    - run: sudo apt search clang++-13
+
     - name: Prepare environment
-      run: sudo apt-get install -y ninja-build ${{matrix.other_pkgs}}
+      run: sudo apt install -y ninja-build ${{matrix.other_pkgs}}
 
     - name: Configure build
       working-directory: ${{runner.workspace}}
