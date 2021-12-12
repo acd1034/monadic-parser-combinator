@@ -2,11 +2,6 @@
 # https://github.com/catchorg/Catch2/blob/96790b1d2335f3ff8b941b3598f3f1028f5d09f9/.github/workflows/linux-simple-builds.yml
 name: Linux build
 
-# on:
-#   push:
-#     branches: [ main ]
-#   pull_request:
-#     branches: [ main ]
 on: [push, pull_request]
 
 jobs:
@@ -28,12 +23,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
-    - run: sudo apt search g++
-    - run: sudo apt search g++-11
-    - run: sudo apt search clang++
-    - run: sudo apt search clang++-12
-    - run: sudo apt search clang++-13
 
     - name: Prepare environment
       run: sudo apt install -y ninja-build ${{matrix.other_pkgs}}

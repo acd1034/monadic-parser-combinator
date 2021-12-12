@@ -1,12 +1,8 @@
 /// @file stdfundamental.hpp
 #pragma once
 #include <cassert> // assert
-#if __has_include(<compare>)
 #include <compare>
-#endif
-#if __has_include(<concepts>)
 #include <concepts>
-#endif
 #include <cstddef>          // size_t, ptrdiff_t, nullptr_t
 #include <cstdint>          // int32_t
 #include <initializer_list> // initializer_list
