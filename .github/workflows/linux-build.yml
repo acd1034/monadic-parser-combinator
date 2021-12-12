@@ -2,7 +2,11 @@
 # https://github.com/catchorg/Catch2/blob/96790b1d2335f3ff8b941b3598f3f1028f5d09f9/.github/workflows/linux-simple-builds.yml
 name: Linux build
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
