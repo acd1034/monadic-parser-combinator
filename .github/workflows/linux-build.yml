@@ -1,47 +1,58 @@
-# This is a basic workflow to help you get started with Actions
+# Reference:
+# https://github.com/catchorg/Catch2/blob/96790b1d2335f3ff8b941b3598f3f1028f5d09f9/.github/workflows/linux-simple-builds.yml
 name: Linux build
 
-# Controls when the action will run. Triggers the workflow on push or pull
-# request events but only for the master branch
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+# on:
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     branches: [ main ]
+on: [push, pull_request]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    name: ${{matrix.compiler}} ${{matrix.build_type}}
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    # A matrix allows you to create multiple jobs by performing variable substitution
-    # in a single job definition
+    name: ${{matrix.compiler}}, C++${{matrix.std}}, ${{matrix.build_type}}
+    runs-on: ubuntu-20.04
     strategy:
       matrix:
         compiler:
-          - /usr/bin/g++
-          # - /usr/bin/clang++
+          - g++-11
+          - clang++-13
         build_type: [Debug]
+        std: [20]
+        include:
+          - compiler: g++-11
+            other_pkgs: gcc-11
+          - compiler: clang++-13
+            other_pkgs: clang-13
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - name: Checkout
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+
+    - name: Prepare environment
+      run: sudo apt-get install -y ninja-build ${{matrix.other_pkgs}}
 
     - name: Configure build
-      working-directory: .
+      working-directory: ${{runner.workspace}}
+      env:
+        CXX: ${{matrix.compiler}}
+        CXXFLAGS: ${{matrix.cxxflags}}
+      # Note: $GITHUB_WORKSPACE is distinct from ${{runner.workspace}}.
+      #       This is important
       run: |
-        cmake -S . -B build \
+        cmake -Bbuild -H$GITHUB_WORKSPACE \
               -DCMAKE_BUILD_TYPE=${{matrix.build_type}} \
-              -DCMAKE_CXX_COMPILER=${{matrix.compiler}}
+              -DCMAKE_CXX_STANDARD=${{matrix.std}} \
+              -DCMAKE_CXX_EXTENSIONS=OFF \
+              -G Ninja
 
-    - name: Build
-      working-directory: .
-      run: cmake --build build -j 2
+    - name: Build tests + lib
+      working-directory: ${{runner.workspace}}/build
+      run: ninja
 
-    - name: Run test
-      working-directory: ./build
-      run: ctest -j 2
+    - name: Run tests
+      env:
+          CTEST_OUTPUT_ON_FAILURE: 1
+      working-directory: ${{runner.workspace}}/build
+      # Hardcode 2 cores we know are there
+      run: ctest -C ${{matrix.build_type}} -j 2
