@@ -29,11 +29,13 @@ target_compile_options(iris_tests_config INTERFACE
     -Wno-used-but-marked-unused # GTest EXPECT_DEATH
     -Wno-weak-vtables
   >
-  # $<$<CXX_COMPILER_ID:Clang>:
-  #   $<$<AND:$<VERSION_GREATER:$<CXX_COMPILER_VERSION>,4.99>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,6>>:
-  #     $<$<EQUAL:${IRIS_CXX_STANDARD},17>:-Wno-undefined-func-template>
-  #   >
-  # >
+  $<$<CXX_COMPILER_ID:Clang>:
+    -stdlib=libc++ # Added
+    -ftemplate-backtrace-limit=0 # Added
+    # $<$<AND:$<VERSION_GREATER:$<CXX_COMPILER_VERSION>,4.99>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,6>>:
+    #   $<$<EQUAL:${IRIS_CXX_STANDARD},17>:-Wno-undefined-func-template>
+    # >
+  >
   # $<$<CXX_COMPILER_ID:AppleClang>:
   #   $<$<AND:$<VERSION_GREATER:$<CXX_COMPILER_VERSION>,9.1>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,10>>:
   #     $<$<EQUAL:${IRIS_CXX_STANDARD},17>:-Wno-undefined-func-template>

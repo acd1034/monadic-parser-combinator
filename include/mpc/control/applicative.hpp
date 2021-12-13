@@ -180,9 +180,10 @@ namespace mpc {
     struct liftA_op;
 
     template <std::size_t N, std::size_t... Idx>
-    requires (N > 2)
+    requires (N > 1)
     struct liftA_op<N, std::index_sequence<Idx...>> {
-      template <class Bound>
+      // WORKAROUND: std::tuple_element (and therefore, std::get) is not SFINAE-friendly in Clang.
+      template <class Bound, class = std::enable_if_t<sizeof...(Idx) == std::tuple_size_v<Bound>>>
       constexpr auto operator()(Bound&& bound) const noexcept(
       noexcept(   reversed_liftA(std::get<Idx>(std::forward<Bound>(bound))...)))
       -> decltype(reversed_liftA(std::get<Idx>(std::forward<Bound>(bound))...))

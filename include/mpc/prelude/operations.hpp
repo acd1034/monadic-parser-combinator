@@ -19,7 +19,8 @@ namespace mpc::inline cpo {
   inline constexpr perfect_forwarded_t<std::ranges::less> less;
   inline constexpr perfect_forwarded_t<std::ranges::greater_equal> greater_equal;
   inline constexpr perfect_forwarded_t<std::ranges::less_equal> less_equal;
-  inline constexpr perfect_forwarded_t<std::compare_three_way> compare_three_way;
+  // WORKAROUND
+  // inline constexpr perfect_forwarded_t<std::compare_three_way> compare_three_way;
 
   // Logical operations
   inline constexpr perfect_forwarded_t<std::logical_and<>> logical_and;
