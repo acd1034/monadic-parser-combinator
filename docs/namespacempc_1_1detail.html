@@ -323,10 +323,10 @@ template&lt;class Fz , class... Args&gt; </td></tr>
 <tr class="memitem:a17144a717134717e76c6bb1da3a7de4c"><td class="memItemLeft" align="right" valign="top"><a id="a17144a717134717e76c6bb1da3a7de4c"></a>
 Args &amp;&amp;args&#160;</td><td class="memItemRight" valign="bottom"><b>noexcept</b> (noexcept(mpc::seq_apply(reversed_liftA(std::forward&lt; Args &gt;(args)...), std::forward&lt; Fz &gt;(fz)))) -&gt; decltype(mpc::seq_apply(reversed_liftA(std::forward&lt; Args &gt;(args)...), std::forward&lt; Fz &gt;(fz)))</td></tr>
 <tr class="separator:a17144a717134717e76c6bb1da3a7de4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad24e3eb7300ed0b5da19b4ab87902664"><td class="memTemplParams" colspan="2"><a id="ad24e3eb7300ed0b5da19b4ab87902664"></a>
+<tr class="memitem:aeeb2868c2c876581688a3f42aedb1fdd"><td class="memTemplParams" colspan="2"><a id="aeeb2868c2c876581688a3f42aedb1fdd"></a>
 template&lt;std::size_t N, std::size_t... Idx&gt; </td></tr>
-<tr class="memitem:ad24e3eb7300ed0b5da19b4ab87902664"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>requires</b> (N &gt; 2) struct <a class="el" href="structmpc_1_1detail_1_1lift_a__op.html">liftA_op</a>&lt; N</td></tr>
-<tr class="separator:ad24e3eb7300ed0b5da19b4ab87902664"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeeb2868c2c876581688a3f42aedb1fdd"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>requires</b> (N &gt; 1) struct <a class="el" href="structmpc_1_1detail_1_1lift_a__op.html">liftA_op</a>&lt; N</td></tr>
+<tr class="separator:aeeb2868c2c876581688a3f42aedb1fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f46ac1f4b4d520c24e144f6462926d4"><td class="memTemplParams" colspan="2"><a id="a6f46ac1f4b4d520c24e144f6462926d4"></a>
 template&lt;std::size_t... Idx&gt; </td></tr>
 <tr class="memitem:a6f46ac1f4b4d520c24e144f6462926d4"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>reversed_index_sequence_impl</b> (std::index_sequence&lt; Idx... &gt; const &amp;) -&gt; decltype(std::index_sequence&lt; sizeof...(Idx) - 1U - Idx... &gt;{})</td></tr>

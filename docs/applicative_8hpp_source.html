@@ -218,31 +218,32 @@ $(function() {
 <div class="line"><a name="l00180"></a><span class="lineno"><a class="line" href="structmpc_1_1detail_1_1lift_a__op.html">  180</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structmpc_1_1detail_1_1lift_a__op.html">liftA_op</a>;</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="keyword">template</span> &lt;std::size_t N, std::size_t... Idx&gt;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    requires (N &gt; 2)</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    requires (N &gt; 1)</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    struct <a class="code" href="structmpc_1_1detail_1_1lift_a__op.html">liftA_op</a>&lt;N, std::index_sequence&lt;Idx...&gt;&gt; {</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">class</span> Bound&gt;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;      constexpr <span class="keyword">auto</span> operator()(Bound&amp;&amp; bound) <span class="keyword">const</span> noexcept(</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      noexcept(   reversed_liftA(std::get&lt;Idx&gt;(std::forward&lt;Bound&gt;(bound))...)))</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;      -&gt; decltype(reversed_liftA(std::get&lt;Idx&gt;(std::forward&lt;Bound&gt;(bound))...))</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      { <span class="keywordflow">return</span>    reversed_liftA(std::get&lt;Idx&gt;(std::forward&lt;Bound&gt;(bound))...); }</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">class</span>... Args&gt;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;      requires (<span class="keyword">sizeof</span>...(Args) == N + 1)</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;      constexpr auto operator()(Args&amp;&amp;... args) const noexcept(</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;      noexcept(   this-&gt;operator()(std::forward_as_tuple(std::forward&lt;Args&gt;(args)...))))</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;      -&gt; decltype(this-&gt;operator()(std::forward_as_tuple(std::forward&lt;Args&gt;(args)...)))</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;      { <span class="keywordflow">return</span>    this-&gt;operator()(std::forward_as_tuple(std::forward&lt;Args&gt;(args)...)); }</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    };</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  } <span class="comment">// namespace detail</span></div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  <span class="keyword">inline</span> <span class="keyword">namespace </span>cpo {</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> N&gt;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <a class="code" href="alternative_8hpp.html#a05b4c9cd81d5605f3a48153296632357">requires</a> (N &gt; 1)</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    inline constexpr perfect_forwarded_t&lt;detail::liftA_op&lt;N&gt;&gt; liftA{};</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  } <span class="comment">// namespace cpo</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;} <span class="comment">// namespace mpc</span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment">// clang-format on</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;      <span class="comment">// WORKAROUND: std::tuple_element (and therefore, std::get) is not SFINAE-friendly in Clang.</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">class </span>Bound, <span class="keyword">class </span>= std::enable_if_t&lt;<span class="keyword">sizeof</span>...(Idx) == std::tuple_size_v&lt;Bound&gt;&gt;&gt;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      constexpr <span class="keyword">auto</span> <span class="keyword">operator</span>()(Bound&amp;&amp; bound) <span class="keyword">const</span> noexcept(</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;      noexcept(   reversed_liftA(std::get&lt;Idx&gt;(std::forward&lt;Bound&gt;(bound))...)))</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      -&gt; decltype(reversed_liftA(std::get&lt;Idx&gt;(std::forward&lt;Bound&gt;(bound))...))</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      { <span class="keywordflow">return</span>    reversed_liftA(std::get&lt;Idx&gt;(std::forward&lt;Bound&gt;(bound))...); }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">class</span>... Args&gt;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;      requires (<span class="keyword">sizeof</span>...(Args) == N + 1)</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;      constexpr auto operator()(Args&amp;&amp;... args) const noexcept(</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;      noexcept(   this-&gt;operator()(std::forward_as_tuple(std::forward&lt;Args&gt;(args)...))))</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;      -&gt; decltype(this-&gt;operator()(std::forward_as_tuple(std::forward&lt;Args&gt;(args)...)))</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;      { <span class="keywordflow">return</span>    this-&gt;operator()(std::forward_as_tuple(std::forward&lt;Args&gt;(args)...)); }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    };</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  } <span class="comment">// namespace detail</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  <span class="keyword">inline</span> <span class="keyword">namespace </span>cpo {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> N&gt;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <a class="code" href="alternative_8hpp.html#a05b4c9cd81d5605f3a48153296632357">requires</a> (N &gt; 1)</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    inline constexpr perfect_forwarded_t&lt;detail::liftA_op&lt;N&gt;&gt; liftA{};</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  } <span class="comment">// namespace cpo</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;} <span class="comment">// namespace mpc</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">// clang-format on</span></div>
 <div class="ttc" id="aalternative_8hpp_html_a05b4c9cd81d5605f3a48153296632357"><div class="ttname"><a href="alternative_8hpp.html#a05b4c9cd81d5605f3a48153296632357">mpc::cpo::requires</a></div><div class="ttdeci">requires requires</div><div class="ttdoc">empty :: f a</div><div class="ttdef"><b>Definition:</b> alternative.hpp:52</div></div>
 <div class="ttc" id="aapplicative_8hpp_html_a458b73202555cc0a7de0e2bd4bc16f13"><div class="ttname"><a href="applicative_8hpp.html#a458b73202555cc0a7de0e2bd4bc16f13">mpc::applicatives::discard1st_opt</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::discard1st_opt_op &gt; discard1st_opt</div><div class="ttdoc">discard1st_opt x y = seq_apply (id &lt;$ x) y</div><div class="ttdef"><b>Definition:</b> applicative.hpp:160</div></div>
 <div class="ttc" id="aapplicative_8hpp_html_a58ce6848960e0c8ff588d944b3be26d8"><div class="ttname"><a href="applicative_8hpp.html#a58ce6848960e0c8ff588d944b3be26d8">mpc::cpo::discard1st</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::discard1st_op &gt; discard1st</div><div class="ttdoc">discard1st :: f a -&gt; f b -&gt; f b</div><div class="ttdef"><b>Definition:</b> applicative.hpp:97</div></div>
