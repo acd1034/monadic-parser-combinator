@@ -73,18 +73,9 @@ Noteworthy Features</h1>
 <li>Haskell-like syntax supports in C++</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md2"></a>
-Supported Compilers</h1>
-<p>The author's environment is</p><ul>
-<li>GCC 11.2.0</li>
-</ul>
-<h1><a class="anchor" id="autotoc_md3"></a>
-Library Dependencies</h1>
-<p>This library depends on no external libraries.</p>
-<h1><a class="anchor" id="autotoc_md4"></a>
 Examples</h1>
 <p>A sample code written in Haskell is shown below.</p>
-<div class="fragment"><div class="line">{hs:example.hs} </div>
-<div class="line">tick :: StateT Int Identity Int</div>
+<div class="fragment"><div class="line">tick :: StateT Int Identity Int</div>
 <div class="line">tick = do</div>
 <div class="line">  n &lt;- get</div>
 <div class="line">  modify (+ 1)</div>
@@ -100,26 +91,36 @@ Examples</h1>
 <div class="line">main :: IO ()</div>
 <div class="line">main = print $ runState threeTicks 5</div>
 </div><!-- fragment --><p>Using this library, you can rewrite this code in C++ as follows:</p>
-<div class="fragment"><div class="line">{cpp:example.cpp} </div>
-<div class="line">using Fn1 = decltype([](int n, auto&amp;&amp;) { return n; });</div>
-<div class="line">using Fn2 = decltype([](int n1, int n2, int n3) { return n1 + n2 + n3; });</div>
+<div class="fragment"><div class="line"><span class="keyword">using</span> Fn1 = decltype([](<span class="keywordtype">int</span> n, <span class="keyword">auto</span>&amp;&amp;) { <span class="keywordflow">return</span> n; });</div>
+<div class="line"><span class="keyword">using</span> Fn2 = decltype([](<span class="keywordtype">int</span> n1, <span class="keywordtype">int</span> n2, <span class="keywordtype">int</span> n3) { <span class="keywordflow">return</span> n1 + n2 + n3; });</div>
 <div class="line"> </div>
-<div class="line">const auto tick = mpc::liftA2(</div>
-<div class="line">  mpc::perfect_forwarded_t&lt;Fn1&gt;{},</div>
+<div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> tick = <a class="code" href="applicative_8hpp.html#ac29ddb6aecde8d45070bb966739ac615">mpc::liftA2</a>(</div>
+<div class="line">  <a class="code" href="structmpc_1_1perfect__forwarded__t.html">mpc::perfect_forwarded_t&lt;Fn1&gt;</a>{},</div>
 <div class="line">  mpc::get1&lt;ST&gt;,</div>
 <div class="line">  mpc::modify&lt;ST&gt; % (mpc::plus % 1)</div>
 <div class="line">);</div>
 <div class="line"> </div>
-<div class="line">const auto threeTicks = mpc::liftA&lt;3&gt;(</div>
-<div class="line">  mpc::perfect_forwarded_t&lt;Fn2&gt;{},</div>
+<div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> threeTicks = mpc::liftA&lt;3&gt;(</div>
+<div class="line">  <a class="code" href="structmpc_1_1perfect__forwarded__t.html">mpc::perfect_forwarded_t&lt;Fn2&gt;</a>{},</div>
 <div class="line">  tick,</div>
 <div class="line">  tick,</div>
 <div class="line">  tick</div>
 <div class="line">);</div>
 <div class="line"> </div>
-<div class="line">const auto [a, s] = mpc::run_State % threeTicks % 5;</div>
-<div class="line">std::cout &lt;&lt; a &lt;&lt; &quot; &quot; &lt;&lt; s &lt;&lt; std::endl;</div>
-</div><!-- fragment --> </div></div><!-- PageDoc -->
+<div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> [a, s] = mpc::run_State % threeTicks % 5;</div>
+<div class="line">std::cout &lt;&lt; a &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; s &lt;&lt; std::endl;</div>
+<div class="ttc" id="aapplicative_8hpp_html_ac29ddb6aecde8d45070bb966739ac615"><div class="ttname"><a href="applicative_8hpp.html#ac29ddb6aecde8d45070bb966739ac615">mpc::cpo::liftA2</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::liftA2_op &gt; liftA2</div><div class="ttdoc">liftA2 :: (a -&gt; b -&gt; c) -&gt; f a -&gt; f b -&gt; f c</div><div class="ttdef"><b>Definition:</b> applicative.hpp:91</div></div>
+<div class="ttc" id="astructmpc_1_1perfect__forwarded__t_html"><div class="ttname"><a href="structmpc_1_1perfect__forwarded__t.html">mpc::perfect_forwarded_t</a></div><div class="ttdef"><b>Definition:</b> perfect_forward.hpp:21</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md3"></a>
+Supported Compilers</h1>
+<p>The code will work on the following compilers:</p><ul>
+<li>GCC 11.2.0</li>
+<li>Clang 13.0.0</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Library Dependencies</h1>
+<p>This library depends on no external libraries. </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
