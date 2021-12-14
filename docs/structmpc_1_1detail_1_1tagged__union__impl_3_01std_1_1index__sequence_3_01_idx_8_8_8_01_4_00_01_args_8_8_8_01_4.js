@@ -1,0 +1,4 @@
+var structmpc_1_1detail_1_1tagged__union__impl_3_01std_1_1index__sequence_3_01_idx_8_8_8_01_4_00_01_args_8_8_8_01_4 =
+[
+    [ "type", "structmpc_1_1detail_1_1tagged__union__impl_3_01std_1_1index__sequence_3_01_idx_8_8_8_01_4_00_01_args_8_8_8_01_4.html#a3786f8d01eb1b0b6706f55db425c9446", null ]
+];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_3ctt_3emonadic_2dparser_2dcombinator_3c_2ftt_3e_20_28tentative_29_390',['&lt;tt&gt;monadic-parser-combinator&lt;/tt&gt; (tentative)',['../index.html',1,'']]]
+  ['haskell_2dlike_20feature_20supports_20in_20c_2b_2b_390',['Haskell-like feature supports in C++',['../index.html',1,'']]]
 ];
