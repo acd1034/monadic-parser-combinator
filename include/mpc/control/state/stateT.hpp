@@ -82,7 +82,7 @@ namespace mpc {
   // [x] monad_trans
 
   /// instance (Monad m) => Monad (StateT s m) where
-  ///     m >>= k  = StateT $ \ s -> do
+  ///     m >>= k  = StateT $ s -> do
   ///         ~(a, s') <- run_StateT m s
   ///         run_StateT (k a) s'
   template <class S, monad M>
@@ -132,8 +132,8 @@ namespace mpc {
   };
 
   /// instance (Functor m) => Functor (StateT s m) where
-  ///     fmap f m = StateT $ \ s ->
-  ///         fmap (\ ~(a, s') -> (f a, s')) $ run_StateT m s
+  ///     fmap f m = StateT $ s ->
+  ///         fmap (~(a, s') -> (f a, s')) $ run_StateT m s
   template <class S, monad M>
   struct functor_traits<StateT<S, M>> {
     // fmap  :: (a -> b) -> f a -> f b
@@ -182,12 +182,12 @@ namespace mpc {
   };
 
   /// instance (Functor m, Monad m) => Applicative (StateT s m) where
-  ///     pure a = StateT $ \ s -> return (a, s)
-  ///     StateT mf <*> StateT mx = StateT $ \ s -> do
+  ///     pure a = StateT $ s -> return (a, s)
+  ///     StateT mf <*> StateT mx = StateT $ s -> do
   ///         ~(f, s') <- mf s
   ///         ~(x, s'') <- mx s'
   ///         return (f x, s'')
-  ///     m *> k = m >>= \_ -> k
+  ///     m *> k = m >>= (_ -> k)
   template <class S, monad M>
   struct applicative_traits<StateT<S, M>> {
     /// pure   :: a -> f a
@@ -217,8 +217,8 @@ namespace mpc {
   };
 
   /// instance (Functor m, MonadPlus m) => Alternative (StateT s m) where
-  ///     empty = StateT $ \ _ -> mzero
-  ///     StateT m <|> StateT n = StateT $ \ s -> m s `mplus` n s
+  ///     empty = StateT $ (_ -> mzero)
+  ///     StateT m <|> StateT n = StateT $ s -> m s `mplus` n s
   namespace detail {
     template <class ST>
     struct StateT_alternative_traits_empty {};
@@ -269,7 +269,7 @@ namespace mpc {
       detail::StateT_alternative_traits_combine<StateT<S, M>> {};
 
   /// instance MonadTrans (StateT s) where
-  ///     lift m = StateT $ \ s -> do
+  ///     lift m = StateT $ s -> do
   ///         a <- m
   ///         return (a, s)
   template <class S, monad M>

@@ -75,7 +75,7 @@ namespace mpc {
       ///   return a
 
       /// put :: s -> m ()
-      /// put s = state (\_ -> ((), s))
+      /// put s = state (_ -> ((), s))
       template <class ST>
       struct put_op {
         struct closure {
