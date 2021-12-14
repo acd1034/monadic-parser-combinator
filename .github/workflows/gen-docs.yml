@@ -23,10 +23,6 @@ jobs:
       with:
         submodules: recursive
 
-    - name: Check out the specific version
-      working-directory: ${{runner.workspace}}
-      run: git checkout v1.6.1
-
     - name: Build by Doxygen
       uses: mattnotmitt/doxygen-action@v1
       with:
