@@ -92,14 +92,9 @@ namespace mpc {
       struct nested_closure {
         template <class Fn, class U>
         constexpr auto operator()(Fn&& f, U&& u) const
-        // FIXME
-        // noexcept(
-        //   noexcept())
-        //   -> decltype()
-        {
-          auto&& [a, s] = std::forward<U>(u);
-          return run_StateT % std::invoke(std::forward<Fn>(f), std::forward<decltype(a)>(a)) % std::forward<decltype(s)>(s);
-        }
+        noexcept(noexcept(run_StateT % std::invoke(std::forward<Fn>(f), fst(std::forward<U>(u))) % snd(std::forward<U>(u))))
+        -> decltype(      run_StateT % std::invoke(std::forward<Fn>(f), fst(std::forward<U>(u))) % snd(std::forward<U>(u)))
+        { return          run_StateT % std::invoke(std::forward<Fn>(f), fst(std::forward<U>(u))) % snd(std::forward<U>(u)); }
       };
 
       struct closure {
@@ -141,14 +136,9 @@ namespace mpc {
       struct nested_closure {
         template <class Fn, class U>
         constexpr auto operator()(Fn&& f, U&& u) const
-        // FIXME
-        // noexcept(
-        //   noexcept())
-        //   -> decltype()
-        {
-          auto&& [a, s] = std::forward<U>(u);
-          return std::make_pair(std::invoke(std::forward<Fn>(f), std::forward<decltype(a)>(a)), std::forward<decltype(s)>(s));
-        }
+        noexcept(noexcept(std::make_pair(std::invoke(std::forward<Fn>(f), fst(std::forward<U>(u))), snd(std::forward<U>(u)))))
+        -> decltype(      std::make_pair(std::invoke(std::forward<Fn>(f), fst(std::forward<U>(u))), snd(std::forward<U>(u))))
+        { return          std::make_pair(std::invoke(std::forward<Fn>(f), fst(std::forward<U>(u))), snd(std::forward<U>(u))); }
       };
 
       struct closure {
@@ -227,8 +217,17 @@ namespace mpc {
     requires has_alternative_traits_empty<StateT_monad_t<ST>>
     struct StateT_alternative_traits_empty<ST> {
       struct empty_op {
+        struct closure {
+          template <class T>
+          constexpr auto operator()(const T& t) const noexcept(
+            noexcept(   *mpc::empty<StateT_monad_t<ST>>))
+            -> decltype(*mpc::empty<StateT_monad_t<ST>>) {
+            return      *mpc::empty<StateT_monad_t<ST>>;
+          }
+        };
+
         constexpr auto operator()() const {
-          return make_StateT<StateT_state_t<ST>>([](auto&&) { return *mpc::empty<StateT_monad_t<ST>>; });
+          return make_StateT<StateT_state_t<ST>>(perfect_forwarded_t<closure>{});
         }
       };
 
