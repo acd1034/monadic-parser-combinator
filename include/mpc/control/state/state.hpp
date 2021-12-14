@@ -11,41 +11,48 @@
 namespace mpc {
   // State
   // [x] State
-  // [x] isState
+  // [x] is_State
   // [x] State_state_t
-  // [ ] State_monad_t
+  // [x] State_monad_t
   // [x] make_State
   // [x] run_State
 
   /// type State s = StateT s Identity
-  template <copy_constructible_object Fn, class S>
-  requires std::invocable<Fn, S> and is_Identity<std::invoke_result_t<Fn, S>>
-  using State = StateT<Fn, S>;
+  template <class S, is_Identity M>
+  using State = StateT<S, M>;
 
-  // isState
+  // is_State
   namespace detail {
     template <class>
-    struct is_State : std::false_type {};
+    struct is_State_impl : std::false_type {};
 
-    template <copy_constructible_object Fn, class S>
-    requires std::invocable<Fn, S> and is_Identity<std::invoke_result_t<Fn, S>>
-    struct is_State<StateT<Fn, S>> : std::true_type {
-    };
+    template <class S, is_Identity M>
+    struct is_State_impl<StateT<S, M>> : std::true_type {};
   } // namespace detail
 
   template <class T>
-  concept isState = detail::is_State<std::remove_cvref_t<T>>::value;
+  concept is_State = detail::is_State_impl<std::remove_cvref_t<T>>::value;
 
-  template <isState ST>
+  template <is_State ST>
   using State_state_t = StateT_state_t<ST>;
 
-  template<isState ST>
+  template<is_State ST>
   using State_monad_t = StateT_monad_t<ST>;
 
   // make_State, run_State
   namespace detail {
+    template <class S>
+    struct make_State_op {
+      template <class Fn>
+      requires std::invocable<std::decay_t<Fn>, const std::decay_t<S>&> and is_Identity<std::invoke_result_t<std::decay_t<Fn>, const std::decay_t<S>&>>
+      constexpr auto operator()(Fn&& f) const {
+        using M = std::invoke_result_t<std::decay_t<Fn>, const std::decay_t<S>&>;
+        return State<const std::decay_t<S>&, M>(std::forward<Fn>(f));
+      }
+    };
+
     struct run_State_op {
-      template <isState ST>
+      template <is_State ST>
       constexpr auto operator()(ST&& x) const noexcept
         -> decltype(compose(run_Identity, run_StateT % std::forward<ST>(x))) {
         return compose(run_Identity, run_StateT % std::forward<ST>(x));
@@ -55,7 +62,7 @@ namespace mpc {
 
   namespace cpo {
     template <class S>
-    inline constexpr auto make_State = make_StateT<S>;
+    inline constexpr perfect_forwarded_t<detail::make_State_op<S>> make_State{};
 
     inline constexpr perfect_forwarded_t<detail::run_State_op> run_State{};
   } // namespace cpo
@@ -70,7 +77,7 @@ namespace mpc {
   namespace detail {
     // clang-format off
     struct eval_State_op {
-      template <isState ST, class T>
+      template <is_State ST, class T>
       constexpr auto operator()(ST&& x, T&& t) const noexcept(
         noexcept(   fst(run_State % std::forward<ST>(x) % std::forward<T>(t))))
         -> decltype(fst(run_State % std::forward<ST>(x) % std::forward<T>(t))) {
@@ -79,7 +86,7 @@ namespace mpc {
     };
 
     struct exec_State_op {
-      template <isState ST, class T>
+      template <is_State ST, class T>
       constexpr auto operator()(ST&& x, T&& t) const noexcept(
         noexcept(   snd(run_State % std::forward<ST>(x) % std::forward<T>(t))))
         -> decltype(snd(run_State % std::forward<ST>(x) % std::forward<T>(t))) {
@@ -88,7 +95,7 @@ namespace mpc {
     };
 
     struct map_State_op {
-      template <class Fn2, isState ST>
+      template <class Fn2, is_State ST>
       constexpr auto operator()(Fn2&& f, ST&& x) const noexcept(
         noexcept(   map_StateT % compose(make_Identity, compose(std::forward<Fn2>(f), run_Identity)) % std::forward<ST>(x)))
         -> decltype(map_StateT % compose(make_Identity, compose(std::forward<Fn2>(f), run_Identity)) % std::forward<ST>(x)) {

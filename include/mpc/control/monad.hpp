@@ -134,7 +134,7 @@ namespace mpc {
 
   namespace detail {
     /// karrow :: Monad m => (a -> m b) -> (b -> m c) -> (a -> m c)
-    /// karrow f g = \x -> f x >>= g
+    /// karrow f g = x -> (f x >>= g)
     struct karrow_op {
       struct closure {
         template <class Fn, class Gn, class A>

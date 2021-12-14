@@ -15,7 +15,7 @@ namespace mpc {
   template <class ST>
   concept monad_state = requires {
     monad_state_traits<std::remove_cvref_t<ST>>::state;
-    monad_state_traits<std::remove_cvref_t<ST>>::get1;
+    monad_state_traits<std::remove_cvref_t<ST>>::gets();
     monad_state_traits<std::remove_cvref_t<ST>>::put;
   };
 
@@ -30,6 +30,15 @@ namespace mpc {
       noexcept(   monad_state_traits<std::remove_cvref_t<ST>>::state(std::forward<Fn>(fn))))
       -> decltype(monad_state_traits<std::remove_cvref_t<ST>>::state(std::forward<Fn>(fn)))
       { return    monad_state_traits<std::remove_cvref_t<ST>>::state(std::forward<Fn>(fn)); }
+    };
+
+    /// gets :: m s
+    template <class ST>
+    struct gets_op {
+      constexpr auto operator*() const noexcept(
+      noexcept(   monad_state_traits<std::remove_cvref_t<ST>>::gets()))
+      -> decltype(monad_state_traits<std::remove_cvref_t<ST>>::gets())
+      { return    monad_state_traits<std::remove_cvref_t<ST>>::gets(); }
     };
 
     /// put :: s -> m ()
@@ -48,12 +57,9 @@ namespace mpc {
     template <class ST>
     inline constexpr perfect_forwarded_t<detail::state_op<ST>> state{};
 
-    /// get1 :: m s
+    /// gets :: m s
     template <class ST>
-    requires requires {
-      monad_state_traits<std::remove_cvref_t<ST>>::get1;
-    }
-    inline constexpr auto get1 = monad_state_traits<std::remove_cvref_t<ST>>::get1;
+    inline constexpr detail::gets_op<ST> gets{};
 
     /// put :: s -> m ()
     template <class ST>
@@ -62,7 +68,7 @@ namespace mpc {
 
   // Deducibles
   // [ ] state
-  // [x] get1
+  // [x] gets
   // [x] put
 
   namespace states {
@@ -74,8 +80,28 @@ namespace mpc {
       ///   put s'
       ///   return a
 
+      /// gets :: m s
+      /// gets = state (s -> (s, s))
+      template <class ST>
+      struct gets_op {
+        struct closure {
+          template <class T>
+          constexpr auto operator()(const T& t) const noexcept(
+            noexcept(   std::make_pair(t, t)))
+            -> decltype(std::make_pair(t, t)) {
+            return      std::make_pair(t, t);
+          }
+        };
+
+        constexpr auto operator()() const noexcept(
+          noexcept(   mpc::state<ST>(closure{})))
+          -> decltype(mpc::state<ST>(closure{})) {
+          return      mpc::state<ST>(closure{});
+        }
+      };
+
       /// put :: s -> m ()
-      /// put s = state (\_ -> ((), s))
+      /// put s = state (_ -> ((), s))
       template <class ST>
       struct put_op {
         struct closure {
@@ -100,13 +126,12 @@ namespace mpc {
     // template <class ST>
     // inline constexpr perfect_forwarded_t<detail::state_op<ST>> state{};
 
-    /// get1 :: m s
-    /// get1 = state (\s -> (s, s))
+    /// gets :: m s
     template <class ST>
     requires requires {
       monad_state_traits<std::remove_cvref_t<ST>>::state;
     }
-    inline constexpr auto get1 = mpc::state<ST>([](const auto& t) { return std::make_pair(t, t); });
+    inline constexpr detail::gets_op<ST> gets{};
 
     /// put :: s -> m ()
     template <class ST>
@@ -119,9 +144,9 @@ namespace mpc {
   // Grobal methods
   // [x] modify
   // [ ] modify'
-  // [x] get2
+  // [x] getss
 
-  // modify, get2
+  // modify, getss
   namespace detail {
     /// modify :: MonadState s m => (s -> s) -> m ()
     template <class ST>
@@ -143,9 +168,9 @@ namespace mpc {
       }
     };
 
-    /// get2 :: MonadState s m => (s -> a) -> m a
+    /// getss :: MonadState s m => (s -> a) -> m a
     template <class ST>
-    struct get2_op {
+    struct getss_op {
       struct closure {
         template <class Fn, class T>
         constexpr auto operator()(Fn&& f, const T& t) const noexcept(
@@ -169,9 +194,9 @@ namespace mpc {
     template <class ST>
     inline constexpr perfect_forwarded_t<detail::modify_op<std::remove_cvref_t<ST>>> modify{};
 
-    /// get2 :: MonadState s m => (s -> a) -> m a
+    /// getss :: MonadState s m => (s -> a) -> m a
     template <class ST>
-    inline constexpr perfect_forwarded_t<detail::get2_op<std::remove_cvref_t<ST>>> get2{};
+    inline constexpr perfect_forwarded_t<detail::getss_op<std::remove_cvref_t<ST>>> getss{};
   } // namespace cpo
 }
 

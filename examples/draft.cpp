@@ -18,7 +18,7 @@ template <class T>
 using S = std::string_view;
 template <class V>
 using Monad = mpc::either<std::string, V>;
-using ST = mpc::StateT<std::function<Monad<std::pair<char, S>>(S)>, S>;
+using ST = mpc::StateT<S, Monad<std::pair<char, S>>>;
 template <mpc::is_StateT ST2>
 using StateT_value_in_monad_t =
   decltype(mpc::fmap(mpc::fst, std::declval<mpc::StateT_monad_t<ST2>>()));
@@ -47,8 +47,7 @@ struct mpc::alternative_traits<mpc::either<std::string, V>> {
 using mpc::operators::alternatives::operator||;
 
 #define LAMBDA(lambda)                                                                             \
-  mpc::perfect_forwarded_t<decltype(lambda)>{}
-
+  mpc::perfect_forwarded_t<decltype(lambda)> {}
 
 inline constexpr auto parseTest = LAMBDA([](const auto& st, S sv) -> void {
   const auto result = mpc::eval_StateT % st % sv;
@@ -80,34 +79,34 @@ inline constexpr auto left =
 inline constexpr auto char1 = LAMBDA([](char c) {
   return satisfy % (mpc::equal_to % std::move(c)) or left % ("expecting char "s + mpc::quoted(c));
 });
-inline constexpr auto anyChar = satisfy % (mpc::constant % true);
-const auto digit = satisfy % mpc::isdigit or left % "expecting digit"s;
-const auto alpha = satisfy % mpc::isalpha or left % "expecting alpha"s;
-
-// FIXME
-// const auto test1 = mpc::sequence % std::list{anyChar, anyChar};
-// const auto test2 = mpc::sequence % std::list{anyChar, anyChar, anyChar};
-// FIXME: alpha と digit の型が異なるのでこれはできない。StateT を std::function で定義し直すべし
-// const auto test3 = mpc::sequence % std::list{alpha, digit, digit};
-const auto test4 = digit or alpha;
 
 int main() {
+  const auto anyChar = satisfy % (mpc::constant % true);
+  const auto digit = satisfy % mpc::isdigit or left % "expecting digit"s;
+  const auto alpha = satisfy % mpc::isalpha or left % "expecting alpha"s;
+  // FIXME
+  // const auto test1 = mpc::sequence % std::list{anyChar, anyChar};
+  // const auto test2 = mpc::sequence % std::list{anyChar, anyChar, anyChar};
+  // FIXME: alpha と digit の型が異なるのでこれはできない。StateT を std::function で定義し直すべし
+  // const auto test3 = mpc::sequence % std::list{alpha, digit, digit};
+  const auto test4 = digit or alpha;
+
   parseTest(anyChar, "");
   parseTest(anyChar, "abc");
-  // parseTest(test1,       "abc");
-  // parseTest(test2,       "abc");
-  // parseTest(test2,       "12"); // NG
-  // parseTest(test2,       "123");
+  // parseTest(test1, "abc");
+  // parseTest(test2, "abc");
+  // parseTest(test2, "12"); // NG
+  // parseTest(test2, "123");
   parseTest(char1 % 'a', "abc");
   parseTest(char1 % 'a', "123"); // NG
   parseTest(digit, "abc");       // NG
   parseTest(digit, "123");
   parseTest(alpha, "abc");
   parseTest(alpha, "123"); // NG
-  // parseTest(test3,       "abc"); // NG
-  // parseTest(test3,       "123"); // NG
-  // parseTest(test3,       "a23");
-  // parseTest(test3,       "a234");
+  // parseTest(test3, "abc"); // NG
+  // parseTest(test3, "123"); // NG
+  // parseTest(test3, "a23");
+  // parseTest(test3, "a234");
   parseTest(test4, "a");
   parseTest(test4, "1");
   parseTest(test4, "!"); // NG

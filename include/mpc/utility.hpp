@@ -1,4 +1,4 @@
-/// @file utility
+/// @file utility.hpp
 #pragma once
 #include <mpc/utility/alternative_value_t.hpp>
 #include <mpc/utility/copyable_box.hpp>

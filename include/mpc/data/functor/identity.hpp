@@ -84,7 +84,7 @@ namespace mpc {
   ///     m >>= k  = k (runIdentity m)
   template <copy_constructible_object T>
   struct monad_traits<Identity<T>> {
-    /// (>>=)  :: forall a b. m a -> (a -> m b) -> m b -- infixl 1
+    /// (>>=)  :: forall a b. m a -> (a -> m b) -> m b
     struct bind_op {
       template <is_Identity I, class F>
       constexpr auto operator()(I&& x, F&& f) const

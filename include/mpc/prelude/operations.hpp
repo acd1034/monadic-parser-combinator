@@ -19,7 +19,7 @@ namespace mpc::inline cpo {
   inline constexpr perfect_forwarded_t<std::ranges::less> less;
   inline constexpr perfect_forwarded_t<std::ranges::greater_equal> greater_equal;
   inline constexpr perfect_forwarded_t<std::ranges::less_equal> less_equal;
-  // WORKAROUND
+  // WORKAROUND: LLVM 13.0.0 has not implemented `std::compare_three_way`
   // inline constexpr perfect_forwarded_t<std::compare_three_way> compare_three_way;
 
   // Logical operations
