@@ -226,8 +226,10 @@ namespace mpc {
           }
         };
 
-        constexpr auto operator()() const {
-          return make_StateT<StateT_state_t<ST>>(perfect_forwarded_t<closure>{});
+        constexpr auto operator()() const noexcept(
+          noexcept(   make_StateT<StateT_state_t<ST>>(closure{})))
+          -> decltype(make_StateT<StateT_state_t<ST>>(closure{})) {
+          return      make_StateT<StateT_state_t<ST>>(closure{});
         }
       };
 
