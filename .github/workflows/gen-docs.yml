@@ -21,9 +21,9 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    - name: Check out the specific version
-      working-directory: ${{runner.workspace}}
-      run: git checkout v1.6.1
+    # - name: Check out the specific version
+    #   working-directory: ${{runner.workspace}}
+    #   run: git checkout v1.6.1
 
     - name: Build by Doxygen
       uses: mattnotmitt/doxygen-action@v1
