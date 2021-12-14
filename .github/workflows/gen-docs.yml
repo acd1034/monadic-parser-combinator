@@ -23,10 +23,11 @@ jobs:
       with:
         submodules: recursive
 
-    - name: Build by Doxygen
-      uses: mattnotmitt/doxygen-action@v1
+    - name: Doxygen Action
+      uses: mattnotmitt/doxygen-action@v1.3.1
       with:
           doxyfile-path: 'Doxyfile'
+          working-directory: '.'
 
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
