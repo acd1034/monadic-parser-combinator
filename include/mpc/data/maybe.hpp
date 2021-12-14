@@ -161,6 +161,12 @@ namespace mpc {
   ///     l       <|> _ = l
   template <class T1>
   struct alternative_traits<maybe<T1>> {
+    struct empty_op {
+      constexpr auto operator()() const -> maybe<T1> {
+        return nothing;
+      }
+    };
+
     struct combine_op {
       template <is_maybe M1, is_maybe M2>
       requires std::same_as<std::remove_cvref_t<M1>, std::remove_cvref_t<M2>>
@@ -170,7 +176,7 @@ namespace mpc {
       }
     };
 
-    static constexpr auto empty = maybe<T1>{nothing};
+    static constexpr empty_op empty{};
     static constexpr combine_op combine{};
   };
 } // namespace mpc

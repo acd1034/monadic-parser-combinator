@@ -82,6 +82,7 @@ TEST_CASE("data maybe", "[data]") {
       const maybe1 e2{mpc::make_just(4.0)};
       const maybe1 e3{mpc::nothing};
 
+      CHECK(*mpc::empty<maybe1> == maybe1{mpc::nothing});
       CHECK(mpc::combine(e1, e2) == e1);
       CHECK(mpc::combine(e3, e2) == e2);
 

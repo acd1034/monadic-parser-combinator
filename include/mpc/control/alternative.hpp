@@ -16,7 +16,7 @@ namespace mpc {
   namespace detail {
     template <class F>
     concept has_alternative_traits_empty = requires {
-      alternative_traits<std::remove_cvref_t<F>>::empty;
+      alternative_traits<std::remove_cvref_t<F>>::empty();
     };
 
     template <class F>
@@ -35,10 +35,20 @@ namespace mpc {
   // class requirements
 
   namespace detail {
+    /// empty :: f a
+    template <class F>
+    struct empty_op {
+      constexpr auto operator*() const noexcept(
+      noexcept(   alternative_traits<std::remove_cvref_t<F>>::empty()))
+      -> decltype(alternative_traits<std::remove_cvref_t<F>>::empty())
+      { return    alternative_traits<std::remove_cvref_t<F>>::empty(); }
+    };
+
     /// combine :: f a -> f a -> f a
     struct combine_op {
       template <class Fa, class Fb>
-      /* requires std::same_as<std::remove_cvref_t<Fa>, std::remove_cvref_t<Fb>> */
+      // TODO
+      // requires std::same_as<std::remove_cvref_t<Fa>, std::remove_cvref_t<Fb>>
       constexpr auto operator()(Fa&& fa, Fb&& fb) const noexcept(
       noexcept(   alternative_traits<std::remove_cvref_t<Fa>>::combine(std::forward<Fa>(fa), std::forward<Fb>(fb))))
       -> decltype(alternative_traits<std::remove_cvref_t<Fa>>::combine(std::forward<Fa>(fa), std::forward<Fb>(fb)))
@@ -49,17 +59,15 @@ namespace mpc {
   inline namespace cpo {
     /// empty :: f a
     template <class F>
-    requires requires {
-      alternative_traits<std::remove_cvref_t<F>>::empty;
-    }
-    inline constexpr auto empty = alternative_traits<std::remove_cvref_t<F>>::empty;
+    inline constexpr detail::empty_op<F> empty{};
 
-    /// combine :: f a -> f a -> f a -- infixl 3
+    /// combine :: f a -> f a -> f a
     inline constexpr perfect_forwarded_t<detail::combine_op> combine{};
   } // namespace cpo
 
   namespace operators::alternatives {
     template <class Fa, class Fb>
+    // TODO
     requires /* std::same_as<std::remove_cvref_t<Fa>, std::remove_cvref_t<Fb>> and */ requires {
       alternative_traits<std::remove_cvref_t<Fa>>::combine;
     }

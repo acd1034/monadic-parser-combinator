@@ -226,7 +226,13 @@ namespace mpc {
     template <is_StateT ST>
     requires has_alternative_traits_empty<StateT_monad_t<ST>>
     struct StateT_alternative_traits_empty<ST> {
-      static constexpr auto empty = make_StateT<StateT_state_t<ST>>([](auto&&) { return mpc::empty<StateT_monad_t<ST>>; });
+      struct empty_op {
+        constexpr auto operator()() const {
+          return make_StateT<StateT_state_t<ST>>([](auto&&) { return *mpc::empty<StateT_monad_t<ST>>; });
+        }
+      };
+
+      static constexpr empty_op empty{};
     };
 
     template <class ST>
