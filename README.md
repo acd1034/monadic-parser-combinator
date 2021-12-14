@@ -36,7 +36,7 @@ using Fn2 = decltype([](int n1, int n2, int n3) { return n1 + n2 + n3; });
 
 const auto tick = mpc::liftA2(
   mpc::perfect_forwarded_t<Fn1>{},
-  mpc::gets<ST>,
+  *mpc::gets<ST>,
   mpc::modify<ST> % (mpc::plus % 1)
 );
 

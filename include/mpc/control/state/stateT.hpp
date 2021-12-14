@@ -23,8 +23,8 @@ namespace mpc {
 
   /// newtype StateT s m a = StateT { run_StateT :: s -> m (a,s) }
   template <class S, monad M>
-  struct StateT : Identity<std::function<M(S)>> {
-    using Identity<std::function<M(S)>>::Identity;
+  struct StateT : Identity<perfect_forwarded_t<std::function<M(S)>>> {
+    using Identity<perfect_forwarded_t<std::function<M(S)>>>::Identity;
     using state_type = S;
     using monad_type = M;
   };

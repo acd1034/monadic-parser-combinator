@@ -15,7 +15,7 @@ namespace mpc {
   template <class ST>
   concept monad_state = requires {
     monad_state_traits<std::remove_cvref_t<ST>>::state;
-    monad_state_traits<std::remove_cvref_t<ST>>::gets;
+    monad_state_traits<std::remove_cvref_t<ST>>::gets();
     monad_state_traits<std::remove_cvref_t<ST>>::put;
   };
 
@@ -30,6 +30,15 @@ namespace mpc {
       noexcept(   monad_state_traits<std::remove_cvref_t<ST>>::state(std::forward<Fn>(fn))))
       -> decltype(monad_state_traits<std::remove_cvref_t<ST>>::state(std::forward<Fn>(fn)))
       { return    monad_state_traits<std::remove_cvref_t<ST>>::state(std::forward<Fn>(fn)); }
+    };
+
+    /// gets :: m s
+    template <class ST>
+    struct gets_op {
+      constexpr auto operator*() const noexcept(
+      noexcept(   monad_state_traits<std::remove_cvref_t<ST>>::gets()))
+      -> decltype(monad_state_traits<std::remove_cvref_t<ST>>::gets())
+      { return    monad_state_traits<std::remove_cvref_t<ST>>::gets(); }
     };
 
     /// put :: s -> m ()
@@ -50,10 +59,7 @@ namespace mpc {
 
     /// gets :: m s
     template <class ST>
-    requires requires {
-      monad_state_traits<std::remove_cvref_t<ST>>::gets;
-    }
-    inline constexpr auto gets = monad_state_traits<std::remove_cvref_t<ST>>::gets;
+    inline constexpr detail::gets_op<ST> gets{};
 
     /// put :: s -> m ()
     template <class ST>
@@ -73,6 +79,26 @@ namespace mpc {
       ///   let ~(a, s') = f s
       ///   put s'
       ///   return a
+
+      /// gets :: m s
+      /// gets = state (s -> (s, s))
+      template <class ST>
+      struct gets_op {
+        struct closure {
+          template <class T>
+          constexpr auto operator()(const T& t) const noexcept(
+            noexcept(   std::make_pair(t, t)))
+            -> decltype(std::make_pair(t, t)) {
+            return      std::make_pair(t, t);
+          }
+        };
+
+        constexpr auto operator()() const noexcept(
+          noexcept(   mpc::state<ST>(closure{})))
+          -> decltype(mpc::state<ST>(closure{})) {
+          return      mpc::state<ST>(closure{});
+        }
+      };
 
       /// put :: s -> m ()
       /// put s = state (_ -> ((), s))
@@ -101,12 +127,11 @@ namespace mpc {
     // inline constexpr perfect_forwarded_t<detail::state_op<ST>> state{};
 
     /// gets :: m s
-    /// gets = state (\s -> (s, s))
     template <class ST>
     requires requires {
       monad_state_traits<std::remove_cvref_t<ST>>::state;
     }
-    inline constexpr auto gets = mpc::state<ST>([](const auto& t) { return std::make_pair(t, t); });
+    inline constexpr detail::gets_op<ST> gets{};
 
     /// put :: s -> m ()
     template <class ST>
