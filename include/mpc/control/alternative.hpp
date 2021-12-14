@@ -47,8 +47,7 @@ namespace mpc {
     /// combine :: f a -> f a -> f a
     struct combine_op {
       template <class Fa, class Fb>
-      // TODO
-      // requires std::same_as<std::remove_cvref_t<Fa>, std::remove_cvref_t<Fb>>
+      requires std::same_as<std::remove_cvref_t<Fa>, std::remove_cvref_t<Fb>>
       constexpr auto operator()(Fa&& fa, Fb&& fb) const noexcept(
       noexcept(   alternative_traits<std::remove_cvref_t<Fa>>::combine(std::forward<Fa>(fa), std::forward<Fb>(fb))))
       -> decltype(alternative_traits<std::remove_cvref_t<Fa>>::combine(std::forward<Fa>(fa), std::forward<Fb>(fb)))
@@ -67,10 +66,7 @@ namespace mpc {
 
   namespace operators::alternatives {
     template <class Fa, class Fb>
-    // TODO
-    requires /* std::same_as<std::remove_cvref_t<Fa>, std::remove_cvref_t<Fb>> and */ requires {
-      alternative_traits<std::remove_cvref_t<Fa>>::combine;
-    }
+    requires std::same_as<std::remove_cvref_t<Fa>, std::remove_cvref_t<Fb>>
     inline constexpr auto operator||(Fa&& fa, Fb&& fb)
       noexcept(noexcept(mpc::combine(std::forward<Fa>(fa), std::forward<Fb>(fb))))
       -> decltype(      mpc::combine(std::forward<Fa>(fa), std::forward<Fb>(fb))) {
