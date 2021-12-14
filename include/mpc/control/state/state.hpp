@@ -13,7 +13,7 @@ namespace mpc {
   // [x] State
   // [x] is_State
   // [x] State_state_t
-  // [ ] State_monad_t
+  // [x] State_monad_t
   // [x] make_State
   // [x] run_State
 
