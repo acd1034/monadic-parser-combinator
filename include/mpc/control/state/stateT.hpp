@@ -87,7 +87,7 @@ namespace mpc {
   ///         run_StateT (k a) s'
   template <class S, monad M>
   struct monad_traits<StateT<S, M>> {
-    /// (>>=)  :: forall a b. m a -> (a -> m b) -> m b -- infixl 1
+    /// (>>=)  :: forall a b. m a -> (a -> m b) -> m b
     struct bind_op {
       struct nested_closure {
         template <class Fn, class U>
