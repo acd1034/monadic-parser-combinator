@@ -48,7 +48,7 @@ const auto threeTicks = mpc::liftA<3>(
 );
 
 const auto [a, s] = mpc::run_State % threeTicks % 5;
-std::cout << a << " " << s << std::endl; // 18 8
+std::cout << a << "," << s << std::endl; // 18,8
 ```
 
 ## Supported Compilers
