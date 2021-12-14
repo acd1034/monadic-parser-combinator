@@ -1,12 +1,11 @@
 /// @file stateT.hpp
 #pragma once
-#include <functional> // std::invoke
+#include <functional> // std::function, std::invoke
 #include <mpc/control/alternative.hpp>
 #include <mpc/control/monad.hpp>
 #include <mpc/control/state/class.hpp>
 #include <mpc/control/trans/class.hpp>
 #include <mpc/data/functor/identity.hpp>
-#include <mpc/functional/function.hpp>
 #include <mpc/prelude/compose.hpp>
 #include <mpc/prelude/fst.hpp>
 
@@ -24,10 +23,10 @@ namespace mpc {
 
   /// newtype StateT s m a = StateT { run_StateT :: s -> m (a,s) }
   template <class S, monad M>
-  struct StateT : Identity<function<M(S)>> {
+  struct StateT : Identity<std::function<M(S)>> {
+    using Identity<std::function<M(S)>>::Identity;
     using state_type = S;
     using monad_type = M;
-    using Identity<function<M(S)>>::Identity;
   };
 
   // is_StateT
