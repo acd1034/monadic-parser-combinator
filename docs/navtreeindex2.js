@@ -1,5 +1,17 @@
 var NAVTREEINDEX2 =
 {
+"structmpc_1_1detail_1_1_state_t__alternative__traits__combine_3_01_s_t_01_4_1_1combine__op_1_1closure.html#a5216ae9da9fb4398db1a82d4b849a9cc":[2,0,0,1,30,0,0,0],
+"structmpc_1_1detail_1_1_state_t__alternative__traits__empty.html":[2,0,0,1,27],
+"structmpc_1_1detail_1_1_state_t__alternative__traits__empty_3_01_s_t_01_4.html":[2,0,0,1,28],
+"structmpc_1_1detail_1_1bind__op.html":[2,0,0,1,11],
+"structmpc_1_1detail_1_1bind__op.html#adcfae663547cc908314805a6d81f3c38":[2,0,0,1,11,0],
+"structmpc_1_1detail_1_1clone__const.html":[2,0,0,1,71],
+"structmpc_1_1detail_1_1clone__const.html#a58d3fc6617a6c9141d715572cb8aa949":[2,0,0,1,71,0],
+"structmpc_1_1detail_1_1clone__cv.html":[2,0,0,1,75],
+"structmpc_1_1detail_1_1clone__cv.html#a9b6153d0da51ab16e459103abb60f0c7":[2,0,0,1,75,0],
+"structmpc_1_1detail_1_1clone__cvref.html":[2,0,0,1,79],
+"structmpc_1_1detail_1_1clone__cvref.html#a95d68c9c0f8627266dfce9b4d6509950":[2,0,0,1,79,0],
+"structmpc_1_1detail_1_1clone__reference.html":[2,0,0,1,77],
 "structmpc_1_1detail_1_1clone__reference.html#a259f6f776c2d68c731b34bf29c8a972c":[2,0,0,1,77,0],
 "structmpc_1_1detail_1_1clone__volatile.html":[2,0,0,1,73],
 "structmpc_1_1detail_1_1clone__volatile.html#a613452e62147d5d555ee01da69e36e74":[2,0,0,1,73,0],
@@ -237,17 +249,5 @@ var NAVTREEINDEX2 =
 "structmpc_1_1single.html#a838dcfc04277739de6950474b70a15e9":[2,0,0,37,9],
 "structmpc_1_1single.html#a989a02e44298d22724665ecb293ce879":[2,0,0,37,0],
 "structmpc_1_1single.html#ad00f1f1c3d49ab9fc5fda11b428cb0a1":[2,0,0,37,11],
-"structmpc_1_1single.html#ad29256e8b2719a8ef1806c75be098eef":[2,0,0,37,8],
-"structmpc_1_1single.html#ad5ef5631f7189a17cf28bcd73fb0be08":[2,0,0,37,1],
-"structmpc_1_1single.html#ada90fbcd3f3494ac1a126d2634ec3926":[2,0,0,37,3],
-"structmpc_1_1single.html#add795427d9fedd404abaa715cc99dc67":[2,0,0,37,2],
-"structmpc_1_1states_1_1detail_1_1put__op.html":[2,0,0,3,0,0],
-"structmpc_1_1states_1_1detail_1_1put__op.html#af3cf9247c298f96d19933b84f321d570":[2,0,0,3,0,0,1],
-"structmpc_1_1states_1_1detail_1_1put__op_1_1closure.html":[2,0,0,3,0,0,0],
-"structmpc_1_1states_1_1detail_1_1put__op_1_1closure.html#ac1e62c8e2ef95a5a929900076fea852d":[2,0,0,3,0,0,0,0],
-"structstd_1_1tuple__size_3_01mpc_1_1single_3_01_t_00_01_tag_01_4_01_4.html":[2,0,1,0],
-"tagged__union_8hpp.html":[3,0,0,0,1,5],
-"tagged__union_8hpp.html#a1b9cef3dd69d4ea5508eafcafacc13b1":[3,0,0,0,1,5,1],
-"tagged__union_8hpp.html#a1b9cef3dd69d4ea5508eafcafacc13b1":[1,0,1,51],
-"tagged__union_8hpp.html#a8a50a3a14e4c49833eaa41150a7b9f3c":[3,0,0,0,1,5,3]
+"structmpc_1_1single.html#ad29256e8b2719a8ef1806c75be098eef":[2,0,0,37,8]
 };
