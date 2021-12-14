@@ -4,7 +4,7 @@ BreakBeforeBraces: Attach
 ColumnLimit: 100
 ContinuationIndentWidth: 2
 IndentWidth: 2
-ReflowComments: true
+ReflowComments: false
 UseTab: Never
 
 # language core
