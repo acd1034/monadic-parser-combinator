@@ -93,10 +93,10 @@ $(document).ready(function(){initNavTree('structmpc_1_1detail_1_1make___state_t_
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aaff0bd7219cbd8c0e2307ff116b50707"><td class="memTemplParams" colspan="2"><a id="aaff0bd7219cbd8c0e2307ff116b50707"></a>
-template&lt;copy_constructible_object Fn&gt; </td></tr>
-<tr class="memitem:aaff0bd7219cbd8c0e2307ff116b50707"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator()</b> (Fn &amp;&amp;f) const</td></tr>
-<tr class="separator:aaff0bd7219cbd8c0e2307ff116b50707"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48f77e77f911ee610594d4699c09323e"><td class="memTemplParams" colspan="2"><a id="a48f77e77f911ee610594d4699c09323e"></a>
+template&lt;class Fn &gt; </td></tr>
+<tr class="memitem:a48f77e77f911ee610594d4699c09323e"><td class="memTemplItemLeft" align="right" valign="top">requires std::invocable&lt; std::decay_t&lt; Fn &gt;, const std::decay_t&lt; S &gt; &amp; &gt; and constexpr monad&lt; std::invoke_result_t&lt; std::decay_t&lt; Fn &gt;, const std::decay_t&lt; S &gt; &amp; &gt; &gt; auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator()</b> (Fn &amp;&amp;f) const</td></tr>
+<tr class="separator:a48f77e77f911ee610594d4699c09323e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/mpc/control/state/<a class="el" href="state_t_8hpp_source.html">stateT.hpp</a></li>

@@ -1,0 +1,4 @@
+var structmpc_1_1detail_1_1_state_t__alternative__traits__empty_3_01_s_t_01_4 =
+[
+    [ "empty_op", "structmpc_1_1detail_1_1_state_t__alternative__traits__empty_3_01_s_t_01_4_1_1empty__op.html", "structmpc_1_1detail_1_1_state_t__alternative__traits__empty_3_01_s_t_01_4_1_1empty__op" ]
+];

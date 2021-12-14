@@ -102,9 +102,11 @@ $(document).ready(function(){initNavTree('state_2state_8hpp.html',''); initResiz
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1is___state.html">mpc::detail::is_State&lt; class &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1is___state__impl.html">mpc::detail::is_State_impl&lt; class &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1is___state_3_01_state_t_3_01_fn_00_01_s_01_4_01_4.html">mpc::detail::is_State&lt; StateT&lt; Fn, S &gt; &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1is___state__impl_3_01_state_t_3_01_s_00_01_m_01_4_01_4.html">mpc::detail::is_State_impl&lt; StateT&lt; S, M &gt; &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1make___state__op.html">mpc::detail::make_State_op&lt; S &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1run___state__op.html">mpc::detail::run_State_op</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,30 +124,30 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ae614c2cc5d857b91416c9d7c5aa3047c"><td class="memTemplParams" colspan="2"><a id="ae614c2cc5d857b91416c9d7c5aa3047c"></a>
-template&lt;copy_constructible_object Fn, class S &gt; </td></tr>
-<tr class="memitem:ae614c2cc5d857b91416c9d7c5aa3047c"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="state_2state_8hpp.html#ae614c2cc5d857b91416c9d7c5aa3047c">mpc::State</a> = StateT&lt; Fn, S &gt;</td></tr>
-<tr class="memdesc:ae614c2cc5d857b91416c9d7c5aa3047c"><td class="mdescLeft">&#160;</td><td class="mdescRight">type State s = <a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { run_StateT :: s -&gt; m (a,s) }">StateT</a> s <a class="el" href="structmpc_1_1_identity.html" title="newtype Identity a = Identity { runIdentity :: a }">Identity</a> <br /></td></tr>
-<tr class="separator:ae614c2cc5d857b91416c9d7c5aa3047c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb6165c62a8cae37aad6728208aa11af"><td class="memTemplParams" colspan="2"><a id="adb6165c62a8cae37aad6728208aa11af"></a>
+template&lt;class S , is_Identity M&gt; </td></tr>
+<tr class="memitem:adb6165c62a8cae37aad6728208aa11af"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="state_2state_8hpp.html#adb6165c62a8cae37aad6728208aa11af">mpc::State</a> = StateT&lt; S, M &gt;</td></tr>
+<tr class="memdesc:adb6165c62a8cae37aad6728208aa11af"><td class="mdescLeft">&#160;</td><td class="mdescRight">type State s = <a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { run_StateT :: s -&gt; m (a,s) }">StateT</a> s <a class="el" href="structmpc_1_1_identity.html" title="newtype Identity a = Identity { runIdentity :: a }">Identity</a> <br /></td></tr>
+<tr class="separator:adb6165c62a8cae37aad6728208aa11af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c332409dd856b95918bf59ac9294428"><td class="memTemplParams" colspan="2"><a id="a2c332409dd856b95918bf59ac9294428"></a>
-template&lt;isState ST&gt; </td></tr>
+template&lt;is_State ST&gt; </td></tr>
 <tr class="memitem:a2c332409dd856b95918bf59ac9294428"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::State_state_t</b> = StateT_state_t&lt; ST &gt;</td></tr>
 <tr class="separator:a2c332409dd856b95918bf59ac9294428"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73e68036f54c746deea44c7509e2b82a"><td class="memTemplParams" colspan="2"><a id="a73e68036f54c746deea44c7509e2b82a"></a>
-template&lt;isState ST&gt; </td></tr>
+template&lt;is_State ST&gt; </td></tr>
 <tr class="memitem:a73e68036f54c746deea44c7509e2b82a"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::State_monad_t</b> = StateT_monad_t&lt; ST &gt;</td></tr>
 <tr class="separator:a73e68036f54c746deea44c7509e2b82a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a6b3783b76186a60668d0c80c4293ddf2"><td class="memTemplParams" colspan="2"><a id="a6b3783b76186a60668d0c80c4293ddf2"></a>
+<tr class="memitem:a8fd857b415a8058197b3270c9d7b19f3"><td class="memTemplParams" colspan="2"><a id="a8fd857b415a8058197b3270c9d7b19f3"></a>
 template&lt;class T &gt; </td></tr>
-<tr class="memitem:a6b3783b76186a60668d0c80c4293ddf2"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::isState</b> = detail::is_State&lt;std::remove_cvref_t&lt;T&gt;&gt;::value</td></tr>
-<tr class="separator:a6b3783b76186a60668d0c80c4293ddf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c2d4faba56d6b4935c8035374d41198"><td class="memTemplParams" colspan="2"><a id="a8c2d4faba56d6b4935c8035374d41198"></a>
+<tr class="memitem:a8fd857b415a8058197b3270c9d7b19f3"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::is_State</b> = detail::is_State_impl&lt;std::remove_cvref_t&lt;T&gt;&gt;::value</td></tr>
+<tr class="separator:a8fd857b415a8058197b3270c9d7b19f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf21c6440520b2e324c5946befc4bdc9"><td class="memTemplParams" colspan="2"><a id="abf21c6440520b2e324c5946befc4bdc9"></a>
 template&lt;class S &gt; </td></tr>
-<tr class="memitem:a8c2d4faba56d6b4935c8035374d41198"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::make_State</b> = make_StateT&lt;S&gt;</td></tr>
-<tr class="separator:a8c2d4faba56d6b4935c8035374d41198"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf21c6440520b2e324c5946befc4bdc9"><td class="memTemplItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::make_State_op&lt; S &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::make_State</b> {}</td></tr>
+<tr class="separator:abf21c6440520b2e324c5946befc4bdc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a0cb2fac57b5309fcae3764c35e21f5"><td class="memItemLeft" align="right" valign="top"><a id="a0a0cb2fac57b5309fcae3764c35e21f5"></a>
 constexpr perfect_forwarded_t&lt; detail::run_State_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::run_State</b> {}</td></tr>
 <tr class="separator:a0a0cb2fac57b5309fcae3764c35e21f5"><td class="memSeparator" colspan="2">&#160;</td></tr>

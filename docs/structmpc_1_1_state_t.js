@@ -1,5 +1,5 @@
 var structmpc_1_1_state_t =
 [
-    [ "monad_type", "structmpc_1_1_state_t.html#a2f7584b195d70a44f0a336512a4b76e4", null ],
-    [ "state_type", "structmpc_1_1_state_t.html#a67fbd4a8f2d2f9f81a9d795bb697db4d", null ]
+    [ "monad_type", "structmpc_1_1_state_t.html#a54bbf8c0e425a02d79211702803472d5", null ],
+    [ "state_type", "structmpc_1_1_state_t.html#acf76518702d2ec26864ff5f3fbba0d32", null ]
 ];

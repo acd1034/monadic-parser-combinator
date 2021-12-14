@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['modify_375',['modify',['../state_2class_8hpp.html#af79d9289045fc9aa0d3de560a612a3aa',1,'mpc::cpo']]]
+  ['lift_385',['lift',['../trans_2class_8hpp.html#ad45bfb9b5ea969728f286c6fe2efdf28',1,'mpc::cpo']]],
+  ['lifta2_386',['liftA2',['../applicative_8hpp.html#ac29ddb6aecde8d45070bb966739ac615',1,'mpc::cpo::liftA2()'],['../applicative_8hpp.html#abe044fbb73b16c1c860ba315d3b1088b',1,'mpc::applicatives::liftA2()']]]
 ];

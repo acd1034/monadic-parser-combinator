@@ -153,22 +153,22 @@ template&lt;class... Args, class  = std::enable_if_t&lt;std::is_invocable_v&lt;O
 template&lt;class... Args, class PF  = perfect_forward&lt;Op, Bound..., std::decay_t&lt;Args&gt;...&gt;, class  = std::enable_if_t&lt;!std::is_invocable_v&lt;Op const, Bound const..., Args...&gt;&gt;&gt; </td></tr>
 <tr class="memitem:a91edd46f71772424d7cfccb692061630"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator()</b> (Args &amp;&amp;... args) const &amp;&amp;noexcept(noexcept(PF(std::move(op_), std::get&lt; Idx &gt;(std::move(bound_))..., std::forward&lt; Args &gt;(args)...))) -&gt; decltype(PF(std::move(op_), std::get&lt; Idx &gt;(std::move(bound_))..., std::forward&lt; Args &gt;(args)...))</td></tr>
 <tr class="separator:a91edd46f71772424d7cfccb692061630"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1acfda60a12dc157275d2deef698a523"><td class="memTemplParams" colspan="2"><a id="a1acfda60a12dc157275d2deef698a523"></a>
+<tr class="memitem:ae3c3ab52a8a3a4c54c712aeda62ea8fe"><td class="memTemplParams" colspan="2"><a id="ae3c3ab52a8a3a4c54c712aeda62ea8fe"></a>
 template&lt;class Arg &gt; </td></tr>
-<tr class="memitem:a1acfda60a12dc157275d2deef698a523"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator%</b> (Arg &amp;&amp;arg) &amp;noexcept(noexcept(this-&gt;operator()(std::forward&lt; Arg &gt;(arg)))) -&gt; decltype(this-&gt;operator()(std::forward&lt; Arg &gt;(arg)))</td></tr>
-<tr class="separator:a1acfda60a12dc157275d2deef698a523"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e27bc0901b64a0241907be89c301f2f"><td class="memTemplParams" colspan="2"><a id="a5e27bc0901b64a0241907be89c301f2f"></a>
+<tr class="memitem:ae3c3ab52a8a3a4c54c712aeda62ea8fe"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator%</b> (Arg &amp;&amp;arg) &amp;noexcept(noexcept((*this)(std::forward&lt; Arg &gt;(arg)))) -&gt; decltype((*this)(std::forward&lt; Arg &gt;(arg)))</td></tr>
+<tr class="separator:ae3c3ab52a8a3a4c54c712aeda62ea8fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f23dbb5aa8b6e7082d5cf5bbb614115"><td class="memTemplParams" colspan="2"><a id="a8f23dbb5aa8b6e7082d5cf5bbb614115"></a>
 template&lt;class Arg &gt; </td></tr>
-<tr class="memitem:a5e27bc0901b64a0241907be89c301f2f"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator%</b> (Arg &amp;&amp;arg) const &amp;noexcept(noexcept(this-&gt;operator()(std::forward&lt; Arg &gt;(arg)))) -&gt; decltype(this-&gt;operator()(std::forward&lt; Arg &gt;(arg)))</td></tr>
-<tr class="separator:a5e27bc0901b64a0241907be89c301f2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56c5ae864d5476626055d64af34d2ad4"><td class="memTemplParams" colspan="2"><a id="a56c5ae864d5476626055d64af34d2ad4"></a>
+<tr class="memitem:a8f23dbb5aa8b6e7082d5cf5bbb614115"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator%</b> (Arg &amp;&amp;arg) const &amp;noexcept(noexcept((*this)(std::forward&lt; Arg &gt;(arg)))) -&gt; decltype((*this)(std::forward&lt; Arg &gt;(arg)))</td></tr>
+<tr class="separator:a8f23dbb5aa8b6e7082d5cf5bbb614115"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a587b2b55f5652cd93ad00b339cae78d5"><td class="memTemplParams" colspan="2"><a id="a587b2b55f5652cd93ad00b339cae78d5"></a>
 template&lt;class Arg &gt; </td></tr>
-<tr class="memitem:a56c5ae864d5476626055d64af34d2ad4"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator%</b> (Arg &amp;&amp;arg) &amp;&amp;noexcept(noexcept(this-&gt;operator()(std::forward&lt; Arg &gt;(arg)))) -&gt; decltype(this-&gt;operator()(std::forward&lt; Arg &gt;(arg)))</td></tr>
-<tr class="separator:a56c5ae864d5476626055d64af34d2ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aacf8d210c316b6d9b4a2d15c57c0990d"><td class="memTemplParams" colspan="2"><a id="aacf8d210c316b6d9b4a2d15c57c0990d"></a>
+<tr class="memitem:a587b2b55f5652cd93ad00b339cae78d5"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator%</b> (Arg &amp;&amp;arg) &amp;&amp;noexcept(noexcept(std::move(*this)(std::forward&lt; Arg &gt;(arg)))) -&gt; decltype(std::move(*this)(std::forward&lt; Arg &gt;(arg)))</td></tr>
+<tr class="separator:a587b2b55f5652cd93ad00b339cae78d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3902793b1f8dbcc5d8d493f13fe330de"><td class="memTemplParams" colspan="2"><a id="a3902793b1f8dbcc5d8d493f13fe330de"></a>
 template&lt;class Arg &gt; </td></tr>
-<tr class="memitem:aacf8d210c316b6d9b4a2d15c57c0990d"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator%</b> (Arg &amp;&amp;arg) const &amp;&amp;noexcept(noexcept(this-&gt;operator()(std::forward&lt; Arg &gt;(arg)))) -&gt; decltype(this-&gt;operator()(std::forward&lt; Arg &gt;(arg)))</td></tr>
-<tr class="separator:aacf8d210c316b6d9b4a2d15c57c0990d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3902793b1f8dbcc5d8d493f13fe330de"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator%</b> (Arg &amp;&amp;arg) const &amp;&amp;noexcept(noexcept(std::move(*this)(std::forward&lt; Arg &gt;(arg)))) -&gt; decltype(std::move(*this)(std::forward&lt; Arg &gt;(arg)))</td></tr>
+<tr class="separator:a3902793b1f8dbcc5d8d493f13fe330de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/mpc/functional/<a class="el" href="perfect__forward_8hpp_source.html">perfect_forward.hpp</a></li>

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['seq_5fapply_381',['seq_apply',['../applicative_8hpp.html#ae736ae194c6fe38f2f5a568a530d2460',1,'mpc::cpo::seq_apply()'],['../applicative_8hpp.html#a610d2f0ab88ea69a8ebecbb920164f06',1,'mpc::applicatives::seq_apply()'],['../monad_8hpp.html#ac0d4a9b950bbe750796db48dbe4d29e0',1,'mpc::monads::seq_apply()']]],
-  ['state_382',['state',['../state_2class_8hpp.html#aa5b3d0ba34d79f30ec421636126378f3',1,'mpc::cpo']]]
+  ['replace1st_390',['replace1st',['../functor_8hpp.html#acb013568ac918cba3600456074cb02f8',1,'mpc::cpo']]],
+  ['replace2nd_391',['replace2nd',['../functor_8hpp.html#aa07a24b15c48a04151154abcd9a2883d',1,'mpc::cpo::replace2nd()'],['../functor_8hpp.html#a9f6f060bce652dddfbd1429f63fff069',1,'mpc::functors::replace2nd()']]],
+  ['requires_392',['requires',['../monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357',1,'mpc::cpo::requires()'],['../state_2class_8hpp.html#a1cb1771b23736ce721b6540a50bc3dbe',1,'mpc::states::requires()']]]
 ];

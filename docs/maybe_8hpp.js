@@ -13,6 +13,7 @@ var maybe_8hpp =
     [ "seq_apply_op", "structmpc_1_1applicative__traits_3_01maybe_3_01_t1_01_4_01_4_1_1seq__apply__op.html", "structmpc_1_1applicative__traits_3_01maybe_3_01_t1_01_4_01_4_1_1seq__apply__op" ],
     [ "liftA2_op", "structmpc_1_1applicative__traits_3_01maybe_3_01_t1_01_4_01_4_1_1lift_a2__op.html", "structmpc_1_1applicative__traits_3_01maybe_3_01_t1_01_4_01_4_1_1lift_a2__op" ],
     [ "alternative_traits< maybe< T1 > >", "structmpc_1_1alternative__traits_3_01maybe_3_01_t1_01_4_01_4.html", "structmpc_1_1alternative__traits_3_01maybe_3_01_t1_01_4_01_4" ],
+    [ "empty_op", "structmpc_1_1alternative__traits_3_01maybe_3_01_t1_01_4_01_4_1_1empty__op.html", "structmpc_1_1alternative__traits_3_01maybe_3_01_t1_01_4_01_4_1_1empty__op" ],
     [ "combine_op", "structmpc_1_1alternative__traits_3_01maybe_3_01_t1_01_4_01_4_1_1combine__op.html", "structmpc_1_1alternative__traits_3_01maybe_3_01_t1_01_4_01_4_1_1combine__op" ],
     [ "just_t", "maybe_8hpp.html#a5910b9576d22f131975452ea64e5e3c7", null ],
     [ "maybe", "maybe_8hpp.html#a043d19fc4cddbee1ad0e2c7074aa0900", null ],

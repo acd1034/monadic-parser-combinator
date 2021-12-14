@@ -226,7 +226,7 @@ $(document).ready(function(){initNavTree('applicative_8hpp_source.html',''); ini
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    { <span class="keywordflow">return</span>    mpc::liftA2(std::forward&lt;Fn&gt;(fn), std::forward&lt;Fa&gt;(fa), std::forward&lt;Fb&gt;(fb)); }</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class </span>Fz, <span class="keyword">class</span>... Args&gt;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <a class="code" href="alternative_8hpp.html#a05b4c9cd81d5605f3a48153296632357">requires</a> (<span class="keyword">sizeof</span>...(Args) &gt; 2)</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <a class="code" href="monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357">requires</a> (<span class="keyword">sizeof</span>...(Args) &gt; 2)</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    constexpr auto reversed_liftA(Fz&amp;&amp; fz, Args&amp;&amp;... args) noexcept(</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    noexcept(   mpc::seq_apply(reversed_liftA(std::forward&lt;Args&gt;(args)...), std::forward&lt;Fz&gt;(fz))))</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    -&gt; decltype(mpc::seq_apply(reversed_liftA(std::forward&lt;Args&gt;(args)...), std::forward&lt;Fz&gt;(fz)))</div>
@@ -256,13 +256,12 @@ $(document).ready(function(){initNavTree('applicative_8hpp_source.html',''); ini
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  <span class="keyword">inline</span> <span class="keyword">namespace </span>cpo {</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> N&gt;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <a class="code" href="alternative_8hpp.html#a05b4c9cd81d5605f3a48153296632357">requires</a> (N &gt; 1)</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <a class="code" href="monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357">requires</a> (N &gt; 1)</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    inline constexpr perfect_forwarded_t&lt;detail::liftA_op&lt;N&gt;&gt; liftA{};</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  } <span class="comment">// namespace cpo</span></div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;} <span class="comment">// namespace mpc</span></div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">// clang-format on</span></div>
-<div class="ttc" id="aalternative_8hpp_html_a05b4c9cd81d5605f3a48153296632357"><div class="ttname"><a href="alternative_8hpp.html#a05b4c9cd81d5605f3a48153296632357">mpc::cpo::requires</a></div><div class="ttdeci">requires requires</div><div class="ttdoc">empty :: f a</div><div class="ttdef"><b>Definition:</b> alternative.hpp:52</div></div>
 <div class="ttc" id="aapplicative_8hpp_html_a458b73202555cc0a7de0e2bd4bc16f13"><div class="ttname"><a href="applicative_8hpp.html#a458b73202555cc0a7de0e2bd4bc16f13">mpc::applicatives::discard1st_opt</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::discard1st_opt_op &gt; discard1st_opt</div><div class="ttdoc">discard1st_opt x y = seq_apply (id &lt;$ x) y</div><div class="ttdef"><b>Definition:</b> applicative.hpp:160</div></div>
 <div class="ttc" id="aapplicative_8hpp_html_a58ce6848960e0c8ff588d944b3be26d8"><div class="ttname"><a href="applicative_8hpp.html#a58ce6848960e0c8ff588d944b3be26d8">mpc::cpo::discard1st</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::discard1st_op &gt; discard1st</div><div class="ttdoc">discard1st :: f a -&gt; f b -&gt; f b</div><div class="ttdef"><b>Definition:</b> applicative.hpp:97</div></div>
 <div class="ttc" id="aapplicative_8hpp_html_a64230ef29648687c9691ac84933c53d3"><div class="ttname"><a href="applicative_8hpp.html#a64230ef29648687c9691ac84933c53d3">mpc::cpo::discard2nd</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::discard2nd_op &gt; discard2nd</div><div class="ttdoc">discard2nd :: f a -&gt; f b -&gt; f a</div><div class="ttdef"><b>Definition:</b> applicative.hpp:94</div></div>
@@ -274,6 +273,7 @@ $(document).ready(function(){initNavTree('applicative_8hpp_source.html',''); ini
 <div class="ttc" id="aflip_8hpp_html"><div class="ttname"><a href="flip_8hpp.html">flip.hpp</a></div></div>
 <div class="ttc" id="afunctor_8hpp_html"><div class="ttname"><a href="functor_8hpp.html">functor.hpp</a></div></div>
 <div class="ttc" id="aid_8hpp_html"><div class="ttname"><a href="id_8hpp.html">id.hpp</a></div></div>
+<div class="ttc" id="amonad_8hpp_html_a05b4c9cd81d5605f3a48153296632357"><div class="ttname"><a href="monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357">mpc::cpo::requires</a></div><div class="ttdeci">requires requires</div><div class="ttdoc">return = pure</div><div class="ttdef"><b>Definition:</b> monad.hpp:42</div></div>
 <div class="ttc" id="aperfect__forward_8hpp_html"><div class="ttname"><a href="perfect__forward_8hpp.html">perfect_forward.hpp</a></div></div>
 <div class="ttc" id="astructmpc_1_1applicative__traits_html"><div class="ttname"><a href="structmpc_1_1applicative__traits.html">mpc::applicative_traits</a></div><div class="ttdoc">class Functor f =&gt; Applicative f where</div><div class="ttdef"><b>Definition:</b> applicative.hpp:18</div></div>
 <div class="ttc" id="astructmpc_1_1applicatives_1_1detail_1_1discard1st__opt__op_html"><div class="ttname"><a href="structmpc_1_1applicatives_1_1detail_1_1discard1st__opt__op.html">mpc::applicatives::detail::discard1st_opt_op</a></div><div class="ttdef"><b>Definition:</b> applicative.hpp:126</div></div>

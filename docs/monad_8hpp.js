@@ -16,7 +16,7 @@ var monad_8hpp =
     [ "karrow", "monad_8hpp.html#a6271ef4527a5bc2ee1d379bbc9bc7ea7", null ],
     [ "monad", "monad_8hpp.html#add20785a4686151f865639fb70652712", null ],
     [ "monad_traits_specialized", "monad_8hpp.html#a883a39e8a842afefb4d4ae47145f8db9", null ],
-    [ "requires", "monad_8hpp.html#a60b7e31abb0e45f7c80649e4b895360c", null ],
+    [ "requires", "monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357", null ],
     [ "returns", "monad_8hpp.html#ab9de0e35b45818e5b553454ee468693d", null ],
     [ "seq_apply", "monad_8hpp.html#ac0d4a9b950bbe750796db48dbe4d29e0", null ]
 ];

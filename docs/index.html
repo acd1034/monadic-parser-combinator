@@ -114,7 +114,7 @@ A first example</h1>
 <div class="line"> </div>
 <div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> tick = <a class="code" href="applicative_8hpp.html#ac29ddb6aecde8d45070bb966739ac615">mpc::liftA2</a>(</div>
 <div class="line">  <a class="code" href="structmpc_1_1perfect__forwarded__t.html">mpc::perfect_forwarded_t&lt;Fn1&gt;</a>{},</div>
-<div class="line">  mpc::get1&lt;ST&gt;,</div>
+<div class="line">  *mpc::gets&lt;ST&gt;,</div>
 <div class="line">  mpc::modify&lt;ST&gt; % (mpc::plus % 1)</div>
 <div class="line">);</div>
 <div class="line"> </div>

@@ -103,7 +103,7 @@ $(document).ready(function(){initNavTree('alternative_8hpp_source.html',''); ini
 <div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="namespacempc_1_1detail.html">   16</a></span>&#160;  <span class="keyword">namespace </span>detail {</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> F&gt;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    concept has_alternative_traits_empty = requires {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;      <a class="code" href="structmpc_1_1alternative__traits.html">alternative_traits&lt;std::remove_cvref_t&lt;F&gt;</a>&gt;::empty;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;      <a class="code" href="structmpc_1_1alternative__traits.html">alternative_traits&lt;std::remove_cvref_t&lt;F&gt;</a>&gt;::empty();</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    };</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> F&gt;</div>
@@ -122,46 +122,50 @@ $(document).ready(function(){initNavTree('alternative_8hpp_source.html',''); ini
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="comment">// class requirements</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keyword">namespace </span>detail {</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structmpc_1_1detail_1_1combine__op.html">   39</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structmpc_1_1detail_1_1combine__op.html">combine_op</a> {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">class</span> Fa, <span class="keyword">class</span> Fb&gt;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      <span class="comment">/* requires std::same_as&lt;std::remove_cvref_t&lt;Fa&gt;, std::remove_cvref_t&lt;Fb&gt;&gt; */</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      constexpr <span class="keyword">auto</span> operator()(Fa&amp;&amp; fa, Fb&amp;&amp; fb) <span class="keyword">const</span> noexcept(</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      noexcept(   <a class="code" href="structmpc_1_1alternative__traits.html">alternative_traits</a>&lt;std::remove_cvref_t&lt;Fa&gt;&gt;::combine(std::forward&lt;Fa&gt;(fa), std::forward&lt;Fb&gt;(fb))))</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      -&gt; decltype(<a class="code" href="structmpc_1_1alternative__traits.html">alternative_traits</a>&lt;std::remove_cvref_t&lt;Fa&gt;&gt;::combine(std::forward&lt;Fa&gt;(fa), std::forward&lt;Fb&gt;(fb)))</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      { <span class="keywordflow">return</span>    <a class="code" href="structmpc_1_1alternative__traits.html">alternative_traits&lt;std::remove_cvref_t&lt;Fa&gt;</a>&gt;::combine(std::forward&lt;Fa&gt;(fa), std::forward&lt;Fb&gt;(fb)); }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    };</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  } <span class="comment">// namespace detail</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keyword">inline</span> <span class="keyword">namespace </span>cpo {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> F&gt;</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="alternative_8hpp.html#a05b4c9cd81d5605f3a48153296632357">   52</a></span>&#160;    <a class="code" href="alternative_8hpp.html#a05b4c9cd81d5605f3a48153296632357">requires</a> <a class="code" href="alternative_8hpp.html#a05b4c9cd81d5605f3a48153296632357">requires</a> {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      <a class="code" href="structmpc_1_1alternative__traits.html">alternative_traits&lt;std::remove_cvref_t&lt;F&gt;</a>&gt;::empty;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">inline</span> constexpr <span class="keyword">auto</span> empty = <a class="code" href="structmpc_1_1alternative__traits.html">alternative_traits&lt;std::remove_cvref_t&lt;F&gt;</a>&gt;::empty;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="alternative_8hpp.html#a8a4f4bacb4084bbf75b6202776e456f9">   58</a></span>&#160;    <span class="keyword">inline</span> constexpr <a class="code" href="structmpc_1_1perfect__forwarded__t.html">perfect_forwarded_t&lt;detail::combine_op&gt;</a> <a class="code" href="alternative_8hpp.html#a8a4f4bacb4084bbf75b6202776e456f9">combine</a>{};</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  } <span class="comment">// namespace cpo</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keyword">namespace </span>operators::alternatives {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> Fa, <span class="keyword">class</span> Fb&gt;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    requires <span class="comment">/* std::same_as&lt;std::remove_cvref_t&lt;Fa&gt;, std::remove_cvref_t&lt;Fb&gt;&gt; and */</span> requires {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      alternative_traits&lt;std::remove_cvref_t&lt;Fa&gt;&gt;::combine;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">inline</span> constexpr <span class="keyword">auto</span> operator||(Fa&amp;&amp; fa, Fb&amp;&amp; fb)</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      noexcept(noexcept(mpc::combine(std::forward&lt;Fa&gt;(fa), std::forward&lt;Fb&gt;(fb))))</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      -&gt; decltype(      mpc::combine(std::forward&lt;Fa&gt;(fa), std::forward&lt;Fb&gt;(fb))) {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      <span class="keywordflow">return</span>            <a class="code" href="alternative_8hpp.html#a8a4f4bacb4084bbf75b6202776e456f9">mpc::combine</a>(std::forward&lt;Fa&gt;(fa), std::forward&lt;Fb&gt;(fb));</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  } <span class="comment">// namespace operators::alternatives</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;} <span class="comment">// namespace mpc</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">// clang-format on</span></div>
-<div class="ttc" id="aalternative_8hpp_html_a05b4c9cd81d5605f3a48153296632357"><div class="ttname"><a href="alternative_8hpp.html#a05b4c9cd81d5605f3a48153296632357">mpc::cpo::requires</a></div><div class="ttdeci">requires requires</div><div class="ttdoc">empty :: f a</div><div class="ttdef"><b>Definition:</b> alternative.hpp:52</div></div>
-<div class="ttc" id="aalternative_8hpp_html_a8a4f4bacb4084bbf75b6202776e456f9"><div class="ttname"><a href="alternative_8hpp.html#a8a4f4bacb4084bbf75b6202776e456f9">mpc::cpo::combine</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::combine_op &gt; combine</div><div class="ttdoc">combine :: f a -&gt; f a -&gt; f a – infixl 3</div><div class="ttdef"><b>Definition:</b> alternative.hpp:58</div></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> F&gt;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structmpc_1_1detail_1_1empty__op.html">   40</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structmpc_1_1detail_1_1empty__op.html">empty_op</a> {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      constexpr <span class="keyword">auto</span> operator*() <span class="keyword">const</span> noexcept(</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      noexcept(   <a class="code" href="structmpc_1_1alternative__traits.html">alternative_traits</a>&lt;std::remove_cvref_t&lt;F&gt;&gt;::empty()))</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      -&gt; decltype(<a class="code" href="structmpc_1_1alternative__traits.html">alternative_traits</a>&lt;std::remove_cvref_t&lt;F&gt;&gt;::empty())</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      { <span class="keywordflow">return</span>    <a class="code" href="structmpc_1_1alternative__traits.html">alternative_traits&lt;std::remove_cvref_t&lt;F&gt;</a>&gt;::empty(); }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    };</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structmpc_1_1detail_1_1combine__op.html">   48</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structmpc_1_1detail_1_1combine__op.html">combine_op</a> {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">class</span> Fa, <span class="keyword">class</span> Fb&gt;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      requires std::same_as&lt;std::remove_cvref_t&lt;Fa&gt;, std::remove_cvref_t&lt;Fb&gt;&gt;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      constexpr <span class="keyword">auto</span> operator()(Fa&amp;&amp; fa, Fb&amp;&amp; fb) <span class="keyword">const</span> noexcept(</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      noexcept(   <a class="code" href="structmpc_1_1alternative__traits.html">alternative_traits</a>&lt;std::remove_cvref_t&lt;Fa&gt;&gt;::combine(std::forward&lt;Fa&gt;(fa), std::forward&lt;Fb&gt;(fb))))</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      -&gt; decltype(<a class="code" href="structmpc_1_1alternative__traits.html">alternative_traits</a>&lt;std::remove_cvref_t&lt;Fa&gt;&gt;::combine(std::forward&lt;Fa&gt;(fa), std::forward&lt;Fb&gt;(fb)))</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      { <span class="keywordflow">return</span>    <a class="code" href="structmpc_1_1alternative__traits.html">alternative_traits&lt;std::remove_cvref_t&lt;Fa&gt;</a>&gt;::combine(std::forward&lt;Fa&gt;(fa), std::forward&lt;Fb&gt;(fb)); }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    };</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  } <span class="comment">// namespace detail</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keyword">inline</span> <span class="keyword">namespace </span>cpo {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> F&gt;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="alternative_8hpp.html#a7fdbc0223c46e98d77892d1f7b30e1ed">   61</a></span>&#160;    <span class="keyword">inline</span> constexpr <a class="code" href="structmpc_1_1detail_1_1empty__op.html">detail::empty_op&lt;F&gt;</a> <a class="code" href="alternative_8hpp.html#a7fdbc0223c46e98d77892d1f7b30e1ed">empty</a>{};</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="alternative_8hpp.html#a8a4f4bacb4084bbf75b6202776e456f9">   64</a></span>&#160;    <span class="keyword">inline</span> constexpr <a class="code" href="structmpc_1_1perfect__forwarded__t.html">perfect_forwarded_t&lt;detail::combine_op&gt;</a> <a class="code" href="alternative_8hpp.html#a8a4f4bacb4084bbf75b6202776e456f9">combine</a>{};</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  } <span class="comment">// namespace cpo</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keyword">namespace </span>operators::alternatives {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> Fa, <span class="keyword">class</span> Fb&gt;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    requires std::same_as&lt;std::remove_cvref_t&lt;Fa&gt;, std::remove_cvref_t&lt;Fb&gt;&gt;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">inline</span> constexpr <span class="keyword">auto</span> operator||(Fa&amp;&amp; fa, Fb&amp;&amp; fb)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      noexcept(noexcept(mpc::combine(std::forward&lt;Fa&gt;(fa), std::forward&lt;Fb&gt;(fb))))</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      -&gt; decltype(      mpc::combine(std::forward&lt;Fa&gt;(fa), std::forward&lt;Fb&gt;(fb))) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <span class="keywordflow">return</span>            mpc::combine(std::forward&lt;Fa&gt;(fa), std::forward&lt;Fb&gt;(fb));</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  } <span class="comment">// namespace operators::alternatives</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;} <span class="comment">// namespace mpc</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">// clang-format on</span></div>
+<div class="ttc" id="aalternative_8hpp_html_a7fdbc0223c46e98d77892d1f7b30e1ed"><div class="ttname"><a href="alternative_8hpp.html#a7fdbc0223c46e98d77892d1f7b30e1ed">mpc::cpo::empty</a></div><div class="ttdeci">constexpr detail::empty_op&lt; F &gt; empty</div><div class="ttdoc">empty :: f a</div><div class="ttdef"><b>Definition:</b> alternative.hpp:61</div></div>
+<div class="ttc" id="aalternative_8hpp_html_a8a4f4bacb4084bbf75b6202776e456f9"><div class="ttname"><a href="alternative_8hpp.html#a8a4f4bacb4084bbf75b6202776e456f9">mpc::cpo::combine</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::combine_op &gt; combine</div><div class="ttdoc">combine :: f a -&gt; f a -&gt; f a</div><div class="ttdef"><b>Definition:</b> alternative.hpp:64</div></div>
 <div class="ttc" id="aapplicative_8hpp_html"><div class="ttname"><a href="applicative_8hpp.html">applicative.hpp</a></div></div>
 <div class="ttc" id="aperfect__forward_8hpp_html"><div class="ttname"><a href="perfect__forward_8hpp.html">perfect_forward.hpp</a></div></div>
 <div class="ttc" id="astructmpc_1_1alternative__traits_html"><div class="ttname"><a href="structmpc_1_1alternative__traits.html">mpc::alternative_traits</a></div><div class="ttdoc">class Applicative f =&gt; Alternative f where</div><div class="ttdef"><b>Definition:</b> alternative.hpp:14</div></div>
-<div class="ttc" id="astructmpc_1_1detail_1_1combine__op_html"><div class="ttname"><a href="structmpc_1_1detail_1_1combine__op.html">mpc::detail::combine_op</a></div><div class="ttdoc">combine :: f a -&gt; f a -&gt; f a</div><div class="ttdef"><b>Definition:</b> alternative.hpp:39</div></div>
+<div class="ttc" id="astructmpc_1_1detail_1_1combine__op_html"><div class="ttname"><a href="structmpc_1_1detail_1_1combine__op.html">mpc::detail::combine_op</a></div><div class="ttdoc">combine :: f a -&gt; f a -&gt; f a</div><div class="ttdef"><b>Definition:</b> alternative.hpp:48</div></div>
+<div class="ttc" id="astructmpc_1_1detail_1_1empty__op_html"><div class="ttname"><a href="structmpc_1_1detail_1_1empty__op.html">mpc::detail::empty_op</a></div><div class="ttdoc">empty :: f a</div><div class="ttdef"><b>Definition:</b> alternative.hpp:40</div></div>
 <div class="ttc" id="astructmpc_1_1perfect__forwarded__t_html"><div class="ttname"><a href="structmpc_1_1perfect__forwarded__t.html">mpc::perfect_forwarded_t</a></div><div class="ttdef"><b>Definition:</b> perfect_forward.hpp:21</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

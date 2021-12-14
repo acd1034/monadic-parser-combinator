@@ -135,10 +135,10 @@ Variables</h2></td></tr>
 template&lt;class M &gt; </td></tr>
 <tr class="memitem:add20785a4686151f865639fb70652712"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::monad</b> = applicative&lt;M&gt; and monad_traits_specialized&lt;M&gt;</td></tr>
 <tr class="separator:add20785a4686151f865639fb70652712"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60b7e31abb0e45f7c80649e4b895360c"><td class="memTemplParams" colspan="2">template&lt;class M &gt; </td></tr>
-<tr class="memitem:a60b7e31abb0e45f7c80649e4b895360c"><td class="memTemplItemLeft" align="right" valign="top">requires&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="monad_8hpp.html#a60b7e31abb0e45f7c80649e4b895360c">mpc::requires</a></td></tr>
-<tr class="memdesc:a60b7e31abb0e45f7c80649e4b895360c"><td class="mdescLeft">&#160;</td><td class="mdescRight">return = pure  <a href="monad_8hpp.html#a60b7e31abb0e45f7c80649e4b895360c">More...</a><br /></td></tr>
-<tr class="separator:a60b7e31abb0e45f7c80649e4b895360c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05b4c9cd81d5605f3a48153296632357"><td class="memTemplParams" colspan="2">template&lt;class M &gt; </td></tr>
+<tr class="memitem:a05b4c9cd81d5605f3a48153296632357"><td class="memTemplItemLeft" align="right" valign="top">requires&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357">mpc::requires</a></td></tr>
+<tr class="memdesc:a05b4c9cd81d5605f3a48153296632357"><td class="mdescLeft">&#160;</td><td class="mdescRight">return = pure  <a href="monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357">More...</a><br /></td></tr>
+<tr class="separator:a05b4c9cd81d5605f3a48153296632357"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9de0e35b45818e5b553454ee468693d"><td class="memItemLeft" align="right" valign="top"><a id="ab9de0e35b45818e5b553454ee468693d"></a>
 constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::returns</b> = mpc::pure&lt;M&gt;</td></tr>
 <tr class="separator:ab9de0e35b45818e5b553454ee468693d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -224,15 +224,15 @@ template&lt;class M &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="alternative_8hpp.html#a05b4c9cd81d5605f3a48153296632357">requires</a> {</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357">requires</a> {</div>
 <div class="line">    monad_traits&lt;std::remove_cvref_t&lt;M&gt;&gt;::bind;</div>
 <div class="line">  }</div>
-<div class="ttc" id="aalternative_8hpp_html_a05b4c9cd81d5605f3a48153296632357"><div class="ttname"><a href="alternative_8hpp.html#a05b4c9cd81d5605f3a48153296632357">mpc::cpo::requires</a></div><div class="ttdeci">requires requires</div><div class="ttdoc">empty :: f a</div><div class="ttdef"><b>Definition:</b> alternative.hpp:52</div></div>
+<div class="ttc" id="amonad_8hpp_html_a05b4c9cd81d5605f3a48153296632357"><div class="ttname"><a href="monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357">mpc::cpo::requires</a></div><div class="ttdeci">requires requires</div><div class="ttdoc">return = pure</div><div class="ttdef"><b>Definition:</b> monad.hpp:42</div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a60b7e31abb0e45f7c80649e4b895360c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a60b7e31abb0e45f7c80649e4b895360c">&#9670;&nbsp;</a></span>requires</h2>
+<a id="a05b4c9cd81d5605f3a48153296632357"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05b4c9cd81d5605f3a48153296632357">&#9670;&nbsp;</a></span>requires</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -240,7 +240,7 @@ template&lt;class M &gt; </div>
 template&lt;class M &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">requires mpc::cpo::requires</td>
+          <td class="memname">requires mpc::requires</td>
         </tr>
       </table>
 </div><div class="memdoc">

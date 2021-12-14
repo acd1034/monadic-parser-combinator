@@ -260,19 +260,19 @@ $(document).ready(function(){initNavTree('single_8hpp_source.html',''); initResi
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  }</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> Idx, <span class="keyword">class</span> T, <span class="keyword">class</span> Tag&gt;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  <a class="code" href="alternative_8hpp.html#a05b4c9cd81d5605f3a48153296632357">requires</a> (Idx &lt; 1)</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  <a class="code" href="monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357">requires</a> (Idx &lt; 1)</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  constexpr decltype(auto) get(const single&lt;T, Tag&gt;&amp; s) {</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordflow">return</span> *s;</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  }</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  <span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> Idx, <span class="keyword">class</span> T, <span class="keyword">class</span> Tag&gt;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  <a class="code" href="alternative_8hpp.html#a05b4c9cd81d5605f3a48153296632357">requires</a> (Idx &lt; 1)</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  <a class="code" href="monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357">requires</a> (Idx &lt; 1)</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  constexpr decltype(auto) get(single&lt;T, Tag&gt;&amp;&amp; s) {</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordflow">return</span> *std::move(s);</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  }</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  <span class="keyword">template</span> &lt;std::<span class="keywordtype">size_t</span> Idx, <span class="keyword">class</span> T, <span class="keyword">class</span> Tag&gt;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  <a class="code" href="alternative_8hpp.html#a05b4c9cd81d5605f3a48153296632357">requires</a> (Idx &lt; 1)</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  <a class="code" href="monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357">requires</a> (Idx &lt; 1)</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  constexpr decltype(auto) get(const single&lt;T, Tag&gt;&amp;&amp; s) {</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keywordflow">return</span> *std::move(s);</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  }</div>
@@ -292,7 +292,7 @@ $(document).ready(function(){initNavTree('single_8hpp_source.html',''); initResi
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;};</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="comment">// clang-format on</span></div>
-<div class="ttc" id="aalternative_8hpp_html_a05b4c9cd81d5605f3a48153296632357"><div class="ttname"><a href="alternative_8hpp.html#a05b4c9cd81d5605f3a48153296632357">mpc::cpo::requires</a></div><div class="ttdeci">requires requires</div><div class="ttdoc">empty :: f a</div><div class="ttdef"><b>Definition:</b> alternative.hpp:52</div></div>
+<div class="ttc" id="amonad_8hpp_html_a05b4c9cd81d5605f3a48153296632357"><div class="ttname"><a href="monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357">mpc::cpo::requires</a></div><div class="ttdeci">requires requires</div><div class="ttdoc">return = pure</div><div class="ttdef"><b>Definition:</b> monad.hpp:42</div></div>
 <div class="ttc" id="astdfundamental_8hpp_html_a4e1c5c7ea40927069755387ca715b3ca"><div class="ttname"><a href="stdfundamental_8hpp.html#a4e1c5c7ea40927069755387ca715b3ca">mpc::index_constant</a></div><div class="ttdeci">std::integral_constant&lt; std::size_t, N &gt; index_constant</div><div class="ttdoc">index_constant</div><div class="ttdef"><b>Definition:</b> stdfundamental.hpp:24</div></div>
 <div class="ttc" id="astructmpc_1_1single_html"><div class="ttname"><a href="structmpc_1_1single.html">mpc::single</a></div><div class="ttdef"><b>Definition:</b> single.hpp:10</div></div>
 <div class="ttc" id="atuple__like_8hpp_html"><div class="ttname"><a href="tuple__like_8hpp.html">tuple_like.hpp</a></div></div>

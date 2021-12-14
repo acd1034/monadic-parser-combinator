@@ -107,7 +107,7 @@ template&lt;class Fn , class Gn &gt; </td></tr>
 <tr class="separator:a4968baa1cbf978b45762a67b83b01eba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>karrow :: Monad m =&gt; (a -&gt; m b) -&gt; (b -&gt; m c) -&gt; (a -&gt; m c) karrow f g = \x -&gt; f x &gt;&gt;= g </p>
+<div class="textblock"><p>karrow :: Monad m =&gt; (a -&gt; m b) -&gt; (b -&gt; m c) -&gt; (a -&gt; m c) karrow f g = x -&gt; (f x &gt;&gt;= g) </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/mpc/control/<a class="el" href="monad_8hpp_source.html">monad.hpp</a></li>
 </ul>

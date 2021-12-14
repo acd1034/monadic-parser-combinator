@@ -110,7 +110,7 @@ template&lt;class T &gt; </td></tr>
 <div class="textblock"><h3>template&lt;class ST&gt;<br />
 struct mpc::states::detail::put_op&lt; ST &gt;</h3>
 
-<p>state :: (s -&gt; (a, s)) -&gt; m a state f = do s &lt;- get let ~(a, s') = f s put s' return a put :: s -&gt; m () put s = state (_ -&gt; ((), s)) </p>
+<p>put :: s -&gt; m () put s = state (_ -&gt; ((), s)) </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/mpc/control/state/<a class="el" href="state_2class_8hpp_source.html">class.hpp</a></li>
 </ul>
