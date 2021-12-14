@@ -10,26 +10,26 @@ on:
 
 jobs:
   build:
-    name: ${{matrix.compiler}}, C++${{matrix.std}}, ${{matrix.build_type}}
+    name: ${{matrix.pkg_name}}, C++${{matrix.std}}, ${{matrix.build_type}} build
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        compiler:
+        pkg_name:
           - g++-11
-          # - clang++-13
-        build_type: [Debug]
+          # - clang-13
+        build_type: [Debug, Release]
         std: [20]
         include:
-          - compiler: g++-11
-            other_pkgs: g++-11
-          # - compiler: clang++-13
-          #   other_pkgs: clang-13
+          - pkg_name: g++-11
+            compiler: g++-11
+          # - pkg_name: clang-13
+          #   compiler: clang++-13
 
     steps:
     - uses: actions/checkout@v2
 
     - name: Prepare environment
-      run: sudo apt install -y ninja-build ${{matrix.other_pkgs}}
+      run: sudo apt install -y ninja-build ${{matrix.pkg_name}}
 
     - name: Configure build
       working-directory: ${{runner.workspace}}
