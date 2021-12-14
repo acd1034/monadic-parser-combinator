@@ -313,7 +313,7 @@ namespace mpc {
     };
 
     static constexpr state_op state{};
-    static constexpr auto get1 = states::get1<StateT<S, M>>;
+    static constexpr auto gets = states::gets<StateT<S, M>>;
     static constexpr auto put = states::put<StateT<S, M>>;
   };
 

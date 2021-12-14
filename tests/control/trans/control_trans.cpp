@@ -22,7 +22,7 @@ TEST_CASE("trans", "[trans][state]") {
     // clang-format off
     const auto tick = mpc::liftA2(
       mpc::perfect_forwarded_t<Fn1>{},
-      mpc::get1<ST>,
+      mpc::gets<ST>,
       mpc::modify<ST> % (mpc::plus % 1)
     );
     const auto threeTicks = mpc::liftA<3>(
