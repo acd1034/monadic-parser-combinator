@@ -131,30 +131,30 @@ namespace mpc {
     // operator%
     template <class Arg>
     constexpr auto operator%(Arg&& arg) & noexcept(
-      noexcept(   this->operator()(std::forward<Arg>(arg))))
-      -> decltype(this->operator()(std::forward<Arg>(arg))) {
-      return      this->operator()(std::forward<Arg>(arg));
+      noexcept(   (*this)(std::forward<Arg>(arg))))
+      -> decltype((*this)(std::forward<Arg>(arg))) {
+      return      (*this)(std::forward<Arg>(arg));
     }
 
     template <class Arg>
     constexpr auto operator%(Arg&& arg) const& noexcept(
-      noexcept(   this->operator()(std::forward<Arg>(arg))))
-      -> decltype(this->operator()(std::forward<Arg>(arg))) {
-      return      this->operator()(std::forward<Arg>(arg));
+      noexcept(   (*this)(std::forward<Arg>(arg))))
+      -> decltype((*this)(std::forward<Arg>(arg))) {
+      return      (*this)(std::forward<Arg>(arg));
     }
 
     template <class Arg>
     constexpr auto operator%(Arg&& arg) && noexcept(
-      noexcept(   this->operator()(std::forward<Arg>(arg))))
-      -> decltype(this->operator()(std::forward<Arg>(arg))) {
-      return      this->operator()(std::forward<Arg>(arg));
+      noexcept(   std::move(*this)(std::forward<Arg>(arg))))
+      -> decltype(std::move(*this)(std::forward<Arg>(arg))) {
+      return      std::move(*this)(std::forward<Arg>(arg));
     }
 
     template <class Arg>
     constexpr auto operator%(Arg&& arg) const&& noexcept(
-      noexcept(   this->operator()(std::forward<Arg>(arg))))
-      -> decltype(this->operator()(std::forward<Arg>(arg))) {
-      return      this->operator()(std::forward<Arg>(arg));
+      noexcept(   std::move(*this)(std::forward<Arg>(arg))))
+      -> decltype(std::move(*this)(std::forward<Arg>(arg))) {
+      return      std::move(*this)(std::forward<Arg>(arg));
     }
   };
 } // namespace mpc
