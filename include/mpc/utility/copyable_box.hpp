@@ -21,7 +21,9 @@ namespace mpc {
   template <class T>
   concept copy_constructible_object = std::copy_constructible<T> and std::is_object_v<T>;
 
-  /// Primary template - uses std::optional and introduces an empty state in case assignment fails.
+  // Primary template - uses std::optional and introduces an empty state in case assignment fails.
+
+  /// Makes a `copy_constructible` but not `copy_assignable` type `copy_assignable`.
   template <copy_constructible_object T>
   class copyable_box {
     [[no_unique_address]] std::optional<T> instance_;
