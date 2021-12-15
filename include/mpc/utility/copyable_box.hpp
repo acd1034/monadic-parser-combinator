@@ -17,7 +17,7 @@ namespace mpc {
   // In some cases, we can completely avoid the use of an empty state; we provide a specialization
   // of copyable_box that does this, see below for the details.
 
-  /// Requires copy_constructible and is_object.
+  /// Requires `copy_constructible` and `is_object`.
   template <class T>
   concept copy_constructible_object = std::copy_constructible<T> and std::is_object_v<T>;
 
