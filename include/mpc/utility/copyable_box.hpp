@@ -17,10 +17,11 @@ namespace mpc {
   // In some cases, we can completely avoid the use of an empty state; we provide a specialization
   // of copyable_box that does this, see below for the details.
 
+  /// Requires copy_constructible and is_object.
   template <class T>
   concept copy_constructible_object = std::copy_constructible<T> and std::is_object_v<T>;
 
-  // Primary template - uses std::optional and introduces an empty state in case assignment fails.
+  /// Primary template - uses std::optional and introduces an empty state in case assignment fails.
   template <copy_constructible_object T>
   class copyable_box {
     [[no_unique_address]] std::optional<T> instance_;
@@ -97,6 +98,7 @@ namespace mpc {
   // enabled whenever we can apply any of these optimizations for both the copy assignment and the
   // move assignment operator.
 
+  /// @cond undocumented
   template <class T>
   concept doesnt_need_empty_state_for_copy =
     std::copyable<T> or std::is_nothrow_copy_constructible_v<T>;
@@ -104,7 +106,9 @@ namespace mpc {
   template <class T>
   concept doesnt_need_empty_state_for_move =
     std::movable<T> or std::is_nothrow_move_constructible_v<T>;
+  /// @endcond undocumented
 
+  /// @spec `copyable_box`
   template <copy_constructible_object T>
   requires doesnt_need_empty_state_for_copy<T> and doesnt_need_empty_state_for_move<T>
   class copyable_box<T> {

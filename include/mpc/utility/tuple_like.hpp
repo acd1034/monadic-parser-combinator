@@ -2,6 +2,7 @@
 #pragma once
 #include <mpc/stdfundamental.hpp>
 
+/// @cond undocumented
 namespace mpc::detail::_tuple_like {
   template <auto>
   void get(auto&) = delete;
@@ -24,22 +25,23 @@ namespace mpc::detail::_tuple_like {
                              std::void_t<decltype(get<Idx>(std::declval<T>()))...>>
     : std::true_type {};
 } // namespace mpc::detail::_tuple_like
+/// @endcond undocumented
 
 namespace mpc {
   /// %is_tuple_like
   template <class T, class = void>
   struct is_tuple_like : std::false_type {};
 
-  /// partial specialization of `is_tuple_like`
+  /// @spec `is_tuple_like`
   template <class T>
   struct is_tuple_like<T, std::void_t<decltype(std::tuple_size<T>::value)>>
     : _and<detail::_tuple_like::has_tuple_element<T>, detail::_tuple_like::has_unqualified_get<T>> {};
 
-  /// helper variable template for `is_tuple_like`
+  /// @ivar `is_tuple_like`
   template <class T>
   inline constexpr bool is_tuple_like_v = is_tuple_like<T>::value;
 
-  /// tuple_like
+  /// Requires `std::tuple_size`, `std::tuple_element` and unqualified `get` is valid.
   template <class T>
   concept tuple_like = is_tuple_like_v<std::remove_cvref_t<T>>;
 } // namespace mpc

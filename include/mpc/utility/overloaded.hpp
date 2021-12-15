@@ -12,7 +12,7 @@ namespace mpc {
     using Ts::operator()...;
   };
 
-  /// deduction guide for @link overloaded overloaded @endlink
+  /// @dguide @ref overloaded
   template <typename... Ts>
   overloaded(Ts...) -> overloaded<Ts...>;
 } // namespace mpc

@@ -6,6 +6,11 @@
 // clang-format off
 
 namespace mpc {
+  /**
+   * @brief A class that holds a single value.
+   * @details To prepare multiple classes with different types but the same
+   * properties, the tag type can be assigned to the second type parameter.
+   */
   template <class T, class Tag = void>
   struct single {
   private:
@@ -154,35 +159,39 @@ namespace mpc {
   // [x] swap
   // [x] get
 
+  /// @dguide @ref single
   template <class T, class Tag = void>
   single(T) -> single<T>;
 
+  /// swap for @ref single
   template <std::swappable T, class Tag>
   void swap(single<T, Tag>& lhs, single<T, Tag>& rhs)
     noexcept(std::is_nothrow_swappable_v<T>) {
     lhs.swap(rhs);
   }
 
-  // get
-
+  /// get for @ref single
   template <std::size_t Idx, class T, class Tag>
   requires (Idx < 1)
   constexpr decltype(auto) get(single<T, Tag>& s) {
     return *s;
   }
 
+  /// @overl `get`
   template <std::size_t Idx, class T, class Tag>
   requires (Idx < 1)
   constexpr decltype(auto) get(const single<T, Tag>& s) {
     return *s;
   }
 
+  /// @overl `get`
   template <std::size_t Idx, class T, class Tag>
   requires (Idx < 1)
   constexpr decltype(auto) get(single<T, Tag>&& s) {
     return *std::move(s);
   }
 
+  /// @overl `get`
   template <std::size_t Idx, class T, class Tag>
   requires (Idx < 1)
   constexpr decltype(auto) get(const single<T, Tag>&& s) {
@@ -194,9 +203,11 @@ namespace mpc {
 // [x] std::tuple_size
 // [x] std::tuple_element
 
+/// @spec `std::tuple_size` for `mpc::single`
 template <class T, class Tag>
 struct std::tuple_size<mpc::single<T, Tag>> : mpc::index_constant<1> {};
 
+/// @spec `std::tuple_element` for `mpc::single`
 template <std::size_t Idx, class T, class Tag>
 requires (Idx < 1)
 struct std::tuple_element<Idx, mpc::single<T, Tag>> {

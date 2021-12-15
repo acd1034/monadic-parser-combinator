@@ -4,6 +4,7 @@
 #include <mpc/stdfundamental.hpp>
 
 namespace mpc {
+  /// alternative_value_t
   template <std::size_t Idx, class Variant>
   requires requires {
     typename std::variant_alternative_t<Idx, std::remove_cvref_t<Variant>>::value_type;
