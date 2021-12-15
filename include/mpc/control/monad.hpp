@@ -52,8 +52,8 @@ namespace mpc {
 
   namespace monads {
     namespace detail {
-      /// fmap :: (a -> b) -> f a -> f b
-      /// fmap f x = bind x (y -> return (f y))
+      /// @brief fmap :: (a -> b) -> f a -> f b
+      /// @details fmap f x = bind x (y -> return (f y))
       struct fmap_op {
         template <class Ma>
         struct closure {
@@ -71,8 +71,8 @@ namespace mpc {
         { return    mpc::bind(std::forward<Ma>(ma), perfect_forwarded_t<closure<Ma>>{}(std::forward<Fn>(fn))); }
       };
 
-      /// seq_apply :: f (a -> b) -> f a -> f b
-      /// seq_apply m1 m2 = bind m1 (f -> bind m2 (x -> return (f x)))
+      /// @brief seq_apply :: f (a -> b) -> f a -> f b
+      /// @details seq_apply m1 m2 = bind m1 (f -> bind m2 (x -> return (f x)))
       struct seq_apply_op {
         template <class Ma>
         struct nested_closure {
@@ -98,8 +98,8 @@ namespace mpc {
         { return    mpc::bind(std::forward<Mab>(mab), perfect_forwarded_t<closure>{}(std::forward<Ma>(ma))); }
       };
 
-      /// discard1st :: f a -> f b -> f b
-      /// discard1st m1 m2 = bind m1 (_ -> m2)
+      /// @brief discard1st :: f a -> f b -> f b
+      /// @details discard1st m1 m2 = bind m1 (_ -> m2)
       struct discard1st_op {
         struct closure {
           template<class Mb, class A>
@@ -133,8 +133,8 @@ namespace mpc {
   // Grobal methods
 
   namespace detail {
-    /// karrow :: Monad m => (a -> m b) -> (b -> m c) -> (a -> m c)
-    /// karrow f g = x -> (f x >>= g)
+    /// @brief karrow :: Monad m => (a -> m b) -> (b -> m c) -> (a -> m c)
+    /// @details karrow f g = x -> (f x >>= g)
     struct karrow_op {
       struct closure {
         template <class Fn, class Gn, class A>
@@ -153,7 +153,7 @@ namespace mpc {
   } // namespace detail
 
   inline namespace cpo {
-    /// Kleisli arrows (>=>)
+    /// Kleisli arrows `(>=>)`
     inline constexpr perfect_forwarded_t<detail::karrow_op> karrow{};
   } // namespace cpo
 } // namespace mpc

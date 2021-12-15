@@ -101,8 +101,8 @@ namespace mpc {
 
   namespace applicatives {
     namespace detail {
-      /// fmap :: (a -> b) -> f a -> f b
-      /// fmap f x = seq_apply (pure f) x
+      /// @brief fmap :: (a -> b) -> f a -> f b
+      /// @details fmap f x = seq_apply (pure f) x
       struct fmap_op {
         template <class Fn, class Fa>
         constexpr auto operator()(Fn&& fn, Fa&& fa) const noexcept(
@@ -111,8 +111,8 @@ namespace mpc {
         { return    mpc::seq_apply(mpc::pure<Fa>(std::forward<Fn>(fn)), std::forward<Fa>(fa)); }
       };
 
-      /// liftA2 :: (a -> b -> c) -> f a -> f b -> f c
-      /// liftA2 f x y = seq_apply (fmap f x) y
+      /// @brief liftA2 :: (a -> b -> c) -> f a -> f b -> f c
+      /// @details liftA2 f x y = seq_apply (fmap f x) y
       struct liftA2_op {
         template <class Fn, class Fa, class Fb>
         constexpr auto operator()(Fn&& fn, Fa&& fa, Fb&& fb) const noexcept(
@@ -121,8 +121,8 @@ namespace mpc {
         { return    mpc::seq_apply(mpc::fmap(std::forward<Fn>(fn), std::forward<Fa>(fa)), std::forward<Fb>(fb)); }
       };
 
-      /// discard1st_opt :: f a -> f b -> f b
-      /// discard1st_opt x y = (id <$ x) <*> y
+      /// @brief discard1st_opt :: f a -> f b -> f b
+      /// @details discard1st_opt x y = (id <$ x) <*> y
       struct discard1st_opt_op {
         template <class Fa, class Fb>
         constexpr auto operator()(Fa&& fa, Fb&& fb) const noexcept(
@@ -199,7 +199,8 @@ namespace mpc {
   } // namespace detail
 
   inline namespace cpo {
-    /// liftA :: Applicative f => (a -> b -> .. -> z) -> f a -> f b -> .. -> f z
+    /// @brief liftA :: Applicative f => (a -> b -> .. -> z) -> f a -> f b -> ... -> f z
+    /// @details liftA fn a b ... z = fn \`fmap\` a \`seq_apply\` b \`seq_apply\` ... \`seq_apply\` z
     template <std::size_t N>
     requires (N > 1)
     inline constexpr perfect_forwarded_t<detail::liftA_op<N>> liftA{};

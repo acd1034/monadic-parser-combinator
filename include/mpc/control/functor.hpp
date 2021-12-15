@@ -60,8 +60,8 @@ namespace mpc {
   // Grobal methods
 
   inline namespace cpo {
-    /// replace1st :: Functor f => f a -> b -> f b
-    /// replace1st = flip replace2nd
+    /// @brief replace1st :: Functor f => f a -> b -> f b
+    /// @details replace1st = flip replace2nd
     inline constexpr auto replace1st = flip % mpc::replace2nd;
   } // namespace cpo
 } // namespace mpc
