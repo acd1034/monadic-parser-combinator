@@ -23,12 +23,15 @@ namespace mpc {
   template <std::size_t N>
   using index_constant = std::integral_constant<std::size_t, N>;
 
+  /// _and
   template <class... Bn>
   using _and = std::conjunction<Bn...>;
 
+  /// _or
   template <class... Bn>
   using _or = std::disjunction<Bn...>;
 
+  /// _not
   template <class B>
   using _not = std::negation<B>;
 
