@@ -5,6 +5,10 @@
 
 namespace mpc {
   inline namespace cpo {
+    /**
+     * @brief Identity mapping.
+     * @rel prelude.hpp
+     */
     inline constexpr perfect_forwarded_t<std::identity> id;
   } // namespace cpo
 } // namespace mpc

@@ -29,6 +29,10 @@ namespace mpc {
   } // namespace detail
 
   inline namespace cpo {
+    /**
+     * @brief Function composition.
+     * @rel prelude.hpp
+     */
     inline constexpr perfect_forwarded_t<detail::compose_op> compose;
   }
 } // namespace mpc
