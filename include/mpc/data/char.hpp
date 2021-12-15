@@ -83,42 +83,60 @@ namespace mpc {
   } // namespace detail
 
   inline namespace cpo {
+    /// Partially applicable `std::isalnum`.
     inline constexpr perfect_forwarded_t<detail::isalnum_op> isalnum{};
+    /// Partially applicable `std::isalpha`.
     inline constexpr perfect_forwarded_t<detail::isalpha_op> isalpha{};
+    /// Partially applicable `std::islower`.
     inline constexpr perfect_forwarded_t<detail::islower_op> islower{};
+    /// Partially applicable `std::isupper`.
     inline constexpr perfect_forwarded_t<detail::isupper_op> isupper{};
+    /// Partially applicable `std::isdigit`.
     inline constexpr perfect_forwarded_t<detail::isdigit_op> isdigit{};
+    /// Partially applicable `std::isxdigit`.
     inline constexpr perfect_forwarded_t<detail::isxdigit_op> isxdigit{};
+    /// Partially applicable `std::iscntrl`.
     inline constexpr perfect_forwarded_t<detail::iscntrl_op> iscntrl{};
+    /// Partially applicable `std::isgraph`.
     inline constexpr perfect_forwarded_t<detail::isgraph_op> isgraph{};
+    /// Partially applicable `std::isspace`.
     inline constexpr perfect_forwarded_t<detail::isspace_op> isspace{};
+    /// Partially applicable `std::isblank`.
     inline constexpr perfect_forwarded_t<detail::isblank_op> isblank{};
+    /// Partially applicable `std::isprint`.
     inline constexpr perfect_forwarded_t<detail::isprint_op> isprint{};
+    /// Partially applicable `std::ispunct`.
     inline constexpr perfect_forwarded_t<detail::ispunct_op> ispunct{};
   } // namespace cpo
 
+  /// Surrounds a string with delimiter.
   template <class charT>
-  std::basic_string<charT> quoted(charT s, charT delim = charT('\'')) {
+  inline std::basic_string<charT> quoted(charT s, charT delim = charT('\'')) {
     return {delim, s, delim};
   }
 
+  /// @overl `quoted`
   template <class charT>
-  auto quoted(const charT* s, charT delim = charT('"')) {
+  inline auto quoted(const charT* s, charT delim = charT('"')) {
     return std::basic_string<charT>{delim} + s + delim;
   }
 
+  /// @overl `quoted`
   template <class charT, class traits>
-  auto quoted(std::basic_string_view<charT, traits> s, charT delim = charT('"')) {
+  inline auto quoted(std::basic_string_view<charT, traits> s, charT delim = charT('"')) {
     return delim + std::basic_string<charT, traits>{s} + delim;
   }
 
+  /// @overl `quoted`
   template <class charT, class traits, class Allocator>
-  auto quoted(const std::basic_string<charT, traits, Allocator>& s, charT delim = charT('"')) {
+  inline auto quoted(const std::basic_string<charT, traits, Allocator>& s,
+                     charT delim = charT('"')) {
     return delim + s + delim;
   }
 
+  /// @overl `quoted`
   template <class charT, class traits, class Allocator>
-  auto quoted(std::basic_string<charT, traits, Allocator>&& s, charT delim = charT('"')) {
+  inline auto quoted(std::basic_string<charT, traits, Allocator>&& s, charT delim = charT('"')) {
     return delim + std::move(s) + delim;
   }
 } // namespace mpc
