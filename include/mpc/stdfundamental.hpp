@@ -35,12 +35,15 @@ namespace mpc {
   template <class B>
   using _not = std::negation<B>;
 
+  /// _and_v
   template <class... Bn>
   inline constexpr bool _and_v = _and<Bn...>::value;
 
+  /// _or_v
   template <class... Bn>
   inline constexpr bool _or_v = _or<Bn...>::value;
 
+  /// _not_v
   template <class B>
   inline constexpr bool _not_v = _not<B>::value;
 } // namespace mpc
