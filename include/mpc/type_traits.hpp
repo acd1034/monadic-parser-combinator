@@ -32,7 +32,6 @@ namespace mpc::detail {
   struct is_implicitly_default_constructible
     : _and<std::is_default_constructible<T>, is_implicitly_default_constructible_impl<T>> {};
 
-  /// helper variable template for `is_implicitly_default_constructible`
   template <class T>
   inline constexpr bool is_implicitly_default_constructible_v =
     is_implicitly_default_constructible<T>::value;
@@ -44,20 +43,17 @@ namespace mpc::detail {
   template <class, class, class = void>
   struct is_explicitly_convertible : std::false_type {};
 
-  /// partial specialization of `is_explicitly_convertible`
   template <class From, class To>
   struct is_explicitly_convertible<From, To, std::void_t<decltype(To(std::declval<From>()))>>
     : std::true_type {};
 
-  /// helper variable template for `is_explicitly_convertible`
   template <class From, class To>
   inline constexpr bool is_explicitly_convertible_v = is_explicitly_convertible<From, To>::value;
 
   // is_implicitly_convertible
   // https://github.com/llvm/llvm-project/blob/main/clang/test/Analysis/gtest.cpp#L43
 
-  /// @brief %is_implicitly_convertible
-  /// @details
+  /// %is_implicitly_convertible
   template <class From, class To>
   struct is_implicitly_convertible {
   private:
@@ -71,7 +67,6 @@ namespace mpc::detail {
     static const bool value = sizeof(test(is_implicitly_convertible::make_from())) == sizeof(yes);
   };
 
-  /// helper variable template for `is_implicitly_convertible`
   template <class From, class To>
   inline constexpr bool is_implicitly_convertible_v = is_implicitly_convertible<From, To>::value;
 
