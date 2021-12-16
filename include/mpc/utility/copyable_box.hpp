@@ -23,7 +23,7 @@ namespace mpc {
 
   // Primary template - uses std::optional and introduces an empty state in case assignment fails.
 
-  /// Makes a `copy_constructible` but not `copy_assignable` type `copy_assignable`.
+  /// Makes `copy_constructible` but not `copy_assignable` types `copy_assignable`.
   template <copy_constructible_object T>
   class copyable_box {
     [[no_unique_address]] std::optional<T> instance_;

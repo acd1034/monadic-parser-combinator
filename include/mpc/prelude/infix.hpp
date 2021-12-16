@@ -7,11 +7,12 @@
 
 namespace mpc {
   /**
-   * @brief A function that implements the right-associative infix notation.
-   * @details @code
+   * @brief Implements the right-associative infix notation.
+   * @details
+   * ```
    * infixr(a1, op, a2) = op(a1, a2)
    * infixr(a1, op, args...) = op(a1, infixr(args...))
-   * @endcode
+   * ```
    */
   template<class A1, class Op, class A2>
   constexpr auto infixr(A1&& a1, Op&& op, A2&& a2)
@@ -27,11 +28,12 @@ namespace mpc {
   { return          std::invoke(std::forward<Op>(op), std::forward<A1>(a1), infixr(std::forward<Args>(args)...)); }
 
   /**
-   * @brief A function that implements the left-associative infix notation.
-   * @details @code
+   * @brief Implements the left-associative infix notation.
+   * @details
+   * ```
    * infixl(a1, op, a2) = op(a1, a2)
    * infixl(a1, op, a2, args...) = infixl(op(a1, a2), args...)
-   * @endcode
+   * ```
    */
   template<class A1, class Op, class A2>
   constexpr auto infixl(A1&& a1, Op&& op, A2&& a2)
