@@ -22,7 +22,7 @@ namespace mpc {
   template <class M>
   concept monad = applicative<M> and monad_traits_specialized<M>;
 
-  // class requirements
+  // Methods required for the class definition.
 
   namespace detail {
     /// bind :: forall a b. m a -> (a -> m b) -> m b

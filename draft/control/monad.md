@@ -1,8 +1,9 @@
 ```hs
 -- https://hackage.haskell.org/package/base-4.16.0.0/docs/Control-Monad.html#t:Monad
 class Applicative m => Monad m where
--- Class requirements
--- Requires applicative and monad_traits<M>::bind is valid.
+-- Methods required for the class definition.
+
+-- Requires applicative and bind is valid in @link mpc::monad_traits monad_traits @endlink.
 bind :: forall a b. m a -> (a -> m b) -> m b
 -- (>>=) in Haskell
 

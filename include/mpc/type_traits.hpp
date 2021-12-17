@@ -2,6 +2,7 @@
 #pragma once
 #include <mpc/stdfundamental.hpp>
 
+/// Implementation details are here
 namespace mpc::detail {
   // make_reversed_index_sequence
   // https://stackoverflow.com/questions/51408771/c-reversed-integer-sequence-implementation

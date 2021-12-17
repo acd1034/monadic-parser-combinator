@@ -32,7 +32,7 @@ namespace mpc {
   template <class F>
   concept alternative = applicative<F> and alternative_traits_specialized<F>;
 
-  // class requirements
+  // Methods required for the class definition.
 
   namespace detail {
     /// empty :: f a

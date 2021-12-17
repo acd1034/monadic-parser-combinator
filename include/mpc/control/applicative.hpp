@@ -29,7 +29,7 @@ namespace mpc {
   template <class F>
   concept applicative = functor<F> and applicative_traits_specialized<F>;
 
-  // class requirements
+  // Methods required for the class definition.
 
   namespace detail {
     /// pure :: a -> f a

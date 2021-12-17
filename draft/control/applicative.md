@@ -1,8 +1,8 @@
 ```hs
 -- https://hackage.haskell.org/package/base-4.16.0.0/docs/Control-Applicative.html#t:Applicative
 class Functor f => Applicative f where
--- Class requirements
--- Requires functor and applicative_traits<F>::pure, seq_apply, liftA2, discard2nd and discard1st is valid.
+-- Methods required for the class definition.
+-- Requires functor and pure, seq_apply, liftA2, discard2nd and discard1st is valid in @link mpc::applicative_traits applicative_traits @endlink.
 pure :: a -> f a
 seq_apply :: f (a -> b) -> f a -> f b
 -- (<*>) in Haskell
