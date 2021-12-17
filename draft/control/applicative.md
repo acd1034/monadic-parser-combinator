@@ -12,7 +12,7 @@ discard2nd :: f a -> f b -> f a
 discard1st :: f a -> f b -> f b
 -- (*>) in Haskell
 
--- Deducible methods
+-- Methods that can be deduced from other methods of @link mpc::applicative applicative @endlink.
 fmap :: (a -> b) -> f a -> f b
 fmap f x = seq_apply (pure f) x
 

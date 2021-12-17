@@ -8,24 +8,28 @@
 
 namespace mpc {
   // monad
-  // https://hackage.haskell.org/package/base-4.16.0.0/docs/Control-Monad.html
+  // https://hackage.haskell.org/package/base-4.16.0.0/docs/Control-Monad.html#t:Monad
 
   /// class Applicative m => Monad m where
   template <class>
   struct monad_traits;
 
+  /// monad_traits_specialized
   template <class M>
   concept monad_traits_specialized = requires {
     monad_traits<std::remove_cvref_t<M>>::bind;
   };
 
+  /// Requires applicative and bind is valid in @link mpc::monad_traits monad_traits @endlink.
   template <class M>
   concept monad = applicative<M> and monad_traits_specialized<M>;
 
   // Methods required for the class definition.
-
   namespace detail {
-    /// bind :: forall a b. m a -> (a -> m b) -> m b
+    /**
+     * @brief bind :: forall a b. m a -> (a -> m b) -> m b
+     * @details (>>=) in Haskell
+     */
     struct bind_op {
       template <class Ma, class Fn>
       constexpr auto operator()(Ma&& ma, Fn&& fn) const noexcept(
@@ -36,24 +40,19 @@ namespace mpc {
   } // namespace detail
 
   inline namespace cpo {
-    /// @brief return = pure
-    /// @details A mere alias for a method of Applicative
-    template <class M>
-    requires requires {
-      applicative_traits<std::remove_cvref_t<M>>::pure;
-    }
-    inline constexpr auto returns = mpc::pure<M>;
-
-    /// bind :: forall a b. m a -> (a -> m b) -> m b
+    /// @copydoc mpc::detail::bind_op
     inline constexpr perfect_forwarded_t<detail::bind_op> bind{};
   } // namespace cpo
 
-  // Deducibles
-
+  /// Methods that can be deduced from other methods of @link mpc::monad monad @endlink.
   namespace monads {
     namespace detail {
-      /// @brief fmap :: (a -> b) -> f a -> f b
-      /// @details fmap f x = bind x (y -> return (f y))
+      /**
+       * @copydoc mpc::detail::fmap_op
+       * ```
+       * fmap f xs = bind xs (return . f)
+       * ```
+       */
       struct fmap_op {
         template <class Ma>
         struct closure {
@@ -71,8 +70,12 @@ namespace mpc {
         { return    mpc::bind(std::forward<Ma>(ma), perfect_forwarded_t<closure<Ma>>{}(std::forward<Fn>(fn))); }
       };
 
-      /// @brief seq_apply :: f (a -> b) -> f a -> f b
-      /// @details seq_apply m1 m2 = bind m1 (f -> bind m2 (x -> return (f x)))
+      /**
+       * @copydoc mpc::detail::seq_apply_op
+       * ```
+       * seq_apply mf xs = bind mf (\f -> bind xs (return . f)))
+       * ```
+       */
       struct seq_apply_op {
         template <class Ma>
         struct nested_closure {
@@ -98,8 +101,12 @@ namespace mpc {
         { return    mpc::bind(std::forward<Mab>(mab), perfect_forwarded_t<closure>{}(std::forward<Ma>(ma))); }
       };
 
-      /// @brief discard1st :: f a -> f b -> f b
-      /// @details discard1st m1 m2 = bind m1 (_ -> m2)
+      /**
+       * @copydoc mpc::detail::discard1st_op
+       * ```
+       * discard1st m1 m2 = bind m1 (const m2)
+       * ```
+       */
       struct discard1st_op {
         struct closure {
           template<class Mb, class A>
@@ -117,24 +124,26 @@ namespace mpc {
       };
     } // namespace detail
 
-    /// @brief fmap f x = bind x (y -> return (f y))
-    /// @details If you fully specialize `monad_traits<M>`, you can deduce `fmap`.
+    /// @copydoc mpc::monads::detail::fmap_op
     inline constexpr perfect_forwarded_t<detail::fmap_op> fmap{};
 
-    /// @brief seq_apply m1 m2 = bind m1 (f -> bind m2 (x -> return (f x)))
-    /// @details If you fully specialize `monad_traits<M>`, you can deduce `seq_apply`.
+    /// @copydoc mpc::monads::detail::seq_apply_op
     inline constexpr perfect_forwarded_t<detail::seq_apply_op> seq_apply{};
 
-    /// @brief discard1st m1 m2 = bind m1 (_ -> m2)
-    /// @details If you fully specialize `monad_traits<M>`, you can deduce `discard1st`.
+    /// @copydoc mpc::monads::detail::discard1st_op
     inline constexpr perfect_forwarded_t<detail::discard1st_op> discard1st{};
   } // namespace monads
 
   // Grobal methods
 
   namespace detail {
-    /// @brief karrow :: Monad m => (a -> m b) -> (b -> m c) -> (a -> m c)
-    /// @details karrow f g = x -> (f x >>= g)
+    /**
+     * @brief karrow :: Monad m => (a -> m b) -> (b -> m c) -> (a -> m c)
+     * @details (>=>) in Haskell
+     * ```
+     * karrow f g = (\x -> f x >>= g)
+     * ```
+     */
     struct karrow_op {
       struct closure {
         template <class Fn, class Gn, class A>
@@ -153,7 +162,20 @@ namespace mpc {
   } // namespace detail
 
   inline namespace cpo {
-    /// Kleisli arrows `(>=>)`
+    /**
+     * @brief returns :: a -> m a
+     * @details
+     * ```
+     * returns = pure
+     * ```
+     */
+    template <class M>
+    requires requires {
+      applicative_traits<std::remove_cvref_t<M>>::pure;
+    }
+    inline constexpr auto returns = mpc::pure<M>;
+
+    /// @copydoc mpc::detail::karrow_op
     inline constexpr perfect_forwarded_t<detail::karrow_op> karrow{};
   } // namespace cpo
 } // namespace mpc

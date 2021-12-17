@@ -7,7 +7,7 @@ fmap :: (a -> b) -> f a -> f b
 replace2nd :: a -> f b -> f a
 -- (<$) in Haskell
 
--- Deducible methods
+-- Methods that can be deduced from other methods of @link mpc::functor functor @endlink.
 replace2nd :: a -> f b -> f a
 replace2nd = fmap . const
 
