@@ -20,7 +20,7 @@ namespace mpc {
   -> decltype(      std::invoke(std::forward<Op>(op), std::forward<A1>(a1), std::forward<A2>(a2)))
   { return          std::invoke(std::forward<Op>(op), std::forward<A1>(a1), std::forward<A2>(a2)); }
 
-  /// @overl `infixr`
+  /// @overl infixr
   template<class A1, class Op, class... Args>
   constexpr auto infixr(A1&& a1, Op&& op, Args&&... args)
   noexcept(noexcept(std::invoke(std::forward<Op>(op), std::forward<A1>(a1), infixr(std::forward<Args>(args)...))))
@@ -41,7 +41,7 @@ namespace mpc {
   -> decltype(      std::invoke(std::forward<Op>(op), std::forward<A1>(a1), std::forward<A2>(a2)))
   { return          std::invoke(std::forward<Op>(op), std::forward<A1>(a1), std::forward<A2>(a2)); }
 
-  /// @overl `infixl`
+  /// @overl infixl
   template<class A1, class Op, class A2, class... Args>
   constexpr auto infixl(A1&& a1, Op&& op, A2&& a2, Args&&... args)
   noexcept(noexcept(infixl(std::invoke(std::forward<Op>(op), std::forward<A1>(a1), std::forward<A2>(a2)), std::forward<Args>(args)...)))

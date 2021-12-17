@@ -177,21 +177,21 @@ namespace mpc {
     return *s;
   }
 
-  /// @overl `get`
+  /// @overl get
   template <std::size_t Idx, class T, class Tag>
   requires (Idx < 1)
   constexpr decltype(auto) get(const single<T, Tag>& s) {
     return *s;
   }
 
-  /// @overl `get`
+  /// @overl get
   template <std::size_t Idx, class T, class Tag>
   requires (Idx < 1)
   constexpr decltype(auto) get(single<T, Tag>&& s) {
     return *std::move(s);
   }
 
-  /// @overl `get`
+  /// @overl get
   template <std::size_t Idx, class T, class Tag>
   requires (Idx < 1)
   constexpr decltype(auto) get(const single<T, Tag>&& s) {
@@ -203,11 +203,11 @@ namespace mpc {
 // [x] std::tuple_size
 // [x] std::tuple_element
 
-/// @spec `std::tuple_size` for `mpc::single`
+/// @spec std::tuple_size for mpc::single
 template <class T, class Tag>
 struct std::tuple_size<mpc::single<T, Tag>> : mpc::index_constant<1> {};
 
-/// @spec `std::tuple_element` for `mpc::single`
+/// @spec std::tuple_element for mpc::single
 template <std::size_t Idx, class T, class Tag>
 requires (Idx < 1)
 struct std::tuple_element<Idx, mpc::single<T, Tag>> {

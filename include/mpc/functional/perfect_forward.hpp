@@ -17,13 +17,13 @@ namespace mpc {
   template <class Op, class... Args>
   using perfect_forward = perfect_forward_impl<Op, std::index_sequence_for<Args...>, Args...>;
 
-  /// Inherits from `perfect_forward` so that you do not have to write inheriting constructors.
+  /// Inherits from perfect_forward so that you do not have to write inheriting constructors.
   template <class Op, class... Args>
   struct perfect_forwarded_t : perfect_forward<Op, Args...> {
     using perfect_forward<Op, Args...>::perfect_forward;
   };
 
-  /// @spec `perfect_forward_impl`
+  /// @spec perfect_forward_impl
   template <copy_constructible_object Op, std::size_t... Idx, class... Bound>
   struct perfect_forward_impl<Op, std::index_sequence<Idx...>, Bound...> {
   private:

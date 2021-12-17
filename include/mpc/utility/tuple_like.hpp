@@ -32,16 +32,16 @@ namespace mpc {
   template <class T, class = void>
   struct is_tuple_like : std::false_type {};
 
-  /// @spec `is_tuple_like`
+  /// @spec is_tuple_like
   template <class T>
   struct is_tuple_like<T, std::void_t<decltype(std::tuple_size<T>::value)>>
     : _and<detail::_tuple_like::has_tuple_element<T>, detail::_tuple_like::has_unqualified_get<T>> {};
 
-  /// @ivar `is_tuple_like`
+  /// @ivar is_tuple_like
   template <class T>
   inline constexpr bool is_tuple_like_v = is_tuple_like<T>::value;
 
-  /// Requires `std::tuple_size`, `std::tuple_element` and unqualified `get` is valid.
+  /// Requires std::tuple_size, std::tuple_element and unqualified get is valid.
   template <class T>
   concept tuple_like = is_tuple_like_v<std::remove_cvref_t<T>>;
 } // namespace mpc

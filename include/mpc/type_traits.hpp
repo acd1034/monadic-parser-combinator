@@ -36,7 +36,7 @@ namespace mpc::detail {
   struct is_implicitly_default_constructible
     : _and<std::is_default_constructible<T>, is_implicitly_default_constructible_impl<T>> {};
 
-  /// @ivar `is_implicitly_default_constructible`
+  /// @ivar is_implicitly_default_constructible
   template <class T>
   inline constexpr bool is_implicitly_default_constructible_v =
     is_implicitly_default_constructible<T>::value;
@@ -48,12 +48,12 @@ namespace mpc::detail {
   template <class, class, class = void>
   struct is_explicitly_convertible : std::false_type {};
 
-  /// @spec `is_explicitly_convertible`
+  /// @spec is_explicitly_convertible
   template <class From, class To>
   struct is_explicitly_convertible<From, To, std::void_t<decltype(To(std::declval<From>()))>>
     : std::true_type {};
 
-  /// @ivar `is_explicitly_convertible`
+  /// @ivar is_explicitly_convertible
   template <class From, class To>
   inline constexpr bool is_explicitly_convertible_v = is_explicitly_convertible<From, To>::value;
 
@@ -74,7 +74,7 @@ namespace mpc::detail {
     static const bool value = sizeof(test(is_implicitly_convertible::make_from())) == sizeof(yes);
   };
 
-  /// @ivar `is_implicitly_convertible`
+  /// @ivar is_implicitly_convertible
   template <class From, class To>
   inline constexpr bool is_implicitly_convertible_v = is_implicitly_convertible<From, To>::value;
 
@@ -162,43 +162,43 @@ namespace mpc::detail {
     using type = typename copy_cvref<From, typename std::remove_cvref<To>::type>::type;
   };
 
-  /// @alias `copy_const`
+  /// @alias copy_const
   template <class From, class To>
   using copy_const_t = typename copy_const<From, To>::type;
 
-  /// @alias `clone_const`
+  /// @alias clone_const
   template <class From, class To>
   using clone_const_t = typename clone_const<From, To>::type;
 
-  /// @alias `copy_volatile`
+  /// @alias copy_volatile
   template <class From, class To>
   using copy_volatile_t = typename copy_volatile<From, To>::type;
 
-  /// @alias `clone_volatile`
+  /// @alias clone_volatile
   template <class From, class To>
   using clone_volatile_t = typename clone_volatile<From, To>::type;
 
-  /// @alias `copy_cv`
+  /// @alias copy_cv
   template <class From, class To>
   using copy_cv_t = typename copy_cv<From, To>::type;
 
-  /// @alias `clone_cv`
+  /// @alias clone_cv
   template <class From, class To>
   using clone_cv_t = typename clone_cv<From, To>::type;
 
-  /// @alias `copy_reference`
+  /// @alias copy_reference
   template <class From, class To>
   using copy_reference_t = typename copy_reference<From, To>::type;
 
-  /// @alias `clone_reference`
+  /// @alias clone_reference
   template <class From, class To>
   using clone_reference_t = typename clone_reference<From, To>::type;
 
-  /// @alias `copy_cvref`
+  /// @alias copy_cvref
   template <class From, class To>
   using copy_cvref_t = typename copy_cvref<From, To>::type;
 
-  /// @alias `clone_cvref`
+  /// @alias clone_cvref
   template <class From, class To>
   using clone_cvref_t = typename clone_cvref<From, To>::type;
 } // namespace mpc::detail
