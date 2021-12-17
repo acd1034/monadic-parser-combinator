@@ -44,7 +44,7 @@ namespace mpc {
     inline constexpr perfect_forwarded_t<detail::bind_op> bind{};
   } // namespace cpo
 
-  /// Methods that can be deduced from other methods of @link mpc::monad monad @endlink.
+  /// Methods deducible from other methods of @link mpc::monad monad @endlink.
   namespace monads {
     namespace detail {
       /**
@@ -135,7 +135,6 @@ namespace mpc {
   } // namespace monads
 
   // Grobal methods
-
   namespace detail {
     /**
      * @brief karrow :: Monad m => (a -> m b) -> (b -> m c) -> (a -> m c)

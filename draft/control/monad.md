@@ -6,7 +6,7 @@ class Applicative m => Monad m where
 bind :: forall a b. m a -> (a -> m b) -> m b
 -- (>>=) in Haskell
 
--- Methods that can be deduced from other methods of @link mpc::monad monad @endlink.
+-- Methods deducible from other methods of @link mpc::monad monad @endlink.
 fmap :: (a -> b) -> f a -> f b
 fmap f xs = bind xs (return . f) -- TODO: この式で再実装
 

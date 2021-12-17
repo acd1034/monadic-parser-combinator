@@ -52,7 +52,7 @@ namespace mpc {
     inline constexpr perfect_forwarded_t<detail::replace2nd_op> replace2nd{};
   } // namespace cpo
 
-  /// Methods that can be deduced from other methods of @link mpc::functor functor @endlink.
+  /// Methods deducible from other methods of @link mpc::functor functor @endlink.
   namespace functors {
     /**
      * @copydoc mpc::detail::replace2nd_op
@@ -65,7 +65,6 @@ namespace mpc {
   } // namespace functors
 
   // Grobal methods
-
   inline namespace cpo {
     /**
      * @brief replace1st :: Functor f => f a -> b -> f b

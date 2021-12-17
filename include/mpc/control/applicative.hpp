@@ -11,12 +11,13 @@
 
 namespace mpc {
   // applicative
-  // https://hackage.haskell.org/package/base-4.16.0.0/docs/Control-Applicative.html
+  // https://hackage.haskell.org/package/base-4.16.0.0/docs/Control-Applicative.html#t:Applicative
 
   /// class Functor f => Applicative f where
   template <class>
   struct applicative_traits;
 
+  /// applicative_traits_specialized
   template <class F>
   concept applicative_traits_specialized = requires {
     applicative_traits<std::remove_cvref_t<F>>::pure;
@@ -26,11 +27,11 @@ namespace mpc {
     applicative_traits<std::remove_cvref_t<F>>::discard1st;
   };
 
+  /// Requires functor and pure, seq_apply, liftA2, discard2nd and discard1st is valid in @link mpc::applicative_traits applicative_traits @endlink.
   template <class F>
   concept applicative = functor<F> and applicative_traits_specialized<F>;
 
   // Methods required for the class definition.
-
   namespace detail {
     /// pure :: a -> f a
     template <class F>
@@ -42,7 +43,10 @@ namespace mpc {
       { return    applicative_traits<std::remove_cvref_t<F>>::pure(std::forward<A>(a)); }
     };
 
-    /// seq_apply :: f (a -> b) -> f a -> f b
+    /**
+     * @brief seq_apply :: f (a -> b) -> f a -> f b
+     * @details (<*>) in Haskell
+     */
     struct seq_apply_op {
       template <class Fab, class Fa>
       constexpr auto operator()(Fab&& fab, Fa&& fa) const noexcept(
@@ -60,7 +64,10 @@ namespace mpc {
       { return    applicative_traits<std::remove_cvref_t<Fa>>::liftA2(std::forward<Fn>(fn), std::forward<Fa>(fa), std::forward<Fb>(fb)); }
     };
 
-    /// discard2nd :: f a -> f b -> f a
+    /**
+     * @brief discard2nd :: f a -> f b -> f a
+     * @details (<*) in Haskell
+     */
     struct discard2nd_op {
       template <class Fa, class Fb>
       constexpr auto operator()(Fa&& fa, Fb&& fb) const noexcept(
@@ -69,7 +76,10 @@ namespace mpc {
       { return    applicative_traits<std::remove_cvref_t<Fa>>::discard2nd(std::forward<Fa>(fa), std::forward<Fb>(fb)); }
     };
 
-    /// discard1st :: f a -> f b -> f b
+    /**
+     * @brief discard1st :: f a -> f b -> f b
+     * @details (*>) in Haskell
+     */
     struct discard1st_op {
       template <class Fa, class Fb>
       constexpr auto operator()(Fa&& fa, Fb&& fb) const noexcept(
@@ -80,29 +90,33 @@ namespace mpc {
   } // namespace detail
 
   inline namespace cpo {
-    /// pure :: a -> f a
+    /// @copydoc mpc::detail::pure_op
     template <class F>
     inline constexpr perfect_forwarded_t<detail::pure_op<F>> pure{};
 
-    /// seq_apply :: f (a -> b) -> f a -> f b
+    /// @copydoc mpc::detail::seq_apply_op
     inline constexpr perfect_forwarded_t<detail::seq_apply_op> seq_apply{};
 
-    /// liftA2 :: (a -> b -> c) -> f a -> f b -> f c
+    /// @copydoc mpc::detail::liftA2_op
     inline constexpr perfect_forwarded_t<detail::liftA2_op> liftA2{};
 
-    /// discard2nd :: f a -> f b -> f a
+    /// @copydoc mpc::detail::discard2nd_op
     inline constexpr perfect_forwarded_t<detail::discard2nd_op> discard2nd{};
 
-    /// discard1st :: f a -> f b -> f b
+    /// @copydoc mpc::detail::discard1st_op
     inline constexpr perfect_forwarded_t<detail::discard1st_op> discard1st{};
   } // namespace cpo
 
-  // Deducibles
-
+  /// Methods deducible from other methods of @link mpc::applicative applicative @endlink.
   namespace applicatives {
     namespace detail {
-      /// @brief fmap :: (a -> b) -> f a -> f b
-      /// @details fmap f x = seq_apply (pure f) x
+      /**
+       * @copydoc mpc::detail::fmap_op
+       * @details
+       * ```
+       * fmap f x = seq_apply (pure f) x
+       * ```
+       */
       struct fmap_op {
         template <class Fn, class Fa>
         constexpr auto operator()(Fn&& fn, Fa&& fa) const noexcept(
@@ -111,8 +125,13 @@ namespace mpc {
         { return    mpc::seq_apply(mpc::pure<Fa>(std::forward<Fn>(fn)), std::forward<Fa>(fa)); }
       };
 
-      /// @brief liftA2 :: (a -> b -> c) -> f a -> f b -> f c
-      /// @details liftA2 f x y = seq_apply (fmap f x) y
+      /**
+       * @copydoc mpc::detail::liftA2_op
+       * @details
+       * ```
+       * liftA2 f x y = seq_apply (fmap f x) y
+       * ```
+       */
       struct liftA2_op {
         template <class Fn, class Fa, class Fb>
         constexpr auto operator()(Fn&& fn, Fa&& fa, Fb&& fb) const noexcept(
@@ -121,8 +140,13 @@ namespace mpc {
         { return    mpc::seq_apply(mpc::fmap(std::forward<Fn>(fn), std::forward<Fa>(fa)), std::forward<Fb>(fb)); }
       };
 
-      /// @brief discard1st_opt :: f a -> f b -> f b
-      /// @details discard1st_opt x y = (id <$ x) <*> y
+      /**
+       * @copydoc mpc::detail::discard1st_op
+       * @details
+       * ```
+       * discard1st x y = (id <$ x) <*> y
+       * ```
+       */
       struct discard1st_opt_op {
         template <class Fa, class Fb>
         constexpr auto operator()(Fa&& fa, Fb&& fb) const noexcept(
@@ -132,37 +156,46 @@ namespace mpc {
       };
     } // namespace detail
 
-    /// @brief fmap f x = seq_apply (pure f) x
-    /// @details If you fully specialize `applicative_traits<F>`, you can deduce `fmap`.
+    /// @copydoc mpc::applicatives::detail::fmap_op
     inline constexpr perfect_forwarded_t<detail::fmap_op> fmap{};
 
-    /// @brief seq_apply = liftA2 id
-    /// @details If you define `applicative_traits<F>::liftA2`, you can deduce `seq_apply`.
+    /**
+     * @copydoc mpc::detail::seq_apply_op
+     * @details
+     * ```
+     * seq_apply = liftA2 id
+     * ```
+     */
     inline constexpr auto seq_apply = mpc::liftA2 % id;
 
-    /// @brief liftA2 f x y = seq_apply (fmap f x) y
-    /// @details If you define `applicative_traits<F>::seq_apply`, you can deduce `liftA2`.
+    /// @copydoc mpc::applicatives::detail::liftA2_op
     inline constexpr perfect_forwarded_t<detail::liftA2_op> liftA2{};
 
-    /// @brief discard2nd = liftA2 const
-    /// @details If you define `applicative_traits<F>::seq_apply` and
-    /// `applicative_traits<F>::liftA2`, you can deduce `discard2nd`.
+    /**
+     * @copydoc mpc::detail::discard2nd_op
+     * @details
+     * ```
+     * discard2nd = liftA2 const
+     * ```
+     */
     inline constexpr auto discard2nd = mpc::liftA2 % constant;
 
-    /// @brief discard1st = liftA2 (flip const)
-    /// @details If you define `applicative_traits<F>::seq_apply` and
-    /// `applicative_traits<F>::liftA2`, you can deduce `discard1st`.
+    /**
+     * @copydoc mpc::detail::discard1st_op
+     * @details
+     * ```
+     * discard1st = liftA2 (flip const)
+     * ```
+     */
     inline constexpr auto discard1st = mpc::liftA2 % (flip % constant);
 
-    /// @brief discard1st_opt x y = seq_apply (id <$ x) y
-    /// @details If you optimize `functor_traits<F>::replace2nd`, you can deduce optimized
-    /// `discard1st`.
+    /// @copydoc mpc::applicatives::detail::discard1st_opt_op
     inline constexpr perfect_forwarded_t<detail::discard1st_opt_op> discard1st_opt{};
   } // namespace applicatives
 
   // Grobal methods
-
   namespace detail {
+    /// @cond undocumented
     template <class Fn, class Fa, class Fb>
     constexpr auto reversed_liftA(Fb&& fb, Fa&& fa, Fn&& fn) noexcept(
     noexcept(   mpc::liftA2(std::forward<Fn>(fn), std::forward<Fa>(fa), std::forward<Fb>(fb))))
@@ -175,13 +208,22 @@ namespace mpc {
     noexcept(   mpc::seq_apply(reversed_liftA(std::forward<Args>(args)...), std::forward<Fz>(fz))))
     -> decltype(mpc::seq_apply(reversed_liftA(std::forward<Args>(args)...), std::forward<Fz>(fz)))
     { return    mpc::seq_apply(reversed_liftA(std::forward<Args>(args)...), std::forward<Fz>(fz)); }
+    /// @endcond undocumented
 
+    /**
+     * @brief liftA :: Applicative f => (a -> b -> ... -> z) -> f a -> f b -> ... -> f z
+     * @details
+     * ```
+     * liftA f a b ... z = f `fmap` a `seq_apply` b `seq_apply` ... `seq_apply` z
+     * ```
+     */
     template <std::size_t N, class = make_reversed_index_sequence<N + 1>>
     struct liftA_op;
 
+    /// @spec liftA
     template <std::size_t N, std::size_t... Idx>
     requires (N > 1)
-    struct liftA_op<N, std::index_sequence<Idx...>> {
+    struct liftA_op <N, std::index_sequence<Idx...>> {
       // WORKAROUND: std::tuple_element (and therefore, std::get) is not SFINAE-friendly in Clang.
       template <class Bound, class = std::enable_if_t<sizeof...(Idx) == std::tuple_size_v<Bound>>>
       constexpr auto operator()(Bound&& bound) const noexcept(
@@ -199,8 +241,7 @@ namespace mpc {
   } // namespace detail
 
   inline namespace cpo {
-    /// @brief liftA :: Applicative f => (a -> b -> .. -> z) -> f a -> f b -> ... -> f z
-    /// @details liftA fn a b ... z = fn \`fmap\` a \`seq_apply\` b \`seq_apply\` ... \`seq_apply\` z
+    /// @copydoc mpc::detail::liftA_op
     template <std::size_t N>
     requires (N > 1)
     inline constexpr perfect_forwarded_t<detail::liftA_op<N>> liftA{};
