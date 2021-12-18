@@ -15,7 +15,7 @@ namespace mpc {
     monad_trans_traits<std::remove_cvref_t<TR>>::lift;
   };
 
-  // class requirements
+  // Methods required for the class definition.
 
   namespace detail {
     /// lift :: (Monad m) => m a -> t m a

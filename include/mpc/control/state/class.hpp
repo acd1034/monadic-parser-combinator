@@ -19,7 +19,7 @@ namespace mpc {
     monad_state_traits<std::remove_cvref_t<ST>>::put;
   };
 
-  // class requirements
+  // Methods required for the class definition.
 
   namespace detail {
     /// state :: (s -> (a, s)) -> m a

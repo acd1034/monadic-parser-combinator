@@ -7,20 +7,20 @@
 
 namespace mpc {
   // functor
-  // https://hackage.haskell.org/package/base-4.16.0.0/docs/Control-Monad.html
+  // https://hackage.haskell.org/package/base-4.16.0.0/docs/Control-Monad.html#t:Functor
 
   /// class Functor f where
   template <class>
   struct functor_traits;
 
+  /// Requires fmap and replace2nd is valid in @link mpc::functor_traits functor_traits @endlink.
   template <class F>
   concept functor = requires {
     functor_traits<std::remove_cvref_t<F>>::fmap;
     functor_traits<std::remove_cvref_t<F>>::replace2nd;
   };
 
-  // class requirements
-
+  // Methods required for the class definition.
   namespace detail {
     /// fmap :: (a -> b) -> f a -> f b
     struct fmap_op {
@@ -31,7 +31,10 @@ namespace mpc {
       { return    functor_traits<std::remove_cvref_t<Fa>>::fmap(std::forward<Fn>(fn), std::forward<Fa>(fa)); }
     };
 
-    /// replace2nd :: a -> f b -> f a
+    /**
+     * @brief replace2nd :: a -> f b -> f a
+     * @details (<$) in Haskell
+     */
     struct replace2nd_op {
       template <class A, class Fb>
       constexpr auto operator()(A&& a, Fb&& fb) const noexcept(
@@ -42,26 +45,34 @@ namespace mpc {
   } // namespace detail
 
   inline namespace cpo {
-    /// fmap :: (a -> b) -> f a -> f b
+    /// @copydoc mpc::detail::fmap_op
     inline constexpr perfect_forwarded_t<detail::fmap_op> fmap{};
 
-    /// replace2nd :: a -> f b -> f a
+    /// @copydoc mpc::detail::replace2nd_op
     inline constexpr perfect_forwarded_t<detail::replace2nd_op> replace2nd{};
   } // namespace cpo
 
-  // Deducibles
-
+  /// Methods deducible from other methods of @link mpc::functor functor @endlink.
   namespace functors {
-    /// @brief replace2nd = fmap . const
-    /// @details If you define `functor_traits<F>::fmap`, you can deduce `replace2nd`.
+    /**
+     * @copydoc mpc::detail::replace2nd_op
+     * @details
+     * ```
+     * replace2nd = fmap . const
+     * ```
+     */
     inline constexpr auto replace2nd = compose(mpc::fmap, constant);
   } // namespace functors
 
   // Grobal methods
-
   inline namespace cpo {
-    /// replace1st :: Functor f => f a -> b -> f b
-    /// replace1st = flip replace2nd
+    /**
+     * @brief replace1st :: Functor f => f a -> b -> f b
+     * @details ($>) in Haskell
+     * ```
+     * replace1st = flip replace2nd
+     * ```
+     */
     inline constexpr auto replace1st = flip % mpc::replace2nd;
   } // namespace cpo
 } // namespace mpc

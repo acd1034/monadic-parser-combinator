@@ -21,7 +21,7 @@ namespace mpc {
   // [x] StateT_state_t
   // [x] StateT_monad_t
 
-  /// newtype StateT s m a = StateT { run_StateT :: s -> m (a,s) }
+  /// newtype StateT s m a = StateT { runStateT :: s -> m (a,s) }
   template <class S, monad M>
   struct StateT : Identity<perfect_forwarded_t<std::function<M(S)>>> {
     using Identity<perfect_forwarded_t<std::function<M(S)>>>::Identity;
@@ -83,8 +83,8 @@ namespace mpc {
 
   /// instance (Monad m) => Monad (StateT s m) where
   ///     m >>= k  = StateT $ s -> do
-  ///         ~(a, s') <- run_StateT m s
-  ///         run_StateT (k a) s'
+  ///         ~(a, s') <- runStateT m s
+  ///         runStateT (k a) s'
   template <class S, monad M>
   struct monad_traits<StateT<S, M>> {
     /// (>>=)  :: forall a b. m a -> (a -> m b) -> m b
@@ -128,7 +128,7 @@ namespace mpc {
 
   /// instance (Functor m) => Functor (StateT s m) where
   ///     fmap f m = StateT $ s ->
-  ///         fmap (~(a, s') -> (f a, s')) $ run_StateT m s
+  ///         fmap (~(a, s') -> (f a, s')) $ runStateT m s
   template <class S, monad M>
   struct functor_traits<StateT<S, M>> {
     // fmap  :: (a -> b) -> f a -> f b

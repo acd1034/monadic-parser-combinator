@@ -1,7 +1,6 @@
 /// @file perfect_forward.hpp
 #pragma once
 #include <functional> // std::invoke
-#include <mpc/stdfundamental.hpp>
 #include <mpc/utility/copyable_box.hpp>
 
 // clang-format off
@@ -10,18 +9,21 @@ namespace mpc {
   // perfect_forward
   // https://github.com/llvm/llvm-project/blob/main/libcxx/include/__functional/perfect_forward.h
 
+  /// %perfect_forward_impl
   template <class, class, class...>
   struct perfect_forward_impl;
 
-  // perfect_forward implements a perfect-forwarding call wrapper.
+  /// Implements a perfect-forwarding call wrapper.
   template <class Op, class... Args>
   using perfect_forward = perfect_forward_impl<Op, std::index_sequence_for<Args...>, Args...>;
 
+  /// Inherits from perfect_forward so that you do not have to write inheriting constructors.
   template <class Op, class... Args>
   struct perfect_forwarded_t : perfect_forward<Op, Args...> {
     using perfect_forward<Op, Args...>::perfect_forward;
   };
 
+  /// @spec perfect_forward_impl
   template <copy_constructible_object Op, std::size_t... Idx, class... Bound>
   struct perfect_forward_impl<Op, std::index_sequence<Idx...>, Bound...> {
   private:

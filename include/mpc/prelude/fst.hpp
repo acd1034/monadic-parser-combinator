@@ -3,6 +3,7 @@
 #include <mpc/functional/perfect_forward.hpp>
 
 namespace mpc {
+  /// @cond undocumented
   namespace detail::_fst {
     template <auto>
     void get(auto&) = delete;
@@ -19,9 +20,19 @@ namespace mpc {
       }
     };
   } // namespace detail::_fst
+  /// @endcond undocumented
 
   inline namespace cpo {
+    /**
+     * @brief Returns the first element of the given tuple-like object.
+     * @rel prelude.hpp
+     */
     inline constexpr perfect_forwarded_t<detail::_fst::get_op<0>> fst;
+
+    /**
+     * @brief Returns the second element of the given tuple-like object.
+     * @rel prelude.hpp
+     */
     inline constexpr perfect_forwarded_t<detail::_fst::get_op<1>> snd;
   } // namespace cpo
 } // namespace mpc
