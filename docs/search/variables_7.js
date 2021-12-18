@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['is_5fexplicitly_5fconvertible_5fv_380',['is_explicitly_convertible_v',['../namespacempc_1_1detail.html#aa63feab5ad75249515bd726f87f329f6',1,'mpc::detail']]],
-  ['is_5fimplicitly_5fconvertible_5fv_381',['is_implicitly_convertible_v',['../namespacempc_1_1detail.html#a005d0bb21a143a66ff4daebc723471f3',1,'mpc::detail']]],
-  ['is_5fimplicitly_5fdefault_5fconstructible_5fv_382',['is_implicitly_default_constructible_v',['../namespacempc_1_1detail.html#aae63c23ef9b93dbe50cc6b6bd984eccd',1,'mpc::detail']]],
-  ['is_5ftuple_5flike_5fv_383',['is_tuple_like_v',['../tuple__like_8hpp.html#a9c59930ad6361db8edf5c6a781d03fb4',1,'mpc']]]
+  ['gets_466',['gets',['../namespacempc_1_1cpo.html#ad6cc1b0bf14899eaff9c1de49b5e1b38',1,'mpc::gets()'],['../namespacempc_1_1cpo.html#ad6cc1b0bf14899eaff9c1de49b5e1b38',1,'mpc::cpo::gets()']]],
+  ['getss_467',['getss',['../namespacempc_1_1cpo.html#a1e08825a3994e8f00a8295c7190ab228',1,'mpc::getss()'],['../namespacempc_1_1cpo.html#a1e08825a3994e8f00a8295c7190ab228',1,'mpc::cpo::getss()']]],
+  ['greater_468',['greater',['../namespacempc_1_1cpo.html#a918de7b217b53fe186a9632d3993825d',1,'mpc::greater()'],['../namespacempc_1_1cpo.html#a918de7b217b53fe186a9632d3993825d',1,'mpc::cpo::greater()']]],
+  ['greater_5fequal_469',['greater_equal',['../namespacempc_1_1cpo.html#ae0084f3843c1554eed02f8ce2646f739',1,'mpc::greater_equal()'],['../namespacempc_1_1cpo.html#ae0084f3843c1554eed02f8ce2646f739',1,'mpc::cpo::greater_equal()']]]
 ];

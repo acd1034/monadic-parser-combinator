@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['fmap_377',['fmap',['../applicative_8hpp.html#a6905d1bcc6cab925f0a8810c7c28e51a',1,'mpc::applicatives::fmap()'],['../functor_8hpp.html#a3ad44d9f05ceed65a3b0aca22c406a93',1,'mpc::cpo::fmap()'],['../monad_8hpp.html#ac2a027d6723769cb6999cfb80e225dc2',1,'mpc::monads::fmap()']]]
+  ['empty_460',['empty',['../namespacempc_1_1cpo.html#a7fdbc0223c46e98d77892d1f7b30e1ed',1,'mpc::empty()'],['../namespacempc_1_1cpo.html#a7fdbc0223c46e98d77892d1f7b30e1ed',1,'mpc::cpo::empty()']]],
+  ['equal_5fto_461',['equal_to',['../namespacempc_1_1cpo.html#a8c58ce5c92ba406a156b580befc1f517',1,'mpc::equal_to()'],['../namespacempc_1_1cpo.html#a8c58ce5c92ba406a156b580befc1f517',1,'mpc::cpo::equal_to()']]]
 ];

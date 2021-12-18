@@ -116,7 +116,7 @@ static constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>put<
 <div class="textblock"><h3>template&lt;class S, monad M&gt;<br />
 struct mpc::monad_state_traits&lt; StateT&lt; S, M &gt; &gt;</h3>
 
-<p>instance MonadState (<a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { run_StateT :: s -&gt; m (a,s) }">StateT</a> s) where state f = <a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { run_StateT :: s -&gt; m (a,s) }">StateT</a> (return . f) </p>
+<p>instance MonadState (<a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { runStateT :: s -&gt; m (a,s) }">StateT</a> s) where state f = <a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { runStateT :: s -&gt; m (a,s) }">StateT</a> (return . f) </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/mpc/control/state/<a class="el" href="state_t_8hpp_source.html">stateT.hpp</a></li>
 </ul>

@@ -30,10 +30,12 @@ var NAVTREE =
       [ "Supported Compilers", "index.html#autotoc_md2", null ],
       [ "Library Dependencies", "index.html#autotoc_md3", null ]
     ] ],
+    [ "Main methods", "mpcrel.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ],
         [ "Variables", "namespacemembers_vars.html", null ],
         [ "Typedefs", "namespacemembers_type.html", null ]
       ] ]
@@ -52,9 +54,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "",
-"namespacempc.html#a58ce6848960e0c8ff588d944b3be26d8",
-"structmpc_1_1detail_1_1_state_t__alternative__traits__empty_3_01_s_t_01_4_1_1empty__op.html",
-"structmpc_1_1single.html#a308147faca9adeda64cc3580083e0fce"
+"namespacempc_1_1cpo.html#a48e9151069b3dd57f2fcf007b85c4d6a",
+"stdfundamental_8hpp_source.html",
+"structmpc_1_1monad__traits_3_01maybe_3_01_t1_01_4_01_4_1_1bind__op.html#a352cd6c105a4762d276296226c57627b"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

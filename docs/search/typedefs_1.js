@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['either_397',['either',['../either_8hpp.html#a6421793ea5e39e8e4c1a5a6f7f416082',1,'mpc']]]
+  ['always_5ftrue_5ftype_519',['always_true_type',['../stdfundamental_8hpp.html#a8cbcfce3b010aa1dc9aabbca64c191b3',1,'mpc']]]
 ];

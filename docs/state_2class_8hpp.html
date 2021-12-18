@@ -130,6 +130,10 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacempc_1_1detail"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html">mpc::detail</a></td></tr>
+<tr class="memdesc:namespacempc_1_1detail"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation details are here. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacempc_1_1cpo"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html">mpc::cpo</a></td></tr>
+<tr class="memdesc:namespacempc_1_1cpo"><td class="mdescLeft">&#160;</td><td class="mdescRight">Customization point objects are here. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -139,17 +143,17 @@ Variables</h2></td></tr>
 <tr class="separator:a06eab3c2f01f501781a1111f07d71fc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5b3d0ba34d79f30ec421636126378f3"><td class="memTemplParams" colspan="2"><a id="aa5b3d0ba34d79f30ec421636126378f3"></a>
 template&lt;class ST &gt; </td></tr>
-<tr class="memitem:aa5b3d0ba34d79f30ec421636126378f3"><td class="memTemplItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::state_op&lt; ST &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="state_2class_8hpp.html#aa5b3d0ba34d79f30ec421636126378f3">mpc::state</a> {}</td></tr>
+<tr class="memitem:aa5b3d0ba34d79f30ec421636126378f3"><td class="memTemplItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::state_op&lt; ST &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#aa5b3d0ba34d79f30ec421636126378f3">mpc::cpo::state</a> {}</td></tr>
 <tr class="memdesc:aa5b3d0ba34d79f30ec421636126378f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">state :: (s -&gt; (a, s)) -&gt; m a <br /></td></tr>
 <tr class="separator:aa5b3d0ba34d79f30ec421636126378f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6cc1b0bf14899eaff9c1de49b5e1b38"><td class="memTemplParams" colspan="2"><a id="ad6cc1b0bf14899eaff9c1de49b5e1b38"></a>
 template&lt;class ST &gt; </td></tr>
-<tr class="memitem:ad6cc1b0bf14899eaff9c1de49b5e1b38"><td class="memTemplItemLeft" align="right" valign="top">constexpr detail::gets_op&lt; ST &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="state_2class_8hpp.html#ad6cc1b0bf14899eaff9c1de49b5e1b38">mpc::gets</a> {}</td></tr>
+<tr class="memitem:ad6cc1b0bf14899eaff9c1de49b5e1b38"><td class="memTemplItemLeft" align="right" valign="top">constexpr detail::gets_op&lt; ST &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#ad6cc1b0bf14899eaff9c1de49b5e1b38">mpc::cpo::gets</a> {}</td></tr>
 <tr class="memdesc:ad6cc1b0bf14899eaff9c1de49b5e1b38"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets :: m s <br /></td></tr>
 <tr class="separator:ad6cc1b0bf14899eaff9c1de49b5e1b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a072e38836272ddcfae9b19a2d3f30741"><td class="memTemplParams" colspan="2"><a id="a072e38836272ddcfae9b19a2d3f30741"></a>
 template&lt;class ST &gt; </td></tr>
-<tr class="memitem:a072e38836272ddcfae9b19a2d3f30741"><td class="memTemplItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::put_op&lt; ST &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="state_2class_8hpp.html#a072e38836272ddcfae9b19a2d3f30741">mpc::put</a> {}</td></tr>
+<tr class="memitem:a072e38836272ddcfae9b19a2d3f30741"><td class="memTemplItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::put_op&lt; ST &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a072e38836272ddcfae9b19a2d3f30741">mpc::cpo::put</a> {}</td></tr>
 <tr class="memdesc:a072e38836272ddcfae9b19a2d3f30741"><td class="mdescLeft">&#160;</td><td class="mdescRight">put :: s -&gt; m () <br /></td></tr>
 <tr class="separator:a072e38836272ddcfae9b19a2d3f30741"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1cb1771b23736ce721b6540a50bc3dbe"><td class="memTemplParams" colspan="2">template&lt;class ST &gt; </td></tr>
@@ -164,12 +168,12 @@ constexpr perfect_forwarded_t&lt; detail::put_op&lt; ST &gt; &gt;&#160;</td><td 
 <tr class="separator:ac4e653fd11610b8352cac49be48da656"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af79d9289045fc9aa0d3de560a612a3aa"><td class="memTemplParams" colspan="2"><a id="af79d9289045fc9aa0d3de560a612a3aa"></a>
 template&lt;class ST &gt; </td></tr>
-<tr class="memitem:af79d9289045fc9aa0d3de560a612a3aa"><td class="memTemplItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::modify_op&lt; std::remove_cvref_t&lt; ST &gt; &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="state_2class_8hpp.html#af79d9289045fc9aa0d3de560a612a3aa">mpc::modify</a> {}</td></tr>
+<tr class="memitem:af79d9289045fc9aa0d3de560a612a3aa"><td class="memTemplItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::modify_op&lt; std::remove_cvref_t&lt; ST &gt; &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#af79d9289045fc9aa0d3de560a612a3aa">mpc::cpo::modify</a> {}</td></tr>
 <tr class="memdesc:af79d9289045fc9aa0d3de560a612a3aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">modify :: MonadState s m =&gt; (s -&gt; s) -&gt; m () <br /></td></tr>
 <tr class="separator:af79d9289045fc9aa0d3de560a612a3aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e08825a3994e8f00a8295c7190ab228"><td class="memTemplParams" colspan="2"><a id="a1e08825a3994e8f00a8295c7190ab228"></a>
 template&lt;class ST &gt; </td></tr>
-<tr class="memitem:a1e08825a3994e8f00a8295c7190ab228"><td class="memTemplItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::getss_op&lt; std::remove_cvref_t&lt; ST &gt; &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="state_2class_8hpp.html#a1e08825a3994e8f00a8295c7190ab228">mpc::getss</a> {}</td></tr>
+<tr class="memitem:a1e08825a3994e8f00a8295c7190ab228"><td class="memTemplItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::getss_op&lt; std::remove_cvref_t&lt; ST &gt; &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a1e08825a3994e8f00a8295c7190ab228">mpc::cpo::getss</a> {}</td></tr>
 <tr class="memdesc:a1e08825a3994e8f00a8295c7190ab228"><td class="mdescLeft">&#160;</td><td class="mdescRight">getss :: MonadState s m =&gt; (s -&gt; a) -&gt; m a <br /></td></tr>
 <tr class="separator:a1e08825a3994e8f00a8295c7190ab228"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -187,12 +191,13 @@ template&lt;class ST &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357">requires</a> {</div>
-<div class="line">    monad_state_traits&lt;std::remove_cvref_t&lt;ST&gt;&gt;::state;</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="namespacempc_1_1cpo.html#a60b7e31abb0e45f7c80649e4b895360c">requires</a> {</div>
+<div class="line">    monad_state_traits&lt;std::remove_cvref_t&lt;ST&gt;&gt;<a class="code" href="namespacempc_1_1cpo.html#aa5b3d0ba34d79f30ec421636126378f3">::state</a>;</div>
 <div class="line">    monad_state_traits&lt;std::remove_cvref_t&lt;ST&gt;&gt;::gets();</div>
 <div class="line">    monad_state_traits&lt;std::remove_cvref_t&lt;ST&gt;&gt;::put;</div>
 <div class="line">  }</div>
-<div class="ttc" id="amonad_8hpp_html_a05b4c9cd81d5605f3a48153296632357"><div class="ttname"><a href="monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357">mpc::cpo::requires</a></div><div class="ttdeci">requires requires</div><div class="ttdoc">return = pure</div><div class="ttdef"><b>Definition:</b> monad.hpp:42</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a60b7e31abb0e45f7c80649e4b895360c"><div class="ttname"><a href="namespacempc_1_1cpo.html#a60b7e31abb0e45f7c80649e4b895360c">mpc::cpo::requires</a></div><div class="ttdeci">requires requires</div><div class="ttdoc">returns :: a -&gt; m a</div><div class="ttdef"><b>Definition:</b> monad.hpp:172</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_aa5b3d0ba34d79f30ec421636126378f3"><div class="ttname"><a href="namespacempc_1_1cpo.html#aa5b3d0ba34d79f30ec421636126378f3">mpc::cpo::state</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::state_op&lt; ST &gt; &gt; state</div><div class="ttdoc">state :: (s -&gt; (a, s)) -&gt; m a</div><div class="ttdef"><b>Definition:</b> class.hpp:58</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -210,7 +215,7 @@ template&lt;class ST &gt; </div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{</div>
-<div class="line">      monad_state_traits&lt;std::remove_cvref_t&lt;ST&gt;&gt;::state</div>
+<div class="line">      monad_state_traits&lt;std::remove_cvref_t&lt;ST&gt;&gt;<a class="code" href="namespacempc_1_1cpo.html#aa5b3d0ba34d79f30ec421636126378f3">::state</a></div>
 </div><!-- fragment -->
 <p>gets :: m s </p>
 <p>put :: s -&gt; m () </p>

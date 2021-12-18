@@ -93,6 +93,9 @@ $(document).ready(function(){initNavTree('structmpc_1_1detail_1_1karrow__op.html
 </div><!--header-->
 <div class="contents">
 
+<p>karrow :: Monad m =&gt; (a -&gt; m b) -&gt; (b -&gt; m c) -&gt; (a -&gt; m c)  
+ <a href="structmpc_1_1detail_1_1karrow__op.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="monad_8hpp_source.html">monad.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
@@ -108,8 +111,10 @@ template&lt;class Fn , class Gn &gt; </td></tr>
 <tr class="separator:a4968baa1cbf978b45762a67b83b01eba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>karrow :: Monad m =&gt; (a -&gt; m b) -&gt; (b -&gt; m c) -&gt; (a -&gt; m c) karrow f g = x -&gt; (f x &gt;&gt;= g) </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<div class="textblock"><p>karrow :: Monad m =&gt; (a -&gt; m b) -&gt; (b -&gt; m c) -&gt; (a -&gt; m c) </p>
+<p>(&gt;=&gt;) in Haskell </p><div class="fragment"><div class="line"><a class="code" href="namespacempc_1_1cpo.html#a6271ef4527a5bc2ee1d379bbc9bc7ea7">karrow</a> f g = (\x -&gt; f x &gt;&gt;= g)</div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a6271ef4527a5bc2ee1d379bbc9bc7ea7"><div class="ttname"><a href="namespacempc_1_1cpo.html#a6271ef4527a5bc2ee1d379bbc9bc7ea7">mpc::cpo::karrow</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::karrow_op &gt; karrow</div><div class="ttdoc">karrow :: Monad m =&gt; (a -&gt; m b) -&gt; (b -&gt; m c) -&gt; (a -&gt; m c)</div><div class="ttdef"><b>Definition:</b> monad.hpp:178</div></div>
+</div><!-- fragment --> </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/mpc/control/<a class="el" href="monad_8hpp_source.html">monad.hpp</a></li>
 </ul>
 </div><!-- contents -->

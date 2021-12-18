@@ -92,7 +92,6 @@ $(document).ready(function(){initNavTree('perfect__forward_8hpp.html',''); initR
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;functional&gt;</code><br />
-<code>#include &lt;<a class="el" href="stdfundamental_8hpp_source.html">mpc/stdfundamental.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="copyable__box_8hpp_source.html">mpc/utility/copyable_box.hpp</a>&gt;</code><br />
 </div>
 <p><a href="perfect__forward_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -100,15 +99,18 @@ $(document).ready(function(){initNavTree('perfect__forward_8hpp.html',''); initR
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1perfect__forwarded__t.html">mpc::perfect_forwarded_t&lt; Op, Args &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inherits from perfect_forward so that you do not have to write inheriting constructors.  <a href="structmpc_1_1perfect__forwarded__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1perfect__forward__impl_3_01_op_00_01std_1_1index__sequence_3_01_idx_8_8_8_01_4_00_01_bound_8_8_8_01_4.html">mpc::perfect_forward_impl&lt; Op, std::index_sequence&lt; Idx... &gt;, Bound... &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A partial specialization of <a class="el" href="structmpc_1_1perfect__forward__impl.html" title="perfect_forward_impl">perfect_forward_impl</a>.  <a href="structmpc_1_1perfect__forward__impl_3_01_op_00_01std_1_1index__sequence_3_01_idx_8_8_8_01_4_00_01_bound_8_8_8_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a9edbd0f9c9c2a5ff78ebb7871b518e25"><td class="memTemplParams" colspan="2"><a id="a9edbd0f9c9c2a5ff78ebb7871b518e25"></a>
 template&lt;class Op , class... Args&gt; </td></tr>
-<tr class="memitem:a9edbd0f9c9c2a5ff78ebb7871b518e25"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::perfect_forward</b> = perfect_forward_impl&lt; Op, std::index_sequence_for&lt; Args... &gt;, Args... &gt;</td></tr>
+<tr class="memitem:a9edbd0f9c9c2a5ff78ebb7871b518e25"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="perfect__forward_8hpp.html#a9edbd0f9c9c2a5ff78ebb7871b518e25">mpc::perfect_forward</a> = perfect_forward_impl&lt; Op, std::index_sequence_for&lt; Args... &gt;, Args... &gt;</td></tr>
+<tr class="memdesc:a9edbd0f9c9c2a5ff78ebb7871b518e25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements a perfect-forwarding call wrapper. <br /></td></tr>
 <tr class="separator:a9edbd0f9c9c2a5ff78ebb7871b518e25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

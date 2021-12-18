@@ -1,7 +1,7 @@
 var annotated_dup =
 [
     [ "mpc", null, [
-      [ "applicatives", null, [
+      [ "applicatives", "namespacempc_1_1applicatives.html", [
         [ "detail", null, [
           [ "fmap_op", "structmpc_1_1applicatives_1_1detail_1_1fmap__op.html", "structmpc_1_1applicatives_1_1detail_1_1fmap__op" ],
           [ "liftA2_op", "structmpc_1_1applicatives_1_1detail_1_1lift_a2__op.html", "structmpc_1_1applicatives_1_1detail_1_1lift_a2__op" ],
@@ -9,15 +9,6 @@ var annotated_dup =
         ] ]
       ] ],
       [ "detail", "namespacempc_1_1detail.html", [
-        [ "_fst", null, [
-          [ "get_op", "structmpc_1_1detail_1_1__fst_1_1get__op.html", "structmpc_1_1detail_1_1__fst_1_1get__op" ]
-        ] ],
-        [ "_tuple_like", null, [
-          [ "has_tuple_element", "structmpc_1_1detail_1_1__tuple__like_1_1has__tuple__element.html", null ],
-          [ "has_tuple_element< T, std::index_sequence< Idx... >, std::void_t< typename std::tuple_element< Idx, T >::type... > >", "structmpc_1_1detail_1_1__tuple__like_1_1has__tuple__element_3_01_t_00_01std_1_1index__sequence_300f613fd8f9a6aa2fefc66c5cfd2e0ce.html", null ],
-          [ "has_unqualified_get", "structmpc_1_1detail_1_1__tuple__like_1_1has__unqualified__get.html", null ],
-          [ "has_unqualified_get< T, std::index_sequence< Idx... >, std::void_t< decltype(get< Idx >(std::declval< T >()))... > >", "structmpc_1_1detail_1_1__tuple__like_1_1has__unqualified__get_3_01_t_00_01std_1_1index__sequence4a6f794a5d0fad545156ab067ec5ff57.html", null ]
-        ] ],
         [ "empty_op", "structmpc_1_1detail_1_1empty__op.html", "structmpc_1_1detail_1_1empty__op" ],
         [ "combine_op", "structmpc_1_1detail_1_1combine__op.html", "structmpc_1_1detail_1_1combine__op" ],
         [ "pure_op", "structmpc_1_1detail_1_1pure__op.html", "structmpc_1_1detail_1_1pure__op" ],
@@ -83,8 +74,6 @@ var annotated_dup =
         [ "compose_op", "structmpc_1_1detail_1_1compose__op.html", "structmpc_1_1detail_1_1compose__op" ],
         [ "constant_op", "structmpc_1_1detail_1_1constant__op.html", "structmpc_1_1detail_1_1constant__op" ],
         [ "flip_op", "structmpc_1_1detail_1_1flip__op.html", "structmpc_1_1detail_1_1flip__op" ],
-        [ "is_implicitly_default_constructible_impl", "structmpc_1_1detail_1_1is__implicitly__default__constructible__impl.html", null ],
-        [ "is_implicitly_default_constructible_impl< T, decltype(test_implicitly_default_constructible_impl< const T & >({}))>", "structmpc_1_1detail_1_1is__implicitly__default__constructible__impl_3_01_t_00_01decltype_07test_d5ef89a7e4ce998a6f4d85b08468ecd0.html", null ],
         [ "is_implicitly_default_constructible", "structmpc_1_1detail_1_1is__implicitly__default__constructible.html", null ],
         [ "is_explicitly_convertible", "structmpc_1_1detail_1_1is__explicitly__convertible.html", null ],
         [ "is_explicitly_convertible< From, To, std::void_t< decltype(To(std::declval< From >()))> >", "structmpc_1_1detail_1_1is__explicitly__convertible_3_01_from_00_01_to_00_01std_1_1void__t_3_01de197c3b97c2eac05717436200a7778100.html", null ],
@@ -100,7 +89,7 @@ var annotated_dup =
         [ "copy_cvref", "structmpc_1_1detail_1_1copy__cvref.html", "structmpc_1_1detail_1_1copy__cvref" ],
         [ "clone_cvref", "structmpc_1_1detail_1_1clone__cvref.html", "structmpc_1_1detail_1_1clone__cvref" ]
       ] ],
-      [ "monads", null, [
+      [ "monads", "namespacempc_1_1monads.html", [
         [ "detail", null, [
           [ "fmap_op", "structmpc_1_1monads_1_1detail_1_1fmap__op.html", "structmpc_1_1monads_1_1detail_1_1fmap__op" ],
           [ "seq_apply_op", "structmpc_1_1monads_1_1detail_1_1seq__apply__op.html", "structmpc_1_1monads_1_1detail_1_1seq__apply__op" ],

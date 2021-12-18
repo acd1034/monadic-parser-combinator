@@ -88,7 +88,18 @@ $(document).ready(function(){initNavTree('structmpc_1_1detail_1_1lift_a__op.html
 <div class="title">mpc::detail::liftA_op&lt; N, class &gt; Struct Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<hr/>The documentation for this struct was generated from the following file:<ul>
+
+<p>liftA :: Applicative f =&gt; (a -&gt; b -&gt; ... -&gt; z) -&gt; f a -&gt; f b -&gt; ... -&gt; f z  
+ <a href="structmpc_1_1detail_1_1lift_a__op.html#details">More...</a></p>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;std::size_t N, class = make_reversed_index_sequence&lt;N + 1&gt;&gt;<br />
+struct mpc::detail::liftA_op&lt; N, class &gt;</h3>
+
+<p>liftA :: Applicative f =&gt; (a -&gt; b -&gt; ... -&gt; z) -&gt; f a -&gt; f b -&gt; ... -&gt; f z </p>
+<div class="fragment"><div class="line">liftA f a b ... z = f `<a class="code" href="namespacempc_1_1applicatives.html#a6905d1bcc6cab925f0a8810c7c28e51a">fmap</a>` a `<a class="code" href="namespacempc_1_1cpo.html#ae736ae194c6fe38f2f5a568a530d2460">seq_apply</a>` b `<a class="code" href="namespacempc_1_1cpo.html#ae736ae194c6fe38f2f5a568a530d2460">seq_apply</a>` ... `<a class="code" href="namespacempc_1_1cpo.html#ae736ae194c6fe38f2f5a568a530d2460">seq_apply</a>` z</div>
+<div class="ttc" id="anamespacempc_1_1applicatives_html_a6905d1bcc6cab925f0a8810c7c28e51a"><div class="ttname"><a href="namespacempc_1_1applicatives.html#a6905d1bcc6cab925f0a8810c7c28e51a">mpc::applicatives::fmap</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::fmap_op &gt; fmap</div><div class="ttdoc">fmap :: (a -&gt; b) -&gt; f a -&gt; f b</div><div class="ttdef"><b>Definition:</b> applicative.hpp:160</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_ae736ae194c6fe38f2f5a568a530d2460"><div class="ttname"><a href="namespacempc_1_1cpo.html#ae736ae194c6fe38f2f5a568a530d2460">mpc::cpo::seq_apply</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::seq_apply_op &gt; seq_apply</div><div class="ttdoc">seq_apply :: f (a -&gt; b) -&gt; f a -&gt; f b</div><div class="ttdef"><b>Definition:</b> applicative.hpp:98</div></div>
+</div><!-- fragment --> </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/mpc/control/<a class="el" href="applicative_8hpp_source.html">applicative.hpp</a></li>
 </ul>
 </div><!-- contents -->

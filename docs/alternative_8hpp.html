@@ -110,40 +110,88 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacempc_1_1detail"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html">mpc::detail</a></td></tr>
+<tr class="memdesc:namespacempc_1_1detail"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation details are here. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacempc_1_1cpo"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html">mpc::cpo</a></td></tr>
+<tr class="memdesc:namespacempc_1_1cpo"><td class="mdescLeft">&#160;</td><td class="mdescRight">Customization point objects are here. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a9acd923d729b747e748cda93ac3152de"><td class="memTemplParams" colspan="2"><a id="a9acd923d729b747e748cda93ac3152de"></a>
-template&lt;class Fa , class Fb &gt; </td></tr>
-<tr class="memitem:a9acd923d729b747e748cda93ac3152de"><td class="memTemplItemLeft" align="right" valign="top">requires constexpr std::same_as&lt; std::remove_cvref_t&lt; Fa &gt;, std::remove_cvref_t&lt; Fb &gt; &gt; auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::operators::alternatives::operator||</b> (Fa &amp;&amp;fa, Fb &amp;&amp;fb) noexcept(noexcept(mpc::combine(std::forward&lt; Fa &gt;(fa), std::forward&lt; Fb &gt;(fb)))) -&gt; decltype(mpc::combine(std::forward&lt; Fa &gt;(fa), std::forward&lt; Fb &gt;(fb)))</td></tr>
+<tr class="memitem:a9acd923d729b747e748cda93ac3152de"><td class="memTemplParams" colspan="2">template&lt;class Fa , class Fb &gt; </td></tr>
+<tr class="memitem:a9acd923d729b747e748cda93ac3152de"><td class="memTemplItemLeft" align="right" valign="top">requires constexpr std::same_as&lt; std::remove_cvref_t&lt; Fa &gt;, std::remove_cvref_t&lt; Fb &gt; &gt; auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="alternative_8hpp.html#a9acd923d729b747e748cda93ac3152de">mpc::operators::alternatives::operator||</a> (Fa &amp;&amp;fa, Fb &amp;&amp;fb) noexcept(noexcept(mpc::combine(std::forward&lt; Fa &gt;(fa), std::forward&lt; Fb &gt;(fb)))) -&gt; decltype(mpc::combine(std::forward&lt; Fa &gt;(fa), std::forward&lt; Fb &gt;(fb)))</td></tr>
+<tr class="memdesc:a9acd923d729b747e748cda93ac3152de"><td class="mdescLeft">&#160;</td><td class="mdescRight">combine :: f a -&gt; f a -&gt; f a  <a href="alternative_8hpp.html#a9acd923d729b747e748cda93ac3152de">More...</a><br /></td></tr>
 <tr class="separator:a9acd923d729b747e748cda93ac3152de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a5b8880ac743a9d62b1ae5ccb357c5f04"><td class="memTemplParams" colspan="2">template&lt;class F &gt; </td></tr>
-<tr class="memitem:a5b8880ac743a9d62b1ae5ccb357c5f04"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::detail::has_alternative_traits_empty</b></td></tr>
+<tr class="memitem:a5b8880ac743a9d62b1ae5ccb357c5f04"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html#a5b8880ac743a9d62b1ae5ccb357c5f04">mpc::detail::has_alternative_traits_empty</a></td></tr>
+<tr class="memdesc:a5b8880ac743a9d62b1ae5ccb357c5f04"><td class="mdescLeft">&#160;</td><td class="mdescRight">has_alternative_traits_empty  <a href="namespacempc_1_1detail.html#a5b8880ac743a9d62b1ae5ccb357c5f04">More...</a><br /></td></tr>
 <tr class="separator:a5b8880ac743a9d62b1ae5ccb357c5f04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95331957bad24ca3071b680140d570a5"><td class="memTemplParams" colspan="2">template&lt;class F &gt; </td></tr>
-<tr class="memitem:a95331957bad24ca3071b680140d570a5"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::detail::has_alternative_traits_combine</b></td></tr>
+<tr class="memitem:a95331957bad24ca3071b680140d570a5"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html#a95331957bad24ca3071b680140d570a5">mpc::detail::has_alternative_traits_combine</a></td></tr>
+<tr class="memdesc:a95331957bad24ca3071b680140d570a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">has_alternative_traits_combine  <a href="namespacempc_1_1detail.html#a95331957bad24ca3071b680140d570a5">More...</a><br /></td></tr>
 <tr class="separator:a95331957bad24ca3071b680140d570a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53ea2db37a17ba92cf5c01aaf78625e9"><td class="memTemplParams" colspan="2">template&lt;class F &gt; </td></tr>
-<tr class="memitem:a53ea2db37a17ba92cf5c01aaf78625e9"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::alternative_traits_specialized</b></td></tr>
+<tr class="memitem:a53ea2db37a17ba92cf5c01aaf78625e9"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="alternative_8hpp.html#a53ea2db37a17ba92cf5c01aaf78625e9">mpc::alternative_traits_specialized</a></td></tr>
+<tr class="memdesc:a53ea2db37a17ba92cf5c01aaf78625e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">alternative_traits_specialized  <a href="alternative_8hpp.html#a53ea2db37a17ba92cf5c01aaf78625e9">More...</a><br /></td></tr>
 <tr class="separator:a53ea2db37a17ba92cf5c01aaf78625e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae46db2247f504d6c1cd4a24ad786d07c"><td class="memTemplParams" colspan="2"><a id="ae46db2247f504d6c1cd4a24ad786d07c"></a>
 template&lt;class F &gt; </td></tr>
-<tr class="memitem:ae46db2247f504d6c1cd4a24ad786d07c"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::alternative</b> = applicative&lt;F&gt; and alternative_traits_specialized&lt;F&gt;</td></tr>
+<tr class="memitem:ae46db2247f504d6c1cd4a24ad786d07c"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="alternative_8hpp.html#ae46db2247f504d6c1cd4a24ad786d07c">mpc::alternative</a> = applicative&lt;F&gt; and alternative_traits_specialized&lt;F&gt;</td></tr>
+<tr class="memdesc:ae46db2247f504d6c1cd4a24ad786d07c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requires applicative and empty and combine is valid in <a class="el" href="structmpc_1_1alternative__traits.html">alternative_traits </a>. <br /></td></tr>
 <tr class="separator:ae46db2247f504d6c1cd4a24ad786d07c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7fdbc0223c46e98d77892d1f7b30e1ed"><td class="memTemplParams" colspan="2"><a id="a7fdbc0223c46e98d77892d1f7b30e1ed"></a>
-template&lt;class F &gt; </td></tr>
-<tr class="memitem:a7fdbc0223c46e98d77892d1f7b30e1ed"><td class="memTemplItemLeft" align="right" valign="top">constexpr detail::empty_op&lt; F &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="alternative_8hpp.html#a7fdbc0223c46e98d77892d1f7b30e1ed">mpc::empty</a> {}</td></tr>
-<tr class="memdesc:a7fdbc0223c46e98d77892d1f7b30e1ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">empty :: f a <br /></td></tr>
+<tr class="memitem:a7fdbc0223c46e98d77892d1f7b30e1ed"><td class="memTemplParams" colspan="2">template&lt;class F &gt; </td></tr>
+<tr class="memitem:a7fdbc0223c46e98d77892d1f7b30e1ed"><td class="memTemplItemLeft" align="right" valign="top">constexpr detail::empty_op&lt; F &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a7fdbc0223c46e98d77892d1f7b30e1ed">mpc::cpo::empty</a> {}</td></tr>
+<tr class="memdesc:a7fdbc0223c46e98d77892d1f7b30e1ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">empty :: f a  <a href="namespacempc_1_1cpo.html#a7fdbc0223c46e98d77892d1f7b30e1ed">More...</a><br /></td></tr>
 <tr class="separator:a7fdbc0223c46e98d77892d1f7b30e1ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a4f4bacb4084bbf75b6202776e456f9"><td class="memItemLeft" align="right" valign="top"><a id="a8a4f4bacb4084bbf75b6202776e456f9"></a>
-constexpr perfect_forwarded_t&lt; detail::combine_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alternative_8hpp.html#a8a4f4bacb4084bbf75b6202776e456f9">mpc::combine</a> {}</td></tr>
-<tr class="memdesc:a8a4f4bacb4084bbf75b6202776e456f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">combine :: f a -&gt; f a -&gt; f a <br /></td></tr>
+<tr class="memitem:a8a4f4bacb4084bbf75b6202776e456f9"><td class="memItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::combine_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a8a4f4bacb4084bbf75b6202776e456f9">mpc::cpo::combine</a> {}</td></tr>
+<tr class="memdesc:a8a4f4bacb4084bbf75b6202776e456f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">combine :: f a -&gt; f a -&gt; f a  <a href="namespacempc_1_1cpo.html#a8a4f4bacb4084bbf75b6202776e456f9">More...</a><br /></td></tr>
 <tr class="separator:a8a4f4bacb4084bbf75b6202776e456f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a9acd923d729b747e748cda93ac3152de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9acd923d729b747e748cda93ac3152de">&#9670;&nbsp;</a></span>operator||()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Fa , class Fb &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">requires constexpr std::same_as&lt;std::remove_cvref_t&lt;Fa&gt;, std::remove_cvref_t&lt;Fb&gt; &gt; auto mpc::operators::alternatives::operator|| </td>
+          <td>(</td>
+          <td class="paramtype">Fa &amp;&amp;&#160;</td>
+          <td class="paramname"><em>fa</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Fb &amp;&amp;&#160;</td>
+          <td class="paramname"><em>fb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> -&gt; decltype(      mpc::combine(std::forward&lt;Fa&gt;(fa), std::forward&lt;Fb&gt;(fb))) </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>combine :: f a -&gt; f a -&gt; f a </p>
+<p>(&lt;|&gt;) in Haskell </p>
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a id="a53ea2db37a17ba92cf5c01aaf78625e9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a53ea2db37a17ba92cf5c01aaf78625e9">&#9670;&nbsp;</a></span>alternative_traits_specialized</h2>
@@ -161,6 +209,8 @@ template&lt;class F &gt; </div>
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">    detail::has_alternative_traits_empty&lt;F&gt; and detail::has_alternative_traits_combine&lt;F&gt;</div>
 </div><!-- fragment -->
+<p>alternative_traits_specialized </p>
+
 </div>
 </div>
 </div><!-- contents -->

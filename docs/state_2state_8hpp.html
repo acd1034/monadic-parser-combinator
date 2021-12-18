@@ -121,6 +121,10 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacempc_1_1detail"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html">mpc::detail</a></td></tr>
+<tr class="memdesc:namespacempc_1_1detail"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation details are here. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacempc_1_1cpo"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html">mpc::cpo</a></td></tr>
+<tr class="memdesc:namespacempc_1_1cpo"><td class="mdescLeft">&#160;</td><td class="mdescRight">Customization point objects are here. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
@@ -128,7 +132,7 @@ Typedefs</h2></td></tr>
 <tr class="memitem:adb6165c62a8cae37aad6728208aa11af"><td class="memTemplParams" colspan="2"><a id="adb6165c62a8cae37aad6728208aa11af"></a>
 template&lt;class S , is_Identity M&gt; </td></tr>
 <tr class="memitem:adb6165c62a8cae37aad6728208aa11af"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="state_2state_8hpp.html#adb6165c62a8cae37aad6728208aa11af">mpc::State</a> = StateT&lt; S, M &gt;</td></tr>
-<tr class="memdesc:adb6165c62a8cae37aad6728208aa11af"><td class="mdescLeft">&#160;</td><td class="mdescRight">type State s = <a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { run_StateT :: s -&gt; m (a,s) }">StateT</a> s <a class="el" href="structmpc_1_1_identity.html" title="newtype Identity a = Identity { runIdentity :: a }">Identity</a> <br /></td></tr>
+<tr class="memdesc:adb6165c62a8cae37aad6728208aa11af"><td class="mdescLeft">&#160;</td><td class="mdescRight">type State s = <a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { runStateT :: s -&gt; m (a,s) }">StateT</a> s <a class="el" href="structmpc_1_1_identity.html" title="newtype Identity a = Identity { runIdentity :: a }">Identity</a> <br /></td></tr>
 <tr class="separator:adb6165c62a8cae37aad6728208aa11af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c332409dd856b95918bf59ac9294428"><td class="memTemplParams" colspan="2"><a id="a2c332409dd856b95918bf59ac9294428"></a>
 template&lt;is_State ST&gt; </td></tr>
@@ -147,22 +151,22 @@ template&lt;class T &gt; </td></tr>
 <tr class="separator:a8fd857b415a8058197b3270c9d7b19f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf21c6440520b2e324c5946befc4bdc9"><td class="memTemplParams" colspan="2"><a id="abf21c6440520b2e324c5946befc4bdc9"></a>
 template&lt;class S &gt; </td></tr>
-<tr class="memitem:abf21c6440520b2e324c5946befc4bdc9"><td class="memTemplItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::make_State_op&lt; S &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::make_State</b> {}</td></tr>
+<tr class="memitem:abf21c6440520b2e324c5946befc4bdc9"><td class="memTemplItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::make_State_op&lt; S &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::cpo::make_State</b> {}</td></tr>
 <tr class="separator:abf21c6440520b2e324c5946befc4bdc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a0cb2fac57b5309fcae3764c35e21f5"><td class="memItemLeft" align="right" valign="top"><a id="a0a0cb2fac57b5309fcae3764c35e21f5"></a>
-constexpr perfect_forwarded_t&lt; detail::run_State_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::run_State</b> {}</td></tr>
+constexpr perfect_forwarded_t&lt; detail::run_State_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::run_State</b> {}</td></tr>
 <tr class="separator:a0a0cb2fac57b5309fcae3764c35e21f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7029a1a7336565ab211134f91192dc24"><td class="memItemLeft" align="right" valign="top"><a id="a7029a1a7336565ab211134f91192dc24"></a>
-constexpr perfect_forwarded_t&lt; detail::eval_State_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::eval_State</b> {}</td></tr>
+constexpr perfect_forwarded_t&lt; detail::eval_State_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::eval_State</b> {}</td></tr>
 <tr class="separator:a7029a1a7336565ab211134f91192dc24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a7a99ca6c71c137d06e3e699448e147"><td class="memItemLeft" align="right" valign="top"><a id="a5a7a99ca6c71c137d06e3e699448e147"></a>
-constexpr perfect_forwarded_t&lt; detail::exec_State_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::exec_State</b> {}</td></tr>
+constexpr perfect_forwarded_t&lt; detail::exec_State_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::exec_State</b> {}</td></tr>
 <tr class="separator:a5a7a99ca6c71c137d06e3e699448e147"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10588a74efa0b5a3f442ca995e15ee6e"><td class="memItemLeft" align="right" valign="top"><a id="a10588a74efa0b5a3f442ca995e15ee6e"></a>
-constexpr perfect_forwarded_t&lt; detail::map_State_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::map_State</b> {}</td></tr>
+constexpr perfect_forwarded_t&lt; detail::map_State_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::map_State</b> {}</td></tr>
 <tr class="separator:a10588a74efa0b5a3f442ca995e15ee6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8122e0d66788f63e3860505b08fb8a2"><td class="memItemLeft" align="right" valign="top"><a id="ad8122e0d66788f63e3860505b08fb8a2"></a>
-constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::with_State</b> = with_StateT</td></tr>
+constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::with_State</b> = with_StateT</td></tr>
 <tr class="separator:ad8122e0d66788f63e3860505b08fb8a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

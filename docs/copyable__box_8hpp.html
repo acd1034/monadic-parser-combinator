@@ -100,60 +100,20 @@ $(document).ready(function(){initNavTree('copyable__box_8hpp.html',''); initResi
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmpc_1_1copyable__box.html">mpc::copyable_box&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes copy_constructible but not copy_assignable types copy_assignable.  <a href="classmpc_1_1copyable__box.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmpc_1_1copyable__box_3_01_t_01_4.html">mpc::copyable_box&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A partial specialization of <a class="el" href="classmpc_1_1copyable__box.html" title="Makes copy_constructible but not copy_assignable types copy_assignable.">copyable_box</a>.  <a href="classmpc_1_1copyable__box_3_01_t_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:aa14a59d81fa995d6f107163ee24bb7ff"><td class="memTemplParams" colspan="2"><a id="aa14a59d81fa995d6f107163ee24bb7ff"></a>
 template&lt;class T &gt; </td></tr>
-<tr class="memitem:aa14a59d81fa995d6f107163ee24bb7ff"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::copy_constructible_object</b> = std::copy_constructible&lt;T&gt; and std::is_object_v&lt;T&gt;</td></tr>
+<tr class="memitem:aa14a59d81fa995d6f107163ee24bb7ff"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="copyable__box_8hpp.html#aa14a59d81fa995d6f107163ee24bb7ff">mpc::copy_constructible_object</a> = std::copy_constructible&lt;T&gt; and std::is_object_v&lt;T&gt;</td></tr>
+<tr class="memdesc:aa14a59d81fa995d6f107163ee24bb7ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requires copy_constructible and is_object. <br /></td></tr>
 <tr class="separator:aa14a59d81fa995d6f107163ee24bb7ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af83e051a2c8a8e837fda38c26cb93958"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
-<tr class="memitem:af83e051a2c8a8e837fda38c26cb93958"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::doesnt_need_empty_state_for_copy</b></td></tr>
-<tr class="separator:af83e051a2c8a8e837fda38c26cb93958"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03bb4a2c7e60f7149d0fe923874e0bc6"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
-<tr class="memitem:a03bb4a2c7e60f7149d0fe923874e0bc6"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::doesnt_need_empty_state_for_move</b></td></tr>
-<tr class="separator:a03bb4a2c7e60f7149d0fe923874e0bc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="af83e051a2c8a8e837fda38c26cb93958"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af83e051a2c8a8e837fda38c26cb93958">&#9670;&nbsp;</a></span>doesnt_need_empty_state_for_copy</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">concept mpc::doesnt_need_empty_state_for_copy</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">    std::copyable&lt;T&gt; or std::is_nothrow_copy_constructible_v&lt;T&gt;</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a03bb4a2c7e60f7149d0fe923874e0bc6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a03bb4a2c7e60f7149d0fe923874e0bc6">&#9670;&nbsp;</a></span>doesnt_need_empty_state_for_move</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">concept mpc::doesnt_need_empty_state_for_move</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">    std::movable&lt;T&gt; or std::is_nothrow_move_constructible_v&lt;T&gt;</div>
-</div><!-- fragment -->
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

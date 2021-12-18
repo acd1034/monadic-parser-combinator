@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('applicative_8hpp.html',''); initResiza
 <div class="title">applicative.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="functor_8hpp_source.html">mpc/control/functor.hpp</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="control_2functor_8hpp_source.html">mpc/control/functor.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="perfect__forward_8hpp_source.html">mpc/functional/perfect_forward.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="constant_8hpp_source.html">mpc/prelude/constant.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="flip_8hpp_source.html">mpc/prelude/flip.hpp</a>&gt;</code><br />
@@ -120,82 +120,79 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">discard1st :: f a -&gt; f b -&gt; f b  <a href="structmpc_1_1detail_1_1discard1st__op.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1applicatives_1_1detail_1_1fmap__op.html">mpc::applicatives::detail::fmap_op</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">fmap :: (a -&gt; b) -&gt; f a -&gt; f b  <a href="structmpc_1_1applicatives_1_1detail_1_1fmap__op.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1applicatives_1_1detail_1_1lift_a2__op.html">mpc::applicatives::detail::liftA2_op</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">liftA2 :: (a -&gt; b -&gt; c) -&gt; f a -&gt; f b -&gt; f c  <a href="structmpc_1_1applicatives_1_1detail_1_1lift_a2__op.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1applicatives_1_1detail_1_1discard1st__opt__op.html">mpc::applicatives::detail::discard1st_opt_op</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">discard1st :: f a -&gt; f b -&gt; f b  <a href="structmpc_1_1applicatives_1_1detail_1_1discard1st__opt__op.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacempc_1_1detail"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html">mpc::detail</a></td></tr>
+<tr class="memdesc:namespacempc_1_1detail"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation details are here. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacempc_1_1cpo"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html">mpc::cpo</a></td></tr>
+<tr class="memdesc:namespacempc_1_1cpo"><td class="mdescLeft">&#160;</td><td class="mdescRight">Customization point objects are here. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacempc_1_1applicatives"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1applicatives.html">mpc::applicatives</a></td></tr>
+<tr class="memdesc:namespacempc_1_1applicatives"><td class="mdescLeft">&#160;</td><td class="mdescRight">Methods deducible from other methods of <a class="el" href="">applicative </a>. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:accf8d0288dc7ac65928b2f56537476fb"><td class="memTemplParams" colspan="2"><a id="accf8d0288dc7ac65928b2f56537476fb"></a>
-template&lt;class Fn , class Fa , class Fb &gt; </td></tr>
-<tr class="memitem:accf8d0288dc7ac65928b2f56537476fb"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::detail::reversed_liftA</b> (Fb &amp;&amp;fb, Fa &amp;&amp;fa, Fn &amp;&amp;fn) noexcept(noexcept(mpc::liftA2(std::forward&lt; Fn &gt;(fn), std::forward&lt; Fa &gt;(fa), std::forward&lt; Fb &gt;(fb)))) -&gt; decltype(mpc::liftA2(std::forward&lt; Fn &gt;(fn), std::forward&lt; Fa &gt;(fa), std::forward&lt; Fb &gt;(fb)))</td></tr>
-<tr class="separator:accf8d0288dc7ac65928b2f56537476fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a477f2be85b4b4bed5b7ca2a57706b4a5"><td class="memTemplParams" colspan="2"><a id="a477f2be85b4b4bed5b7ca2a57706b4a5"></a>
-template&lt;class Fz , class... Args&gt; </td></tr>
-<tr class="memitem:a477f2be85b4b4bed5b7ca2a57706b4a5"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::detail::requires</b> (sizeof...(Args) &gt; 2) const expr auto reversed_liftA(Fz &amp;&amp;fz</td></tr>
-<tr class="separator:a477f2be85b4b4bed5b7ca2a57706b4a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17144a717134717e76c6bb1da3a7de4c"><td class="memItemLeft" align="right" valign="top"><a id="a17144a717134717e76c6bb1da3a7de4c"></a>
-Args &amp;&amp;args&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::detail::noexcept</b> (noexcept(mpc::seq_apply(reversed_liftA(std::forward&lt; Args &gt;(args)...), std::forward&lt; Fz &gt;(fz)))) -&gt; decltype(mpc::seq_apply(reversed_liftA(std::forward&lt; Args &gt;(args)...), std::forward&lt; Fz &gt;(fz)))</td></tr>
-<tr class="separator:a17144a717134717e76c6bb1da3a7de4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeeb2868c2c876581688a3f42aedb1fdd"><td class="memTemplParams" colspan="2"><a id="aeeb2868c2c876581688a3f42aedb1fdd"></a>
 template&lt;std::size_t N, std::size_t... Idx&gt; </td></tr>
-<tr class="memitem:aeeb2868c2c876581688a3f42aedb1fdd"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::detail::requires</b> (N &gt; 1) struct liftA_op&lt; N</td></tr>
+<tr class="memitem:aeeb2868c2c876581688a3f42aedb1fdd"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html#aeeb2868c2c876581688a3f42aedb1fdd">mpc::detail::requires</a> (N &gt; 1) struct liftA_op&lt; N</td></tr>
+<tr class="memdesc:aeeb2868c2c876581688a3f42aedb1fdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">A partial specialization of liftA. <br /></td></tr>
 <tr class="separator:aeeb2868c2c876581688a3f42aedb1fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:aa1ff705035e9ad4a6961af2f02c6dcc3"><td class="memTemplParams" colspan="2">template&lt;class F &gt; </td></tr>
-<tr class="memitem:aa1ff705035e9ad4a6961af2f02c6dcc3"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::applicative_traits_specialized</b></td></tr>
+<tr class="memitem:aa1ff705035e9ad4a6961af2f02c6dcc3"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="applicative_8hpp.html#aa1ff705035e9ad4a6961af2f02c6dcc3">mpc::applicative_traits_specialized</a></td></tr>
+<tr class="memdesc:aa1ff705035e9ad4a6961af2f02c6dcc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">applicative_traits_specialized  <a href="applicative_8hpp.html#aa1ff705035e9ad4a6961af2f02c6dcc3">More...</a><br /></td></tr>
 <tr class="separator:aa1ff705035e9ad4a6961af2f02c6dcc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58443ef07bb2f553b1932624a8d84897"><td class="memTemplParams" colspan="2"><a id="a58443ef07bb2f553b1932624a8d84897"></a>
 template&lt;class F &gt; </td></tr>
-<tr class="memitem:a58443ef07bb2f553b1932624a8d84897"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::applicative</b> = functor&lt;F&gt; and applicative_traits_specialized&lt;F&gt;</td></tr>
+<tr class="memitem:a58443ef07bb2f553b1932624a8d84897"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="applicative_8hpp.html#a58443ef07bb2f553b1932624a8d84897">mpc::applicative</a> = functor&lt;F&gt; and applicative_traits_specialized&lt;F&gt;</td></tr>
+<tr class="memdesc:a58443ef07bb2f553b1932624a8d84897"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requires functor and pure, seq_apply, liftA2, discard2nd and discard1st is valid in <a class="el" href="structmpc_1_1applicative__traits.html">applicative_traits </a>. <br /></td></tr>
 <tr class="separator:a58443ef07bb2f553b1932624a8d84897"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8753f3a9510174b8166d372bc59981a9"><td class="memTemplParams" colspan="2"><a id="a8753f3a9510174b8166d372bc59981a9"></a>
-template&lt;class F &gt; </td></tr>
-<tr class="memitem:a8753f3a9510174b8166d372bc59981a9"><td class="memTemplItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::pure_op&lt; F &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="applicative_8hpp.html#a8753f3a9510174b8166d372bc59981a9">mpc::pure</a> {}</td></tr>
-<tr class="memdesc:a8753f3a9510174b8166d372bc59981a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">pure :: a -&gt; f a <br /></td></tr>
+<tr class="memitem:a8753f3a9510174b8166d372bc59981a9"><td class="memTemplParams" colspan="2">template&lt;class F &gt; </td></tr>
+<tr class="memitem:a8753f3a9510174b8166d372bc59981a9"><td class="memTemplItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::pure_op&lt; F &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a8753f3a9510174b8166d372bc59981a9">mpc::cpo::pure</a> {}</td></tr>
+<tr class="memdesc:a8753f3a9510174b8166d372bc59981a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">pure :: a -&gt; f a  <a href="namespacempc_1_1cpo.html#a8753f3a9510174b8166d372bc59981a9">More...</a><br /></td></tr>
 <tr class="separator:a8753f3a9510174b8166d372bc59981a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae736ae194c6fe38f2f5a568a530d2460"><td class="memItemLeft" align="right" valign="top"><a id="ae736ae194c6fe38f2f5a568a530d2460"></a>
-constexpr perfect_forwarded_t&lt; detail::seq_apply_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="applicative_8hpp.html#ae736ae194c6fe38f2f5a568a530d2460">mpc::seq_apply</a> {}</td></tr>
-<tr class="memdesc:ae736ae194c6fe38f2f5a568a530d2460"><td class="mdescLeft">&#160;</td><td class="mdescRight">seq_apply :: f (a -&gt; b) -&gt; f a -&gt; f b <br /></td></tr>
+<tr class="memitem:ae736ae194c6fe38f2f5a568a530d2460"><td class="memItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::seq_apply_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#ae736ae194c6fe38f2f5a568a530d2460">mpc::cpo::seq_apply</a> {}</td></tr>
+<tr class="memdesc:ae736ae194c6fe38f2f5a568a530d2460"><td class="mdescLeft">&#160;</td><td class="mdescRight">seq_apply :: f (a -&gt; b) -&gt; f a -&gt; f b  <a href="namespacempc_1_1cpo.html#ae736ae194c6fe38f2f5a568a530d2460">More...</a><br /></td></tr>
 <tr class="separator:ae736ae194c6fe38f2f5a568a530d2460"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac29ddb6aecde8d45070bb966739ac615"><td class="memItemLeft" align="right" valign="top"><a id="ac29ddb6aecde8d45070bb966739ac615"></a>
-constexpr perfect_forwarded_t&lt; detail::liftA2_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="applicative_8hpp.html#ac29ddb6aecde8d45070bb966739ac615">mpc::liftA2</a> {}</td></tr>
-<tr class="memdesc:ac29ddb6aecde8d45070bb966739ac615"><td class="mdescLeft">&#160;</td><td class="mdescRight">liftA2 :: (a -&gt; b -&gt; c) -&gt; f a -&gt; f b -&gt; f c <br /></td></tr>
+<tr class="memitem:ac29ddb6aecde8d45070bb966739ac615"><td class="memItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::liftA2_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#ac29ddb6aecde8d45070bb966739ac615">mpc::cpo::liftA2</a> {}</td></tr>
+<tr class="memdesc:ac29ddb6aecde8d45070bb966739ac615"><td class="mdescLeft">&#160;</td><td class="mdescRight">liftA2 :: (a -&gt; b -&gt; c) -&gt; f a -&gt; f b -&gt; f c  <a href="namespacempc_1_1cpo.html#ac29ddb6aecde8d45070bb966739ac615">More...</a><br /></td></tr>
 <tr class="separator:ac29ddb6aecde8d45070bb966739ac615"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64230ef29648687c9691ac84933c53d3"><td class="memItemLeft" align="right" valign="top"><a id="a64230ef29648687c9691ac84933c53d3"></a>
-constexpr perfect_forwarded_t&lt; detail::discard2nd_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="applicative_8hpp.html#a64230ef29648687c9691ac84933c53d3">mpc::discard2nd</a> {}</td></tr>
-<tr class="memdesc:a64230ef29648687c9691ac84933c53d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">discard2nd :: f a -&gt; f b -&gt; f a <br /></td></tr>
+<tr class="memitem:a64230ef29648687c9691ac84933c53d3"><td class="memItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::discard2nd_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a64230ef29648687c9691ac84933c53d3">mpc::cpo::discard2nd</a> {}</td></tr>
+<tr class="memdesc:a64230ef29648687c9691ac84933c53d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">discard2nd :: f a -&gt; f b -&gt; f a  <a href="namespacempc_1_1cpo.html#a64230ef29648687c9691ac84933c53d3">More...</a><br /></td></tr>
 <tr class="separator:a64230ef29648687c9691ac84933c53d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58ce6848960e0c8ff588d944b3be26d8"><td class="memItemLeft" align="right" valign="top"><a id="a58ce6848960e0c8ff588d944b3be26d8"></a>
-constexpr perfect_forwarded_t&lt; detail::discard1st_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="applicative_8hpp.html#a58ce6848960e0c8ff588d944b3be26d8">mpc::discard1st</a> {}</td></tr>
-<tr class="memdesc:a58ce6848960e0c8ff588d944b3be26d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">discard1st :: f a -&gt; f b -&gt; f b <br /></td></tr>
+<tr class="memitem:a58ce6848960e0c8ff588d944b3be26d8"><td class="memItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::discard1st_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a58ce6848960e0c8ff588d944b3be26d8">mpc::cpo::discard1st</a> {}</td></tr>
+<tr class="memdesc:a58ce6848960e0c8ff588d944b3be26d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">discard1st :: f a -&gt; f b -&gt; f b  <a href="namespacempc_1_1cpo.html#a58ce6848960e0c8ff588d944b3be26d8">More...</a><br /></td></tr>
 <tr class="separator:a58ce6848960e0c8ff588d944b3be26d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6905d1bcc6cab925f0a8810c7c28e51a"><td class="memItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::fmap_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="applicative_8hpp.html#a6905d1bcc6cab925f0a8810c7c28e51a">mpc::applicatives::fmap</a> {}</td></tr>
-<tr class="memdesc:a6905d1bcc6cab925f0a8810c7c28e51a"><td class="mdescLeft">&#160;</td><td class="mdescRight">fmap f x = seq_apply (pure f) x  <a href="applicative_8hpp.html#a6905d1bcc6cab925f0a8810c7c28e51a">More...</a><br /></td></tr>
+<tr class="memitem:a6905d1bcc6cab925f0a8810c7c28e51a"><td class="memItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::fmap_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1applicatives.html#a6905d1bcc6cab925f0a8810c7c28e51a">mpc::applicatives::fmap</a> {}</td></tr>
+<tr class="memdesc:a6905d1bcc6cab925f0a8810c7c28e51a"><td class="mdescLeft">&#160;</td><td class="mdescRight">fmap :: (a -&gt; b) -&gt; f a -&gt; f b  <a href="namespacempc_1_1applicatives.html#a6905d1bcc6cab925f0a8810c7c28e51a">More...</a><br /></td></tr>
 <tr class="separator:a6905d1bcc6cab925f0a8810c7c28e51a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a610d2f0ab88ea69a8ebecbb920164f06"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="applicative_8hpp.html#a610d2f0ab88ea69a8ebecbb920164f06">mpc::applicatives::seq_apply</a> = mpc::liftA2 % id</td></tr>
-<tr class="memdesc:a610d2f0ab88ea69a8ebecbb920164f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">seq_apply = liftA2 id  <a href="applicative_8hpp.html#a610d2f0ab88ea69a8ebecbb920164f06">More...</a><br /></td></tr>
+<tr class="memitem:a610d2f0ab88ea69a8ebecbb920164f06"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1applicatives.html#a610d2f0ab88ea69a8ebecbb920164f06">mpc::applicatives::seq_apply</a> = mpc::liftA2 % id</td></tr>
+<tr class="memdesc:a610d2f0ab88ea69a8ebecbb920164f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">seq_apply :: f (a -&gt; b) -&gt; f a -&gt; f b  <a href="namespacempc_1_1applicatives.html#a610d2f0ab88ea69a8ebecbb920164f06">More...</a><br /></td></tr>
 <tr class="separator:a610d2f0ab88ea69a8ebecbb920164f06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe044fbb73b16c1c860ba315d3b1088b"><td class="memItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::liftA2_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="applicative_8hpp.html#abe044fbb73b16c1c860ba315d3b1088b">mpc::applicatives::liftA2</a> {}</td></tr>
-<tr class="memdesc:abe044fbb73b16c1c860ba315d3b1088b"><td class="mdescLeft">&#160;</td><td class="mdescRight">liftA2 f x y = seq_apply (fmap f x) y  <a href="applicative_8hpp.html#abe044fbb73b16c1c860ba315d3b1088b">More...</a><br /></td></tr>
+<tr class="memitem:abe044fbb73b16c1c860ba315d3b1088b"><td class="memItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::liftA2_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1applicatives.html#abe044fbb73b16c1c860ba315d3b1088b">mpc::applicatives::liftA2</a> {}</td></tr>
+<tr class="memdesc:abe044fbb73b16c1c860ba315d3b1088b"><td class="mdescLeft">&#160;</td><td class="mdescRight">liftA2 :: (a -&gt; b -&gt; c) -&gt; f a -&gt; f b -&gt; f c  <a href="namespacempc_1_1applicatives.html#abe044fbb73b16c1c860ba315d3b1088b">More...</a><br /></td></tr>
 <tr class="separator:abe044fbb73b16c1c860ba315d3b1088b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63e9c147eb3cfc7b80916e4e6bb6daef"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="applicative_8hpp.html#a63e9c147eb3cfc7b80916e4e6bb6daef">mpc::applicatives::discard2nd</a> = mpc::liftA2 % constant</td></tr>
-<tr class="memdesc:a63e9c147eb3cfc7b80916e4e6bb6daef"><td class="mdescLeft">&#160;</td><td class="mdescRight">discard2nd = liftA2 const  <a href="applicative_8hpp.html#a63e9c147eb3cfc7b80916e4e6bb6daef">More...</a><br /></td></tr>
+<tr class="memitem:a63e9c147eb3cfc7b80916e4e6bb6daef"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1applicatives.html#a63e9c147eb3cfc7b80916e4e6bb6daef">mpc::applicatives::discard2nd</a> = mpc::liftA2 % constant</td></tr>
+<tr class="memdesc:a63e9c147eb3cfc7b80916e4e6bb6daef"><td class="mdescLeft">&#160;</td><td class="mdescRight">discard2nd :: f a -&gt; f b -&gt; f a  <a href="namespacempc_1_1applicatives.html#a63e9c147eb3cfc7b80916e4e6bb6daef">More...</a><br /></td></tr>
 <tr class="separator:a63e9c147eb3cfc7b80916e4e6bb6daef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20ab3362e0feca9c3ea8b04ec4c07dce"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="applicative_8hpp.html#a20ab3362e0feca9c3ea8b04ec4c07dce">mpc::applicatives::discard1st</a> = mpc::liftA2 % (flip % constant)</td></tr>
-<tr class="memdesc:a20ab3362e0feca9c3ea8b04ec4c07dce"><td class="mdescLeft">&#160;</td><td class="mdescRight">discard1st = liftA2 (flip const)  <a href="applicative_8hpp.html#a20ab3362e0feca9c3ea8b04ec4c07dce">More...</a><br /></td></tr>
+<tr class="memitem:a20ab3362e0feca9c3ea8b04ec4c07dce"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1applicatives.html#a20ab3362e0feca9c3ea8b04ec4c07dce">mpc::applicatives::discard1st</a> = mpc::liftA2 % (flip % constant)</td></tr>
+<tr class="memdesc:a20ab3362e0feca9c3ea8b04ec4c07dce"><td class="mdescLeft">&#160;</td><td class="mdescRight">discard1st :: f a -&gt; f b -&gt; f b  <a href="namespacempc_1_1applicatives.html#a20ab3362e0feca9c3ea8b04ec4c07dce">More...</a><br /></td></tr>
 <tr class="separator:a20ab3362e0feca9c3ea8b04ec4c07dce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a458b73202555cc0a7de0e2bd4bc16f13"><td class="memItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::discard1st_opt_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="applicative_8hpp.html#a458b73202555cc0a7de0e2bd4bc16f13">mpc::applicatives::discard1st_opt</a> {}</td></tr>
-<tr class="memdesc:a458b73202555cc0a7de0e2bd4bc16f13"><td class="mdescLeft">&#160;</td><td class="mdescRight">discard1st_opt x y = seq_apply (id &lt;$ x) y  <a href="applicative_8hpp.html#a458b73202555cc0a7de0e2bd4bc16f13">More...</a><br /></td></tr>
+<tr class="memitem:a458b73202555cc0a7de0e2bd4bc16f13"><td class="memItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::discard1st_opt_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1applicatives.html#a458b73202555cc0a7de0e2bd4bc16f13">mpc::applicatives::discard1st_opt</a> {}</td></tr>
+<tr class="memdesc:a458b73202555cc0a7de0e2bd4bc16f13"><td class="mdescLeft">&#160;</td><td class="mdescRight">discard1st :: f a -&gt; f b -&gt; f b  <a href="namespacempc_1_1applicatives.html#a458b73202555cc0a7de0e2bd4bc16f13">More...</a><br /></td></tr>
 <tr class="separator:a458b73202555cc0a7de0e2bd4bc16f13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Variable Documentation</h2>
@@ -212,164 +209,21 @@ template&lt;class F &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357">requires</a> {</div>
-<div class="line">    applicative_traits&lt;std::remove_cvref_t&lt;F&gt;&gt;::pure;</div>
-<div class="line">    applicative_traits&lt;std::remove_cvref_t&lt;F&gt;&gt;::seq_apply;</div>
-<div class="line">    applicative_traits&lt;std::remove_cvref_t&lt;F&gt;&gt;::liftA2;</div>
-<div class="line">    applicative_traits&lt;std::remove_cvref_t&lt;F&gt;&gt;::discard2nd;</div>
-<div class="line">    applicative_traits&lt;std::remove_cvref_t&lt;F&gt;&gt;::discard1st;</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="namespacempc_1_1detail.html#aeeb2868c2c876581688a3f42aedb1fdd">requires</a> {</div>
+<div class="line">    applicative_traits&lt;std::remove_cvref_t&lt;F&gt;&gt;<a class="code" href="namespacempc_1_1cpo.html#a8753f3a9510174b8166d372bc59981a9">::pure</a>;</div>
+<div class="line">    applicative_traits&lt;std::remove_cvref_t&lt;F&gt;&gt;<a class="code" href="namespacempc_1_1applicatives.html#a610d2f0ab88ea69a8ebecbb920164f06">::seq_apply</a>;</div>
+<div class="line">    applicative_traits&lt;std::remove_cvref_t&lt;F&gt;&gt;<a class="code" href="namespacempc_1_1applicatives.html#abe044fbb73b16c1c860ba315d3b1088b">::liftA2</a>;</div>
+<div class="line">    applicative_traits&lt;std::remove_cvref_t&lt;F&gt;&gt;<a class="code" href="namespacempc_1_1applicatives.html#a63e9c147eb3cfc7b80916e4e6bb6daef">::discard2nd</a>;</div>
+<div class="line">    applicative_traits&lt;std::remove_cvref_t&lt;F&gt;&gt;<a class="code" href="namespacempc_1_1applicatives.html#a20ab3362e0feca9c3ea8b04ec4c07dce">::discard1st</a>;</div>
 <div class="line">  }</div>
-<div class="ttc" id="amonad_8hpp_html_a05b4c9cd81d5605f3a48153296632357"><div class="ttname"><a href="monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357">mpc::cpo::requires</a></div><div class="ttdeci">requires requires</div><div class="ttdoc">return = pure</div><div class="ttdef"><b>Definition:</b> monad.hpp:42</div></div>
+<div class="ttc" id="anamespacempc_1_1applicatives_html_a20ab3362e0feca9c3ea8b04ec4c07dce"><div class="ttname"><a href="namespacempc_1_1applicatives.html#a20ab3362e0feca9c3ea8b04ec4c07dce">mpc::applicatives::discard1st</a></div><div class="ttdeci">constexpr auto discard1st</div><div class="ttdoc">discard1st :: f a -&gt; f b -&gt; f b</div><div class="ttdef"><b>Definition:</b> applicative.hpp:190</div></div>
+<div class="ttc" id="anamespacempc_1_1applicatives_html_a610d2f0ab88ea69a8ebecbb920164f06"><div class="ttname"><a href="namespacempc_1_1applicatives.html#a610d2f0ab88ea69a8ebecbb920164f06">mpc::applicatives::seq_apply</a></div><div class="ttdeci">constexpr auto seq_apply</div><div class="ttdoc">seq_apply :: f (a -&gt; b) -&gt; f a -&gt; f b</div><div class="ttdef"><b>Definition:</b> applicative.hpp:169</div></div>
+<div class="ttc" id="anamespacempc_1_1applicatives_html_a63e9c147eb3cfc7b80916e4e6bb6daef"><div class="ttname"><a href="namespacempc_1_1applicatives.html#a63e9c147eb3cfc7b80916e4e6bb6daef">mpc::applicatives::discard2nd</a></div><div class="ttdeci">constexpr auto discard2nd</div><div class="ttdoc">discard2nd :: f a -&gt; f b -&gt; f a</div><div class="ttdef"><b>Definition:</b> applicative.hpp:181</div></div>
+<div class="ttc" id="anamespacempc_1_1applicatives_html_abe044fbb73b16c1c860ba315d3b1088b"><div class="ttname"><a href="namespacempc_1_1applicatives.html#abe044fbb73b16c1c860ba315d3b1088b">mpc::applicatives::liftA2</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::liftA2_op &gt; liftA2</div><div class="ttdoc">liftA2 :: (a -&gt; b -&gt; c) -&gt; f a -&gt; f b -&gt; f c</div><div class="ttdef"><b>Definition:</b> applicative.hpp:172</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a8753f3a9510174b8166d372bc59981a9"><div class="ttname"><a href="namespacempc_1_1cpo.html#a8753f3a9510174b8166d372bc59981a9">mpc::cpo::pure</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::pure_op&lt; F &gt; &gt; pure</div><div class="ttdoc">pure :: a -&gt; f a</div><div class="ttdef"><b>Definition:</b> applicative.hpp:95</div></div>
+<div class="ttc" id="anamespacempc_1_1detail_html_aeeb2868c2c876581688a3f42aedb1fdd"><div class="ttname"><a href="namespacempc_1_1detail.html#aeeb2868c2c876581688a3f42aedb1fdd">mpc::detail::requires</a></div><div class="ttdeci">requires(N &gt; 1) struct liftA_op&lt; N</div><div class="ttdoc">A partial specialization of liftA.</div></div>
 </div><!-- fragment -->
-</div>
-</div>
-<a id="a20ab3362e0feca9c3ea8b04ec4c07dce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20ab3362e0feca9c3ea8b04ec4c07dce">&#9670;&nbsp;</a></span>discard1st</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr auto mpc::applicatives::discard1st = mpc::liftA2 % (flip % constant)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>discard1st = liftA2 (flip const) </p>
-<p>If you define <code>applicative_traits&lt;F&gt;::seq_apply</code> and <code>applicative_traits&lt;F&gt;::liftA2</code>, you can deduce <code>discard1st</code>. </p>
-
-</div>
-</div>
-<a id="a458b73202555cc0a7de0e2bd4bc16f13"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a458b73202555cc0a7de0e2bd4bc16f13">&#9670;&nbsp;</a></span>discard1st_opt</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr perfect_forwarded_t&lt;detail::discard1st_opt_op&gt; mpc::applicatives::discard1st_opt {}</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>discard1st_opt x y = seq_apply (id &lt;$ x) y </p>
-<p>If you optimize <code>functor_traits&lt;F&gt;::replace2nd</code>, you can deduce optimized <code>discard1st</code>. </p>
-
-</div>
-</div>
-<a id="a63e9c147eb3cfc7b80916e4e6bb6daef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a63e9c147eb3cfc7b80916e4e6bb6daef">&#9670;&nbsp;</a></span>discard2nd</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr auto mpc::applicatives::discard2nd = mpc::liftA2 % constant</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>discard2nd = liftA2 const </p>
-<p>If you define <code>applicative_traits&lt;F&gt;::seq_apply</code> and <code>applicative_traits&lt;F&gt;::liftA2</code>, you can deduce <code>discard2nd</code>. </p>
-
-</div>
-</div>
-<a id="a6905d1bcc6cab925f0a8810c7c28e51a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6905d1bcc6cab925f0a8810c7c28e51a">&#9670;&nbsp;</a></span>fmap</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr perfect_forwarded_t&lt;detail::fmap_op&gt; mpc::applicatives::fmap {}</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>fmap f x = seq_apply (pure f) x </p>
-<p>If you fully specialize <code>applicative_traits&lt;F&gt;</code>, you can deduce <code>fmap</code>. </p>
-
-</div>
-</div>
-<a id="abe044fbb73b16c1c860ba315d3b1088b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe044fbb73b16c1c860ba315d3b1088b">&#9670;&nbsp;</a></span>liftA2</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr perfect_forwarded_t&lt;detail::liftA2_op&gt; mpc::applicatives::liftA2 {}</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>liftA2 f x y = seq_apply (fmap f x) y </p>
-<p>If you define <code>applicative_traits&lt;F&gt;::seq_apply</code>, you can deduce <code>liftA2</code>. </p>
-
-</div>
-</div>
-<a id="a610d2f0ab88ea69a8ebecbb920164f06"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a610d2f0ab88ea69a8ebecbb920164f06">&#9670;&nbsp;</a></span>seq_apply</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr auto mpc::applicatives::seq_apply = mpc::liftA2 % id</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>seq_apply = liftA2 id </p>
-<p>If you define <code>applicative_traits&lt;F&gt;::liftA2</code>, you can deduce <code>seq_apply</code>. </p>
+<p>applicative_traits_specialized </p>
 
 </div>
 </div>

@@ -1,7 +1,5 @@
 var type__traits_8hpp =
 [
-    [ "is_implicitly_default_constructible_impl", "structmpc_1_1detail_1_1is__implicitly__default__constructible__impl.html", null ],
-    [ "is_implicitly_default_constructible_impl< T, decltype(test_implicitly_default_constructible_impl< const T & >({}))>", "structmpc_1_1detail_1_1is__implicitly__default__constructible__impl_3_01_t_00_01decltype_07test_d5ef89a7e4ce998a6f4d85b08468ecd0.html", null ],
     [ "is_implicitly_default_constructible", "structmpc_1_1detail_1_1is__implicitly__default__constructible.html", null ],
     [ "is_explicitly_convertible", "structmpc_1_1detail_1_1is__explicitly__convertible.html", null ],
     [ "is_explicitly_convertible< From, To, std::void_t< decltype(To(std::declval< From >()))> >", "structmpc_1_1detail_1_1is__explicitly__convertible_3_01_from_00_01_to_00_01std_1_1void__t_3_01de197c3b97c2eac05717436200a7778100.html", null ],
@@ -27,8 +25,6 @@ var type__traits_8hpp =
     [ "copy_reference_t", "type__traits_8hpp.html#af421d34facb1a934ea17f16f199d7079", null ],
     [ "copy_volatile_t", "type__traits_8hpp.html#abb8f33a0ef104452ff5bcaec92779df4", null ],
     [ "make_reversed_index_sequence", "type__traits_8hpp.html#a21c97c06ebb8280087b72c3a6e8e2e01", null ],
-    [ "reversed_index_sequence_impl", "type__traits_8hpp.html#a6f46ac1f4b4d520c24e144f6462926d4", null ],
-    [ "test_implicitly_default_constructible_impl", "type__traits_8hpp.html#a994b8ce0dc56bf3bd51fa277a2c8cc4e", null ],
     [ "is_explicitly_convertible_v", "type__traits_8hpp.html#aa63feab5ad75249515bd726f87f329f6", null ],
     [ "is_implicitly_convertible_v", "type__traits_8hpp.html#a005d0bb21a143a66ff4daebc723471f3", null ],
     [ "is_implicitly_default_constructible_v", "type__traits_8hpp.html#aae63c23ef9b93dbe50cc6b6bd984eccd", null ]

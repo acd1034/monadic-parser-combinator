@@ -93,6 +93,9 @@ $(document).ready(function(){initNavTree('namespacempc_1_1detail.html',''); init
 <div class="title">mpc::detail Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implementation details are here.  
+<a href="namespacempc_1_1detail.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -118,6 +121,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">discard1st :: f a -&gt; f b -&gt; f b  <a href="structmpc_1_1detail_1_1discard1st__op.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1lift_a__op.html">liftA_op</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">liftA :: Applicative f =&gt; (a -&gt; b -&gt; ... -&gt; z) -&gt; f a -&gt; f b -&gt; ... -&gt; f z  <a href="structmpc_1_1detail_1_1lift_a__op.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1fmap__op.html">fmap_op</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">fmap :: (a -&gt; b) -&gt; f a -&gt; f b  <a href="structmpc_1_1detail_1_1fmap__op.html#details">More...</a><br /></td></tr>
@@ -129,6 +133,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">bind :: forall a b. m a -&gt; (a -&gt; m b) -&gt; m b  <a href="structmpc_1_1detail_1_1bind__op.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1karrow__op.html">karrow_op</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">karrow :: Monad m =&gt; (a -&gt; m b) -&gt; (b -&gt; m c) -&gt; (a -&gt; m c)  <a href="structmpc_1_1detail_1_1karrow__op.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1state__op.html">state_op</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">state :: (s -&gt; (a, s)) -&gt; m a  <a href="structmpc_1_1detail_1_1state__op.html#details">More...</a><br /></td></tr>
@@ -242,10 +247,6 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1flip__op.html">flip_op</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1is__implicitly__default__constructible__impl.html">is_implicitly_default_constructible_impl</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1is__implicitly__default__constructible__impl_3_01_t_00_01decltype_07test_d5ef89a7e4ce998a6f4d85b08468ecd0.html">is_implicitly_default_constructible_impl&lt; T, decltype(test_implicitly_default_constructible_impl&lt; const T &amp; &gt;({}))&gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1is__implicitly__default__constructible.html">is_implicitly_default_constructible</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">is_implicitly_default_constructible  <a href="structmpc_1_1detail_1_1is__implicitly__default__constructible.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -253,7 +254,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">is_explicitly_convertible  <a href="structmpc_1_1detail_1_1is__explicitly__convertible.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1is__explicitly__convertible_3_01_from_00_01_to_00_01std_1_1void__t_3_01de197c3b97c2eac05717436200a7778100.html">is_explicitly_convertible&lt; From, To, std::void_t&lt; decltype(To(std::declval&lt; From &gt;()))&gt; &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">partial specialization of <code><a class="el" href="structmpc_1_1detail_1_1is__explicitly__convertible.html" title="is_explicitly_convertible">is_explicitly_convertible</a></code>  <a href="structmpc_1_1detail_1_1is__explicitly__convertible_3_01_from_00_01_to_00_01std_1_1void__t_3_01de197c3b97c2eac05717436200a7778100.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A partial specialization of <a class="el" href="structmpc_1_1detail_1_1is__explicitly__convertible.html" title="is_explicitly_convertible">is_explicitly_convertible</a>.  <a href="structmpc_1_1detail_1_1is__explicitly__convertible_3_01_from_00_01_to_00_01std_1_1void__t_3_01de197c3b97c2eac05717436200a7778100.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1is__implicitly__convertible.html">is_implicitly_convertible</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">is_implicitly_convertible  <a href="structmpc_1_1detail_1_1is__implicitly__convertible.html#details">More...</a><br /></td></tr>
@@ -298,96 +299,91 @@ template&lt;std::size_t N&gt; </td></tr>
 <tr class="separator:a21c97c06ebb8280087b72c3a6e8e2e01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae1f2d65b7d1374d45900ea52299012a"><td class="memTemplParams" colspan="2"><a id="aae1f2d65b7d1374d45900ea52299012a"></a>
 template&lt;class From , class To &gt; </td></tr>
-<tr class="memitem:aae1f2d65b7d1374d45900ea52299012a"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>copy_const_t</b> = typename <a class="el" href="structmpc_1_1detail_1_1copy__const.html">copy_const</a>&lt; From, To &gt;::type</td></tr>
+<tr class="memitem:aae1f2d65b7d1374d45900ea52299012a"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html#aae1f2d65b7d1374d45900ea52299012a">copy_const_t</a> = typename <a class="el" href="structmpc_1_1detail_1_1copy__const.html">copy_const</a>&lt; From, To &gt;::type</td></tr>
+<tr class="memdesc:aae1f2d65b7d1374d45900ea52299012a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A helper alias template for <a class="el" href="structmpc_1_1detail_1_1copy__const.html" title="Copies the const qualifier.">copy_const</a>. <br /></td></tr>
 <tr class="separator:aae1f2d65b7d1374d45900ea52299012a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad334e8b1a60a1a4a745980446594f277"><td class="memTemplParams" colspan="2"><a id="ad334e8b1a60a1a4a745980446594f277"></a>
 template&lt;class From , class To &gt; </td></tr>
-<tr class="memitem:ad334e8b1a60a1a4a745980446594f277"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>clone_const_t</b> = typename <a class="el" href="structmpc_1_1detail_1_1clone__const.html">clone_const</a>&lt; From, To &gt;::type</td></tr>
+<tr class="memitem:ad334e8b1a60a1a4a745980446594f277"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html#ad334e8b1a60a1a4a745980446594f277">clone_const_t</a> = typename <a class="el" href="structmpc_1_1detail_1_1clone__const.html">clone_const</a>&lt; From, To &gt;::type</td></tr>
+<tr class="memdesc:ad334e8b1a60a1a4a745980446594f277"><td class="mdescLeft">&#160;</td><td class="mdescRight">A helper alias template for <a class="el" href="structmpc_1_1detail_1_1clone__const.html" title="Clones the const qualifier.">clone_const</a>. <br /></td></tr>
 <tr class="separator:ad334e8b1a60a1a4a745980446594f277"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb8f33a0ef104452ff5bcaec92779df4"><td class="memTemplParams" colspan="2"><a id="abb8f33a0ef104452ff5bcaec92779df4"></a>
 template&lt;class From , class To &gt; </td></tr>
-<tr class="memitem:abb8f33a0ef104452ff5bcaec92779df4"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>copy_volatile_t</b> = typename <a class="el" href="structmpc_1_1detail_1_1copy__volatile.html">copy_volatile</a>&lt; From, To &gt;::type</td></tr>
+<tr class="memitem:abb8f33a0ef104452ff5bcaec92779df4"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html#abb8f33a0ef104452ff5bcaec92779df4">copy_volatile_t</a> = typename <a class="el" href="structmpc_1_1detail_1_1copy__volatile.html">copy_volatile</a>&lt; From, To &gt;::type</td></tr>
+<tr class="memdesc:abb8f33a0ef104452ff5bcaec92779df4"><td class="mdescLeft">&#160;</td><td class="mdescRight">A helper alias template for <a class="el" href="structmpc_1_1detail_1_1copy__volatile.html" title="Copies the volatile qualifier.">copy_volatile</a>. <br /></td></tr>
 <tr class="separator:abb8f33a0ef104452ff5bcaec92779df4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad966c5d1fba32cdb1ecdae0cde6664f9"><td class="memTemplParams" colspan="2"><a id="ad966c5d1fba32cdb1ecdae0cde6664f9"></a>
 template&lt;class From , class To &gt; </td></tr>
-<tr class="memitem:ad966c5d1fba32cdb1ecdae0cde6664f9"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>clone_volatile_t</b> = typename <a class="el" href="structmpc_1_1detail_1_1clone__volatile.html">clone_volatile</a>&lt; From, To &gt;::type</td></tr>
+<tr class="memitem:ad966c5d1fba32cdb1ecdae0cde6664f9"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html#ad966c5d1fba32cdb1ecdae0cde6664f9">clone_volatile_t</a> = typename <a class="el" href="structmpc_1_1detail_1_1clone__volatile.html">clone_volatile</a>&lt; From, To &gt;::type</td></tr>
+<tr class="memdesc:ad966c5d1fba32cdb1ecdae0cde6664f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">A helper alias template for <a class="el" href="structmpc_1_1detail_1_1clone__volatile.html" title="Clones the volatile qualifier.">clone_volatile</a>. <br /></td></tr>
 <tr class="separator:ad966c5d1fba32cdb1ecdae0cde6664f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24c0e01a9eebf9ec054d3e2455305aac"><td class="memTemplParams" colspan="2"><a id="a24c0e01a9eebf9ec054d3e2455305aac"></a>
 template&lt;class From , class To &gt; </td></tr>
-<tr class="memitem:a24c0e01a9eebf9ec054d3e2455305aac"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>copy_cv_t</b> = typename <a class="el" href="structmpc_1_1detail_1_1copy__cv.html">copy_cv</a>&lt; From, To &gt;::type</td></tr>
+<tr class="memitem:a24c0e01a9eebf9ec054d3e2455305aac"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html#a24c0e01a9eebf9ec054d3e2455305aac">copy_cv_t</a> = typename <a class="el" href="structmpc_1_1detail_1_1copy__cv.html">copy_cv</a>&lt; From, To &gt;::type</td></tr>
+<tr class="memdesc:a24c0e01a9eebf9ec054d3e2455305aac"><td class="mdescLeft">&#160;</td><td class="mdescRight">A helper alias template for <a class="el" href="structmpc_1_1detail_1_1copy__cv.html" title="Copies cv qualifiers.">copy_cv</a>. <br /></td></tr>
 <tr class="separator:a24c0e01a9eebf9ec054d3e2455305aac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2d89766a6e7f7b7125e023b55745978"><td class="memTemplParams" colspan="2"><a id="ab2d89766a6e7f7b7125e023b55745978"></a>
 template&lt;class From , class To &gt; </td></tr>
-<tr class="memitem:ab2d89766a6e7f7b7125e023b55745978"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>clone_cv_t</b> = typename <a class="el" href="structmpc_1_1detail_1_1clone__cv.html">clone_cv</a>&lt; From, To &gt;::type</td></tr>
+<tr class="memitem:ab2d89766a6e7f7b7125e023b55745978"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html#ab2d89766a6e7f7b7125e023b55745978">clone_cv_t</a> = typename <a class="el" href="structmpc_1_1detail_1_1clone__cv.html">clone_cv</a>&lt; From, To &gt;::type</td></tr>
+<tr class="memdesc:ab2d89766a6e7f7b7125e023b55745978"><td class="mdescLeft">&#160;</td><td class="mdescRight">A helper alias template for <a class="el" href="structmpc_1_1detail_1_1clone__cv.html" title="Clones cv qualifiers.">clone_cv</a>. <br /></td></tr>
 <tr class="separator:ab2d89766a6e7f7b7125e023b55745978"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af421d34facb1a934ea17f16f199d7079"><td class="memTemplParams" colspan="2"><a id="af421d34facb1a934ea17f16f199d7079"></a>
 template&lt;class From , class To &gt; </td></tr>
-<tr class="memitem:af421d34facb1a934ea17f16f199d7079"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>copy_reference_t</b> = typename <a class="el" href="structmpc_1_1detail_1_1copy__reference.html">copy_reference</a>&lt; From, To &gt;::type</td></tr>
+<tr class="memitem:af421d34facb1a934ea17f16f199d7079"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html#af421d34facb1a934ea17f16f199d7079">copy_reference_t</a> = typename <a class="el" href="structmpc_1_1detail_1_1copy__reference.html">copy_reference</a>&lt; From, To &gt;::type</td></tr>
+<tr class="memdesc:af421d34facb1a934ea17f16f199d7079"><td class="mdescLeft">&#160;</td><td class="mdescRight">A helper alias template for <a class="el" href="structmpc_1_1detail_1_1copy__reference.html" title="Copies the reference qualifier.">copy_reference</a>. <br /></td></tr>
 <tr class="separator:af421d34facb1a934ea17f16f199d7079"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a209f0c941222d1699b67a8d55a8c21c9"><td class="memTemplParams" colspan="2"><a id="a209f0c941222d1699b67a8d55a8c21c9"></a>
 template&lt;class From , class To &gt; </td></tr>
-<tr class="memitem:a209f0c941222d1699b67a8d55a8c21c9"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>clone_reference_t</b> = typename <a class="el" href="structmpc_1_1detail_1_1clone__reference.html">clone_reference</a>&lt; From, To &gt;::type</td></tr>
+<tr class="memitem:a209f0c941222d1699b67a8d55a8c21c9"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html#a209f0c941222d1699b67a8d55a8c21c9">clone_reference_t</a> = typename <a class="el" href="structmpc_1_1detail_1_1clone__reference.html">clone_reference</a>&lt; From, To &gt;::type</td></tr>
+<tr class="memdesc:a209f0c941222d1699b67a8d55a8c21c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">A helper alias template for <a class="el" href="structmpc_1_1detail_1_1clone__reference.html" title="Clones the reference qualifier.">clone_reference</a>. <br /></td></tr>
 <tr class="separator:a209f0c941222d1699b67a8d55a8c21c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a636802c407af17ce50a13be207d8108a"><td class="memTemplParams" colspan="2"><a id="a636802c407af17ce50a13be207d8108a"></a>
 template&lt;class From , class To &gt; </td></tr>
-<tr class="memitem:a636802c407af17ce50a13be207d8108a"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>copy_cvref_t</b> = typename <a class="el" href="structmpc_1_1detail_1_1copy__cvref.html">copy_cvref</a>&lt; From, To &gt;::type</td></tr>
+<tr class="memitem:a636802c407af17ce50a13be207d8108a"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html#a636802c407af17ce50a13be207d8108a">copy_cvref_t</a> = typename <a class="el" href="structmpc_1_1detail_1_1copy__cvref.html">copy_cvref</a>&lt; From, To &gt;::type</td></tr>
+<tr class="memdesc:a636802c407af17ce50a13be207d8108a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A helper alias template for <a class="el" href="structmpc_1_1detail_1_1copy__cvref.html" title="Copies cv and reference qualifiers.">copy_cvref</a>. <br /></td></tr>
 <tr class="separator:a636802c407af17ce50a13be207d8108a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afee6e4884924ddee30bf3d358125fa49"><td class="memTemplParams" colspan="2"><a id="afee6e4884924ddee30bf3d358125fa49"></a>
 template&lt;class From , class To &gt; </td></tr>
-<tr class="memitem:afee6e4884924ddee30bf3d358125fa49"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>clone_cvref_t</b> = typename <a class="el" href="structmpc_1_1detail_1_1clone__cvref.html">clone_cvref</a>&lt; From, To &gt;::type</td></tr>
+<tr class="memitem:afee6e4884924ddee30bf3d358125fa49"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html#afee6e4884924ddee30bf3d358125fa49">clone_cvref_t</a> = typename <a class="el" href="structmpc_1_1detail_1_1clone__cvref.html">clone_cvref</a>&lt; From, To &gt;::type</td></tr>
+<tr class="memdesc:afee6e4884924ddee30bf3d358125fa49"><td class="mdescLeft">&#160;</td><td class="mdescRight">A helper alias template for <a class="el" href="structmpc_1_1detail_1_1clone__cvref.html" title="Clones cv and reference qualifiers.">clone_cvref</a>. <br /></td></tr>
 <tr class="separator:afee6e4884924ddee30bf3d358125fa49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:accf8d0288dc7ac65928b2f56537476fb"><td class="memTemplParams" colspan="2"><a id="accf8d0288dc7ac65928b2f56537476fb"></a>
-template&lt;class Fn , class Fa , class Fb &gt; </td></tr>
-<tr class="memitem:accf8d0288dc7ac65928b2f56537476fb"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>reversed_liftA</b> (Fb &amp;&amp;fb, Fa &amp;&amp;fa, Fn &amp;&amp;fn) noexcept(noexcept(mpc::liftA2(std::forward&lt; Fn &gt;(fn), std::forward&lt; Fa &gt;(fa), std::forward&lt; Fb &gt;(fb)))) -&gt; decltype(mpc::liftA2(std::forward&lt; Fn &gt;(fn), std::forward&lt; Fa &gt;(fa), std::forward&lt; Fb &gt;(fb)))</td></tr>
-<tr class="separator:accf8d0288dc7ac65928b2f56537476fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a477f2be85b4b4bed5b7ca2a57706b4a5"><td class="memTemplParams" colspan="2"><a id="a477f2be85b4b4bed5b7ca2a57706b4a5"></a>
-template&lt;class Fz , class... Args&gt; </td></tr>
-<tr class="memitem:a477f2be85b4b4bed5b7ca2a57706b4a5"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>requires</b> (sizeof...(Args) &gt; 2) const expr auto reversed_liftA(Fz &amp;&amp;fz</td></tr>
-<tr class="separator:a477f2be85b4b4bed5b7ca2a57706b4a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17144a717134717e76c6bb1da3a7de4c"><td class="memItemLeft" align="right" valign="top"><a id="a17144a717134717e76c6bb1da3a7de4c"></a>
-Args &amp;&amp;args&#160;</td><td class="memItemRight" valign="bottom"><b>noexcept</b> (noexcept(mpc::seq_apply(reversed_liftA(std::forward&lt; Args &gt;(args)...), std::forward&lt; Fz &gt;(fz)))) -&gt; decltype(mpc::seq_apply(reversed_liftA(std::forward&lt; Args &gt;(args)...), std::forward&lt; Fz &gt;(fz)))</td></tr>
-<tr class="separator:a17144a717134717e76c6bb1da3a7de4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeeb2868c2c876581688a3f42aedb1fdd"><td class="memTemplParams" colspan="2"><a id="aeeb2868c2c876581688a3f42aedb1fdd"></a>
 template&lt;std::size_t N, std::size_t... Idx&gt; </td></tr>
-<tr class="memitem:aeeb2868c2c876581688a3f42aedb1fdd"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>requires</b> (N &gt; 1) struct <a class="el" href="structmpc_1_1detail_1_1lift_a__op.html">liftA_op</a>&lt; N</td></tr>
+<tr class="memitem:aeeb2868c2c876581688a3f42aedb1fdd"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html#aeeb2868c2c876581688a3f42aedb1fdd">requires</a> (N &gt; 1) struct <a class="el" href="structmpc_1_1detail_1_1lift_a__op.html">liftA_op</a>&lt; N</td></tr>
+<tr class="memdesc:aeeb2868c2c876581688a3f42aedb1fdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">A partial specialization of liftA. <br /></td></tr>
 <tr class="separator:aeeb2868c2c876581688a3f42aedb1fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f46ac1f4b4d520c24e144f6462926d4"><td class="memTemplParams" colspan="2"><a id="a6f46ac1f4b4d520c24e144f6462926d4"></a>
-template&lt;std::size_t... Idx&gt; </td></tr>
-<tr class="memitem:a6f46ac1f4b4d520c24e144f6462926d4"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>reversed_index_sequence_impl</b> (std::index_sequence&lt; Idx... &gt; const &amp;) -&gt; decltype(std::index_sequence&lt; sizeof...(Idx) - 1U - Idx... &gt;{})</td></tr>
-<tr class="separator:a6f46ac1f4b4d520c24e144f6462926d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a994b8ce0dc56bf3bd51fa277a2c8cc4e"><td class="memTemplParams" colspan="2"><a id="a994b8ce0dc56bf3bd51fa277a2c8cc4e"></a>
-template&lt;class T &gt; </td></tr>
-<tr class="memitem:a994b8ce0dc56bf3bd51fa277a2c8cc4e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>test_implicitly_default_constructible_impl</b> (T)</td></tr>
-<tr class="separator:a994b8ce0dc56bf3bd51fa277a2c8cc4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a5b8880ac743a9d62b1ae5ccb357c5f04"><td class="memTemplParams" colspan="2">template&lt;class F &gt; </td></tr>
-<tr class="memitem:a5b8880ac743a9d62b1ae5ccb357c5f04"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><b>has_alternative_traits_empty</b></td></tr>
+<tr class="memitem:a5b8880ac743a9d62b1ae5ccb357c5f04"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html#a5b8880ac743a9d62b1ae5ccb357c5f04">has_alternative_traits_empty</a></td></tr>
+<tr class="memdesc:a5b8880ac743a9d62b1ae5ccb357c5f04"><td class="mdescLeft">&#160;</td><td class="mdescRight">has_alternative_traits_empty  <a href="namespacempc_1_1detail.html#a5b8880ac743a9d62b1ae5ccb357c5f04">More...</a><br /></td></tr>
 <tr class="separator:a5b8880ac743a9d62b1ae5ccb357c5f04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95331957bad24ca3071b680140d570a5"><td class="memTemplParams" colspan="2">template&lt;class F &gt; </td></tr>
-<tr class="memitem:a95331957bad24ca3071b680140d570a5"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><b>has_alternative_traits_combine</b></td></tr>
+<tr class="memitem:a95331957bad24ca3071b680140d570a5"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html#a95331957bad24ca3071b680140d570a5">has_alternative_traits_combine</a></td></tr>
+<tr class="memdesc:a95331957bad24ca3071b680140d570a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">has_alternative_traits_combine  <a href="namespacempc_1_1detail.html#a95331957bad24ca3071b680140d570a5">More...</a><br /></td></tr>
 <tr class="separator:a95331957bad24ca3071b680140d570a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae63c23ef9b93dbe50cc6b6bd984eccd"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
 <tr class="memitem:aae63c23ef9b93dbe50cc6b6bd984eccd"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html#aae63c23ef9b93dbe50cc6b6bd984eccd">is_implicitly_default_constructible_v</a></td></tr>
-<tr class="memdesc:aae63c23ef9b93dbe50cc6b6bd984eccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">helper variable template for <code><a class="el" href="structmpc_1_1detail_1_1is__implicitly__default__constructible.html" title="is_implicitly_default_constructible">is_implicitly_default_constructible</a></code>  <a href="namespacempc_1_1detail.html#aae63c23ef9b93dbe50cc6b6bd984eccd">More...</a><br /></td></tr>
+<tr class="memdesc:aae63c23ef9b93dbe50cc6b6bd984eccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">A helper inline variable for <a class="el" href="structmpc_1_1detail_1_1is__implicitly__default__constructible.html" title="is_implicitly_default_constructible">is_implicitly_default_constructible</a>.  <a href="namespacempc_1_1detail.html#aae63c23ef9b93dbe50cc6b6bd984eccd">More...</a><br /></td></tr>
 <tr class="separator:aae63c23ef9b93dbe50cc6b6bd984eccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa63feab5ad75249515bd726f87f329f6"><td class="memTemplParams" colspan="2"><a id="aa63feab5ad75249515bd726f87f329f6"></a>
 template&lt;class From , class To &gt; </td></tr>
 <tr class="memitem:aa63feab5ad75249515bd726f87f329f6"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html#aa63feab5ad75249515bd726f87f329f6">is_explicitly_convertible_v</a> = <a class="el" href="structmpc_1_1detail_1_1is__explicitly__convertible.html">is_explicitly_convertible</a>&lt;From, To&gt;::value</td></tr>
-<tr class="memdesc:aa63feab5ad75249515bd726f87f329f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">helper variable template for <code><a class="el" href="structmpc_1_1detail_1_1is__explicitly__convertible.html" title="is_explicitly_convertible">is_explicitly_convertible</a></code> <br /></td></tr>
+<tr class="memdesc:aa63feab5ad75249515bd726f87f329f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">A helper inline variable for <a class="el" href="structmpc_1_1detail_1_1is__explicitly__convertible.html" title="is_explicitly_convertible">is_explicitly_convertible</a>. <br /></td></tr>
 <tr class="separator:aa63feab5ad75249515bd726f87f329f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a005d0bb21a143a66ff4daebc723471f3"><td class="memTemplParams" colspan="2"><a id="a005d0bb21a143a66ff4daebc723471f3"></a>
 template&lt;class From , class To &gt; </td></tr>
 <tr class="memitem:a005d0bb21a143a66ff4daebc723471f3"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html#a005d0bb21a143a66ff4daebc723471f3">is_implicitly_convertible_v</a> = <a class="el" href="structmpc_1_1detail_1_1is__implicitly__convertible.html">is_implicitly_convertible</a>&lt;From, To&gt;::value</td></tr>
-<tr class="memdesc:a005d0bb21a143a66ff4daebc723471f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">helper variable template for <code><a class="el" href="structmpc_1_1detail_1_1is__implicitly__convertible.html" title="is_implicitly_convertible">is_implicitly_convertible</a></code> <br /></td></tr>
+<tr class="memdesc:a005d0bb21a143a66ff4daebc723471f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">A helper inline variable for <a class="el" href="structmpc_1_1detail_1_1is__implicitly__convertible.html" title="is_implicitly_convertible">is_implicitly_convertible</a>. <br /></td></tr>
 <tr class="separator:a005d0bb21a143a66ff4daebc723471f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>instance (Functor m, MonadPlus m) =&gt; Alternative (<a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { run_StateT :: s -&gt; m (a,s) }">StateT</a> s m) where empty = <a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { run_StateT :: s -&gt; m (a,s) }">StateT</a> $ (_ -&gt; mzero) <a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { run_StateT :: s -&gt; m (a,s) }">StateT</a> m &lt;|&gt; <a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { run_StateT :: s -&gt; m (a,s) }">StateT</a> n = <a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { run_StateT :: s -&gt; m (a,s) }">StateT</a> $ s -&gt; m s <code>mplus</code> n s </p>
+<div class="textblock"><p>Implementation details are here. </p>
+<p>instance (Functor m, MonadPlus m) =&gt; Alternative (<a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { runStateT :: s -&gt; m (a,s) }">StateT</a> s m) where empty = <a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { runStateT :: s -&gt; m (a,s) }">StateT</a> $ (_ -&gt; mzero) <a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { runStateT :: s -&gt; m (a,s) }">StateT</a> m &lt;|&gt; <a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { runStateT :: s -&gt; m (a,s) }">StateT</a> n = <a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { runStateT :: s -&gt; m (a,s) }">StateT</a> $ s -&gt; m s <code>mplus</code> n s </p>
 </div><h2 class="groupheader">Variable Documentation</h2>
 <a id="a95331957bad24ca3071b680140d570a5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a95331957bad24ca3071b680140d570a5">&#9670;&nbsp;</a></span>has_alternative_traits_combine</h2>
@@ -402,11 +398,14 @@ template&lt;class F &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357">requires</a> {</div>
-<div class="line">      alternative_traits&lt;std::remove_cvref_t&lt;F&gt;&gt;::combine;</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="namespacempc_1_1cpo.html#a60b7e31abb0e45f7c80649e4b895360c">requires</a> {</div>
+<div class="line">      alternative_traits&lt;std::remove_cvref_t&lt;F&gt;&gt;<a class="code" href="namespacempc_1_1cpo.html#a8a4f4bacb4084bbf75b6202776e456f9">::combine</a>;</div>
 <div class="line">    }</div>
-<div class="ttc" id="amonad_8hpp_html_a05b4c9cd81d5605f3a48153296632357"><div class="ttname"><a href="monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357">mpc::cpo::requires</a></div><div class="ttdeci">requires requires</div><div class="ttdoc">return = pure</div><div class="ttdef"><b>Definition:</b> monad.hpp:42</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a60b7e31abb0e45f7c80649e4b895360c"><div class="ttname"><a href="namespacempc_1_1cpo.html#a60b7e31abb0e45f7c80649e4b895360c">mpc::cpo::requires</a></div><div class="ttdeci">requires requires</div><div class="ttdoc">returns :: a -&gt; m a</div><div class="ttdef"><b>Definition:</b> monad.hpp:172</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a8a4f4bacb4084bbf75b6202776e456f9"><div class="ttname"><a href="namespacempc_1_1cpo.html#a8a4f4bacb4084bbf75b6202776e456f9">mpc::cpo::combine</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::combine_op &gt; combine</div><div class="ttdoc">combine :: f a -&gt; f a -&gt; f a</div><div class="ttdef"><b>Definition:</b> alternative.hpp:70</div></div>
 </div><!-- fragment -->
+<p>has_alternative_traits_combine </p>
+
 </div>
 </div>
 <a id="a5b8880ac743a9d62b1ae5ccb357c5f04"></a>
@@ -422,10 +421,13 @@ template&lt;class F &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357">requires</a> {</div>
-<div class="line">      alternative_traits&lt;std::remove_cvref_t&lt;F&gt;&gt;::empty();</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="namespacempc_1_1cpo.html#a60b7e31abb0e45f7c80649e4b895360c">requires</a> {</div>
+<div class="line">      alternative_traits&lt;std::remove_cvref_t&lt;F&gt;&gt;<a class="code" href="namespacempc_1_1cpo.html#a7fdbc0223c46e98d77892d1f7b30e1ed">::empty</a>();</div>
 <div class="line">    }</div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a7fdbc0223c46e98d77892d1f7b30e1ed"><div class="ttname"><a href="namespacempc_1_1cpo.html#a7fdbc0223c46e98d77892d1f7b30e1ed">mpc::cpo::empty</a></div><div class="ttdeci">constexpr detail::empty_op&lt; F &gt; empty</div><div class="ttdoc">empty :: f a</div><div class="ttdef"><b>Definition:</b> alternative.hpp:67</div></div>
 </div><!-- fragment -->
+<p>has_alternative_traits_empty </p>
+
 </div>
 </div>
 <a id="aae63c23ef9b93dbe50cc6b6bd984eccd"></a>
@@ -452,7 +454,7 @@ template&lt;class T &gt; </div>
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">    is_implicitly_default_constructible&lt;T&gt;::value</div>
 </div><!-- fragment -->
-<p>helper variable template for <code><a class="el" href="structmpc_1_1detail_1_1is__implicitly__default__constructible.html" title="is_implicitly_default_constructible">is_implicitly_default_constructible</a></code> </p>
+<p>A helper inline variable for <a class="el" href="structmpc_1_1detail_1_1is__implicitly__default__constructible.html" title="is_implicitly_default_constructible">is_implicitly_default_constructible</a>. </p>
 
 </div>
 </div>

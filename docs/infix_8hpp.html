@@ -99,17 +99,21 @@ $(document).ready(function(){initNavTree('infix_8hpp.html',''); initResizable();
 Functions</h2></td></tr>
 <tr class="memitem:a95d6c3357b43d18ae24156b783776c0e"><td class="memTemplParams" colspan="2">template&lt;class A1 , class Op , class A2 &gt; </td></tr>
 <tr class="memitem:a95d6c3357b43d18ae24156b783776c0e"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="infix_8hpp.html#a95d6c3357b43d18ae24156b783776c0e">mpc::infixr</a> (A1 &amp;&amp;a1, Op &amp;&amp;op, A2 &amp;&amp;a2) noexcept(noexcept(std::invoke(std::forward&lt; Op &gt;(op), std::forward&lt; A1 &gt;(a1), std::forward&lt; A2 &gt;(a2)))) -&gt; decltype(std::invoke(std::forward&lt; Op &gt;(op), std::forward&lt; A1 &gt;(a1), std::forward&lt; A2 &gt;(a2)))</td></tr>
+<tr class="memdesc:a95d6c3357b43d18ae24156b783776c0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements the right-associative infix notation.  <a href="infix_8hpp.html#a95d6c3357b43d18ae24156b783776c0e">More...</a><br /></td></tr>
 <tr class="separator:a95d6c3357b43d18ae24156b783776c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32281fdcec4dccb479864a7a319f28ca"><td class="memTemplParams" colspan="2"><a id="a32281fdcec4dccb479864a7a319f28ca"></a>
 template&lt;class A1 , class Op , class... Args&gt; </td></tr>
-<tr class="memitem:a32281fdcec4dccb479864a7a319f28ca"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::infixr</b> (A1 &amp;&amp;a1, Op &amp;&amp;op, Args &amp;&amp;... args) noexcept(noexcept(std::invoke(std::forward&lt; Op &gt;(op), std::forward&lt; A1 &gt;(a1), infixr(std::forward&lt; Args &gt;(args)...)))) -&gt; decltype(std::invoke(std::forward&lt; Op &gt;(op), std::forward&lt; A1 &gt;(a1), infixr(std::forward&lt; Args &gt;(args)...)))</td></tr>
+<tr class="memitem:a32281fdcec4dccb479864a7a319f28ca"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="infix_8hpp.html#a32281fdcec4dccb479864a7a319f28ca">mpc::infixr</a> (A1 &amp;&amp;a1, Op &amp;&amp;op, Args &amp;&amp;... args) noexcept(noexcept(std::invoke(std::forward&lt; Op &gt;(op), std::forward&lt; A1 &gt;(a1), infixr(std::forward&lt; Args &gt;(args)...)))) -&gt; decltype(std::invoke(std::forward&lt; Op &gt;(op), std::forward&lt; A1 &gt;(a1), infixr(std::forward&lt; Args &gt;(args)...)))</td></tr>
+<tr class="memdesc:a32281fdcec4dccb479864a7a319f28ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Another overloaded function of infixr. <br /></td></tr>
 <tr class="separator:a32281fdcec4dccb479864a7a319f28ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a4142939fb5cfef7e7e30c39b0eb1b8"><td class="memTemplParams" colspan="2">template&lt;class A1 , class Op , class A2 &gt; </td></tr>
 <tr class="memitem:a3a4142939fb5cfef7e7e30c39b0eb1b8"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="infix_8hpp.html#a3a4142939fb5cfef7e7e30c39b0eb1b8">mpc::infixl</a> (A1 &amp;&amp;a1, Op &amp;&amp;op, A2 &amp;&amp;a2) noexcept(noexcept(std::invoke(std::forward&lt; Op &gt;(op), std::forward&lt; A1 &gt;(a1), std::forward&lt; A2 &gt;(a2)))) -&gt; decltype(std::invoke(std::forward&lt; Op &gt;(op), std::forward&lt; A1 &gt;(a1), std::forward&lt; A2 &gt;(a2)))</td></tr>
+<tr class="memdesc:a3a4142939fb5cfef7e7e30c39b0eb1b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements the left-associative infix notation.  <a href="infix_8hpp.html#a3a4142939fb5cfef7e7e30c39b0eb1b8">More...</a><br /></td></tr>
 <tr class="separator:a3a4142939fb5cfef7e7e30c39b0eb1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad99b2fb88d0dbac52343d2d81b8532a1"><td class="memTemplParams" colspan="2"><a id="ad99b2fb88d0dbac52343d2d81b8532a1"></a>
 template&lt;class A1 , class Op , class A2 , class... Args&gt; </td></tr>
-<tr class="memitem:ad99b2fb88d0dbac52343d2d81b8532a1"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::infixl</b> (A1 &amp;&amp;a1, Op &amp;&amp;op, A2 &amp;&amp;a2, Args &amp;&amp;... args) noexcept(noexcept(infixl(std::invoke(std::forward&lt; Op &gt;(op), std::forward&lt; A1 &gt;(a1), std::forward&lt; A2 &gt;(a2)), std::forward&lt; Args &gt;(args)...))) -&gt; decltype(infixl(std::invoke(std::forward&lt; Op &gt;(op), std::forward&lt; A1 &gt;(a1), std::forward&lt; A2 &gt;(a2)), std::forward&lt; Args &gt;(args)...))</td></tr>
+<tr class="memitem:ad99b2fb88d0dbac52343d2d81b8532a1"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="infix_8hpp.html#ad99b2fb88d0dbac52343d2d81b8532a1">mpc::infixl</a> (A1 &amp;&amp;a1, Op &amp;&amp;op, A2 &amp;&amp;a2, Args &amp;&amp;... args) noexcept(noexcept(infixl(std::invoke(std::forward&lt; Op &gt;(op), std::forward&lt; A1 &gt;(a1), std::forward&lt; A2 &gt;(a2)), std::forward&lt; Args &gt;(args)...))) -&gt; decltype(infixl(std::invoke(std::forward&lt; Op &gt;(op), std::forward&lt; A1 &gt;(a1), std::forward&lt; A2 &gt;(a2)), std::forward&lt; Args &gt;(args)...))</td></tr>
+<tr class="memdesc:ad99b2fb88d0dbac52343d2d81b8532a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Another overloaded function of infixl. <br /></td></tr>
 <tr class="separator:ad99b2fb88d0dbac52343d2d81b8532a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -155,8 +159,12 @@ template&lt;class A1 , class Op , class A2 &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>infixl(a1, op, a2) = op(a1, a2) infixl(a1, op, a2, args...) = infixl(op(a1, a2), args...) </p>
 
+<p>Implements the left-associative infix notation. </p>
+<div class="fragment"><div class="line"><a class="code" href="infix_8hpp.html#a3a4142939fb5cfef7e7e30c39b0eb1b8">infixl</a>(a1, op, a2) = op(a1, a2)</div>
+<div class="line"><a class="code" href="infix_8hpp.html#a3a4142939fb5cfef7e7e30c39b0eb1b8">infixl</a>(a1, op, a2, args...) = <a class="code" href="infix_8hpp.html#a3a4142939fb5cfef7e7e30c39b0eb1b8">infixl</a>(op(a1, a2), args...)</div>
+<div class="ttc" id="ainfix_8hpp_html_a3a4142939fb5cfef7e7e30c39b0eb1b8"><div class="ttname"><a href="infix_8hpp.html#a3a4142939fb5cfef7e7e30c39b0eb1b8">mpc::infixl</a></div><div class="ttdeci">constexpr auto infixl(A1 &amp;&amp;a1, Op &amp;&amp;op, A2 &amp;&amp;a2) noexcept(noexcept(std::invoke(std::forward&lt; Op &gt;(op), std::forward&lt; A1 &gt;(a1), std::forward&lt; A2 &gt;(a2)))) -&gt; decltype(std::invoke(std::forward&lt; Op &gt;(op), std::forward&lt; A1 &gt;(a1), std::forward&lt; A2 &gt;(a2)))</div><div class="ttdoc">Implements the left-associative infix notation.</div><div class="ttdef"><b>Definition:</b> infix.hpp:39</div></div>
+</div><!-- fragment --> 
 </div>
 </div>
 <a id="a95d6c3357b43d18ae24156b783776c0e"></a>
@@ -201,8 +209,12 @@ template&lt;class A1 , class Op , class A2 &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>infixr(a1, op, a2) = op(a1, a2) infixr(a1, op, args...) = op(a1, infixr(args...)) </p>
 
+<p>Implements the right-associative infix notation. </p>
+<div class="fragment"><div class="line"><a class="code" href="infix_8hpp.html#a95d6c3357b43d18ae24156b783776c0e">infixr</a>(a1, op, a2) = op(a1, a2)</div>
+<div class="line"><a class="code" href="infix_8hpp.html#a95d6c3357b43d18ae24156b783776c0e">infixr</a>(a1, op, args...) = op(a1, <a class="code" href="infix_8hpp.html#a95d6c3357b43d18ae24156b783776c0e">infixr</a>(args...))</div>
+<div class="ttc" id="ainfix_8hpp_html_a95d6c3357b43d18ae24156b783776c0e"><div class="ttname"><a href="infix_8hpp.html#a95d6c3357b43d18ae24156b783776c0e">mpc::infixr</a></div><div class="ttdeci">constexpr auto infixr(A1 &amp;&amp;a1, Op &amp;&amp;op, A2 &amp;&amp;a2) noexcept(noexcept(std::invoke(std::forward&lt; Op &gt;(op), std::forward&lt; A1 &gt;(a1), std::forward&lt; A2 &gt;(a2)))) -&gt; decltype(std::invoke(std::forward&lt; Op &gt;(op), std::forward&lt; A1 &gt;(a1), std::forward&lt; A2 &gt;(a2)))</div><div class="ttdoc">Implements the right-associative infix notation.</div><div class="ttdef"><b>Definition:</b> infix.hpp:18</div></div>
+</div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->

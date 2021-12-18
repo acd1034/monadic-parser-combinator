@@ -111,7 +111,7 @@ static constexpr lift_op&#160;</td><td class="memItemRight" valign="bottom"><b>l
 <div class="textblock"><h3>template&lt;class S, monad M&gt;<br />
 struct mpc::monad_trans_traits&lt; StateT&lt; S, M &gt; &gt;</h3>
 
-<p>instance MonadTrans (<a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { run_StateT :: s -&gt; m (a,s) }">StateT</a> s) where lift m = <a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { run_StateT :: s -&gt; m (a,s) }">StateT</a> $ s -&gt; do a &lt;- m return (a, s) </p>
+<p>instance MonadTrans (<a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { runStateT :: s -&gt; m (a,s) }">StateT</a> s) where lift m = <a class="el" href="structmpc_1_1_state_t.html" title="newtype StateT s m a = StateT { runStateT :: s -&gt; m (a,s) }">StateT</a> $ s -&gt; do a &lt;- m return (a, s) </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/mpc/control/state/<a class="el" href="state_t_8hpp_source.html">stateT.hpp</a></li>
 </ul>

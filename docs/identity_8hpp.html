@@ -128,6 +128,10 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacempc_1_1detail"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html">mpc::detail</a></td></tr>
+<tr class="memdesc:namespacempc_1_1detail"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation details are here. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacempc_1_1cpo"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html">mpc::cpo</a></td></tr>
+<tr class="memdesc:namespacempc_1_1cpo"><td class="mdescLeft">&#160;</td><td class="mdescRight">Customization point objects are here. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -144,10 +148,10 @@ template&lt;class T &gt; </td></tr>
 <tr class="memitem:aa2338600340b546763d8a5cb537e140b"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::is_Identity</b> = detail::is_Identity_impl&lt;std::remove_cvref_t&lt;T&gt;&gt;::value</td></tr>
 <tr class="separator:aa2338600340b546763d8a5cb537e140b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2438552dc006ca9a96b4999786984cad"><td class="memItemLeft" align="right" valign="top"><a id="a2438552dc006ca9a96b4999786984cad"></a>
-constexpr perfect_forwarded_t&lt; detail::make_Identity_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::make_Identity</b> {}</td></tr>
+constexpr perfect_forwarded_t&lt; detail::make_Identity_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::make_Identity</b> {}</td></tr>
 <tr class="separator:a2438552dc006ca9a96b4999786984cad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab69e0e29373bc245f37083ec3fa89f3a"><td class="memItemLeft" align="right" valign="top"><a id="ab69e0e29373bc245f37083ec3fa89f3a"></a>
-constexpr perfect_forwarded_t&lt; detail::run_Identity_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::run_Identity</b> {}</td></tr>
+constexpr perfect_forwarded_t&lt; detail::run_Identity_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::run_Identity</b> {}</td></tr>
 <tr class="separator:ab69e0e29373bc245f37083ec3fa89f3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

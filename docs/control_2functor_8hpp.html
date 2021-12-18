@@ -65,7 +65,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('functor_8hpp.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('control_2functor_8hpp.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('functor_8hpp.html',''); initResizable(
 <code>#include &lt;<a class="el" href="constant_8hpp_source.html">mpc/prelude/constant.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="flip_8hpp_source.html">mpc/prelude/flip.hpp</a>&gt;</code><br />
 </div>
-<p><a href="functor_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="control_2functor_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -111,25 +111,32 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacempc_1_1detail"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html">mpc::detail</a></td></tr>
+<tr class="memdesc:namespacempc_1_1detail"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation details are here. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacempc_1_1cpo"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html">mpc::cpo</a></td></tr>
+<tr class="memdesc:namespacempc_1_1cpo"><td class="mdescLeft">&#160;</td><td class="mdescRight">Customization point objects are here. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacempc_1_1functors"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1functors.html">mpc::functors</a></td></tr>
+<tr class="memdesc:namespacempc_1_1functors"><td class="mdescLeft">&#160;</td><td class="mdescRight">Methods deducible from other methods of <a class="el" href="">functor </a>. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ab55bf8cd65f86266692adc0433cfe87c"><td class="memTemplParams" colspan="2">template&lt;class F &gt; </td></tr>
-<tr class="memitem:ab55bf8cd65f86266692adc0433cfe87c"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::functor</b></td></tr>
+<tr class="memitem:ab55bf8cd65f86266692adc0433cfe87c"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="control_2functor_8hpp.html#ab55bf8cd65f86266692adc0433cfe87c">mpc::functor</a></td></tr>
+<tr class="memdesc:ab55bf8cd65f86266692adc0433cfe87c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requires fmap and replace2nd is valid in <a class="el" href="structmpc_1_1functor__traits.html">functor_traits </a>.  <a href="control_2functor_8hpp.html#ab55bf8cd65f86266692adc0433cfe87c">More...</a><br /></td></tr>
 <tr class="separator:ab55bf8cd65f86266692adc0433cfe87c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ad44d9f05ceed65a3b0aca22c406a93"><td class="memItemLeft" align="right" valign="top"><a id="a3ad44d9f05ceed65a3b0aca22c406a93"></a>
-constexpr perfect_forwarded_t&lt; detail::fmap_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functor_8hpp.html#a3ad44d9f05ceed65a3b0aca22c406a93">mpc::fmap</a> {}</td></tr>
-<tr class="memdesc:a3ad44d9f05ceed65a3b0aca22c406a93"><td class="mdescLeft">&#160;</td><td class="mdescRight">fmap :: (a -&gt; b) -&gt; f a -&gt; f b <br /></td></tr>
+<tr class="memitem:a3ad44d9f05ceed65a3b0aca22c406a93"><td class="memItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::fmap_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a3ad44d9f05ceed65a3b0aca22c406a93">mpc::cpo::fmap</a> {}</td></tr>
+<tr class="memdesc:a3ad44d9f05ceed65a3b0aca22c406a93"><td class="mdescLeft">&#160;</td><td class="mdescRight">fmap :: (a -&gt; b) -&gt; f a -&gt; f b  <a href="namespacempc_1_1cpo.html#a3ad44d9f05ceed65a3b0aca22c406a93">More...</a><br /></td></tr>
 <tr class="separator:a3ad44d9f05ceed65a3b0aca22c406a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa07a24b15c48a04151154abcd9a2883d"><td class="memItemLeft" align="right" valign="top"><a id="aa07a24b15c48a04151154abcd9a2883d"></a>
-constexpr perfect_forwarded_t&lt; detail::replace2nd_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functor_8hpp.html#aa07a24b15c48a04151154abcd9a2883d">mpc::replace2nd</a> {}</td></tr>
-<tr class="memdesc:aa07a24b15c48a04151154abcd9a2883d"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace2nd :: a -&gt; f b -&gt; f a <br /></td></tr>
+<tr class="memitem:aa07a24b15c48a04151154abcd9a2883d"><td class="memItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::replace2nd_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#aa07a24b15c48a04151154abcd9a2883d">mpc::cpo::replace2nd</a> {}</td></tr>
+<tr class="memdesc:aa07a24b15c48a04151154abcd9a2883d"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace2nd :: a -&gt; f b -&gt; f a  <a href="namespacempc_1_1cpo.html#aa07a24b15c48a04151154abcd9a2883d">More...</a><br /></td></tr>
 <tr class="separator:aa07a24b15c48a04151154abcd9a2883d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f6f060bce652dddfbd1429f63fff069"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functor_8hpp.html#a9f6f060bce652dddfbd1429f63fff069">mpc::functors::replace2nd</a> = compose(mpc::fmap, constant)</td></tr>
-<tr class="memdesc:a9f6f060bce652dddfbd1429f63fff069"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace2nd = fmap . const  <a href="functor_8hpp.html#a9f6f060bce652dddfbd1429f63fff069">More...</a><br /></td></tr>
+<tr class="memitem:a9f6f060bce652dddfbd1429f63fff069"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1functors.html#a9f6f060bce652dddfbd1429f63fff069">mpc::functors::replace2nd</a> = compose(mpc::fmap, constant)</td></tr>
+<tr class="memdesc:a9f6f060bce652dddfbd1429f63fff069"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace2nd :: a -&gt; f b -&gt; f a  <a href="namespacempc_1_1functors.html#a9f6f060bce652dddfbd1429f63fff069">More...</a><br /></td></tr>
 <tr class="separator:a9f6f060bce652dddfbd1429f63fff069"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb013568ac918cba3600456074cb02f8"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="functor_8hpp.html#acb013568ac918cba3600456074cb02f8">mpc::replace1st</a> = flip % mpc::replace2nd</td></tr>
+<tr class="memitem:acb013568ac918cba3600456074cb02f8"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#acb013568ac918cba3600456074cb02f8">mpc::cpo::replace1st</a> = flip % mpc::replace2nd</td></tr>
+<tr class="memdesc:acb013568ac918cba3600456074cb02f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace1st :: Functor f =&gt; f a -&gt; b -&gt; f b  <a href="namespacempc_1_1cpo.html#acb013568ac918cba3600456074cb02f8">More...</a><br /></td></tr>
 <tr class="separator:acb013568ac918cba3600456074cb02f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Variable Documentation</h2>
@@ -146,59 +153,15 @@ template&lt;class F &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357">requires</a> {</div>
-<div class="line">    functor_traits&lt;std::remove_cvref_t&lt;F&gt;&gt;::fmap;</div>
-<div class="line">    functor_traits&lt;std::remove_cvref_t&lt;F&gt;&gt;::replace2nd;</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="namespacempc_1_1cpo.html#a60b7e31abb0e45f7c80649e4b895360c">requires</a> {</div>
+<div class="line">    functor_traits&lt;std::remove_cvref_t&lt;F&gt;&gt;<a class="code" href="namespacempc_1_1cpo.html#a3ad44d9f05ceed65a3b0aca22c406a93">::fmap</a>;</div>
+<div class="line">    functor_traits&lt;std::remove_cvref_t&lt;F&gt;&gt;<a class="code" href="namespacempc_1_1functors.html#a9f6f060bce652dddfbd1429f63fff069">::replace2nd</a>;</div>
 <div class="line">  }</div>
-<div class="ttc" id="amonad_8hpp_html_a05b4c9cd81d5605f3a48153296632357"><div class="ttname"><a href="monad_8hpp.html#a05b4c9cd81d5605f3a48153296632357">mpc::cpo::requires</a></div><div class="ttdeci">requires requires</div><div class="ttdoc">return = pure</div><div class="ttdef"><b>Definition:</b> monad.hpp:42</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a3ad44d9f05ceed65a3b0aca22c406a93"><div class="ttname"><a href="namespacempc_1_1cpo.html#a3ad44d9f05ceed65a3b0aca22c406a93">mpc::cpo::fmap</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::fmap_op &gt; fmap</div><div class="ttdoc">fmap :: (a -&gt; b) -&gt; f a -&gt; f b</div><div class="ttdef"><b>Definition:</b> functor.hpp:49</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a60b7e31abb0e45f7c80649e4b895360c"><div class="ttname"><a href="namespacempc_1_1cpo.html#a60b7e31abb0e45f7c80649e4b895360c">mpc::cpo::requires</a></div><div class="ttdeci">requires requires</div><div class="ttdoc">returns :: a -&gt; m a</div><div class="ttdef"><b>Definition:</b> monad.hpp:172</div></div>
+<div class="ttc" id="anamespacempc_1_1functors_html_a9f6f060bce652dddfbd1429f63fff069"><div class="ttname"><a href="namespacempc_1_1functors.html#a9f6f060bce652dddfbd1429f63fff069">mpc::functors::replace2nd</a></div><div class="ttdeci">constexpr auto replace2nd</div><div class="ttdoc">replace2nd :: a -&gt; f b -&gt; f a</div><div class="ttdef"><b>Definition:</b> functor.hpp:64</div></div>
 </div><!-- fragment -->
-</div>
-</div>
-<a id="acb013568ac918cba3600456074cb02f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb013568ac918cba3600456074cb02f8">&#9670;&nbsp;</a></span>replace1st</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr auto mpc::cpo::replace1st = flip % mpc::replace2nd</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>replace1st :: Functor f =&gt; f a -&gt; b -&gt; f b replace1st = flip replace2nd </p>
-
-</div>
-</div>
-<a id="a9f6f060bce652dddfbd1429f63fff069"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f6f060bce652dddfbd1429f63fff069">&#9670;&nbsp;</a></span>replace2nd</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr auto mpc::functors::replace2nd = compose(mpc::fmap, constant)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>replace2nd = fmap . const </p>
-<p>If you define <code>functor_traits&lt;F&gt;::fmap</code>, you can deduce <code>replace2nd</code>. </p>
+<p>Requires fmap and replace2nd is valid in <a class="el" href="structmpc_1_1functor__traits.html">functor_traits </a>. </p>
 
 </div>
 </div>
@@ -207,7 +170,7 @@ template&lt;class F &gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_daed19cc8e35db4a3a2df7a49f7001de.html">mpc</a></li><li class="navelem"><a class="el" href="dir_208dfe54f78f31e93ac241a8170a8015.html">control</a></li><li class="navelem"><a class="el" href="functor_8hpp.html">functor.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_daed19cc8e35db4a3a2df7a49f7001de.html">mpc</a></li><li class="navelem"><a class="el" href="dir_208dfe54f78f31e93ac241a8170a8015.html">control</a></li><li class="navelem"><a class="el" href="control_2functor_8hpp.html">functor.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

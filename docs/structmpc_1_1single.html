@@ -92,6 +92,11 @@ $(document).ready(function(){initNavTree('structmpc_1_1single.html',''); initRes
 <div class="title">mpc::single&lt; T, Tag &gt; Struct Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A class that holds a single value.  
+ <a href="structmpc_1_1single.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="single_8hpp_source.html">single.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -110,7 +115,7 @@ template&lt;class U  = T&gt; </td></tr>
 <tr class="separator:a77b7a356f73bd39be54b24336f82a166"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad00f1f1c3d49ab9fc5fda11b428cb0a1"><td class="memTemplParams" colspan="2"><a id="ad00f1f1c3d49ab9fc5fda11b428cb0a1"></a>
 template&lt;tuple_like Tuple&gt; </td></tr>
-<tr class="memitem:ad00f1f1c3d49ab9fc5fda11b428cb0a1"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>requires</b> (not std::constructible_from&lt; T, Tuple &amp;&amp; &gt; and std::constructible_from&lt; T, detail::copy_reference_t&lt; Tuple, std::tuple_element_t&lt; 0, Tuple &gt;&gt; &amp;&amp; &gt;) explicit(not std</td></tr>
+<tr class="memitem:ad00f1f1c3d49ab9fc5fda11b428cb0a1"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>requires</b> (not std::constructible_from&lt; T, Tuple &amp;&amp; &gt; and std::constructible_from&lt; T, <a class="el" href="namespacempc_1_1detail.html#af421d34facb1a934ea17f16f199d7079">detail::copy_reference_t</a>&lt; Tuple, std::tuple_element_t&lt; 0, Tuple &gt;&gt; &amp;&amp; &gt;) explicit(not std</td></tr>
 <tr class="separator:ad00f1f1c3d49ab9fc5fda11b428cb0a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5ef5631f7189a17cf28bcd73fb0be08"><td class="memTemplParams" colspan="2"><a id="ad5ef5631f7189a17cf28bcd73fb0be08"></a>
 template&lt;class... Args&gt; </td></tr>
@@ -146,7 +151,13 @@ constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator-&g
 constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator-&gt;</b> () const</td></tr>
 <tr class="separator:a838dcfc04277739de6950474b70a15e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;class T, class Tag = void&gt;<br />
+struct mpc::single&lt; T, Tag &gt;</h3>
+
+<p>A class that holds a single value. </p>
+<p>To prepare multiple classes with different types but the same properties, the tag type can be assigned to the second type parameter. </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/mpc/utility/<a class="el" href="single_8hpp_source.html">single.hpp</a></li>
 </ul>
 </div><!-- contents -->
