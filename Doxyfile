@@ -261,7 +261,12 @@ TAB_SIZE               = 2
 # with the commands \{ and \} for these it is advised to use the version @{ and
 # @} or use a double escape (\\{ and \\})
 
-ALIASES                =
+ALIASES               += "rel=@xrefitem mpcrel \"Related\" \"Main methods\"" \
+                         "alias=@brief A helper alias template for" \
+                         "dguide=@brief A deduction guide for" \
+                         "ivar=@brief A helper inline variable for" \
+                         "overl=@brief Another overloaded function of" \
+                         "spec=@brief A partial specialization of"
 
 # Set the OPTIMIZE_OUTPUT_FOR_C tag to YES if your project consists of C sources
 # only. Doxygen will then generate output that is more tailored for C. For
