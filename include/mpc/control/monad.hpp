@@ -58,9 +58,9 @@ namespace mpc {
         struct closure {
           template <class Fn, class A>
           constexpr auto operator()(Fn&& fn, A&& a) const noexcept(
-          noexcept(   mpc::returns<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)))))
-          -> decltype(mpc::returns<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a))))
-          { return    mpc::returns<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a))); }
+          noexcept(   mpc::pure<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)))))
+          -> decltype(mpc::pure<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a))))
+          { return    mpc::pure<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a))); }
         };
 
         template <class Fn, class Ma>
@@ -81,9 +81,9 @@ namespace mpc {
         struct nested_closure {
           template<class Fn, class A>
           constexpr auto operator()(Fn&& fn, A&& a) const noexcept(
-          noexcept(   mpc::returns<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)))))
-          -> decltype(mpc::returns<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a))))
-          { return    mpc::returns<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a))); }
+          noexcept(   mpc::pure<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)))))
+          -> decltype(mpc::pure<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a))))
+          { return    mpc::pure<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a))); }
         };
 
         struct closure {
