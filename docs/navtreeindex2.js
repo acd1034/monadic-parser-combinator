@@ -1,5 +1,11 @@
 var NAVTREEINDEX2 =
 {
+"stdfundamental_8hpp.html#af192f56fef085ae4a0679b406914050b":[2,0,0,83],
+"stdfundamental_8hpp.html#af192f56fef085ae4a0679b406914050b":[4,0,0,0,9,8],
+"stdfundamental_8hpp_source.html":[4,0,0,0,9],
+"structmpc_1_1_identity.html":[3,0,0,20],
+"structmpc_1_1_identity.html#a2e2227d7f0e03c32526e9026ef988584":[3,0,0,20,4],
+"structmpc_1_1_identity.html#a31f2abec2f07a1afe2ce9468308749f1":[3,0,0,20,1],
 "structmpc_1_1_identity.html#a346bea22a3fe24e67c6ab758f3229df3":[3,0,0,20,5],
 "structmpc_1_1_identity.html#a34ad00fd89bb233e3b19f4d700ce4aea":[3,0,0,20,2],
 "structmpc_1_1_identity.html#a4c3d136d6986fc973f74d1169ed096fd":[3,0,0,20,3],
@@ -243,11 +249,5 @@ var NAVTREEINDEX2 =
 "structmpc_1_1functor__traits_3_01maybe_3_01_t1_01_4_01_4_1_1replace2nd__op.html#afd1f7ac3578ad645e63fe24112e87d76":[3,0,0,27,1,0],
 "structmpc_1_1functor__traits_3_01std_1_1list_3_01_t_01_4_01_4.html":[3,0,0,24],
 "structmpc_1_1functor__traits_3_01std_1_1list_3_01_t_01_4_01_4_1_1fmap__op.html":[3,0,0,24,0],
-"structmpc_1_1functor__traits_3_01std_1_1list_3_01_t_01_4_01_4_1_1fmap__op.html#a0b7b477c7be17be3660bba91e648482f":[3,0,0,24,0,0],
-"structmpc_1_1is__tuple__like.html":[3,0,0,36],
-"structmpc_1_1is__tuple__like_3_01_t_00_01std_1_1void__t_3_01decltype_07std_1_1tuple__size_3_01_t_01_4_1_1value_08_4_01_4.html":[3,0,0,37],
-"structmpc_1_1monad__state__traits.html":[3,0,0,8],
-"structmpc_1_1monad__state__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4.html":[3,0,0,15],
-"structmpc_1_1monad__state__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4_1_1state__op.html":[3,0,0,15,0],
-"structmpc_1_1monad__state__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4_1_1state__op.html#a659f9f2cbeede578abedf12f453a07dd":[3,0,0,15,0,0]
+"structmpc_1_1functor__traits_3_01std_1_1list_3_01_t_01_4_01_4_1_1fmap__op.html#a0b7b477c7be17be3660bba91e648482f":[3,0,0,24,0,0]
 };
