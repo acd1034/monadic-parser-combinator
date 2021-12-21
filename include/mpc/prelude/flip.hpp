@@ -30,7 +30,7 @@ namespace mpc {
      * @brief Returns a binary function which flips the first and second argument.
      * @rel prelude.hpp
      */
-    inline constexpr perfect_forwarded_t<detail::flip_op> flip;
+    inline constexpr partially_applicable<detail::flip_op> flip;
   }
 } // namespace mpc
 

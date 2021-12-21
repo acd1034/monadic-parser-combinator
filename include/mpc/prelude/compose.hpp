@@ -33,7 +33,7 @@ namespace mpc {
      * @brief Function composition.
      * @rel prelude.hpp
      */
-    inline constexpr perfect_forwarded_t<detail::compose_op> compose;
+    inline constexpr partially_applicable<detail::compose_op> compose;
   }
 } // namespace mpc
 

@@ -58,7 +58,7 @@ namespace mpc {
   inline namespace cpo {
     /// state :: (s -> (a, s)) -> m a
     template <class ST>
-    inline constexpr perfect_forwarded_t<detail::state_op<ST>> state{};
+    inline constexpr partially_applicable<detail::state_op<ST>> state{};
 
     /// gets :: m s
     template <class ST>
@@ -66,7 +66,7 @@ namespace mpc {
 
     /// put :: s -> m ()
     template <class ST>
-    inline constexpr perfect_forwarded_t<detail::put_op<ST>> put{};
+    inline constexpr partially_applicable<detail::put_op<ST>> put{};
   } // namespace cpo
 
   // Deducibles
@@ -127,7 +127,7 @@ namespace mpc {
 
     // /// state :: (s -> (a, s)) -> m a
     // template <class ST>
-    // inline constexpr perfect_forwarded_t<detail::state_op<ST>> state{};
+    // inline constexpr partially_applicable<detail::state_op<ST>> state{};
 
     /// gets :: m s
     template <class ST>
@@ -141,7 +141,7 @@ namespace mpc {
     requires requires {
       monad_state_traits<std::remove_cvref_t<ST>>::state;
     }
-    inline constexpr perfect_forwarded_t<detail::put_op<ST>> put{};
+    inline constexpr partially_applicable<detail::put_op<ST>> put{};
   } // namespace states
 
   // Grobal methods
@@ -195,11 +195,11 @@ namespace mpc {
   inline namespace cpo {
     /// modify :: MonadState s m => (s -> s) -> m ()
     template <class ST>
-    inline constexpr perfect_forwarded_t<detail::modify_op<std::remove_cvref_t<ST>>> modify{};
+    inline constexpr partially_applicable<detail::modify_op<std::remove_cvref_t<ST>>> modify{};
 
     /// getss :: MonadState s m => (s -> a) -> m a
     template <class ST>
-    inline constexpr perfect_forwarded_t<detail::getss_op<std::remove_cvref_t<ST>>> getss{};
+    inline constexpr partially_applicable<detail::getss_op<std::remove_cvref_t<ST>>> getss{};
   } // namespace cpo
 }
 

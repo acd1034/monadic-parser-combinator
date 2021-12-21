@@ -42,7 +42,7 @@ namespace mpc {
 
   inline namespace cpo {
     /// @copydoc mpc::detail::bind_op
-    inline constexpr perfect_forwarded_t<detail::bind_op> bind{};
+    inline constexpr partially_applicable<detail::bind_op> bind{};
   } // namespace cpo
 
   /// Methods deducible from other methods of @link mpc::monad monad @endlink.
@@ -100,13 +100,13 @@ namespace mpc {
     } // namespace detail
 
     /// @copydoc mpc::monads::detail::fmap_op
-    inline constexpr perfect_forwarded_t<detail::fmap_op> fmap{};
+    inline constexpr partially_applicable<detail::fmap_op> fmap{};
 
     /// @copydoc mpc::monads::detail::seq_apply_op
-    inline constexpr perfect_forwarded_t<detail::seq_apply_op> seq_apply{};
+    inline constexpr partially_applicable<detail::seq_apply_op> seq_apply{};
 
     /// @copydoc mpc::monads::detail::discard1st_op
-    inline constexpr perfect_forwarded_t<detail::discard1st_op> discard1st{};
+    inline constexpr partially_applicable<detail::discard1st_op> discard1st{};
   } // namespace monads
 
   // Grobal methods
@@ -143,7 +143,7 @@ namespace mpc {
     inline constexpr auto returns = mpc::pure<M>;
 
     /// @copydoc mpc::detail::karrow_op
-    inline constexpr perfect_forwarded_t<detail::karrow_op> karrow{};
+    inline constexpr partially_applicable<detail::karrow_op> karrow{};
   } // namespace cpo
 } // namespace mpc
 

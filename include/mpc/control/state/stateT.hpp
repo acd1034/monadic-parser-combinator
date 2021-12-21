@@ -69,9 +69,9 @@ namespace mpc {
 
   namespace cpo {
     template <class S>
-    inline constexpr perfect_forwarded_t<detail::make_StateT_op<S>> make_StateT{};
+    inline constexpr partially_applicable<detail::make_StateT_op<S>> make_StateT{};
 
-    inline constexpr perfect_forwarded_t<detail::run_StateT_op> run_StateT{};
+    inline constexpr partially_applicable<detail::run_StateT_op> run_StateT{};
   } // namespace cpo
 
   // instances:
@@ -370,13 +370,13 @@ namespace mpc {
   } // namespace detail
 
   inline namespace cpo {
-    inline constexpr perfect_forwarded_t<detail::eval_StateT_op> eval_StateT{};
+    inline constexpr partially_applicable<detail::eval_StateT_op> eval_StateT{};
 
-    inline constexpr perfect_forwarded_t<detail::exec_StateT_op> exec_StateT{};
+    inline constexpr partially_applicable<detail::exec_StateT_op> exec_StateT{};
 
-    inline constexpr perfect_forwarded_t<detail::map_StateT_op> map_StateT{};
+    inline constexpr partially_applicable<detail::map_StateT_op> map_StateT{};
 
-    inline constexpr perfect_forwarded_t<detail::with_StateT_op> with_StateT{};
+    inline constexpr partially_applicable<detail::with_StateT_op> with_StateT{};
   } // namespace cpo
 } // namespace mpc
 

@@ -48,9 +48,9 @@ namespace mpc {
   } // namespace detail
 
   inline namespace cpo {
-    inline constexpr perfect_forwarded_t<detail::cons_op> cons;
+    inline constexpr partially_applicable<detail::cons_op> cons;
 
-    inline constexpr perfect_forwarded_t<detail::foldr_op> foldr;
+    inline constexpr partially_applicable<detail::foldr_op> foldr;
   } // namespace cpo
 
   // instances
@@ -109,6 +109,6 @@ namespace mpc {
   } // namespace detail
 
   inline namespace cpo {
-    inline constexpr perfect_forwarded_t<detail::sequence_op> sequence;
+    inline constexpr partially_applicable<detail::sequence_op> sequence;
   } // namespace cpo
 } // namespace mpc
