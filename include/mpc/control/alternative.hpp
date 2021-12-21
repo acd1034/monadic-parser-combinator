@@ -39,7 +39,10 @@ namespace mpc {
   // Methods required for the class definition.
 
   namespace detail {
-    /// empty :: f a
+    /**
+     * @brief empty :: f a
+     * @details Use operator* to access the value.
+     */
     template <class F>
     struct empty_op {
       constexpr auto operator*() const noexcept(

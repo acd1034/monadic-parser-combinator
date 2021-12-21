@@ -32,7 +32,10 @@ namespace mpc {
       { return    monad_state_traits<std::remove_cvref_t<ST>>::state(std::forward<Fn>(fn)); }
     };
 
-    /// gets :: m s
+    /**
+     * @brief gets :: m s
+     * @details Use operator* to access the value.
+     */
     template <class ST>
     struct gets_op {
       constexpr auto operator*() const noexcept(
