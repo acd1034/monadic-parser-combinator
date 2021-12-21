@@ -219,7 +219,7 @@ namespace mpc {
       struct empty_op {
         struct closure {
           template <class T>
-          constexpr auto operator()(const T& t) const noexcept(
+          constexpr auto operator()() const noexcept(
             noexcept(   *mpc::empty<StateT_monad_t<ST>>))
             -> decltype(*mpc::empty<StateT_monad_t<ST>>) {
             return      *mpc::empty<StateT_monad_t<ST>>;
