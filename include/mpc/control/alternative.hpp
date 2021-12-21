@@ -37,8 +37,12 @@ namespace mpc {
   concept alternative = applicative<F> and alternative_traits_specialized<F>;
 
   // Methods required for the class definition.
+
   namespace detail {
-    /// empty :: f a
+    /**
+     * @brief empty :: f a
+     * @details Use operator* to access the value.
+     */
     template <class F>
     struct empty_op {
       constexpr auto operator*() const noexcept(
@@ -67,10 +71,11 @@ namespace mpc {
     inline constexpr detail::empty_op<F> empty{};
 
     /// @copydoc mpc::detail::combine_op
-    inline constexpr perfect_forwarded_t<detail::combine_op> combine{};
+    inline constexpr partially_applicable<detail::combine_op> combine{};
   } // namespace cpo
 
   // Grobal methods
+
   namespace operators::alternatives {
     /// @copydoc mpc::detail::combine_op
     template <class Fa, class Fb>

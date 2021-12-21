@@ -48,10 +48,10 @@ TEST_CASE("data maybe", "[data]") {
       const maybe1 e2{mpc::make_just(4.0)};
       const mpc::maybe<std::function<double(double)>> f1{
         mpc::make_just([](double x) { return x * 2; })};
-      const auto add =
-        mpc::perfect_forwarded_t<decltype([](const auto& x, const auto& y) { return x + y; })>{};
-      const auto add3 = mpc::perfect_forwarded_t<decltype(
-        [](const auto& x, const auto& y, const auto& z) { return x + y + z; })>{};
+      constexpr auto add =
+        mpc::partially_applicable([](const auto& x, const auto& y) { return x + y; });
+      constexpr auto add3 = mpc::partially_applicable(
+        [](const auto& x, const auto& y, const auto& z) { return x + y + z; });
 
       CHECK(mpc::seq_apply(f1, e1) == e2);
       CHECK(mpc::liftA2(add, e1, e1) == e2);
@@ -123,8 +123,8 @@ TEST_CASE("data either", "[data]") {
 
       CHECK(mpc::seq_apply(f1, e1) == e2);
 
-      const auto add =
-        mpc::perfect_forwarded_t<decltype([](const auto& x, const auto& y) { return x + y; })>{};
+      constexpr auto add =
+        mpc::partially_applicable([](const auto& x, const auto& y) { return x + y; });
       const mpc::applicatives::detail::liftA2_op liftA2_op;
       CHECK(liftA2_op(add, e1, e1) == e2);
       CHECK(mpc::liftA2(add, e1, e1) == e2);

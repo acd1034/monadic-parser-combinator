@@ -21,6 +21,7 @@ namespace mpc {
   };
 
   // Methods required for the class definition.
+
   namespace detail {
     /// fmap :: (a -> b) -> f a -> f b
     struct fmap_op {
@@ -46,10 +47,10 @@ namespace mpc {
 
   inline namespace cpo {
     /// @copydoc mpc::detail::fmap_op
-    inline constexpr perfect_forwarded_t<detail::fmap_op> fmap{};
+    inline constexpr partially_applicable<detail::fmap_op> fmap{};
 
     /// @copydoc mpc::detail::replace2nd_op
-    inline constexpr perfect_forwarded_t<detail::replace2nd_op> replace2nd{};
+    inline constexpr partially_applicable<detail::replace2nd_op> replace2nd{};
   } // namespace cpo
 
   /// Methods deducible from other methods of @link mpc::functor functor @endlink.
@@ -58,13 +59,14 @@ namespace mpc {
      * @copydoc mpc::detail::replace2nd_op
      * @details
      * ```
-     * replace2nd = fmap . const
+     * replace2nd = fmap . constant
      * ```
      */
     inline constexpr auto replace2nd = compose(mpc::fmap, constant);
   } // namespace functors
 
   // Grobal methods
+
   inline namespace cpo {
     /**
      * @brief replace1st :: Functor f => f a -> b -> f b

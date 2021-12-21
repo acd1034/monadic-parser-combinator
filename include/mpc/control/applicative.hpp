@@ -4,7 +4,7 @@
 #include <mpc/functional/perfect_forward.hpp>
 #include <mpc/prelude/constant.hpp>
 #include <mpc/prelude/flip.hpp>
-#include <mpc/prelude/id.hpp>
+#include <mpc/prelude/identity.hpp>
 #include <mpc/type_traits.hpp>
 
 // clang-format off
@@ -32,6 +32,7 @@ namespace mpc {
   concept applicative = functor<F> and applicative_traits_specialized<F>;
 
   // Methods required for the class definition.
+
   namespace detail {
     /// pure :: a -> f a
     template <class F>
@@ -92,19 +93,19 @@ namespace mpc {
   inline namespace cpo {
     /// @copydoc mpc::detail::pure_op
     template <class F>
-    inline constexpr perfect_forwarded_t<detail::pure_op<F>> pure{};
+    inline constexpr partially_applicable<detail::pure_op<F>> pure{};
 
     /// @copydoc mpc::detail::seq_apply_op
-    inline constexpr perfect_forwarded_t<detail::seq_apply_op> seq_apply{};
+    inline constexpr partially_applicable<detail::seq_apply_op> seq_apply{};
 
     /// @copydoc mpc::detail::liftA2_op
-    inline constexpr perfect_forwarded_t<detail::liftA2_op> liftA2{};
+    inline constexpr partially_applicable<detail::liftA2_op> liftA2{};
 
     /// @copydoc mpc::detail::discard2nd_op
-    inline constexpr perfect_forwarded_t<detail::discard2nd_op> discard2nd{};
+    inline constexpr partially_applicable<detail::discard2nd_op> discard2nd{};
 
     /// @copydoc mpc::detail::discard1st_op
-    inline constexpr perfect_forwarded_t<detail::discard1st_op> discard1st{};
+    inline constexpr partially_applicable<detail::discard1st_op> discard1st{};
   } // namespace cpo
 
   /// Methods deducible from other methods of @link mpc::applicative applicative @endlink.
@@ -114,7 +115,7 @@ namespace mpc {
        * @copydoc mpc::detail::fmap_op
        * @details
        * ```
-       * fmap f x = seq_apply (pure f) x
+       * fmap f x = (pure f) `seq_apply` x
        * ```
        */
       struct fmap_op {
@@ -129,7 +130,7 @@ namespace mpc {
        * @copydoc mpc::detail::liftA2_op
        * @details
        * ```
-       * liftA2 f x y = seq_apply (fmap f x) y
+       * liftA2 f x y = f `fmap` x `seq_apply` y
        * ```
        */
       struct liftA2_op {
@@ -144,38 +145,38 @@ namespace mpc {
        * @copydoc mpc::detail::discard1st_op
        * @details
        * ```
-       * discard1st x y = (id <$ x) <*> y
+       * discard1st x y = identity `replace2nd` x `seq_apply` y
        * ```
        */
       struct discard1st_opt_op {
         template <class Fa, class Fb>
         constexpr auto operator()(Fa&& fa, Fb&& fb) const noexcept(
-        noexcept(   mpc::seq_apply(mpc::replace2nd(id, std::forward<Fa>(fa)), std::forward<Fb>(fb))))
-        -> decltype(mpc::seq_apply(mpc::replace2nd(id, std::forward<Fa>(fa)), std::forward<Fb>(fb)))
-        { return    mpc::seq_apply(mpc::replace2nd(id, std::forward<Fa>(fa)), std::forward<Fb>(fb)); }
+        noexcept(   mpc::seq_apply(mpc::replace2nd(identity, std::forward<Fa>(fa)), std::forward<Fb>(fb))))
+        -> decltype(mpc::seq_apply(mpc::replace2nd(identity, std::forward<Fa>(fa)), std::forward<Fb>(fb)))
+        { return    mpc::seq_apply(mpc::replace2nd(identity, std::forward<Fa>(fa)), std::forward<Fb>(fb)); }
       };
     } // namespace detail
 
     /// @copydoc mpc::applicatives::detail::fmap_op
-    inline constexpr perfect_forwarded_t<detail::fmap_op> fmap{};
+    inline constexpr partially_applicable<detail::fmap_op> fmap{};
 
     /**
      * @copydoc mpc::detail::seq_apply_op
      * @details
      * ```
-     * seq_apply = liftA2 id
+     * seq_apply = liftA2 identity
      * ```
      */
-    inline constexpr auto seq_apply = mpc::liftA2 % id;
+    inline constexpr auto seq_apply = mpc::liftA2 % identity;
 
     /// @copydoc mpc::applicatives::detail::liftA2_op
-    inline constexpr perfect_forwarded_t<detail::liftA2_op> liftA2{};
+    inline constexpr partially_applicable<detail::liftA2_op> liftA2{};
 
     /**
      * @copydoc mpc::detail::discard2nd_op
      * @details
      * ```
-     * discard2nd = liftA2 const
+     * discard2nd = liftA2 constant
      * ```
      */
     inline constexpr auto discard2nd = mpc::liftA2 % constant;
@@ -184,16 +185,17 @@ namespace mpc {
      * @copydoc mpc::detail::discard1st_op
      * @details
      * ```
-     * discard1st = liftA2 (flip const)
+     * discard1st = liftA2 (flip constant)
      * ```
      */
     inline constexpr auto discard1st = mpc::liftA2 % (flip % constant);
 
     /// @copydoc mpc::applicatives::detail::discard1st_opt_op
-    inline constexpr perfect_forwarded_t<detail::discard1st_opt_op> discard1st_opt{};
+    inline constexpr partially_applicable<detail::discard1st_opt_op> discard1st_opt{};
   } // namespace applicatives
 
   // Grobal methods
+
   namespace detail {
     /// @cond undocumented
     template <class Fn, class Fa, class Fb>
@@ -244,7 +246,7 @@ namespace mpc {
     /// @copydoc mpc::detail::liftA_op
     template <std::size_t N>
     requires (N > 1)
-    inline constexpr perfect_forwarded_t<detail::liftA_op<N>> liftA{};
+    inline constexpr partially_applicable<detail::liftA_op<N>> liftA{};
   } // namespace cpo
 } // namespace mpc
 

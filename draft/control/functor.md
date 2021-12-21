@@ -9,7 +9,7 @@ replace2nd :: a -> f b -> f a
 
 -- Methods deducible from other methods of @link mpc::functor functor @endlink.
 replace2nd :: a -> f b -> f a
-replace2nd = fmap . const
+replace2nd = fmap . constant
 
 -- Methods
 replace1st :: Functor f => f a -> b -> f b

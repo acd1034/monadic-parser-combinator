@@ -27,12 +27,12 @@ namespace mpc {
      * @brief Returns the first element of the given tuple-like object.
      * @rel prelude.hpp
      */
-    inline constexpr perfect_forwarded_t<detail::_fst::get_op<0>> fst;
+    inline constexpr partially_applicable<detail::_fst::get_op<0>> fst;
 
     /**
      * @brief Returns the second element of the given tuple-like object.
      * @rel prelude.hpp
      */
-    inline constexpr perfect_forwarded_t<detail::_fst::get_op<1>> snd;
+    inline constexpr partially_applicable<detail::_fst::get_op<1>> snd;
   } // namespace cpo
 } // namespace mpc

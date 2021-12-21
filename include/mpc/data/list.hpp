@@ -6,7 +6,7 @@
 #include <list>
 #include <ranges> // std::ranges::input_range, etc.
 #include <mpc/control/monad.hpp>
-#include <mpc/prelude.hpp> // id
+#include <mpc/prelude.hpp> // identity
 
 namespace mpc {
   // cons, foldr
@@ -48,9 +48,9 @@ namespace mpc {
   } // namespace detail
 
   inline namespace cpo {
-    inline constexpr perfect_forwarded_t<detail::cons_op> cons;
+    inline constexpr partially_applicable<detail::cons_op> cons;
 
-    inline constexpr perfect_forwarded_t<detail::foldr_op> foldr;
+    inline constexpr partially_applicable<detail::foldr_op> foldr;
   } // namespace cpo
 
   // instances
@@ -102,13 +102,13 @@ namespace mpc {
       template <monad T>
       constexpr auto operator()(const std::list<T>& l) const {
         // FIXME: 不正な方法で monad の value_type を取得している
-        using U = std::remove_cvref_t<decltype(mpc::bind(l.front(), id))>;
+        using U = std::remove_cvref_t<decltype(mpc::bind(l.front(), identity))>;
         return foldr(mpc::liftA2 % cons, mpc::returns<T> % std::list<U>{}, l);
       }
     };
   } // namespace detail
 
   inline namespace cpo {
-    inline constexpr perfect_forwarded_t<detail::sequence_op> sequence;
+    inline constexpr partially_applicable<detail::sequence_op> sequence;
   } // namespace cpo
 } // namespace mpc

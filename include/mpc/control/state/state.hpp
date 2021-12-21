@@ -62,9 +62,9 @@ namespace mpc {
 
   namespace cpo {
     template <class S>
-    inline constexpr perfect_forwarded_t<detail::make_State_op<S>> make_State{};
+    inline constexpr partially_applicable<detail::make_State_op<S>> make_State{};
 
-    inline constexpr perfect_forwarded_t<detail::run_State_op> run_State{};
+    inline constexpr partially_applicable<detail::run_State_op> run_State{};
   } // namespace cpo
 
   // Grobal methods:
@@ -106,11 +106,11 @@ namespace mpc {
   } // namespace detail
 
   inline namespace cpo {
-    inline constexpr perfect_forwarded_t<detail::eval_State_op> eval_State{};
+    inline constexpr partially_applicable<detail::eval_State_op> eval_State{};
 
-    inline constexpr perfect_forwarded_t<detail::exec_State_op> exec_State{};
+    inline constexpr partially_applicable<detail::exec_State_op> exec_State{};
 
-    inline constexpr perfect_forwarded_t<detail::map_State_op> map_State{};
+    inline constexpr partially_applicable<detail::map_State_op> map_State{};
 
     inline constexpr auto with_State = with_StateT;
   } // namespace cpo

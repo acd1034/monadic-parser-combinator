@@ -19,6 +19,6 @@ namespace mpc {
      * @brief Returns a unary function always returning the first input.
      * @rel prelude.hpp
      */
-    inline constexpr perfect_forwarded_t<detail::constant_op> constant;
+    inline constexpr partially_applicable<detail::constant_op> constant;
   } // namespace cpo
 } // namespace mpc

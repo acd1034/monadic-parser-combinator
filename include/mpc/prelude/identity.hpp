@@ -1,4 +1,4 @@
-/// @file id.hpp
+/// @file identity.hpp
 #pragma once
 #include <functional> // std::identity
 #include <mpc/functional/perfect_forward.hpp>
@@ -6,9 +6,9 @@
 namespace mpc {
   inline namespace cpo {
     /**
-     * @brief Identity mapping.
+     * @brief %Identity mapping.
      * @rel prelude.hpp
      */
-    inline constexpr perfect_forwarded_t<std::identity> id;
+    inline constexpr partially_applicable<std::identity> identity{};
   } // namespace cpo
 } // namespace mpc
