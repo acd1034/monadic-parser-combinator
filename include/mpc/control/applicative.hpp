@@ -32,6 +32,7 @@ namespace mpc {
   concept applicative = functor<F> and applicative_traits_specialized<F>;
 
   // Methods required for the class definition.
+
   namespace detail {
     /// pure :: a -> f a
     template <class F>
@@ -194,6 +195,7 @@ namespace mpc {
   } // namespace applicatives
 
   // Grobal methods
+
   namespace detail {
     /// @cond undocumented
     template <class Fn, class Fa, class Fb>

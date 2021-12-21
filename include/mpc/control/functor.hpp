@@ -21,6 +21,7 @@ namespace mpc {
   };
 
   // Methods required for the class definition.
+
   namespace detail {
     /// fmap :: (a -> b) -> f a -> f b
     struct fmap_op {
@@ -65,6 +66,7 @@ namespace mpc {
   } // namespace functors
 
   // Grobal methods
+
   inline namespace cpo {
     /**
      * @brief replace1st :: Functor f => f a -> b -> f b

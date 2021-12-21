@@ -37,6 +37,7 @@ namespace mpc {
   concept alternative = applicative<F> and alternative_traits_specialized<F>;
 
   // Methods required for the class definition.
+
   namespace detail {
     /// empty :: f a
     template <class F>
@@ -71,6 +72,7 @@ namespace mpc {
   } // namespace cpo
 
   // Grobal methods
+
   namespace operators::alternatives {
     /// @copydoc mpc::detail::combine_op
     template <class Fa, class Fb>

@@ -25,6 +25,7 @@ namespace mpc {
   concept monad = applicative<M> and monad_traits_specialized<M>;
 
   // Methods required for the class definition.
+
   namespace detail {
     /**
      * @brief bind :: forall a b. m a -> (a -> m b) -> m b
@@ -135,6 +136,7 @@ namespace mpc {
   } // namespace monads
 
   // Grobal methods
+
   namespace detail {
     /**
      * @brief karrow :: Monad m => (a -> m b) -> (b -> m c) -> (a -> m c)
