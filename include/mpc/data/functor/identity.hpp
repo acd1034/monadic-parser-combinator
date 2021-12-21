@@ -73,9 +73,9 @@ namespace mpc {
   } // namespace detail
 
   namespace cpo {
-    inline constexpr perfect_forwarded_t<detail::make_Identity_op> make_Identity{};
+    inline constexpr partially_applicable<detail::make_Identity_op> make_Identity{};
 
-    inline constexpr perfect_forwarded_t<detail::run_Identity_op> run_Identity{};
+    inline constexpr partially_applicable<detail::run_Identity_op> run_Identity{};
   } // namespace cpo
 
   // clang-format off

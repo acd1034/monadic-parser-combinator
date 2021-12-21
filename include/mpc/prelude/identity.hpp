@@ -9,6 +9,6 @@ namespace mpc {
      * @brief %Identity mapping.
      * @rel prelude.hpp
      */
-    inline constexpr perfect_forwarded_t<std::identity> identity;
+    inline constexpr partially_applicable<std::identity> identity{};
   } // namespace cpo
 } // namespace mpc

@@ -32,6 +32,6 @@ namespace mpc {
   inline namespace cpo {
     /// lift :: (Monad m) => m a -> t m a
     template <class TR>
-    inline constexpr perfect_forwarded_t<detail::lift_op<TR>> lift{};
+    inline constexpr partially_applicable<detail::lift_op<TR>> lift{};
   } // namespace cpo
 } // namespace mpc

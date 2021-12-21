@@ -47,10 +47,10 @@ namespace mpc {
 
   inline namespace cpo {
     /// @copydoc mpc::detail::fmap_op
-    inline constexpr perfect_forwarded_t<detail::fmap_op> fmap{};
+    inline constexpr partially_applicable<detail::fmap_op> fmap{};
 
     /// @copydoc mpc::detail::replace2nd_op
-    inline constexpr perfect_forwarded_t<detail::replace2nd_op> replace2nd{};
+    inline constexpr partially_applicable<detail::replace2nd_op> replace2nd{};
   } // namespace cpo
 
   /// Methods deducible from other methods of @link mpc::functor functor @endlink.

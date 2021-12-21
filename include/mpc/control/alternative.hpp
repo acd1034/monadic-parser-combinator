@@ -71,7 +71,7 @@ namespace mpc {
     inline constexpr detail::empty_op<F> empty{};
 
     /// @copydoc mpc::detail::combine_op
-    inline constexpr perfect_forwarded_t<detail::combine_op> combine{};
+    inline constexpr partially_applicable<detail::combine_op> combine{};
   } // namespace cpo
 
   // Grobal methods

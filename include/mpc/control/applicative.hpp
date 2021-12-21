@@ -93,19 +93,19 @@ namespace mpc {
   inline namespace cpo {
     /// @copydoc mpc::detail::pure_op
     template <class F>
-    inline constexpr perfect_forwarded_t<detail::pure_op<F>> pure{};
+    inline constexpr partially_applicable<detail::pure_op<F>> pure{};
 
     /// @copydoc mpc::detail::seq_apply_op
-    inline constexpr perfect_forwarded_t<detail::seq_apply_op> seq_apply{};
+    inline constexpr partially_applicable<detail::seq_apply_op> seq_apply{};
 
     /// @copydoc mpc::detail::liftA2_op
-    inline constexpr perfect_forwarded_t<detail::liftA2_op> liftA2{};
+    inline constexpr partially_applicable<detail::liftA2_op> liftA2{};
 
     /// @copydoc mpc::detail::discard2nd_op
-    inline constexpr perfect_forwarded_t<detail::discard2nd_op> discard2nd{};
+    inline constexpr partially_applicable<detail::discard2nd_op> discard2nd{};
 
     /// @copydoc mpc::detail::discard1st_op
-    inline constexpr perfect_forwarded_t<detail::discard1st_op> discard1st{};
+    inline constexpr partially_applicable<detail::discard1st_op> discard1st{};
   } // namespace cpo
 
   /// Methods deducible from other methods of @link mpc::applicative applicative @endlink.
@@ -158,7 +158,7 @@ namespace mpc {
     } // namespace detail
 
     /// @copydoc mpc::applicatives::detail::fmap_op
-    inline constexpr perfect_forwarded_t<detail::fmap_op> fmap{};
+    inline constexpr partially_applicable<detail::fmap_op> fmap{};
 
     /**
      * @copydoc mpc::detail::seq_apply_op
@@ -170,7 +170,7 @@ namespace mpc {
     inline constexpr auto seq_apply = mpc::liftA2 % identity;
 
     /// @copydoc mpc::applicatives::detail::liftA2_op
-    inline constexpr perfect_forwarded_t<detail::liftA2_op> liftA2{};
+    inline constexpr partially_applicable<detail::liftA2_op> liftA2{};
 
     /**
      * @copydoc mpc::detail::discard2nd_op
@@ -191,7 +191,7 @@ namespace mpc {
     inline constexpr auto discard1st = mpc::liftA2 % (flip % constant);
 
     /// @copydoc mpc::applicatives::detail::discard1st_opt_op
-    inline constexpr perfect_forwarded_t<detail::discard1st_opt_op> discard1st_opt{};
+    inline constexpr partially_applicable<detail::discard1st_opt_op> discard1st_opt{};
   } // namespace applicatives
 
   // Grobal methods
@@ -246,7 +246,7 @@ namespace mpc {
     /// @copydoc mpc::detail::liftA_op
     template <std::size_t N>
     requires (N > 1)
-    inline constexpr perfect_forwarded_t<detail::liftA_op<N>> liftA{};
+    inline constexpr partially_applicable<detail::liftA_op<N>> liftA{};
   } // namespace cpo
 } // namespace mpc
 

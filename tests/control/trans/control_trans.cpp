@@ -37,10 +37,9 @@ TEST_CASE("trans", "[trans][state]") {
     CHECK(s2 == 6);
   }
   {
-    // NOTE: fn1 を perfect_forwarded_t でなくすことはできない(なんで?)
+    // NOTE: fn1 を partially_applicable でなくすことはできない(なんで?)
     // constexpr auto fn1 = [](int n, auto&&) { return n; };
-    using Fn1 = decltype([](int n, auto&&) { return n; });
-    constexpr mpc::perfect_forwarded_t<Fn1> fn1{};
+    constexpr auto fn1 = mpc::partially_applicable([](int n, auto&&) { return n; });
     const auto gets = *mpc::gets<ST>;
     const auto fn2 = mpc::fmap(fn1, gets);
     const auto modify = mpc::modify<ST> % (mpc::plus % 1);
@@ -53,9 +52,9 @@ TEST_CASE("trans", "[trans][state]") {
     // Reference:
     // https://qiita.com/sand/items/802b8c4a8ae19f04102b#3-statet%E3%83%A2%E3%83%8A%E3%83%89%E3%81%AE%E4%BD%BF%E7%94%A8%E4%BE%8B
     // clang-format off
-    using Fn1 = decltype([](int n, auto&&) { return n; });
+    constexpr auto fn1 = [](int n, auto&&) { return n; };
     const auto tick = mpc::liftA2(
-      mpc::perfect_forwarded_t<Fn1>{},
+      mpc::partially_applicable(fn1),
       *mpc::gets<ST>,
       mpc::modify<ST> % (mpc::plus % 1)
     );
@@ -65,9 +64,9 @@ TEST_CASE("trans", "[trans][state]") {
       CHECK(s == 6);
     }
 
-    using Fn2 = decltype([](int n1, int n2, int n3) { return n1 + n2 + n3; });
+    constexpr auto fn2 = [](int n1, int n2, int n3) { return n1 + n2 + n3; };
     const auto threeTicks = mpc::liftA<3>(
-      mpc::perfect_forwarded_t<Fn2>{},
+      mpc::partially_applicable(fn2),
       tick,
       tick,
       tick
@@ -81,7 +80,9 @@ TEST_CASE("trans", "[trans][state]") {
   }
 }
 
-// TEST_CASE("trans StateT alternative", "[trans][statet][alternative]") {
-//   static_assert(mpc::alternative<deduce_StateT<int, mpc::maybe<int>>>);
-//   static_assert(not mpc::alternative<deduce_StateT<int, mpc::Identity<int>>>);
-// }
+TEST_CASE("trans StateT alternative", "[trans][statet][alternative]") {
+  using ST1 = mpc::StateT<const int&, mpc::Identity<std::pair<int, int>>>;
+  using ST2 = mpc::StateT<const int&, mpc::maybe<std::pair<int, int>>>;
+  static_assert(not mpc::alternative<ST1>);
+  static_assert(mpc::alternative<ST2>);
+}

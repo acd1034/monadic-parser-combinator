@@ -31,17 +31,18 @@ main = print $ runState threeTicks 5 -- (18,8)
 Using this library, you can rewrite this code in C++ as follows:
 
 ```cpp
-using Fn1 = decltype([](int n, auto&&) { return n; });
-using Fn2 = decltype([](int n1, int n2, int n3) { return n1 + n2 + n3; });
+using ST = mpc::StateT<const int&, mpc::Identity<std::pair<int, int>>>;
+constexpr auto fn1 = [](int n, auto&&) { return n; };
+constexpr auto fn2 = [](int n1, int n2, int n3) { return n1 + n2 + n3; };
 
 const auto tick = mpc::liftA2(
-  mpc::perfect_forwarded_t<Fn1>{},
+  mpc::partially_applicable(fn1),
   *mpc::gets<ST>,
   mpc::modify<ST> % (mpc::plus % 1)
 );
 
 const auto threeTicks = mpc::liftA<3>(
-  mpc::perfect_forwarded_t<Fn2>{},
+  mpc::partially_applicable(fn2),
   tick,
   tick,
   tick
