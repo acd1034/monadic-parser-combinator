@@ -94,13 +94,13 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <h1><a class="anchor" id="autotoc_md1"></a>
 A first example</h1>
 <p>A sample code written in Haskell is shown below.</p>
-<div class="fragment"><div class="line">tick :: StateT Int Identity Int</div>
+<div class="fragment"><div class="line">tick :: State Int Int</div>
 <div class="line">tick = do</div>
 <div class="line">  n &lt;- get</div>
 <div class="line">  modify (+ 1)</div>
 <div class="line">  return n</div>
 <div class="line"> </div>
-<div class="line">threeTicks :: StateT Int Identity Int</div>
+<div class="line">threeTicks :: State Int Int</div>
 <div class="line">threeTicks = do</div>
 <div class="line">  n1 &lt;- tick</div>
 <div class="line">  n2 &lt;- tick</div>
