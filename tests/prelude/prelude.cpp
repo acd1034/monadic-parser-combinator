@@ -6,11 +6,7 @@
 
 using add_op = decltype([](const auto& x, const auto& y) { return x + y; });
 
-struct add_t : mpc::perfect_forward<add_op> {
-  using mpc::perfect_forward<add_op>::perfect_forward;
-};
-
-inline constexpr add_t add;
+inline constexpr mpc::partially_applicable<add_op> add;
 
 TEST_CASE("prelude compose", "[prelude][compose]") {
   {
@@ -57,11 +53,7 @@ TEST_CASE("prelude compose", "[prelude][compose]") {
 
 using add3way_op = decltype([](const auto& x, const auto& y, const auto& z) { return x + y + z; });
 
-struct add3way_t : mpc::perfect_forward<add3way_op> {
-  using mpc::perfect_forward<add3way_op>::perfect_forward;
-};
-
-inline constexpr add3way_t add3way;
+inline constexpr mpc::partially_applicable<add3way_op> add3way;
 
 TEST_CASE("prelude flip", "[prelude][flip]") {
   {
