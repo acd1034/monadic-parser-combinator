@@ -51,48 +51,30 @@ namespace mpc {
       /**
        * @copydoc mpc::detail::fmap_op
        * ```
-       * fmap f xs = xs `bind` (return . f)
+       * fmap f xs = xs `bind` (returns . f)
        * ```
        */
       struct fmap_op {
-        template <class Ma>
-        struct closure {
-          template <class Fn, class A>
-          constexpr auto operator()(Fn&& fn, A&& a) const noexcept(
-          noexcept(   mpc::pure<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)))))
-          -> decltype(mpc::pure<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a))))
-          { return    mpc::pure<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a))); }
-        };
-
         template <class Fn, class Ma>
         constexpr auto operator()(Fn&& fn, Ma&& ma) const noexcept(
-        noexcept(   mpc::bind(std::forward<Ma>(ma), perfect_forwarded_t<closure<Ma>>{}(std::forward<Fn>(fn)))))
-        -> decltype(mpc::bind(std::forward<Ma>(ma), perfect_forwarded_t<closure<Ma>>{}(std::forward<Fn>(fn))))
-        { return    mpc::bind(std::forward<Ma>(ma), perfect_forwarded_t<closure<Ma>>{}(std::forward<Fn>(fn))); }
+        noexcept(   mpc::bind(std::forward<Ma>(ma), compose(mpc::pure<Ma>, std::forward<Fn>(fn)))))
+        -> decltype(mpc::bind(std::forward<Ma>(ma), compose(mpc::pure<Ma>, std::forward<Fn>(fn))))
+        { return    mpc::bind(std::forward<Ma>(ma), compose(mpc::pure<Ma>, std::forward<Fn>(fn))); }
       };
 
       /**
        * @copydoc mpc::detail::seq_apply_op
        * ```
-       * seq_apply mf xs = mf `bind` (\f -> xs `bind` (return . f))
+       * seq_apply mf xs = mf `bind` (\f -> xs `bind` (returns . f))
        * ```
        */
       struct seq_apply_op {
-        template <class Ma>
-        struct nested_closure {
-          template<class Fn, class A>
-          constexpr auto operator()(Fn&& fn, A&& a) const noexcept(
-          noexcept(   mpc::pure<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)))))
-          -> decltype(mpc::pure<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a))))
-          { return    mpc::pure<Ma>(std::invoke(std::forward<Fn>(fn), std::forward<A>(a))); }
-        };
-
         struct closure {
           template<class Ma, class Fn>
           constexpr auto operator()(Ma&& ma, Fn&& fn) const noexcept(
-          noexcept(   mpc::bind(std::forward<Ma>(ma), perfect_forwarded_t<nested_closure<Ma>>{}(std::forward<Fn>(fn)))))
-          -> decltype(mpc::bind(std::forward<Ma>(ma), perfect_forwarded_t<nested_closure<Ma>>{}(std::forward<Fn>(fn))))
-          { return    mpc::bind(std::forward<Ma>(ma), perfect_forwarded_t<nested_closure<Ma>>{}(std::forward<Fn>(fn))); }
+          noexcept(   mpc::bind(std::forward<Ma>(ma), compose(mpc::pure<Ma>, std::forward<Fn>(fn)))))
+          -> decltype(mpc::bind(std::forward<Ma>(ma), compose(mpc::pure<Ma>, std::forward<Fn>(fn))))
+          { return    mpc::bind(std::forward<Ma>(ma), compose(mpc::pure<Ma>, std::forward<Fn>(fn))); }
         };
 
         template<class Mab, class Ma>
@@ -109,19 +91,11 @@ namespace mpc {
        * ```
        */
       struct discard1st_op {
-        struct closure {
-          template<class Mb, class A>
-          constexpr auto operator()(Mb&& mb, A&&) const noexcept(
-          noexcept(   std::forward<Mb>(mb)))
-          -> decltype(std::forward<Mb>(mb))
-          { return    std::forward<Mb>(mb); }
-        };
-
         template<class Ma, class Mb>
         constexpr auto operator()(Ma&& ma, Mb&& mb) const noexcept(
-        noexcept(   mpc::bind(std::forward<Ma>(ma), perfect_forwarded_t<closure>{}(std::forward<Mb>(mb)))))
-        -> decltype(mpc::bind(std::forward<Ma>(ma), perfect_forwarded_t<closure>{}(std::forward<Mb>(mb))))
-        { return    mpc::bind(std::forward<Ma>(ma), perfect_forwarded_t<closure>{}(std::forward<Mb>(mb))); }
+        noexcept(   mpc::bind(std::forward<Ma>(ma), constant % std::forward<Mb>(mb))))
+        -> decltype(mpc::bind(std::forward<Ma>(ma), constant % std::forward<Mb>(mb)))
+        { return    mpc::bind(std::forward<Ma>(ma), constant % std::forward<Mb>(mb)); }
       };
     } // namespace detail
 
@@ -146,19 +120,11 @@ namespace mpc {
      * ```
      */
     struct karrow_op {
-      struct closure {
-        template <class Fn, class Gn, class A>
-        constexpr auto operator()(Fn&& fn, Gn&& gn, A&& a) const noexcept(
-          noexcept(   mpc::bind(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)), std::forward<Gn>(gn))))
-          -> decltype(mpc::bind(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)), std::forward<Gn>(gn)))
-          { return    mpc::bind(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)), std::forward<Gn>(gn)); }
-      };
-
-      template <class Fn, class Gn>
-      constexpr auto operator()(Fn&& fn, Gn&& gn) const noexcept(
-        noexcept(   perfect_forwarded_t<closure>{}(std::forward<Fn>(fn), std::forward<Gn>(gn))))
-        -> decltype(perfect_forwarded_t<closure>{}(std::forward<Fn>(fn), std::forward<Gn>(gn)))
-        { return    perfect_forwarded_t<closure>{}(std::forward<Fn>(fn), std::forward<Gn>(gn)); }
+      template <class Fn, class Gn, class A>
+      constexpr auto operator()(Fn&& fn, Gn&& gn, A&& a) const noexcept(
+        noexcept(   mpc::bind(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)), std::forward<Gn>(gn))))
+        -> decltype(mpc::bind(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)), std::forward<Gn>(gn)))
+        { return    mpc::bind(std::invoke(std::forward<Fn>(fn), std::forward<A>(a)), std::forward<Gn>(gn)); }
     };
   } // namespace detail
 
