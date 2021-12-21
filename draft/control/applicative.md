@@ -14,22 +14,22 @@ discard1st :: f a -> f b -> f b
 
 -- Methods deducible from other methods of @link mpc::applicative applicative @endlink.
 fmap :: (a -> b) -> f a -> f b
-fmap f x = seq_apply (pure f) x
+fmap f x = (pure f) `seq_apply` x
 
 seq_apply :: f (a -> b) -> f a -> f b
 seq_apply = liftA2 id
 
 liftA2 :: (a -> b -> c) -> f a -> f b -> f c
-liftA2 f x y = seq_apply (fmap f x) y
+liftA2 f x y = f `fmap` x `seq_apply` y
 
 discard2nd :: f a -> f b -> f a
-discard2nd = liftA2 const
+discard2nd = liftA2 constant
 
 discard1st :: f a -> f b -> f b
-discard1st = liftA2 (flip const)
+discard1st = liftA2 (flip constant)
 
 discard1st_opt :: f a -> f b -> f b
-discard1st_opt x y = (id <$ x) <*> y
+discard1st x y = id `replace2nd` x `seq_apply` y
 
 -- Basic methods
 liftA :: Applicative f => (a -> b -> ... -> z) -> f a -> f b -> ... -> f z

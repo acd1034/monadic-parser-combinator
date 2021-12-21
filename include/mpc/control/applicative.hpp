@@ -115,7 +115,7 @@ namespace mpc {
        * @copydoc mpc::detail::fmap_op
        * @details
        * ```
-       * fmap f x = seq_apply (pure f) x
+       * fmap f x = (pure f) `seq_apply` x
        * ```
        */
       struct fmap_op {
@@ -130,7 +130,7 @@ namespace mpc {
        * @copydoc mpc::detail::liftA2_op
        * @details
        * ```
-       * liftA2 f x y = seq_apply (fmap f x) y
+       * liftA2 f x y = f `fmap` x `seq_apply` y
        * ```
        */
       struct liftA2_op {
@@ -145,7 +145,7 @@ namespace mpc {
        * @copydoc mpc::detail::discard1st_op
        * @details
        * ```
-       * discard1st x y = (id <$ x) <*> y
+       * discard1st x y = id `replace2nd` x `seq_apply` y
        * ```
        */
       struct discard1st_opt_op {
@@ -176,7 +176,7 @@ namespace mpc {
      * @copydoc mpc::detail::discard2nd_op
      * @details
      * ```
-     * discard2nd = liftA2 const
+     * discard2nd = liftA2 constant
      * ```
      */
     inline constexpr auto discard2nd = mpc::liftA2 % constant;
@@ -185,7 +185,7 @@ namespace mpc {
      * @copydoc mpc::detail::discard1st_op
      * @details
      * ```
-     * discard1st = liftA2 (flip const)
+     * discard1st = liftA2 (flip constant)
      * ```
      */
     inline constexpr auto discard1st = mpc::liftA2 % (flip % constant);

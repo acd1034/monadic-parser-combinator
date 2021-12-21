@@ -51,7 +51,7 @@ namespace mpc {
       /**
        * @copydoc mpc::detail::fmap_op
        * ```
-       * fmap f xs = bind xs (return . f)
+       * fmap f xs = xs `bind` (return . f)
        * ```
        */
       struct fmap_op {
@@ -74,7 +74,7 @@ namespace mpc {
       /**
        * @copydoc mpc::detail::seq_apply_op
        * ```
-       * seq_apply mf xs = bind mf (\f -> bind xs (return . f)))
+       * seq_apply mf xs = mf `bind` (\f -> xs `bind` (return . f))
        * ```
        */
       struct seq_apply_op {
@@ -105,7 +105,7 @@ namespace mpc {
       /**
        * @copydoc mpc::detail::discard1st_op
        * ```
-       * discard1st m1 m2 = bind m1 (const m2)
+       * discard1st m1 m2 = m1 `bind` (constant m2)
        * ```
        */
       struct discard1st_op {
@@ -142,7 +142,7 @@ namespace mpc {
      * @brief karrow :: Monad m => (a -> m b) -> (b -> m c) -> (a -> m c)
      * @details (>=>) in Haskell
      * ```
-     * karrow f g = (\x -> f x >>= g)
+     * karrow f g x = f x `bind` g
      * ```
      */
     struct karrow_op {

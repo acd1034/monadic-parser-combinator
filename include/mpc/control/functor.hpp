@@ -59,7 +59,7 @@ namespace mpc {
      * @copydoc mpc::detail::replace2nd_op
      * @details
      * ```
-     * replace2nd = fmap . const
+     * replace2nd = fmap . constant
      * ```
      */
     inline constexpr auto replace2nd = compose(mpc::fmap, constant);
