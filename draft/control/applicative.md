@@ -17,7 +17,7 @@ fmap :: (a -> b) -> f a -> f b
 fmap f x = (pure f) `seq_apply` x
 
 seq_apply :: f (a -> b) -> f a -> f b
-seq_apply = liftA2 id
+seq_apply = liftA2 identity
 
 liftA2 :: (a -> b -> c) -> f a -> f b -> f c
 liftA2 f x y = f `fmap` x `seq_apply` y
@@ -29,7 +29,7 @@ discard1st :: f a -> f b -> f b
 discard1st = liftA2 (flip constant)
 
 discard1st_opt :: f a -> f b -> f b
-discard1st x y = id `replace2nd` x `seq_apply` y
+discard1st x y = identity `replace2nd` x `seq_apply` y
 
 -- Basic methods
 liftA :: Applicative f => (a -> b -> ... -> z) -> f a -> f b -> ... -> f z

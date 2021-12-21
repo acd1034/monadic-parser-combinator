@@ -4,7 +4,7 @@
 #include <mpc/functional/perfect_forward.hpp>
 #include <mpc/prelude/constant.hpp>
 #include <mpc/prelude/flip.hpp>
-#include <mpc/prelude/id.hpp>
+#include <mpc/prelude/identity.hpp>
 #include <mpc/type_traits.hpp>
 
 // clang-format off
@@ -145,15 +145,15 @@ namespace mpc {
        * @copydoc mpc::detail::discard1st_op
        * @details
        * ```
-       * discard1st x y = id `replace2nd` x `seq_apply` y
+       * discard1st x y = identity `replace2nd` x `seq_apply` y
        * ```
        */
       struct discard1st_opt_op {
         template <class Fa, class Fb>
         constexpr auto operator()(Fa&& fa, Fb&& fb) const noexcept(
-        noexcept(   mpc::seq_apply(mpc::replace2nd(id, std::forward<Fa>(fa)), std::forward<Fb>(fb))))
-        -> decltype(mpc::seq_apply(mpc::replace2nd(id, std::forward<Fa>(fa)), std::forward<Fb>(fb)))
-        { return    mpc::seq_apply(mpc::replace2nd(id, std::forward<Fa>(fa)), std::forward<Fb>(fb)); }
+        noexcept(   mpc::seq_apply(mpc::replace2nd(identity, std::forward<Fa>(fa)), std::forward<Fb>(fb))))
+        -> decltype(mpc::seq_apply(mpc::replace2nd(identity, std::forward<Fa>(fa)), std::forward<Fb>(fb)))
+        { return    mpc::seq_apply(mpc::replace2nd(identity, std::forward<Fa>(fa)), std::forward<Fb>(fb)); }
       };
     } // namespace detail
 
@@ -164,10 +164,10 @@ namespace mpc {
      * @copydoc mpc::detail::seq_apply_op
      * @details
      * ```
-     * seq_apply = liftA2 id
+     * seq_apply = liftA2 identity
      * ```
      */
-    inline constexpr auto seq_apply = mpc::liftA2 % id;
+    inline constexpr auto seq_apply = mpc::liftA2 % identity;
 
     /// @copydoc mpc::applicatives::detail::liftA2_op
     inline constexpr perfect_forwarded_t<detail::liftA2_op> liftA2{};
