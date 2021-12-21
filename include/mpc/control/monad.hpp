@@ -79,9 +79,9 @@ namespace mpc {
 
         template<class Mab, class Ma>
         constexpr auto operator()(Mab&& mab, Ma&& ma) const noexcept(
-        noexcept(   mpc::bind(std::forward<Mab>(mab), perfect_forwarded_t<closure>{}(std::forward<Ma>(ma)))))
-        -> decltype(mpc::bind(std::forward<Mab>(mab), perfect_forwarded_t<closure>{}(std::forward<Ma>(ma))))
-        { return    mpc::bind(std::forward<Mab>(mab), perfect_forwarded_t<closure>{}(std::forward<Ma>(ma))); }
+        noexcept(   mpc::bind(std::forward<Mab>(mab), partially_applicable(closure{}, std::forward<Ma>(ma)))))
+        -> decltype(mpc::bind(std::forward<Mab>(mab), partially_applicable(closure{}, std::forward<Ma>(ma))))
+        { return    mpc::bind(std::forward<Mab>(mab), partially_applicable(closure{}, std::forward<Ma>(ma))); }
       };
 
       /**

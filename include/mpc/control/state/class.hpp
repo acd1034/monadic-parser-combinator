@@ -118,9 +118,9 @@ namespace mpc {
 
         template <class T>
         constexpr auto operator()(T&& t) const noexcept(
-          noexcept(   mpc::state<ST>(perfect_forwarded_t<closure>{}(std::forward<T>(t)))))
-          -> decltype(mpc::state<ST>(perfect_forwarded_t<closure>{}(std::forward<T>(t)))) {
-          return      mpc::state<ST>(perfect_forwarded_t<closure>{}(std::forward<T>(t)));
+          noexcept(   mpc::state<ST>(partially_applicable(closure{}, std::forward<T>(t)))))
+          -> decltype(mpc::state<ST>(partially_applicable(closure{}, std::forward<T>(t)))) {
+          return      mpc::state<ST>(partially_applicable(closure{}, std::forward<T>(t)));
         }
       };
     } // namespace detail
@@ -165,9 +165,9 @@ namespace mpc {
 
       template <class Fn>
       constexpr auto operator()(Fn&& f) const noexcept(
-        noexcept(   mpc::state<ST>(perfect_forwarded_t<closure>{}(std::forward<Fn>(f)))))
-        -> decltype(mpc::state<ST>(perfect_forwarded_t<closure>{}(std::forward<Fn>(f)))) {
-        return      mpc::state<ST>(perfect_forwarded_t<closure>{}(std::forward<Fn>(f)));
+        noexcept(   mpc::state<ST>(partially_applicable(closure{}, std::forward<Fn>(f)))))
+        -> decltype(mpc::state<ST>(partially_applicable(closure{}, std::forward<Fn>(f)))) {
+        return      mpc::state<ST>(partially_applicable(closure{}, std::forward<Fn>(f)));
       }
     };
 
@@ -185,9 +185,9 @@ namespace mpc {
 
       template <class Fn>
       constexpr auto operator()(Fn&& f) const noexcept(
-        noexcept(   mpc::state<ST>(perfect_forwarded_t<closure>{}(std::forward<Fn>(f)))))
-        -> decltype(mpc::state<ST>(perfect_forwarded_t<closure>{}(std::forward<Fn>(f)))) {
-        return      mpc::state<ST>(perfect_forwarded_t<closure>{}(std::forward<Fn>(f)));
+        noexcept(   mpc::state<ST>(partially_applicable(closure{}, std::forward<Fn>(f)))))
+        -> decltype(mpc::state<ST>(partially_applicable(closure{}, std::forward<Fn>(f)))) {
+        return      mpc::state<ST>(partially_applicable(closure{}, std::forward<Fn>(f)));
       }
     };
   } // namespace detail
