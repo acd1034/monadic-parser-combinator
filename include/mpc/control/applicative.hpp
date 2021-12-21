@@ -143,7 +143,7 @@ namespace mpc {
 
       /**
        * @copydoc mpc::detail::discard1st_op
-       * @details
+       * @details Use this method if you have an optimized replace2nd.
        * ```
        * discard1st x y = identity `replace2nd` x `seq_apply` y
        * ```
