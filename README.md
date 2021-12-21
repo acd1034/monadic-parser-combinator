@@ -11,13 +11,13 @@ Click [here](https://acd1034.github.io/monadic-parser-combinator/index.html) to 
 A sample code written in Haskell is shown below.
 
 ```hs
-tick :: StateT Int Identity Int
+tick :: State Int Int
 tick = do
   n <- get
   modify (+ 1)
   return n
 
-threeTicks :: StateT Int Identity Int
+threeTicks :: State Int Int
 threeTicks = do
   n1 <- tick
   n2 <- tick
