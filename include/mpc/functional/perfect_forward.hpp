@@ -158,18 +158,13 @@ namespace mpc {
 
   /// Inherits from perfect_forward so that you do not have to write inheriting constructors.
   template <class Op, class... Args>
-  struct perfect_forwarded_t : detail::perfect_forward<Op, Args...> {
-    using detail::perfect_forward<Op, Args...>::perfect_forward;
-  };
-
-  /// Inherits from perfect_forward so that you do not have to write inheriting constructors.
-  template <class Op, class... Args>
   struct partially_applicable : detail::perfect_forward<Op, Args...> {
     using detail::perfect_forward<Op, Args...>::perfect_forward;
   };
 
-  template <class Op, class... Bound>
-  partially_applicable(Op, Bound...) -> partially_applicable<Op, Bound...>;
+  /// @dguide partially_applicable
+  template <class Op, class... Args>
+  partially_applicable(Op, Args...) -> partially_applicable<Op, Args...>;
 } // namespace mpc
 
 // clang-format on
