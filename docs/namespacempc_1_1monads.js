@@ -5,7 +5,7 @@ var namespacempc_1_1monads =
       [ "seq_apply_op", "structmpc_1_1monads_1_1detail_1_1seq__apply__op.html", "structmpc_1_1monads_1_1detail_1_1seq__apply__op" ],
       [ "discard1st_op", "structmpc_1_1monads_1_1detail_1_1discard1st__op.html", "structmpc_1_1monads_1_1detail_1_1discard1st__op" ]
     ] ],
-    [ "discard1st", "namespacempc_1_1monads.html#ac73c202417828e830b760d60a62ee3f4", null ],
-    [ "fmap", "namespacempc_1_1monads.html#ac2a027d6723769cb6999cfb80e225dc2", null ],
-    [ "seq_apply", "namespacempc_1_1monads.html#ac0d4a9b950bbe750796db48dbe4d29e0", null ]
+    [ "discard1st", "namespacempc_1_1monads.html#a7f928c57d2d2afea9607cb710d2ec624", null ],
+    [ "fmap", "namespacempc_1_1monads.html#a97c78da53e2bfaf010295ea086b20b72", null ],
+    [ "seq_apply", "namespacempc_1_1monads.html#ae62131845431137eec8227363d69297c", null ]
 ];

@@ -98,7 +98,7 @@ $(document).ready(function(){initNavTree('state_t_8hpp.html',''); initResizable(
 <code>#include &lt;<a class="el" href="monad_8hpp_source.html">mpc/control/monad.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="state_2class_8hpp_source.html">mpc/control/state/class.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="trans_2class_8hpp_source.html">mpc/control/trans/class.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="identity_8hpp_source.html">mpc/data/functor/identity.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="data_2functor_2identity_8hpp_source.html">mpc/data/functor/identity.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="compose_8hpp_source.html">mpc/prelude/compose.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="fst_8hpp_source.html">mpc/prelude/fst.hpp</a>&gt;</code><br />
 </div>
@@ -207,25 +207,25 @@ Variables</h2></td></tr>
 template&lt;class T &gt; </td></tr>
 <tr class="memitem:a1ca5c27dd7324081976437171e9baa3f"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::is_StateT</b> = detail::is_StateT_impl&lt;std::remove_cvref_t&lt;T&gt;&gt;::value</td></tr>
 <tr class="separator:a1ca5c27dd7324081976437171e9baa3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a049e230776ac4d04a6fa09e47d8a98d7"><td class="memTemplParams" colspan="2"><a id="a049e230776ac4d04a6fa09e47d8a98d7"></a>
+<tr class="memitem:a811b475886d65687c34957f7e5e44b21"><td class="memTemplParams" colspan="2"><a id="a811b475886d65687c34957f7e5e44b21"></a>
 template&lt;class S &gt; </td></tr>
-<tr class="memitem:a049e230776ac4d04a6fa09e47d8a98d7"><td class="memTemplItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::make_StateT_op&lt; S &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::cpo::make_StateT</b> {}</td></tr>
-<tr class="separator:a049e230776ac4d04a6fa09e47d8a98d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a505feef96c96d9f3cc455a39e06a03c7"><td class="memItemLeft" align="right" valign="top"><a id="a505feef96c96d9f3cc455a39e06a03c7"></a>
-constexpr perfect_forwarded_t&lt; detail::run_StateT_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::run_StateT</b> {}</td></tr>
-<tr class="separator:a505feef96c96d9f3cc455a39e06a03c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a636f3812b928c1141185e0024d3c0871"><td class="memItemLeft" align="right" valign="top"><a id="a636f3812b928c1141185e0024d3c0871"></a>
-constexpr perfect_forwarded_t&lt; detail::eval_StateT_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::eval_StateT</b> {}</td></tr>
-<tr class="separator:a636f3812b928c1141185e0024d3c0871"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf8577c1812b1d8f297bd3d3b63bf33b"><td class="memItemLeft" align="right" valign="top"><a id="acf8577c1812b1d8f297bd3d3b63bf33b"></a>
-constexpr perfect_forwarded_t&lt; detail::exec_StateT_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::exec_StateT</b> {}</td></tr>
-<tr class="separator:acf8577c1812b1d8f297bd3d3b63bf33b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90b8c5cfa65e31cc424ea1629c56c318"><td class="memItemLeft" align="right" valign="top"><a id="a90b8c5cfa65e31cc424ea1629c56c318"></a>
-constexpr perfect_forwarded_t&lt; detail::map_StateT_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::map_StateT</b> {}</td></tr>
-<tr class="separator:a90b8c5cfa65e31cc424ea1629c56c318"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6db38882c1854266601aba92ad82db0d"><td class="memItemLeft" align="right" valign="top"><a id="a6db38882c1854266601aba92ad82db0d"></a>
-constexpr perfect_forwarded_t&lt; detail::with_StateT_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::with_StateT</b> {}</td></tr>
-<tr class="separator:a6db38882c1854266601aba92ad82db0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a811b475886d65687c34957f7e5e44b21"><td class="memTemplItemLeft" align="right" valign="top">constexpr partially_applicable&lt; detail::make_StateT_op&lt; S &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::cpo::make_StateT</b> {}</td></tr>
+<tr class="separator:a811b475886d65687c34957f7e5e44b21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a339735ad1abbc3b17dfbea8987b7f93e"><td class="memItemLeft" align="right" valign="top"><a id="a339735ad1abbc3b17dfbea8987b7f93e"></a>
+constexpr partially_applicable&lt; detail::run_StateT_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::run_StateT</b> {}</td></tr>
+<tr class="separator:a339735ad1abbc3b17dfbea8987b7f93e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0501289a6e7d86ba1b0fad9af0ebdcd0"><td class="memItemLeft" align="right" valign="top"><a id="a0501289a6e7d86ba1b0fad9af0ebdcd0"></a>
+constexpr partially_applicable&lt; detail::eval_StateT_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::eval_StateT</b> {}</td></tr>
+<tr class="separator:a0501289a6e7d86ba1b0fad9af0ebdcd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac126728c4c40b00003eea78e4c3a3c1b"><td class="memItemLeft" align="right" valign="top"><a id="ac126728c4c40b00003eea78e4c3a3c1b"></a>
+constexpr partially_applicable&lt; detail::exec_StateT_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::exec_StateT</b> {}</td></tr>
+<tr class="separator:ac126728c4c40b00003eea78e4c3a3c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25b214994f2fa36b557d0e9ff93f1670"><td class="memItemLeft" align="right" valign="top"><a id="a25b214994f2fa36b557d0e9ff93f1670"></a>
+constexpr partially_applicable&lt; detail::map_StateT_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::map_StateT</b> {}</td></tr>
+<tr class="separator:a25b214994f2fa36b557d0e9ff93f1670"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b76c3ada7cdbb15c35cb1950883ef5a"><td class="memItemLeft" align="right" valign="top"><a id="a6b76c3ada7cdbb15c35cb1950883ef5a"></a>
+constexpr partially_applicable&lt; detail::with_StateT_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::with_StateT</b> {}</td></tr>
+<tr class="separator:a6b76c3ada7cdbb15c35cb1950883ef5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -94,10 +94,10 @@ $(document).ready(function(){initNavTree('structmpc_1_1monads_1_1detail_1_1seq__
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a604aa0e20ef94db54ee2f406b63704fc"><td class="memTemplParams" colspan="2"><a id="a604aa0e20ef94db54ee2f406b63704fc"></a>
+<tr class="memitem:ad7c8519d72f724be642c40f2c887c03a"><td class="memTemplParams" colspan="2"><a id="ad7c8519d72f724be642c40f2c887c03a"></a>
 template&lt;class Ma , class Fn &gt; </td></tr>
-<tr class="memitem:a604aa0e20ef94db54ee2f406b63704fc"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator()</b> (Ma &amp;&amp;ma, Fn &amp;&amp;fn) const noexcept(noexcept(mpc::bind(std::forward&lt; Ma &gt;(ma), <a class="el" href="structmpc_1_1perfect__forwarded__t.html">perfect_forwarded_t</a>&lt; <a class="el" href="structmpc_1_1monads_1_1detail_1_1seq__apply__op_1_1nested__closure.html">nested_closure</a>&lt; Ma &gt;&gt;{}(std::forward&lt; Fn &gt;(fn))))) -&gt; decltype(mpc::bind(std::forward&lt; Ma &gt;(ma), <a class="el" href="structmpc_1_1perfect__forwarded__t.html">perfect_forwarded_t</a>&lt; <a class="el" href="structmpc_1_1monads_1_1detail_1_1seq__apply__op_1_1nested__closure.html">nested_closure</a>&lt; Ma &gt;&gt;{}(std::forward&lt; Fn &gt;(fn))))</td></tr>
-<tr class="separator:a604aa0e20ef94db54ee2f406b63704fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7c8519d72f724be642c40f2c887c03a"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator()</b> (Ma &amp;&amp;ma, Fn &amp;&amp;fn) const noexcept(noexcept(mpc::bind(std::forward&lt; Ma &gt;(ma), compose(mpc::pure&lt; Ma &gt;, std::forward&lt; Fn &gt;(fn))))) -&gt; decltype(mpc::bind(std::forward&lt; Ma &gt;(ma), compose(mpc::pure&lt; Ma &gt;, std::forward&lt; Fn &gt;(fn))))</td></tr>
+<tr class="separator:ad7c8519d72f724be642c40f2c887c03a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/mpc/control/<a class="el" href="monad_8hpp_source.html">monad.hpp</a></li>

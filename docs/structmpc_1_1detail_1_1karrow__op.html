@@ -85,7 +85,6 @@ $(document).ready(function(){initNavTree('structmpc_1_1detail_1_1karrow__op.html
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="structmpc_1_1detail_1_1karrow__op-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -98,22 +97,18 @@ $(document).ready(function(){initNavTree('structmpc_1_1detail_1_1karrow__op.html
 
 <p><code>#include &lt;<a class="el" href="monad_8hpp_source.html">monad.hpp</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1karrow__op_1_1closure.html">closure</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4968baa1cbf978b45762a67b83b01eba"><td class="memTemplParams" colspan="2"><a id="a4968baa1cbf978b45762a67b83b01eba"></a>
-template&lt;class Fn , class Gn &gt; </td></tr>
-<tr class="memitem:a4968baa1cbf978b45762a67b83b01eba"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator()</b> (Fn &amp;&amp;fn, Gn &amp;&amp;gn) const noexcept(noexcept(<a class="el" href="structmpc_1_1perfect__forwarded__t.html">perfect_forwarded_t</a>&lt; <a class="el" href="structmpc_1_1detail_1_1karrow__op_1_1closure.html">closure</a> &gt;{}(std::forward&lt; Fn &gt;(fn), std::forward&lt; Gn &gt;(gn)))) -&gt; decltype(<a class="el" href="structmpc_1_1perfect__forwarded__t.html">perfect_forwarded_t</a>&lt; <a class="el" href="structmpc_1_1detail_1_1karrow__op_1_1closure.html">closure</a> &gt;{}(std::forward&lt; Fn &gt;(fn), std::forward&lt; Gn &gt;(gn)))</td></tr>
-<tr class="separator:a4968baa1cbf978b45762a67b83b01eba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47956164e900165432234da6611fcc5f"><td class="memTemplParams" colspan="2"><a id="a47956164e900165432234da6611fcc5f"></a>
+template&lt;class Fn , class Gn , class A &gt; </td></tr>
+<tr class="memitem:a47956164e900165432234da6611fcc5f"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator()</b> (Fn &amp;&amp;fn, Gn &amp;&amp;gn, A &amp;&amp;a) const noexcept(noexcept(mpc::bind(std::invoke(std::forward&lt; Fn &gt;(fn), std::forward&lt; A &gt;(a)), std::forward&lt; Gn &gt;(gn)))) -&gt; decltype(mpc::bind(std::invoke(std::forward&lt; Fn &gt;(fn), std::forward&lt; A &gt;(a)), std::forward&lt; Gn &gt;(gn)))</td></tr>
+<tr class="separator:a47956164e900165432234da6611fcc5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>karrow :: Monad m =&gt; (a -&gt; m b) -&gt; (b -&gt; m c) -&gt; (a -&gt; m c) </p>
-<p>(&gt;=&gt;) in Haskell </p><div class="fragment"><div class="line"><a class="code" href="namespacempc_1_1cpo.html#a6271ef4527a5bc2ee1d379bbc9bc7ea7">karrow</a> f g = (\x -&gt; f x &gt;&gt;= g)</div>
-<div class="ttc" id="anamespacempc_1_1cpo_html_a6271ef4527a5bc2ee1d379bbc9bc7ea7"><div class="ttname"><a href="namespacempc_1_1cpo.html#a6271ef4527a5bc2ee1d379bbc9bc7ea7">mpc::cpo::karrow</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::karrow_op &gt; karrow</div><div class="ttdoc">karrow :: Monad m =&gt; (a -&gt; m b) -&gt; (b -&gt; m c) -&gt; (a -&gt; m c)</div><div class="ttdef"><b>Definition:</b> monad.hpp:178</div></div>
+<p>(&gt;=&gt;) in Haskell </p><div class="fragment"><div class="line"><a class="code" href="namespacempc_1_1cpo.html#a127b5dcfffcc0e6ca503b31e352ff6e9">karrow</a> f g x = f x `<a class="code" href="namespacempc_1_1cpo.html#a9f31ba0116cf1ac796bebc195ca0e0dc">bind</a>` g</div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a127b5dcfffcc0e6ca503b31e352ff6e9"><div class="ttname"><a href="namespacempc_1_1cpo.html#a127b5dcfffcc0e6ca503b31e352ff6e9">mpc::cpo::karrow</a></div><div class="ttdeci">constexpr partially_applicable&lt; detail::karrow_op &gt; karrow</div><div class="ttdoc">karrow :: Monad m =&gt; (a -&gt; m b) -&gt; (b -&gt; m c) -&gt; (a -&gt; m c)</div><div class="ttdef"><b>Definition:</b> monad.hpp:146</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a9f31ba0116cf1ac796bebc195ca0e0dc"><div class="ttname"><a href="namespacempc_1_1cpo.html#a9f31ba0116cf1ac796bebc195ca0e0dc">mpc::cpo::bind</a></div><div class="ttdeci">constexpr partially_applicable&lt; detail::bind_op &gt; bind</div><div class="ttdoc">bind :: forall a b. m a -&gt; (a -&gt; m b) -&gt; m b</div><div class="ttdef"><b>Definition:</b> monad.hpp:45</div></div>
 </div><!-- fragment --> </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/mpc/control/<a class="el" href="monad_8hpp_source.html">monad.hpp</a></li>
 </ul>

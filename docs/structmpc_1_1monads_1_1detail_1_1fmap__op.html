@@ -85,7 +85,6 @@ $(document).ready(function(){initNavTree('structmpc_1_1monads_1_1detail_1_1fmap_
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="structmpc_1_1monads_1_1detail_1_1fmap__op-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -98,23 +97,18 @@ $(document).ready(function(){initNavTree('structmpc_1_1monads_1_1detail_1_1fmap_
 
 <p><code>#include &lt;<a class="el" href="monad_8hpp_source.html">monad.hpp</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1monads_1_1detail_1_1fmap__op_1_1closure.html">closure</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa56c6448925011dc3a62c08eca00e351"><td class="memTemplParams" colspan="2"><a id="aa56c6448925011dc3a62c08eca00e351"></a>
+<tr class="memitem:a4853bf4fac48bee1b2914d467477db31"><td class="memTemplParams" colspan="2"><a id="a4853bf4fac48bee1b2914d467477db31"></a>
 template&lt;class Fn , class Ma &gt; </td></tr>
-<tr class="memitem:aa56c6448925011dc3a62c08eca00e351"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator()</b> (Fn &amp;&amp;fn, Ma &amp;&amp;ma) const noexcept(noexcept(mpc::bind(std::forward&lt; Ma &gt;(ma), <a class="el" href="structmpc_1_1perfect__forwarded__t.html">perfect_forwarded_t</a>&lt; <a class="el" href="structmpc_1_1monads_1_1detail_1_1fmap__op_1_1closure.html">closure</a>&lt; Ma &gt;&gt;{}(std::forward&lt; Fn &gt;(fn))))) -&gt; decltype(mpc::bind(std::forward&lt; Ma &gt;(ma), <a class="el" href="structmpc_1_1perfect__forwarded__t.html">perfect_forwarded_t</a>&lt; <a class="el" href="structmpc_1_1monads_1_1detail_1_1fmap__op_1_1closure.html">closure</a>&lt; Ma &gt;&gt;{}(std::forward&lt; Fn &gt;(fn))))</td></tr>
-<tr class="separator:aa56c6448925011dc3a62c08eca00e351"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4853bf4fac48bee1b2914d467477db31"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator()</b> (Fn &amp;&amp;fn, Ma &amp;&amp;ma) const noexcept(noexcept(mpc::bind(std::forward&lt; Ma &gt;(ma), compose(mpc::pure&lt; Ma &gt;, std::forward&lt; Fn &gt;(fn))))) -&gt; decltype(mpc::bind(std::forward&lt; Ma &gt;(ma), compose(mpc::pure&lt; Ma &gt;, std::forward&lt; Fn &gt;(fn))))</td></tr>
+<tr class="separator:a4853bf4fac48bee1b2914d467477db31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>fmap :: (a -&gt; b) -&gt; f a -&gt; f b </p>
-<div class="fragment"><div class="line"><a class="code" href="namespacempc_1_1monads.html#ac2a027d6723769cb6999cfb80e225dc2">fmap</a> f xs = <a class="code" href="namespacempc_1_1cpo.html#a4f7d9673b4e605d178aed591a6085b68">bind</a> xs (<span class="keywordflow">return</span> . f)</div>
-<div class="ttc" id="anamespacempc_1_1cpo_html_a4f7d9673b4e605d178aed591a6085b68"><div class="ttname"><a href="namespacempc_1_1cpo.html#a4f7d9673b4e605d178aed591a6085b68">mpc::cpo::bind</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::bind_op &gt; bind</div><div class="ttdoc">bind :: forall a b. m a -&gt; (a -&gt; m b) -&gt; m b</div><div class="ttdef"><b>Definition:</b> monad.hpp:44</div></div>
-<div class="ttc" id="anamespacempc_1_1monads_html_ac2a027d6723769cb6999cfb80e225dc2"><div class="ttname"><a href="namespacempc_1_1monads.html#ac2a027d6723769cb6999cfb80e225dc2">mpc::monads::fmap</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::fmap_op &gt; fmap</div><div class="ttdoc">fmap :: (a -&gt; b) -&gt; f a -&gt; f b</div><div class="ttdef"><b>Definition:</b> monad.hpp:128</div></div>
+<div class="fragment"><div class="line"><a class="code" href="namespacempc_1_1monads.html#a97c78da53e2bfaf010295ea086b20b72">fmap</a> f xs = xs `<a class="code" href="namespacempc_1_1cpo.html#a9f31ba0116cf1ac796bebc195ca0e0dc">bind</a>` (returns . f)</div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a9f31ba0116cf1ac796bebc195ca0e0dc"><div class="ttname"><a href="namespacempc_1_1cpo.html#a9f31ba0116cf1ac796bebc195ca0e0dc">mpc::cpo::bind</a></div><div class="ttdeci">constexpr partially_applicable&lt; detail::bind_op &gt; bind</div><div class="ttdoc">bind :: forall a b. m a -&gt; (a -&gt; m b) -&gt; m b</div><div class="ttdef"><b>Definition:</b> monad.hpp:45</div></div>
+<div class="ttc" id="anamespacempc_1_1monads_html_a97c78da53e2bfaf010295ea086b20b72"><div class="ttname"><a href="namespacempc_1_1monads.html#a97c78da53e2bfaf010295ea086b20b72">mpc::monads::fmap</a></div><div class="ttdeci">constexpr partially_applicable&lt; detail::fmap_op &gt; fmap</div><div class="ttdoc">fmap :: (a -&gt; b) -&gt; f a -&gt; f b</div><div class="ttdef"><b>Definition:</b> monad.hpp:103</div></div>
 </div><!-- fragment --> </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/mpc/control/<a class="el" href="monad_8hpp_source.html">monad.hpp</a></li>
 </ul>

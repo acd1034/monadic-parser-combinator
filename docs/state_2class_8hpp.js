@@ -13,11 +13,11 @@ var state_2class_8hpp =
     [ "closure", "structmpc_1_1detail_1_1getss__op_1_1closure.html", "structmpc_1_1detail_1_1getss__op_1_1closure" ],
     [ "gets", "state_2class_8hpp.html#ad6cc1b0bf14899eaff9c1de49b5e1b38", null ],
     [ "gets", "state_2class_8hpp.html#aeec38d1aeab04eaf08bda294fdefa71f", null ],
-    [ "getss", "state_2class_8hpp.html#a1e08825a3994e8f00a8295c7190ab228", null ],
-    [ "modify", "state_2class_8hpp.html#af79d9289045fc9aa0d3de560a612a3aa", null ],
+    [ "getss", "state_2class_8hpp.html#ac8d11a179b363e9817689fa688fd15b9", null ],
+    [ "modify", "state_2class_8hpp.html#a12c33aac5fa434e0fd36fd14006b7650", null ],
     [ "monad_state", "state_2class_8hpp.html#a06eab3c2f01f501781a1111f07d71fc1", null ],
-    [ "put", "state_2class_8hpp.html#a072e38836272ddcfae9b19a2d3f30741", null ],
-    [ "put", "state_2class_8hpp.html#ac4e653fd11610b8352cac49be48da656", null ],
+    [ "put", "state_2class_8hpp.html#ae40d14fe4ebda0850c8415a9825aa1f6", null ],
+    [ "put", "state_2class_8hpp.html#a232292a10a6a70adb3bf285f6da537c6", null ],
     [ "requires", "state_2class_8hpp.html#a1cb1771b23736ce721b6540a50bc3dbe", null ],
-    [ "state", "state_2class_8hpp.html#aa5b3d0ba34d79f30ec421636126378f3", null ]
+    [ "state", "state_2class_8hpp.html#a1dcfcbeaac438c90e8bc7a936834c661", null ]
 ];

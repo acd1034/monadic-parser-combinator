@@ -37,11 +37,11 @@ var state_t_8hpp =
     [ "with_StateT_op", "structmpc_1_1detail_1_1with___state_t__op.html", "structmpc_1_1detail_1_1with___state_t__op" ],
     [ "StateT_monad_t", "state_t_8hpp.html#a848f0f592bcb42d7c84dd1ab3020685e", null ],
     [ "StateT_state_t", "state_t_8hpp.html#ae0b30698d278a5953958bb246e6a96a6", null ],
-    [ "eval_StateT", "state_t_8hpp.html#a636f3812b928c1141185e0024d3c0871", null ],
-    [ "exec_StateT", "state_t_8hpp.html#acf8577c1812b1d8f297bd3d3b63bf33b", null ],
+    [ "eval_StateT", "state_t_8hpp.html#a0501289a6e7d86ba1b0fad9af0ebdcd0", null ],
+    [ "exec_StateT", "state_t_8hpp.html#ac126728c4c40b00003eea78e4c3a3c1b", null ],
     [ "is_StateT", "state_t_8hpp.html#a1ca5c27dd7324081976437171e9baa3f", null ],
-    [ "make_StateT", "state_t_8hpp.html#a049e230776ac4d04a6fa09e47d8a98d7", null ],
-    [ "map_StateT", "state_t_8hpp.html#a90b8c5cfa65e31cc424ea1629c56c318", null ],
-    [ "run_StateT", "state_t_8hpp.html#a505feef96c96d9f3cc455a39e06a03c7", null ],
-    [ "with_StateT", "state_t_8hpp.html#a6db38882c1854266601aba92ad82db0d", null ]
+    [ "make_StateT", "state_t_8hpp.html#a811b475886d65687c34957f7e5e44b21", null ],
+    [ "map_StateT", "state_t_8hpp.html#a25b214994f2fa36b557d0e9ff93f1670", null ],
+    [ "run_StateT", "state_t_8hpp.html#a339735ad1abbc3b17dfbea8987b7f93e", null ],
+    [ "with_StateT", "state_t_8hpp.html#a6b76c3ada7cdbb15c35cb1950883ef5a", null ]
 ];

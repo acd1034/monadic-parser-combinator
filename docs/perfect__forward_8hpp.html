@@ -86,7 +86,9 @@ $(document).ready(function(){initNavTree('perfect__forward_8hpp.html',''); initR
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">perfect_forward.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -98,20 +100,36 @@ $(document).ready(function(){initNavTree('perfect__forward_8hpp.html',''); initR
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1perfect__forward__impl_3_01_op_00_01std_1_1index__sequence_3_01_idx_8_8_8_01_4_00_01_bound_8_8_8_01_4.html">mpc::detail::perfect_forward_impl&lt; Op, std::index_sequence&lt; Idx... &gt;, Bound... &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A partial specialization of <a class="el" href="structmpc_1_1detail_1_1perfect__forward__impl.html" title="perfect_forward_impl">perfect_forward_impl</a>.  <a href="structmpc_1_1detail_1_1perfect__forward__impl_3_01_op_00_01std_1_1index__sequence_3_01_idx_8_8_8_01_4_00_01_bound_8_8_8_01_4.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1perfect__forwarded__t.html">mpc::perfect_forwarded_t&lt; Op, Args &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inherits from perfect_forward so that you do not have to write inheriting constructors.  <a href="structmpc_1_1perfect__forwarded__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1perfect__forward__impl_3_01_op_00_01std_1_1index__sequence_3_01_idx_8_8_8_01_4_00_01_bound_8_8_8_01_4.html">mpc::perfect_forward_impl&lt; Op, std::index_sequence&lt; Idx... &gt;, Bound... &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A partial specialization of <a class="el" href="structmpc_1_1perfect__forward__impl.html" title="perfect_forward_impl">perfect_forward_impl</a>.  <a href="structmpc_1_1perfect__forward__impl_3_01_op_00_01std_1_1index__sequence_3_01_idx_8_8_8_01_4_00_01_bound_8_8_8_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1partially__applicable.html">mpc::partially_applicable&lt; Op, Args &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inherits from perfect_forward so that you do not have to write inheriting constructors.  <a href="structmpc_1_1partially__applicable.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacempc_1_1detail"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html">mpc::detail</a></td></tr>
+<tr class="memdesc:namespacempc_1_1detail"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation details are here. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a9edbd0f9c9c2a5ff78ebb7871b518e25"><td class="memTemplParams" colspan="2"><a id="a9edbd0f9c9c2a5ff78ebb7871b518e25"></a>
+<tr class="memitem:a8a11701d6ae8ca49445907f994be9448"><td class="memTemplParams" colspan="2"><a id="a8a11701d6ae8ca49445907f994be9448"></a>
 template&lt;class Op , class... Args&gt; </td></tr>
-<tr class="memitem:a9edbd0f9c9c2a5ff78ebb7871b518e25"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="perfect__forward_8hpp.html#a9edbd0f9c9c2a5ff78ebb7871b518e25">mpc::perfect_forward</a> = perfect_forward_impl&lt; Op, std::index_sequence_for&lt; Args... &gt;, Args... &gt;</td></tr>
-<tr class="memdesc:a9edbd0f9c9c2a5ff78ebb7871b518e25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements a perfect-forwarding call wrapper. <br /></td></tr>
-<tr class="separator:a9edbd0f9c9c2a5ff78ebb7871b518e25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a11701d6ae8ca49445907f994be9448"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html#a8a11701d6ae8ca49445907f994be9448">mpc::detail::perfect_forward</a> = perfect_forward_impl&lt; Op, std::index_sequence_for&lt; Args... &gt;, Args... &gt;</td></tr>
+<tr class="memdesc:a8a11701d6ae8ca49445907f994be9448"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements a perfect-forwarding call wrapper. <br /></td></tr>
+<tr class="separator:a8a11701d6ae8ca49445907f994be9448"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:aab32dfbe5a46ab24d95456b56a509c54"><td class="memTemplParams" colspan="2"><a id="aab32dfbe5a46ab24d95456b56a509c54"></a>
+template&lt;class Op , class... Bound&gt; </td></tr>
+<tr class="memitem:aab32dfbe5a46ab24d95456b56a509c54"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::partially_applicable</b> (Op, Bound...) -&gt; partially_applicable&lt; Op, Bound... &gt;</td></tr>
+<tr class="separator:aab32dfbe5a46ab24d95456b56a509c54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

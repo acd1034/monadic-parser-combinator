@@ -1,5 +1,5 @@
 var fst_8hpp =
 [
-    [ "fst", "fst_8hpp.html#a8b0e2f665eec4a8215b0604e3ffa5a46", null ],
-    [ "snd", "fst_8hpp.html#a05a2dec65ddce29634a9616134b78e6f", null ]
+    [ "fst", "fst_8hpp.html#a44239d0f2cf2745f7491cc03f19c772c", null ],
+    [ "snd", "fst_8hpp.html#a48ecb56dfb9ee26bc8f0cf0fc2718dd9", null ]
 ];

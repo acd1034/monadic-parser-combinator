@@ -1,7 +1,7 @@
 var searchData=
 [
   ['identity_315',['Identity',['../structmpc_1_1_identity.html',1,'mpc']]],
-  ['identity_3c_20perfect_5fforwarded_5ft_3c_20std_3a_3afunction_3c_20m_28s_29_3e_20_3e_20_3e_316',['Identity&lt; perfect_forwarded_t&lt; std::function&lt; M(S)&gt; &gt; &gt;',['../structmpc_1_1_identity.html',1,'mpc']]],
+  ['identity_3c_20partially_5fapplicable_3c_20std_3a_3afunction_3c_20m_28s_29_3e_20_3e_20_3e_316',['Identity&lt; partially_applicable&lt; std::function&lt; M(S)&gt; &gt; &gt;',['../structmpc_1_1_identity.html',1,'mpc']]],
   ['is_5feither_5fimpl_317',['is_either_impl',['../structmpc_1_1detail_1_1is__either__impl.html',1,'mpc::detail']]],
   ['is_5feither_5fimpl_3c_20either_3c_20t_2c_20u_20_3e_20_3e_318',['is_either_impl&lt; either&lt; T, U &gt; &gt;',['../structmpc_1_1detail_1_1is__either__impl_3_01either_3_01_t_00_01_u_01_4_01_4.html',1,'mpc::detail']]],
   ['is_5fexplicitly_5fconvertible_319',['is_explicitly_convertible',['../structmpc_1_1detail_1_1is__explicitly__convertible.html',1,'mpc::detail']]],

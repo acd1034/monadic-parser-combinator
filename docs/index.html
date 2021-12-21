@@ -110,17 +110,18 @@ A first example</h1>
 <div class="line">main :: IO ()</div>
 <div class="line">main = print $ runState threeTicks 5 -- (18,8)</div>
 </div><!-- fragment --><p>Using this library, you can rewrite this code in C++ as follows:</p>
-<div class="fragment"><div class="line"><span class="keyword">using</span> Fn1 = decltype([](<span class="keywordtype">int</span> n, <span class="keyword">auto</span>&amp;&amp;) { <span class="keywordflow">return</span> n; });</div>
-<div class="line"><span class="keyword">using</span> Fn2 = decltype([](<span class="keywordtype">int</span> n1, <span class="keywordtype">int</span> n2, <span class="keywordtype">int</span> n3) { <span class="keywordflow">return</span> n1 + n2 + n3; });</div>
+<div class="fragment"><div class="line"><span class="keyword">using</span> ST = <a class="code" href="structmpc_1_1_state_t.html">mpc::StateT&lt;const int&amp;, mpc::Identity&lt;std::pair&lt;int, int&gt;</a>&gt;&gt;;</div>
+<div class="line">constexpr <span class="keyword">auto</span> fn1 = [](<span class="keywordtype">int</span> n, <span class="keyword">auto</span>&amp;&amp;) { <span class="keywordflow">return</span> n; };</div>
+<div class="line">constexpr <span class="keyword">auto</span> fn2 = [](<span class="keywordtype">int</span> n1, <span class="keywordtype">int</span> n2, <span class="keywordtype">int</span> n3) { <span class="keywordflow">return</span> n1 + n2 + n3; };</div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> tick = <a class="code" href="namespacempc_1_1cpo.html#ac29ddb6aecde8d45070bb966739ac615">mpc::liftA2</a>(</div>
-<div class="line">  <a class="code" href="structmpc_1_1perfect__forwarded__t.html">mpc::perfect_forwarded_t&lt;Fn1&gt;</a>{},</div>
+<div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> tick = <a class="code" href="namespacempc_1_1cpo.html#a5186a2a3226bbca445c15e1d90c3b351">mpc::liftA2</a>(</div>
+<div class="line">  <a class="code" href="structmpc_1_1partially__applicable.html">mpc::partially_applicable</a>(fn1),</div>
 <div class="line">  *mpc::gets&lt;ST&gt;,</div>
-<div class="line">  mpc::modify&lt;ST&gt; % (<a class="code" href="namespacempc_1_1cpo.html#a9f650f97115fd2103489b53f90836666">mpc::plus</a> % 1)</div>
+<div class="line">  mpc::modify&lt;ST&gt; % (mpc::plus % 1)</div>
 <div class="line">);</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> threeTicks = mpc::liftA&lt;3&gt;(</div>
-<div class="line">  <a class="code" href="structmpc_1_1perfect__forwarded__t.html">mpc::perfect_forwarded_t&lt;Fn2&gt;</a>{},</div>
+<div class="line">  <a class="code" href="structmpc_1_1partially__applicable.html">mpc::partially_applicable</a>(fn2),</div>
 <div class="line">  tick,</div>
 <div class="line">  tick,</div>
 <div class="line">  tick</div>
@@ -128,9 +129,9 @@ A first example</h1>
 <div class="line"> </div>
 <div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> [a, s] = mpc::run_State % threeTicks % 5;</div>
 <div class="line">std::cout &lt;&lt; a &lt;&lt; <span class="stringliteral">&quot;,&quot;</span> &lt;&lt; s &lt;&lt; std::endl; <span class="comment">// 18,8</span></div>
-<div class="ttc" id="anamespacempc_1_1cpo_html_a9f650f97115fd2103489b53f90836666"><div class="ttname"><a href="namespacempc_1_1cpo.html#a9f650f97115fd2103489b53f90836666">mpc::cpo::plus</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; std::plus&lt;&gt; &gt; plus</div><div class="ttdoc">Partially applicable std::plus&lt;&gt;.</div><div class="ttdef"><b>Definition:</b> operations.hpp:11</div></div>
-<div class="ttc" id="anamespacempc_1_1cpo_html_ac29ddb6aecde8d45070bb966739ac615"><div class="ttname"><a href="namespacempc_1_1cpo.html#ac29ddb6aecde8d45070bb966739ac615">mpc::cpo::liftA2</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::liftA2_op &gt; liftA2</div><div class="ttdoc">liftA2 :: (a -&gt; b -&gt; c) -&gt; f a -&gt; f b -&gt; f c</div><div class="ttdef"><b>Definition:</b> applicative.hpp:101</div></div>
-<div class="ttc" id="astructmpc_1_1perfect__forwarded__t_html"><div class="ttname"><a href="structmpc_1_1perfect__forwarded__t.html">mpc::perfect_forwarded_t</a></div><div class="ttdoc">Inherits from perfect_forward so that you do not have to write inheriting constructors.</div><div class="ttdef"><b>Definition:</b> perfect_forward.hpp:22</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a5186a2a3226bbca445c15e1d90c3b351"><div class="ttname"><a href="namespacempc_1_1cpo.html#a5186a2a3226bbca445c15e1d90c3b351">mpc::cpo::liftA2</a></div><div class="ttdeci">constexpr partially_applicable&lt; detail::liftA2_op &gt; liftA2</div><div class="ttdoc">liftA2 :: (a -&gt; b -&gt; c) -&gt; f a -&gt; f b -&gt; f c</div><div class="ttdef"><b>Definition:</b> applicative.hpp:102</div></div>
+<div class="ttc" id="astructmpc_1_1_state_t_html"><div class="ttname"><a href="structmpc_1_1_state_t.html">mpc::StateT</a></div><div class="ttdoc">newtype StateT s m a = StateT { runStateT :: s -&gt; m (a,s) }</div><div class="ttdef"><b>Definition:</b> stateT.hpp:26</div></div>
+<div class="ttc" id="astructmpc_1_1partially__applicable_html"><div class="ttname"><a href="structmpc_1_1partially__applicable.html">mpc::partially_applicable</a></div><div class="ttdoc">Inherits from perfect_forward so that you do not have to write inheriting constructors.</div><div class="ttdef"><b>Definition:</b> perfect_forward.hpp:167</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
 Supported Compilers</h1>
 <p>This library will work on the following compilers:</p><ul>

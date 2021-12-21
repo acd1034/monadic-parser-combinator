@@ -95,7 +95,7 @@ $(document).ready(function(){initNavTree('state_2state_8hpp.html',''); initResiz
 <div class="contents">
 <div class="textblock"><code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;<a class="el" href="state_t_8hpp_source.html">mpc/control/state/stateT.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="identity_8hpp_source.html">mpc/data/functor/identity.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="data_2functor_2identity_8hpp_source.html">mpc/data/functor/identity.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="compose_8hpp_source.html">mpc/prelude/compose.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="fst_8hpp_source.html">mpc/prelude/fst.hpp</a>&gt;</code><br />
 </div>
@@ -149,22 +149,22 @@ Variables</h2></td></tr>
 template&lt;class T &gt; </td></tr>
 <tr class="memitem:a8fd857b415a8058197b3270c9d7b19f3"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::is_State</b> = detail::is_State_impl&lt;std::remove_cvref_t&lt;T&gt;&gt;::value</td></tr>
 <tr class="separator:a8fd857b415a8058197b3270c9d7b19f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf21c6440520b2e324c5946befc4bdc9"><td class="memTemplParams" colspan="2"><a id="abf21c6440520b2e324c5946befc4bdc9"></a>
+<tr class="memitem:a8805276195933f9e2f78e6f51cfdc670"><td class="memTemplParams" colspan="2"><a id="a8805276195933f9e2f78e6f51cfdc670"></a>
 template&lt;class S &gt; </td></tr>
-<tr class="memitem:abf21c6440520b2e324c5946befc4bdc9"><td class="memTemplItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::make_State_op&lt; S &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::cpo::make_State</b> {}</td></tr>
-<tr class="separator:abf21c6440520b2e324c5946befc4bdc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a0cb2fac57b5309fcae3764c35e21f5"><td class="memItemLeft" align="right" valign="top"><a id="a0a0cb2fac57b5309fcae3764c35e21f5"></a>
-constexpr perfect_forwarded_t&lt; detail::run_State_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::run_State</b> {}</td></tr>
-<tr class="separator:a0a0cb2fac57b5309fcae3764c35e21f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7029a1a7336565ab211134f91192dc24"><td class="memItemLeft" align="right" valign="top"><a id="a7029a1a7336565ab211134f91192dc24"></a>
-constexpr perfect_forwarded_t&lt; detail::eval_State_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::eval_State</b> {}</td></tr>
-<tr class="separator:a7029a1a7336565ab211134f91192dc24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a7a99ca6c71c137d06e3e699448e147"><td class="memItemLeft" align="right" valign="top"><a id="a5a7a99ca6c71c137d06e3e699448e147"></a>
-constexpr perfect_forwarded_t&lt; detail::exec_State_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::exec_State</b> {}</td></tr>
-<tr class="separator:a5a7a99ca6c71c137d06e3e699448e147"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10588a74efa0b5a3f442ca995e15ee6e"><td class="memItemLeft" align="right" valign="top"><a id="a10588a74efa0b5a3f442ca995e15ee6e"></a>
-constexpr perfect_forwarded_t&lt; detail::map_State_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::map_State</b> {}</td></tr>
-<tr class="separator:a10588a74efa0b5a3f442ca995e15ee6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8805276195933f9e2f78e6f51cfdc670"><td class="memTemplItemLeft" align="right" valign="top">constexpr partially_applicable&lt; detail::make_State_op&lt; S &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::cpo::make_State</b> {}</td></tr>
+<tr class="separator:a8805276195933f9e2f78e6f51cfdc670"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a338e4a524b0701570870f22168238884"><td class="memItemLeft" align="right" valign="top"><a id="a338e4a524b0701570870f22168238884"></a>
+constexpr partially_applicable&lt; detail::run_State_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::run_State</b> {}</td></tr>
+<tr class="separator:a338e4a524b0701570870f22168238884"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dea6598655dbc001be1df17dd0ea66d"><td class="memItemLeft" align="right" valign="top"><a id="a2dea6598655dbc001be1df17dd0ea66d"></a>
+constexpr partially_applicable&lt; detail::eval_State_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::eval_State</b> {}</td></tr>
+<tr class="separator:a2dea6598655dbc001be1df17dd0ea66d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3805789c4f2d39d39b946d02d18b86ff"><td class="memItemLeft" align="right" valign="top"><a id="a3805789c4f2d39d39b946d02d18b86ff"></a>
+constexpr partially_applicable&lt; detail::exec_State_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::exec_State</b> {}</td></tr>
+<tr class="separator:a3805789c4f2d39d39b946d02d18b86ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8c5301b268d754cc5be27162b0b2ef8"><td class="memItemLeft" align="right" valign="top"><a id="ac8c5301b268d754cc5be27162b0b2ef8"></a>
+constexpr partially_applicable&lt; detail::map_State_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::map_State</b> {}</td></tr>
+<tr class="separator:ac8c5301b268d754cc5be27162b0b2ef8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8122e0d66788f63e3860505b08fb8a2"><td class="memItemLeft" align="right" valign="top"><a id="ad8122e0d66788f63e3860505b08fb8a2"></a>
 constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::with_State</b> = with_StateT</td></tr>
 <tr class="separator:ad8122e0d66788f63e3860505b08fb8a2"><td class="memSeparator" colspan="2">&#160;</td></tr>

@@ -106,24 +106,16 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1monads_1_1detail_1_1fmap__op.html">mpc::monads::detail::fmap_op</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">fmap :: (a -&gt; b) -&gt; f a -&gt; f b  <a href="structmpc_1_1monads_1_1detail_1_1fmap__op.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1monads_1_1detail_1_1fmap__op_1_1closure.html">mpc::monads::detail::fmap_op::closure&lt; Ma &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1monads_1_1detail_1_1seq__apply__op.html">mpc::monads::detail::seq_apply_op</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">seq_apply :: f (a -&gt; b) -&gt; f a -&gt; f b  <a href="structmpc_1_1monads_1_1detail_1_1seq__apply__op.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1monads_1_1detail_1_1seq__apply__op_1_1nested__closure.html">mpc::monads::detail::seq_apply_op::nested_closure&lt; Ma &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1monads_1_1detail_1_1seq__apply__op_1_1closure.html">mpc::monads::detail::seq_apply_op::closure</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1monads_1_1detail_1_1discard1st__op.html">mpc::monads::detail::discard1st_op</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">discard1st :: f a -&gt; f b -&gt; f b  <a href="structmpc_1_1monads_1_1detail_1_1discard1st__op.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1monads_1_1detail_1_1discard1st__op_1_1closure.html">mpc::monads::detail::discard1st_op::closure</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1karrow__op.html">mpc::detail::karrow_op</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">karrow :: Monad m =&gt; (a -&gt; m b) -&gt; (b -&gt; m c) -&gt; (a -&gt; m c)  <a href="structmpc_1_1detail_1_1karrow__op.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1karrow__op_1_1closure.html">mpc::detail::karrow_op::closure</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -149,18 +141,18 @@ template&lt;class M &gt; </td></tr>
 <tr class="memitem:add20785a4686151f865639fb70652712"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="monad_8hpp.html#add20785a4686151f865639fb70652712">mpc::monad</a> = applicative&lt;M&gt; and monad_traits_specialized&lt;M&gt;</td></tr>
 <tr class="memdesc:add20785a4686151f865639fb70652712"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requires applicative and bind is valid in <a class="el" href="structmpc_1_1monad__traits.html">monad_traits </a>. <br /></td></tr>
 <tr class="separator:add20785a4686151f865639fb70652712"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f7d9673b4e605d178aed591a6085b68"><td class="memItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::bind_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a4f7d9673b4e605d178aed591a6085b68">mpc::cpo::bind</a> {}</td></tr>
-<tr class="memdesc:a4f7d9673b4e605d178aed591a6085b68"><td class="mdescLeft">&#160;</td><td class="mdescRight">bind :: forall a b. m a -&gt; (a -&gt; m b) -&gt; m b  <a href="namespacempc_1_1cpo.html#a4f7d9673b4e605d178aed591a6085b68">More...</a><br /></td></tr>
-<tr class="separator:a4f7d9673b4e605d178aed591a6085b68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2a027d6723769cb6999cfb80e225dc2"><td class="memItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::fmap_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1monads.html#ac2a027d6723769cb6999cfb80e225dc2">mpc::monads::fmap</a> {}</td></tr>
-<tr class="memdesc:ac2a027d6723769cb6999cfb80e225dc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">fmap :: (a -&gt; b) -&gt; f a -&gt; f b  <a href="namespacempc_1_1monads.html#ac2a027d6723769cb6999cfb80e225dc2">More...</a><br /></td></tr>
-<tr class="separator:ac2a027d6723769cb6999cfb80e225dc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0d4a9b950bbe750796db48dbe4d29e0"><td class="memItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::seq_apply_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1monads.html#ac0d4a9b950bbe750796db48dbe4d29e0">mpc::monads::seq_apply</a> {}</td></tr>
-<tr class="memdesc:ac0d4a9b950bbe750796db48dbe4d29e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">seq_apply :: f (a -&gt; b) -&gt; f a -&gt; f b  <a href="namespacempc_1_1monads.html#ac0d4a9b950bbe750796db48dbe4d29e0">More...</a><br /></td></tr>
-<tr class="separator:ac0d4a9b950bbe750796db48dbe4d29e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac73c202417828e830b760d60a62ee3f4"><td class="memItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::discard1st_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1monads.html#ac73c202417828e830b760d60a62ee3f4">mpc::monads::discard1st</a> {}</td></tr>
-<tr class="memdesc:ac73c202417828e830b760d60a62ee3f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">discard1st :: f a -&gt; f b -&gt; f b  <a href="namespacempc_1_1monads.html#ac73c202417828e830b760d60a62ee3f4">More...</a><br /></td></tr>
-<tr class="separator:ac73c202417828e830b760d60a62ee3f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f31ba0116cf1ac796bebc195ca0e0dc"><td class="memItemLeft" align="right" valign="top">constexpr partially_applicable&lt; detail::bind_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a9f31ba0116cf1ac796bebc195ca0e0dc">mpc::cpo::bind</a> {}</td></tr>
+<tr class="memdesc:a9f31ba0116cf1ac796bebc195ca0e0dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">bind :: forall a b. m a -&gt; (a -&gt; m b) -&gt; m b  <a href="namespacempc_1_1cpo.html#a9f31ba0116cf1ac796bebc195ca0e0dc">More...</a><br /></td></tr>
+<tr class="separator:a9f31ba0116cf1ac796bebc195ca0e0dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97c78da53e2bfaf010295ea086b20b72"><td class="memItemLeft" align="right" valign="top">constexpr partially_applicable&lt; detail::fmap_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1monads.html#a97c78da53e2bfaf010295ea086b20b72">mpc::monads::fmap</a> {}</td></tr>
+<tr class="memdesc:a97c78da53e2bfaf010295ea086b20b72"><td class="mdescLeft">&#160;</td><td class="mdescRight">fmap :: (a -&gt; b) -&gt; f a -&gt; f b  <a href="namespacempc_1_1monads.html#a97c78da53e2bfaf010295ea086b20b72">More...</a><br /></td></tr>
+<tr class="separator:a97c78da53e2bfaf010295ea086b20b72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae62131845431137eec8227363d69297c"><td class="memItemLeft" align="right" valign="top">constexpr partially_applicable&lt; detail::seq_apply_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1monads.html#ae62131845431137eec8227363d69297c">mpc::monads::seq_apply</a> {}</td></tr>
+<tr class="memdesc:ae62131845431137eec8227363d69297c"><td class="mdescLeft">&#160;</td><td class="mdescRight">seq_apply :: f (a -&gt; b) -&gt; f a -&gt; f b  <a href="namespacempc_1_1monads.html#ae62131845431137eec8227363d69297c">More...</a><br /></td></tr>
+<tr class="separator:ae62131845431137eec8227363d69297c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f928c57d2d2afea9607cb710d2ec624"><td class="memItemLeft" align="right" valign="top">constexpr partially_applicable&lt; detail::discard1st_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1monads.html#a7f928c57d2d2afea9607cb710d2ec624">mpc::monads::discard1st</a> {}</td></tr>
+<tr class="memdesc:a7f928c57d2d2afea9607cb710d2ec624"><td class="mdescLeft">&#160;</td><td class="mdescRight">discard1st :: f a -&gt; f b -&gt; f b  <a href="namespacempc_1_1monads.html#a7f928c57d2d2afea9607cb710d2ec624">More...</a><br /></td></tr>
+<tr class="separator:a7f928c57d2d2afea9607cb710d2ec624"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60b7e31abb0e45f7c80649e4b895360c"><td class="memTemplParams" colspan="2">template&lt;class M &gt; </td></tr>
 <tr class="memitem:a60b7e31abb0e45f7c80649e4b895360c"><td class="memTemplItemLeft" align="right" valign="top">requires&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a60b7e31abb0e45f7c80649e4b895360c">mpc::cpo::requires</a></td></tr>
 <tr class="memdesc:a60b7e31abb0e45f7c80649e4b895360c"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns :: a -&gt; m a  <a href="namespacempc_1_1cpo.html#a60b7e31abb0e45f7c80649e4b895360c">More...</a><br /></td></tr>
@@ -168,9 +160,9 @@ template&lt;class M &gt; </td></tr>
 <tr class="memitem:ab9de0e35b45818e5b553454ee468693d"><td class="memItemLeft" align="right" valign="top"><a id="ab9de0e35b45818e5b553454ee468693d"></a>
 constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::returns</b> = mpc::pure&lt;M&gt;</td></tr>
 <tr class="separator:ab9de0e35b45818e5b553454ee468693d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6271ef4527a5bc2ee1d379bbc9bc7ea7"><td class="memItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::karrow_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a6271ef4527a5bc2ee1d379bbc9bc7ea7">mpc::cpo::karrow</a> {}</td></tr>
-<tr class="memdesc:a6271ef4527a5bc2ee1d379bbc9bc7ea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">karrow :: Monad m =&gt; (a -&gt; m b) -&gt; (b -&gt; m c) -&gt; (a -&gt; m c)  <a href="namespacempc_1_1cpo.html#a6271ef4527a5bc2ee1d379bbc9bc7ea7">More...</a><br /></td></tr>
-<tr class="separator:a6271ef4527a5bc2ee1d379bbc9bc7ea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a127b5dcfffcc0e6ca503b31e352ff6e9"><td class="memItemLeft" align="right" valign="top">constexpr partially_applicable&lt; detail::karrow_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a127b5dcfffcc0e6ca503b31e352ff6e9">mpc::cpo::karrow</a> {}</td></tr>
+<tr class="memdesc:a127b5dcfffcc0e6ca503b31e352ff6e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">karrow :: Monad m =&gt; (a -&gt; m b) -&gt; (b -&gt; m c) -&gt; (a -&gt; m c)  <a href="namespacempc_1_1cpo.html#a127b5dcfffcc0e6ca503b31e352ff6e9">More...</a><br /></td></tr>
+<tr class="separator:a127b5dcfffcc0e6ca503b31e352ff6e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Variable Documentation</h2>
 <a id="a883a39e8a842afefb4d4ae47145f8db9"></a>
@@ -187,10 +179,10 @@ template&lt;class M &gt; </div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="namespacempc_1_1cpo.html#a60b7e31abb0e45f7c80649e4b895360c">requires</a> {</div>
-<div class="line">    monad_traits&lt;std::remove_cvref_t&lt;M&gt;&gt;<a class="code" href="namespacempc_1_1cpo.html#a4f7d9673b4e605d178aed591a6085b68">::bind</a>;</div>
+<div class="line">    monad_traits&lt;std::remove_cvref_t&lt;M&gt;&gt;<a class="code" href="namespacempc_1_1cpo.html#a9f31ba0116cf1ac796bebc195ca0e0dc">::bind</a>;</div>
 <div class="line">  }</div>
-<div class="ttc" id="anamespacempc_1_1cpo_html_a4f7d9673b4e605d178aed591a6085b68"><div class="ttname"><a href="namespacempc_1_1cpo.html#a4f7d9673b4e605d178aed591a6085b68">mpc::cpo::bind</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::bind_op &gt; bind</div><div class="ttdoc">bind :: forall a b. m a -&gt; (a -&gt; m b) -&gt; m b</div><div class="ttdef"><b>Definition:</b> monad.hpp:44</div></div>
-<div class="ttc" id="anamespacempc_1_1cpo_html_a60b7e31abb0e45f7c80649e4b895360c"><div class="ttname"><a href="namespacempc_1_1cpo.html#a60b7e31abb0e45f7c80649e4b895360c">mpc::cpo::requires</a></div><div class="ttdeci">requires requires</div><div class="ttdoc">returns :: a -&gt; m a</div><div class="ttdef"><b>Definition:</b> monad.hpp:172</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a60b7e31abb0e45f7c80649e4b895360c"><div class="ttname"><a href="namespacempc_1_1cpo.html#a60b7e31abb0e45f7c80649e4b895360c">mpc::cpo::requires</a></div><div class="ttdeci">requires requires</div><div class="ttdoc">returns :: a -&gt; m a</div><div class="ttdef"><b>Definition:</b> monad.hpp:140</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a9f31ba0116cf1ac796bebc195ca0e0dc"><div class="ttname"><a href="namespacempc_1_1cpo.html#a9f31ba0116cf1ac796bebc195ca0e0dc">mpc::cpo::bind</a></div><div class="ttdeci">constexpr partially_applicable&lt; detail::bind_op &gt; bind</div><div class="ttdoc">bind :: forall a b. m a -&gt; (a -&gt; m b) -&gt; m b</div><div class="ttdef"><b>Definition:</b> monad.hpp:45</div></div>
 </div><!-- fragment -->
 <p>monad_traits_specialized </p>
 

@@ -116,11 +116,11 @@ Variables</h2></td></tr>
 <tr class="memitem:a86199f9fdcfc6f89d3ee43230aca433d"><td class="memTemplParams" colspan="2">template&lt;class TR &gt; </td></tr>
 <tr class="memitem:a86199f9fdcfc6f89d3ee43230aca433d"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::monad_trans</b></td></tr>
 <tr class="separator:a86199f9fdcfc6f89d3ee43230aca433d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad45bfb9b5ea969728f286c6fe2efdf28"><td class="memTemplParams" colspan="2"><a id="ad45bfb9b5ea969728f286c6fe2efdf28"></a>
+<tr class="memitem:a76ff5b556da810565018661fb0bbe031"><td class="memTemplParams" colspan="2"><a id="a76ff5b556da810565018661fb0bbe031"></a>
 template&lt;class TR &gt; </td></tr>
-<tr class="memitem:ad45bfb9b5ea969728f286c6fe2efdf28"><td class="memTemplItemLeft" align="right" valign="top">constexpr perfect_forwarded_t&lt; detail::lift_op&lt; TR &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#ad45bfb9b5ea969728f286c6fe2efdf28">mpc::cpo::lift</a> {}</td></tr>
-<tr class="memdesc:ad45bfb9b5ea969728f286c6fe2efdf28"><td class="mdescLeft">&#160;</td><td class="mdescRight">lift :: (Monad m) =&gt; m a -&gt; t m a <br /></td></tr>
-<tr class="separator:ad45bfb9b5ea969728f286c6fe2efdf28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76ff5b556da810565018661fb0bbe031"><td class="memTemplItemLeft" align="right" valign="top">constexpr partially_applicable&lt; detail::lift_op&lt; TR &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a76ff5b556da810565018661fb0bbe031">mpc::cpo::lift</a> {}</td></tr>
+<tr class="memdesc:a76ff5b556da810565018661fb0bbe031"><td class="mdescLeft">&#160;</td><td class="mdescRight">lift :: (Monad m) =&gt; m a -&gt; t m a <br /></td></tr>
+<tr class="separator:a76ff5b556da810565018661fb0bbe031"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Variable Documentation</h2>
 <a id="a86199f9fdcfc6f89d3ee43230aca433d"></a>
@@ -137,10 +137,10 @@ template&lt;class TR &gt; </div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="namespacempc_1_1cpo.html#a60b7e31abb0e45f7c80649e4b895360c">requires</a> {</div>
-<div class="line">    monad_trans_traits&lt;std::remove_cvref_t&lt;TR&gt;&gt;<a class="code" href="namespacempc_1_1cpo.html#ad45bfb9b5ea969728f286c6fe2efdf28">::lift</a>;</div>
+<div class="line">    monad_trans_traits&lt;std::remove_cvref_t&lt;TR&gt;&gt;<a class="code" href="namespacempc_1_1cpo.html#a76ff5b556da810565018661fb0bbe031">::lift</a>;</div>
 <div class="line">  }</div>
-<div class="ttc" id="anamespacempc_1_1cpo_html_a60b7e31abb0e45f7c80649e4b895360c"><div class="ttname"><a href="namespacempc_1_1cpo.html#a60b7e31abb0e45f7c80649e4b895360c">mpc::cpo::requires</a></div><div class="ttdeci">requires requires</div><div class="ttdoc">returns :: a -&gt; m a</div><div class="ttdef"><b>Definition:</b> monad.hpp:172</div></div>
-<div class="ttc" id="anamespacempc_1_1cpo_html_ad45bfb9b5ea969728f286c6fe2efdf28"><div class="ttname"><a href="namespacempc_1_1cpo.html#ad45bfb9b5ea969728f286c6fe2efdf28">mpc::cpo::lift</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::lift_op&lt; TR &gt; &gt; lift</div><div class="ttdoc">lift :: (Monad m) =&gt; m a -&gt; t m a</div><div class="ttdef"><b>Definition:</b> class.hpp:35</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a60b7e31abb0e45f7c80649e4b895360c"><div class="ttname"><a href="namespacempc_1_1cpo.html#a60b7e31abb0e45f7c80649e4b895360c">mpc::cpo::requires</a></div><div class="ttdeci">requires requires</div><div class="ttdoc">returns :: a -&gt; m a</div><div class="ttdef"><b>Definition:</b> monad.hpp:140</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a76ff5b556da810565018661fb0bbe031"><div class="ttname"><a href="namespacempc_1_1cpo.html#a76ff5b556da810565018661fb0bbe031">mpc::cpo::lift</a></div><div class="ttdeci">constexpr partially_applicable&lt; detail::lift_op&lt; TR &gt; &gt; lift</div><div class="ttdoc">lift :: (Monad m) =&gt; m a -&gt; t m a</div><div class="ttdef"><b>Definition:</b> class.hpp:35</div></div>
 </div><!-- fragment -->
 </div>
 </div>

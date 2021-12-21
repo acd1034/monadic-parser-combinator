@@ -85,7 +85,6 @@ $(document).ready(function(){initNavTree('structmpc_1_1monads_1_1detail_1_1disca
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="structmpc_1_1monads_1_1detail_1_1discard1st__op-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -98,23 +97,19 @@ $(document).ready(function(){initNavTree('structmpc_1_1monads_1_1detail_1_1disca
 
 <p><code>#include &lt;<a class="el" href="monad_8hpp_source.html">monad.hpp</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1monads_1_1detail_1_1discard1st__op_1_1closure.html">closure</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:acff226e5c5556f232dbf11f91cfba3ce"><td class="memTemplParams" colspan="2"><a id="acff226e5c5556f232dbf11f91cfba3ce"></a>
+<tr class="memitem:a0e1e9a8f678ef13c963e321883c73ff6"><td class="memTemplParams" colspan="2"><a id="a0e1e9a8f678ef13c963e321883c73ff6"></a>
 template&lt;class Ma , class Mb &gt; </td></tr>
-<tr class="memitem:acff226e5c5556f232dbf11f91cfba3ce"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator()</b> (Ma &amp;&amp;ma, Mb &amp;&amp;mb) const noexcept(noexcept(mpc::bind(std::forward&lt; Ma &gt;(ma), <a class="el" href="structmpc_1_1perfect__forwarded__t.html">perfect_forwarded_t</a>&lt; <a class="el" href="structmpc_1_1monads_1_1detail_1_1discard1st__op_1_1closure.html">closure</a> &gt;{}(std::forward&lt; Mb &gt;(mb))))) -&gt; decltype(mpc::bind(std::forward&lt; Ma &gt;(ma), <a class="el" href="structmpc_1_1perfect__forwarded__t.html">perfect_forwarded_t</a>&lt; <a class="el" href="structmpc_1_1monads_1_1detail_1_1discard1st__op_1_1closure.html">closure</a> &gt;{}(std::forward&lt; Mb &gt;(mb))))</td></tr>
-<tr class="separator:acff226e5c5556f232dbf11f91cfba3ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e1e9a8f678ef13c963e321883c73ff6"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator()</b> (Ma &amp;&amp;ma, Mb &amp;&amp;mb) const noexcept(noexcept(mpc::bind(std::forward&lt; Ma &gt;(ma), constant % std::forward&lt; Mb &gt;(mb)))) -&gt; decltype(mpc::bind(std::forward&lt; Ma &gt;(ma), constant % std::forward&lt; Mb &gt;(mb)))</td></tr>
+<tr class="separator:a0e1e9a8f678ef13c963e321883c73ff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>discard1st :: f a -&gt; f b -&gt; f b </p>
-<p>(*&gt;) in Haskell </p><div class="fragment"><div class="line"><a class="code" href="namespacempc_1_1monads.html#ac73c202417828e830b760d60a62ee3f4">discard1st</a> m1 m2 = <a class="code" href="namespacempc_1_1cpo.html#a4f7d9673b4e605d178aed591a6085b68">bind</a> m1 (<span class="keyword">const</span> m2)</div>
-<div class="ttc" id="anamespacempc_1_1cpo_html_a4f7d9673b4e605d178aed591a6085b68"><div class="ttname"><a href="namespacempc_1_1cpo.html#a4f7d9673b4e605d178aed591a6085b68">mpc::cpo::bind</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::bind_op &gt; bind</div><div class="ttdoc">bind :: forall a b. m a -&gt; (a -&gt; m b) -&gt; m b</div><div class="ttdef"><b>Definition:</b> monad.hpp:44</div></div>
-<div class="ttc" id="anamespacempc_1_1monads_html_ac73c202417828e830b760d60a62ee3f4"><div class="ttname"><a href="namespacempc_1_1monads.html#ac73c202417828e830b760d60a62ee3f4">mpc::monads::discard1st</a></div><div class="ttdeci">constexpr perfect_forwarded_t&lt; detail::discard1st_op &gt; discard1st</div><div class="ttdoc">discard1st :: f a -&gt; f b -&gt; f b</div><div class="ttdef"><b>Definition:</b> monad.hpp:134</div></div>
+<p>(*&gt;) in Haskell </p><div class="fragment"><div class="line"><a class="code" href="namespacempc_1_1monads.html#a7f928c57d2d2afea9607cb710d2ec624">discard1st</a> m1 m2 = m1 `<a class="code" href="namespacempc_1_1cpo.html#a9f31ba0116cf1ac796bebc195ca0e0dc">bind</a>` (<a class="code" href="namespacempc_1_1cpo.html#afee448c356aceb3970f0a619f1c7e444">constant</a> m2)</div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a9f31ba0116cf1ac796bebc195ca0e0dc"><div class="ttname"><a href="namespacempc_1_1cpo.html#a9f31ba0116cf1ac796bebc195ca0e0dc">mpc::cpo::bind</a></div><div class="ttdeci">constexpr partially_applicable&lt; detail::bind_op &gt; bind</div><div class="ttdoc">bind :: forall a b. m a -&gt; (a -&gt; m b) -&gt; m b</div><div class="ttdef"><b>Definition:</b> monad.hpp:45</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_afee448c356aceb3970f0a619f1c7e444"><div class="ttname"><a href="namespacempc_1_1cpo.html#afee448c356aceb3970f0a619f1c7e444">mpc::cpo::constant</a></div><div class="ttdeci">constexpr partially_applicable&lt; detail::constant_op &gt; constant</div><div class="ttdoc">Returns a unary function always returning the first input.</div><div class="ttdef"><b>Definition:</b> constant.hpp:22</div></div>
+<div class="ttc" id="anamespacempc_1_1monads_html_a7f928c57d2d2afea9607cb710d2ec624"><div class="ttname"><a href="namespacempc_1_1monads.html#a7f928c57d2d2afea9607cb710d2ec624">mpc::monads::discard1st</a></div><div class="ttdeci">constexpr partially_applicable&lt; detail::discard1st_op &gt; discard1st</div><div class="ttdoc">discard1st :: f a -&gt; f b -&gt; f b</div><div class="ttdef"><b>Definition:</b> monad.hpp:109</div></div>
 </div><!-- fragment --> </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/mpc/control/<a class="el" href="monad_8hpp_source.html">monad.hpp</a></li>
 </ul>

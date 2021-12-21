@@ -94,10 +94,10 @@ $(document).ready(function(){initNavTree('structmpc_1_1monad__traits_3_01_state_
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab4c45c095b142116ce5186d27c7f2cf3"><td class="memTemplParams" colspan="2"><a id="ab4c45c095b142116ce5186d27c7f2cf3"></a>
+<tr class="memitem:a316a8c064447c2ea47ea32a61902438b"><td class="memTemplParams" colspan="2"><a id="a316a8c064447c2ea47ea32a61902438b"></a>
 template&lt;is_StateT ST, class Fn , class T &gt; </td></tr>
-<tr class="memitem:ab4c45c095b142116ce5186d27c7f2cf3"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator()</b> (ST &amp;&amp;x, Fn &amp;&amp;f, T &amp;&amp;t) const noexcept(noexcept(mpc::bind(run_StateT % std::forward&lt; ST &gt;(x) % std::forward&lt; T &gt;(t), <a class="el" href="structmpc_1_1perfect__forwarded__t.html">perfect_forwarded_t</a>&lt; nested_closure &gt;{}(std::forward&lt; Fn &gt;(f))))) -&gt; decltype(mpc::bind(run_StateT % std::forward&lt; ST &gt;(x) % std::forward&lt; T &gt;(t), <a class="el" href="structmpc_1_1perfect__forwarded__t.html">perfect_forwarded_t</a>&lt; nested_closure &gt;{}(std::forward&lt; Fn &gt;(f))))</td></tr>
-<tr class="separator:ab4c45c095b142116ce5186d27c7f2cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a316a8c064447c2ea47ea32a61902438b"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator()</b> (ST &amp;&amp;x, Fn &amp;&amp;f, T &amp;&amp;t) const noexcept(noexcept(mpc::bind(run_StateT % std::forward&lt; ST &gt;(x) % std::forward&lt; T &gt;(t), <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>(nested_closure{}, std::forward&lt; Fn &gt;(f))))) -&gt; decltype(mpc::bind(run_StateT % std::forward&lt; ST &gt;(x) % std::forward&lt; T &gt;(t), <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>(nested_closure{}, std::forward&lt; Fn &gt;(f))))</td></tr>
+<tr class="separator:a316a8c064447c2ea47ea32a61902438b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/mpc/control/state/<a class="el" href="state_t_8hpp_source.html">stateT.hpp</a></li>

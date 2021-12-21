@@ -99,16 +99,19 @@ $(document).ready(function(){initNavTree('structmpc_1_1applicatives_1_1detail_1_
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a43c8a950d0a6cc02f4b32bf7106d6746"><td class="memTemplParams" colspan="2"><a id="a43c8a950d0a6cc02f4b32bf7106d6746"></a>
+<tr class="memitem:ae80b83e0364c341e3468a0398126e453"><td class="memTemplParams" colspan="2"><a id="ae80b83e0364c341e3468a0398126e453"></a>
 template&lt;class Fa , class Fb &gt; </td></tr>
-<tr class="memitem:a43c8a950d0a6cc02f4b32bf7106d6746"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator()</b> (Fa &amp;&amp;fa, Fb &amp;&amp;fb) const noexcept(noexcept(mpc::seq_apply(mpc::replace2nd(id, std::forward&lt; Fa &gt;(fa)), std::forward&lt; Fb &gt;(fb)))) -&gt; decltype(mpc::seq_apply(mpc::replace2nd(id, std::forward&lt; Fa &gt;(fa)), std::forward&lt; Fb &gt;(fb)))</td></tr>
-<tr class="separator:a43c8a950d0a6cc02f4b32bf7106d6746"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae80b83e0364c341e3468a0398126e453"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator()</b> (Fa &amp;&amp;fa, Fb &amp;&amp;fb) const noexcept(noexcept(mpc::seq_apply(mpc::replace2nd(identity, std::forward&lt; Fa &gt;(fa)), std::forward&lt; Fb &gt;(fb)))) -&gt; decltype(mpc::seq_apply(mpc::replace2nd(identity, std::forward&lt; Fa &gt;(fa)), std::forward&lt; Fb &gt;(fb)))</td></tr>
+<tr class="separator:ae80b83e0364c341e3468a0398126e453"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>discard1st :: f a -&gt; f b -&gt; f b </p>
 <p>(*&gt;) in Haskell</p>
-<div class="fragment"><div class="line"><a class="code" href="namespacempc_1_1applicatives.html#a20ab3362e0feca9c3ea8b04ec4c07dce">discard1st</a> x y = (id &lt;$ x) &lt;*&gt; y</div>
-<div class="ttc" id="anamespacempc_1_1applicatives_html_a20ab3362e0feca9c3ea8b04ec4c07dce"><div class="ttname"><a href="namespacempc_1_1applicatives.html#a20ab3362e0feca9c3ea8b04ec4c07dce">mpc::applicatives::discard1st</a></div><div class="ttdeci">constexpr auto discard1st</div><div class="ttdoc">discard1st :: f a -&gt; f b -&gt; f b</div><div class="ttdef"><b>Definition:</b> applicative.hpp:190</div></div>
+<div class="fragment"><div class="line"><a class="code" href="namespacempc_1_1applicatives.html#a20ab3362e0feca9c3ea8b04ec4c07dce">discard1st</a> x y = <a class="code" href="namespacempc_1_1cpo.html#a2e39fa25f902e5bcdea6ec5ba5411c5c">identity</a> `<a class="code" href="namespacempc_1_1cpo.html#a6dc14de2a9f4b8879562ce2f6dbf9dd5">replace2nd</a>` x `<a class="code" href="namespacempc_1_1applicatives.html#a610d2f0ab88ea69a8ebecbb920164f06">seq_apply</a>` y</div>
+<div class="ttc" id="anamespacempc_1_1applicatives_html_a20ab3362e0feca9c3ea8b04ec4c07dce"><div class="ttname"><a href="namespacempc_1_1applicatives.html#a20ab3362e0feca9c3ea8b04ec4c07dce">mpc::applicatives::discard1st</a></div><div class="ttdeci">constexpr auto discard1st</div><div class="ttdoc">discard1st :: f a -&gt; f b -&gt; f b</div><div class="ttdef"><b>Definition:</b> applicative.hpp:191</div></div>
+<div class="ttc" id="anamespacempc_1_1applicatives_html_a610d2f0ab88ea69a8ebecbb920164f06"><div class="ttname"><a href="namespacempc_1_1applicatives.html#a610d2f0ab88ea69a8ebecbb920164f06">mpc::applicatives::seq_apply</a></div><div class="ttdeci">constexpr auto seq_apply</div><div class="ttdoc">seq_apply :: f (a -&gt; b) -&gt; f a -&gt; f b</div><div class="ttdef"><b>Definition:</b> applicative.hpp:170</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a2e39fa25f902e5bcdea6ec5ba5411c5c"><div class="ttname"><a href="namespacempc_1_1cpo.html#a2e39fa25f902e5bcdea6ec5ba5411c5c">mpc::cpo::identity</a></div><div class="ttdeci">constexpr partially_applicable&lt; std::identity &gt; identity</div><div class="ttdoc">Identity mapping.</div><div class="ttdef"><b>Definition:</b> identity.hpp:12</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a6dc14de2a9f4b8879562ce2f6dbf9dd5"><div class="ttname"><a href="namespacempc_1_1cpo.html#a6dc14de2a9f4b8879562ce2f6dbf9dd5">mpc::cpo::replace2nd</a></div><div class="ttdeci">constexpr partially_applicable&lt; detail::replace2nd_op &gt; replace2nd</div><div class="ttdoc">replace2nd :: a -&gt; f b -&gt; f a</div><div class="ttdef"><b>Definition:</b> functor.hpp:53</div></div>
 </div><!-- fragment --> </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/mpc/control/<a class="el" href="applicative_8hpp_source.html">applicative.hpp</a></li>
 </ul>

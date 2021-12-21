@@ -26,15 +26,12 @@ var hierarchy =
     [ "mpc::detail::compose_op::closure", "structmpc_1_1detail_1_1compose__op_1_1closure.html", null ],
     [ "mpc::detail::flip_op::closure", "structmpc_1_1detail_1_1flip__op_1_1closure.html", null ],
     [ "mpc::detail::getss_op< ST >::closure", "structmpc_1_1detail_1_1getss__op_1_1closure.html", null ],
-    [ "mpc::detail::karrow_op::closure", "structmpc_1_1detail_1_1karrow__op_1_1closure.html", null ],
     [ "mpc::detail::modify_op< ST >::closure", "structmpc_1_1detail_1_1modify__op_1_1closure.html", null ],
     [ "mpc::detail::StateT_alternative_traits_combine< ST >::combine_op::closure", "structmpc_1_1detail_1_1_state_t__alternative__traits__combine_3_01_s_t_01_4_1_1combine__op_1_1closure.html", null ],
     [ "mpc::detail::StateT_alternative_traits_empty< ST >::empty_op::closure", "structmpc_1_1detail_1_1_state_t__alternative__traits__empty_3_01_s_t_01_4_1_1empty__op_1_1closure.html", null ],
     [ "mpc::functor_traits< StateT< S, M > >::fmap_op::closure", "structmpc_1_1functor__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4_1_1fmap__op_1_1closure.html", null ],
     [ "mpc::monad_traits< StateT< S, M > >::bind_op::closure", "structmpc_1_1monad__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4_1_1bind__op_1_1closure.html", null ],
     [ "mpc::monad_trans_traits< StateT< S, M > >::lift_op::closure", "structmpc_1_1monad__trans__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4_1_1lift__op_1_1closure.html", null ],
-    [ "mpc::monads::detail::discard1st_op::closure", "structmpc_1_1monads_1_1detail_1_1discard1st__op_1_1closure.html", null ],
-    [ "mpc::monads::detail::fmap_op::closure< Ma >", "structmpc_1_1monads_1_1detail_1_1fmap__op_1_1closure.html", null ],
     [ "mpc::monads::detail::seq_apply_op::closure", "structmpc_1_1monads_1_1detail_1_1seq__apply__op_1_1closure.html", null ],
     [ "mpc::states::detail::gets_op< ST >::closure", "structmpc_1_1states_1_1detail_1_1gets__op_1_1closure.html", null ],
     [ "mpc::states::detail::put_op< ST >::closure", "structmpc_1_1states_1_1detail_1_1put__op_1_1closure.html", null ],
@@ -92,7 +89,7 @@ var hierarchy =
     [ "mpc::states::detail::gets_op< ST >", "structmpc_1_1states_1_1detail_1_1gets__op.html", null ],
     [ "mpc::detail::getss_op< ST >", "structmpc_1_1detail_1_1getss__op.html", null ],
     [ "mpc::Identity< T >", "structmpc_1_1_identity.html", null ],
-    [ "mpc::Identity< perfect_forwarded_t< std::function< M(S)> > >", "structmpc_1_1_identity.html", [
+    [ "mpc::Identity< partially_applicable< std::function< M(S)> > >", "structmpc_1_1_identity.html", [
       [ "mpc::StateT< S, M >", "structmpc_1_1_state_t.html", null ]
     ] ],
     [ "mpc::index_constant", null, [
@@ -137,12 +134,12 @@ var hierarchy =
     [ "mpc::functor_traits< StateT< S, M > >::fmap_op::nested_closure", "structmpc_1_1functor__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4_1_1fmap__op_1_1nested__closure.html", null ],
     [ "mpc::monad_traits< StateT< S, M > >::bind_op::nested_closure", "structmpc_1_1monad__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4_1_1bind__op_1_1nested__closure.html", null ],
     [ "mpc::monad_trans_traits< StateT< S, M > >::lift_op::nested_closure", "structmpc_1_1monad__trans__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4_1_1lift__op_1_1nested__closure.html", null ],
-    [ "mpc::monads::detail::seq_apply_op::nested_closure< Ma >", "structmpc_1_1monads_1_1detail_1_1seq__apply__op_1_1nested__closure.html", null ],
     [ "mpc::nothing_t", "structmpc_1_1nothing__t.html", null ],
-    [ "mpc::perfect_forward_impl< class, class,... >", "structmpc_1_1perfect__forward__impl.html", [
+    [ "mpc::detail::perfect_forward_impl< class, class,... >", "structmpc_1_1detail_1_1perfect__forward__impl.html", [
+      [ "mpc::partially_applicable< Op, Args >", "structmpc_1_1partially__applicable.html", null ],
       [ "mpc::perfect_forwarded_t< Op, Args >", "structmpc_1_1perfect__forwarded__t.html", null ]
     ] ],
-    [ "mpc::perfect_forward_impl< Op, std::index_sequence< Idx... >, Bound... >", "structmpc_1_1perfect__forward__impl_3_01_op_00_01std_1_1index__sequence_3_01_idx_8_8_8_01_4_00_01_bound_8_8_8_01_4.html", null ],
+    [ "mpc::detail::perfect_forward_impl< Op, std::index_sequence< Idx... >, Bound... >", "structmpc_1_1detail_1_1perfect__forward__impl_3_01_op_00_01std_1_1index__sequence_3_01_idx_8_8_8_01_4_00_01_bound_8_8_8_01_4.html", null ],
     [ "mpc::applicative_traits< either< T1, T2 > >::pure_op", "structmpc_1_1applicative__traits_3_01either_3_01_t1_00_01_t2_01_4_01_4_1_1pure__op.html", null ],
     [ "mpc::applicative_traits< maybe< T1 > >::pure_op", "structmpc_1_1applicative__traits_3_01maybe_3_01_t1_01_4_01_4_1_1pure__op.html", null ],
     [ "mpc::applicative_traits< StateT< S, M > >::pure_op", "structmpc_1_1applicative__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4_1_1pure__op.html", null ],
