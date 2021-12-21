@@ -131,7 +131,6 @@ var annotated_dup =
       [ "monad_traits< maybe< T1 > >", "structmpc_1_1monad__traits_3_01maybe_3_01_t1_01_4_01_4.html", "structmpc_1_1monad__traits_3_01maybe_3_01_t1_01_4_01_4" ],
       [ "applicative_traits< maybe< T1 > >", "structmpc_1_1applicative__traits_3_01maybe_3_01_t1_01_4_01_4.html", "structmpc_1_1applicative__traits_3_01maybe_3_01_t1_01_4_01_4" ],
       [ "alternative_traits< maybe< T1 > >", "structmpc_1_1alternative__traits_3_01maybe_3_01_t1_01_4_01_4.html", "structmpc_1_1alternative__traits_3_01maybe_3_01_t1_01_4_01_4" ],
-      [ "perfect_forwarded_t", "structmpc_1_1perfect__forwarded__t.html", null ],
       [ "partially_applicable", "structmpc_1_1partially__applicable.html", null ],
       [ "copyable_box", "classmpc_1_1copyable__box.html", "classmpc_1_1copyable__box" ],
       [ "copyable_box< T >", "classmpc_1_1copyable__box_3_01_t_01_4.html", "classmpc_1_1copyable__box_3_01_t_01_4" ],
