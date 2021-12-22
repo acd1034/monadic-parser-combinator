@@ -22,6 +22,10 @@ template <mpc::is_StateT ST2>
 using StateT_value_in_monad_t =
   decltype(mpc::fmap(mpc::fst, std::declval<mpc::StateT_monad_t<ST2>>()));
 
+template <mpc::functor F, class V>
+using inject_value_in_functor_t =
+  decltype(mpc::replace2nd(std::declval<V>(), std::declval<F>()));
+
 template <class charT, class traits>
 inline constexpr auto decomp(std::basic_string_view<charT, traits> sv) {
   return std::make_pair(sv.front(), sv.substr(1));
@@ -43,14 +47,14 @@ struct mpc::alternative_traits<mpc::either<std::string, T>> {
   };
 };
 
-inline constexpr auto parseTest = mpc::partially_applicable([](const auto& st, SV sv) -> void {
+inline constexpr auto parseTest = [](const auto& st, SV sv) -> void {
   const auto result = mpc::eval_StateT % st % sv;
   if (result.index() == 0) {
     std::cout << mpc::quoted(sv) << ' ' << *std::get<0>(result) << std::endl;
   } else {
     std::cout << *std::get<1>(result) << std::endl;
   }
-});
+};
 
 inline constexpr auto satisfy =
   mpc::partially_applicable([]<class Pred>(Pred && pred) requires std::predicate<Pred, char> {
