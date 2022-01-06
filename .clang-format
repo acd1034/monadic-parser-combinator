@@ -13,6 +13,7 @@ BreakBeforeBinaryOperators: NonAssignment
 BreakConstructorInitializers: BeforeColon
 ConstructorInitializerIndentWidth: 2
 FixNamespaceComments: true
+IndentExternBlockStyle: Indent
 NamespaceIndentation: All
 PointerAlignment: Left
 
@@ -20,8 +21,8 @@ PointerAlignment: Left
 AllowShortCaseLabelsOnASingleLine: true
 # AllowShortEnumsOnASingleLine: true
 AllowShortLoopsOnASingleLine: true
-# Never, Empty, Always
 
+# Never, Empty, Always
 # AllowShortBlocksOnASingleLine:
 # None, InlineOnly, Empty, Inline, All
 AllowShortFunctionsOnASingleLine: Empty
