@@ -13,7 +13,6 @@ BreakBeforeBinaryOperators: NonAssignment
 BreakConstructorInitializers: BeforeColon
 ConstructorInitializerIndentWidth: 2
 FixNamespaceComments: true
-IndentExternBlockStyle: Indent
 NamespaceIndentation: All
 PointerAlignment: Left
 
