@@ -47,7 +47,6 @@ var hierarchy =
     [ "mpc::detail::copy_reference< From, To >", "structmpc_1_1detail_1_1copy__reference.html", null ],
     [ "mpc::detail::copy_volatile< From, To >", "structmpc_1_1detail_1_1copy__volatile.html", null ],
     [ "mpc::copyable_box< T >", "classmpc_1_1copyable__box.html", null ],
-    [ "mpc::copyable_box< Op >", "classmpc_1_1copyable__box.html", null ],
     [ "mpc::copyable_box< T >", "classmpc_1_1copyable__box_3_01_t_01_4.html", null ],
     [ "mpc::detail::discard1st_op", "structmpc_1_1detail_1_1discard1st__op.html", null ],
     [ "mpc::monads::detail::discard1st_op", "structmpc_1_1monads_1_1detail_1_1discard1st__op.html", null ],
@@ -116,6 +115,7 @@ var hierarchy =
     [ "mpc::applicatives::detail::liftA2_op", "structmpc_1_1applicatives_1_1detail_1_1lift_a2__op.html", null ],
     [ "mpc::detail::liftA2_op", "structmpc_1_1detail_1_1lift_a2__op.html", null ],
     [ "mpc::detail::liftA_op< N, class >", "structmpc_1_1detail_1_1lift_a__op.html", null ],
+    [ "mpc::detail::liftA_op< N, std::index_sequence< Idx... > >", "structmpc_1_1detail_1_1lift_a__op_3_01_n_00_01std_1_1index__sequence_3_01_idx_8_8_8_01_4_01_4.html", null ],
     [ "mpc::detail::make_Identity_op", "structmpc_1_1detail_1_1make___identity__op.html", null ],
     [ "mpc::detail::make_State_op< S >", "structmpc_1_1detail_1_1make___state__op.html", null ],
     [ "mpc::detail::make_StateT_op< S >", "structmpc_1_1detail_1_1make___state_t__op.html", null ],
@@ -179,6 +179,7 @@ var hierarchy =
       [ "mpc::detail::is_explicitly_convertible< From, To, std::void_t< decltype(To(std::declval< From >()))> >", "structmpc_1_1detail_1_1is__explicitly__convertible_3_01_from_00_01_to_00_01std_1_1void__t_3_01de197c3b97c2eac05717436200a7778100.html", null ],
       [ "mpc::detail::is_maybe_impl< maybe< T > >", "structmpc_1_1detail_1_1is__maybe__impl_3_01maybe_3_01_t_01_4_01_4.html", null ]
     ] ],
+    [ "std::tuple_element< Idx, mpc::single< T, Tag > >", "structstd_1_1tuple__element_3_01_idx_00_01mpc_1_1single_3_01_t_00_01_tag_01_4_01_4.html", null ],
     [ "mpc::detail::with_StateT_op", "structmpc_1_1detail_1_1with___state_t__op.html", null ],
     [ "mpc::Ts", null, [
       [ "mpc::overloaded< Ts >", "structmpc_1_1overloaded.html", null ]

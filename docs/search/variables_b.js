@@ -1,10 +1,7 @@
 var searchData=
 [
-  ['less_489',['less',['../namespacempc_1_1cpo.html#acd88bf101c37d05a004191658eb5c0dc',1,'mpc::less()'],['../namespacempc_1_1cpo.html#acd88bf101c37d05a004191658eb5c0dc',1,'mpc::cpo::less()']]],
-  ['less_5fequal_490',['less_equal',['../namespacempc_1_1cpo.html#a91bbd57a786f97cc626f6c14fc9fcc4f',1,'mpc::less_equal()'],['../namespacempc_1_1cpo.html#a91bbd57a786f97cc626f6c14fc9fcc4f',1,'mpc::cpo::less_equal()']]],
-  ['lift_491',['lift',['../namespacempc_1_1cpo.html#a76ff5b556da810565018661fb0bbe031',1,'mpc::lift()'],['../namespacempc_1_1cpo.html#a76ff5b556da810565018661fb0bbe031',1,'mpc::cpo::lift()']]],
-  ['lifta2_492',['liftA2',['../namespacempc_1_1cpo.html#a5186a2a3226bbca445c15e1d90c3b351',1,'mpc::liftA2()'],['../namespacempc_1_1cpo.html#a5186a2a3226bbca445c15e1d90c3b351',1,'mpc::cpo::liftA2()'],['../namespacempc_1_1applicatives.html#ad2310ad510c50379966867a6af72755e',1,'mpc::applicatives::liftA2()']]],
-  ['logical_5fand_493',['logical_and',['../namespacempc_1_1cpo.html#aae23b11dbc0794292c86930492bfd65b',1,'mpc::logical_and()'],['../namespacempc_1_1cpo.html#aae23b11dbc0794292c86930492bfd65b',1,'mpc::cpo::logical_and()']]],
-  ['logical_5fnot_494',['logical_not',['../namespacempc_1_1cpo.html#a2dc5ec632902c0dd0f57d6b1523a8461',1,'mpc::logical_not()'],['../namespacempc_1_1cpo.html#a2dc5ec632902c0dd0f57d6b1523a8461',1,'mpc::cpo::logical_not()']]],
-  ['logical_5for_495',['logical_or',['../namespacempc_1_1cpo.html#ad59db74d94690866ff217c32c6dafd18',1,'mpc::logical_or()'],['../namespacempc_1_1cpo.html#ad59db74d94690866ff217c32c6dafd18',1,'mpc::cpo::logical_or()']]]
+  ['minus_0',['minus',['../namespacempc_1_1cpo.html#a16f5f8c9731c43a6054d0ffec9198b1a',1,'mpc::minus()'],['../namespacempc_1_1cpo.html#a16f5f8c9731c43a6054d0ffec9198b1a',1,'mpc::cpo::minus()']]],
+  ['modify_1',['modify',['../namespacempc_1_1cpo.html#a12c33aac5fa434e0fd36fd14006b7650',1,'mpc::modify()'],['../namespacempc_1_1cpo.html#a12c33aac5fa434e0fd36fd14006b7650',1,'mpc::cpo::modify()']]],
+  ['modulus_2',['modulus',['../namespacempc_1_1cpo.html#a4d39f6cb6bbe9e7dab5dd908ccff302d',1,'mpc::modulus()'],['../namespacempc_1_1cpo.html#a4d39f6cb6bbe9e7dab5dd908ccff302d',1,'mpc::cpo::modulus()']]],
+  ['multiplies_3',['multiplies',['../namespacempc_1_1cpo.html#a82d7216e455aed881b7df94c664808d1',1,'mpc::multiplies()'],['../namespacempc_1_1cpo.html#a82d7216e455aed881b7df94c664808d1',1,'mpc::cpo::multiplies()']]]
 ];

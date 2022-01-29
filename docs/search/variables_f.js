@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['replace1st_507',['replace1st',['../namespacempc_1_1cpo.html#acb013568ac918cba3600456074cb02f8',1,'mpc::replace1st()'],['../namespacempc_1_1cpo.html#acb013568ac918cba3600456074cb02f8',1,'mpc::cpo::replace1st()']]],
-  ['replace2nd_508',['replace2nd',['../namespacempc_1_1cpo.html#a6dc14de2a9f4b8879562ce2f6dbf9dd5',1,'mpc::replace2nd()'],['../namespacempc_1_1cpo.html#a6dc14de2a9f4b8879562ce2f6dbf9dd5',1,'mpc::cpo::replace2nd()'],['../namespacempc_1_1functors.html#a9f6f060bce652dddfbd1429f63fff069',1,'mpc::functors::replace2nd()']]],
-  ['requires_509',['requires',['../namespacempc_1_1cpo.html#a60b7e31abb0e45f7c80649e4b895360c',1,'mpc::requires()'],['../namespacempc_1_1cpo.html#a60b7e31abb0e45f7c80649e4b895360c',1,'mpc::cpo::requires()'],['../state_2class_8hpp.html#a1cb1771b23736ce721b6540a50bc3dbe',1,'mpc::states::requires()'],['../alternative__value__t_8hpp.html#ae57c35f5e23acb52afad9b58576f2b0c',1,'mpc::requires()']]]
+  ['seq_5fapply_0',['seq_apply',['../namespacempc_1_1cpo.html#a04df8104b2d516b92f3203352f3920f0',1,'mpc::seq_apply()'],['../namespacempc_1_1cpo.html#a04df8104b2d516b92f3203352f3920f0',1,'mpc::cpo::seq_apply()'],['../namespacempc_1_1applicatives.html#a610d2f0ab88ea69a8ebecbb920164f06',1,'mpc::applicatives::seq_apply()'],['../namespacempc_1_1monads.html#ae62131845431137eec8227363d69297c',1,'mpc::monads::seq_apply()']]],
+  ['snd_1',['snd',['../namespacempc_1_1cpo.html#a48ecb56dfb9ee26bc8f0cf0fc2718dd9',1,'mpc::snd()'],['../namespacempc_1_1cpo.html#a48ecb56dfb9ee26bc8f0cf0fc2718dd9',1,'mpc::cpo::snd()']]],
+  ['state_2',['state',['../namespacempc_1_1cpo.html#a1dcfcbeaac438c90e8bc7a936834c661',1,'mpc::state()'],['../namespacempc_1_1cpo.html#a1dcfcbeaac438c90e8bc7a936834c661',1,'mpc::cpo::state()']]]
 ];

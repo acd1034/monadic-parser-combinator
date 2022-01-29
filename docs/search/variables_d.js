@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['negate_502',['negate',['../namespacempc_1_1cpo.html#a3313d2ef13acf4ddbe9715a4646af8f2',1,'mpc::negate()'],['../namespacempc_1_1cpo.html#a3313d2ef13acf4ddbe9715a4646af8f2',1,'mpc::cpo::negate()']]],
-  ['not_5fequal_5fto_503',['not_equal_to',['../namespacempc_1_1cpo.html#a813e76a5641a1435bdaea01b5ec57265',1,'mpc::not_equal_to()'],['../namespacempc_1_1cpo.html#a813e76a5641a1435bdaea01b5ec57265',1,'mpc::cpo::not_equal_to()']]]
+  ['plus_0',['plus',['../namespacempc_1_1cpo.html#a6a165c08bf9fa6afa4e9d3e9feb7ac14',1,'mpc::plus()'],['../namespacempc_1_1cpo.html#a6a165c08bf9fa6afa4e9d3e9feb7ac14',1,'mpc::cpo::plus()']]],
+  ['pure_1',['pure',['../namespacempc_1_1cpo.html#a7d58f566fc229a23e3932f6978917f38',1,'mpc::pure()'],['../namespacempc_1_1cpo.html#a7d58f566fc229a23e3932f6978917f38',1,'mpc::cpo::pure()']]],
+  ['put_2',['put',['../namespacempc_1_1cpo.html#ae40d14fe4ebda0850c8415a9825aa1f6',1,'mpc::put()'],['../namespacempc_1_1cpo.html#ae40d14fe4ebda0850c8415a9825aa1f6',1,'mpc::cpo::put()'],['../state_2class_8hpp.html#ac22d8a085f8edf729994a6bb100245db',1,'mpc::states::put()']]]
 ];
