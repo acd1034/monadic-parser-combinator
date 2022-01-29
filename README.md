@@ -7,7 +7,7 @@ Click [here](https://acd1034.github.io/monadic-parser-combinator/index.html) to 
 
 <!-- ## Noteworthy Features -->
 
-## A first example
+## First example
 A sample code written in Haskell is shown below.
 
 ```hs
