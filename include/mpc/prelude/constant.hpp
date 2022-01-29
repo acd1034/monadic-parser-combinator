@@ -17,7 +17,6 @@ namespace mpc {
   inline namespace cpo {
     /**
      * @brief Returns a unary function always returning the first input.
-     * @rel prelude.hpp
      */
     inline constexpr partially_applicable<detail::constant_op> constant;
   } // namespace cpo

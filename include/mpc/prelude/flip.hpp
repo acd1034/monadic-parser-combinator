@@ -28,7 +28,6 @@ namespace mpc {
   inline namespace cpo {
     /**
      * @brief Returns a binary function which flips the first and second argument.
-     * @rel prelude.hpp
      */
     inline constexpr partially_applicable<detail::flip_op> flip;
   }

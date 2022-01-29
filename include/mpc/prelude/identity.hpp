@@ -7,7 +7,6 @@ namespace mpc {
   inline namespace cpo {
     /**
      * @brief %Identity mapping.
-     * @rel prelude.hpp
      */
     inline constexpr partially_applicable<std::identity> identity{};
   } // namespace cpo

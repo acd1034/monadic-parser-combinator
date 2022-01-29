@@ -31,7 +31,6 @@ namespace mpc {
   inline namespace cpo {
     /**
      * @brief Function composition.
-     * @rel prelude.hpp
      */
     inline constexpr partially_applicable<detail::compose_op> compose;
   }
