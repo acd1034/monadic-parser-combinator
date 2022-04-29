@@ -78,5 +78,5 @@ namespace mpc {
   inline namespace cpo {
     template <class F>
     inline constexpr detail::fmap_t<F> fmap;
-  }
+  } // namespace cpo
 } // namespace mpc

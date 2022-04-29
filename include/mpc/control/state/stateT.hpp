@@ -67,7 +67,7 @@ namespace mpc {
     };
   } // namespace detail
 
-  namespace cpo {
+  inline namespace cpo {
     template <class S>
     inline constexpr partially_applicable<detail::make_StateT_op<S>> make_StateT{};
 

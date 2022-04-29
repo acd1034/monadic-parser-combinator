@@ -247,5 +247,5 @@ namespace mpc {
     inline constexpr detail::discard2nd_t<F> discard2nd;
     template<class F>
     inline constexpr detail::discard1st_t<F> discard1st;
-  }
+  } // namespace cpo
 } // namespace mpc

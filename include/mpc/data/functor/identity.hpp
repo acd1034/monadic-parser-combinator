@@ -72,7 +72,7 @@ namespace mpc {
     };
   } // namespace detail
 
-  namespace cpo {
+  inline namespace cpo {
     inline constexpr partially_applicable<detail::make_Identity_op> make_Identity{};
 
     inline constexpr partially_applicable<detail::run_Identity_op> run_Identity{};
