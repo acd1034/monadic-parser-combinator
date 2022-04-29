@@ -8,6 +8,8 @@
 #include <mpc/control/monad.hpp>
 #include <mpc/prelude.hpp> // identity
 
+#if defined(__cpp_lib_ranges)
+
 namespace mpc {
   // cons, foldr
   namespace detail {
@@ -112,3 +114,5 @@ namespace mpc {
     inline constexpr partially_applicable<detail::sequence_op> sequence;
   } // namespace cpo
 } // namespace mpc
+
+#endif
