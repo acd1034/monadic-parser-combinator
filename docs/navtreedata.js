@@ -54,8 +54,8 @@ var NAVTREEINDEX =
 [
 "alternative_8hpp.html",
 "namespacempc_1_1cpo.html#a813e76a5641a1435bdaea01b5ec57265",
-"structmpc_1_1detail_1_1copy__volatile.html",
-"type__traits_8hpp.html#aae63c23ef9b93dbe50cc6b6bd984eccd"
+"structmpc_1_1detail_1_1eval___state__op.html",
+""
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
