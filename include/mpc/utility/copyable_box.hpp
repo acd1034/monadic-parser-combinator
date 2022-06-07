@@ -39,13 +39,14 @@ namespace mpc {
       noexcept(std::is_nothrow_default_constructible_v<T>) //
       requires std::default_initializable<T> : instance_(std::in_place) {}
 
-    constexpr copyable_box(copyable_box const&) = default;
+    constexpr copyable_box(const copyable_box&) = default;
     constexpr copyable_box(copyable_box&&) = default;
 
     constexpr copyable_box&
-    operator=(copyable_box const& other) noexcept(std::is_nothrow_copy_constructible_v<T>) {
+    operator=(const copyable_box& other) noexcept(std::is_nothrow_copy_constructible_v<T>) {
       if (this != std::addressof(other)) {
-        if (other.has_value()) instance_.emplace(*other);
+        if (other.has_value())
+          instance_.emplace(*other);
         else
           instance_.reset();
       }
@@ -58,14 +59,15 @@ namespace mpc {
     constexpr copyable_box&
     operator=(copyable_box&& other) noexcept(std::is_nothrow_move_constructible_v<T>) {
       if (this != std::addressof(other)) {
-        if (other.has_value()) instance_.emplace(std::move(*other));
+        if (other.has_value())
+          instance_.emplace(std::move(*other));
         else
           instance_.reset();
       }
       return *this;
     }
 
-    constexpr T const& operator*() const noexcept {
+    constexpr const T& operator*() const noexcept {
       return *instance_;
     }
     constexpr T& operator*() noexcept {
@@ -127,17 +129,17 @@ namespace mpc {
       noexcept(std::is_nothrow_default_constructible_v<T>) //
       requires std::default_initializable<T> : instance_() {}
 
-    constexpr copyable_box(copyable_box const&) = default;
+    constexpr copyable_box(const copyable_box&) = default;
     constexpr copyable_box(copyable_box&&) = default;
 
     // Implementation of assignment operators in case we perform optimization (1)
-    constexpr copyable_box& operator=(copyable_box const&) requires std::copyable<T>
+    constexpr copyable_box& operator=(const copyable_box&) requires std::copyable<T>
     = default;
     constexpr copyable_box& operator=(copyable_box&&) requires std::movable<T>
     = default;
 
     // Implementation of assignment operators in case we perform optimization (2)
-    constexpr copyable_box& operator=(copyable_box const& other) noexcept {
+    constexpr copyable_box& operator=(const copyable_box& other) noexcept {
       static_assert(std::is_nothrow_copy_constructible_v<T>);
       if (this != std::addressof(other)) {
         std::destroy_at(std::addressof(instance_));
@@ -155,7 +157,7 @@ namespace mpc {
       return *this;
     }
 
-    constexpr T const& operator*() const noexcept {
+    constexpr const T& operator*() const noexcept {
       return instance_;
     }
     constexpr T& operator*() noexcept {
