@@ -16,6 +16,8 @@ namespace mpc {
     copyable_box<T> instance_{};
 
   public:
+    using value_type = T;
+
     constexpr Identity()                                   //
       noexcept(std::is_nothrow_default_constructible_v<T>) //
       requires std::default_initializable<T>               //
