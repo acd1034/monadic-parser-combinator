@@ -26,7 +26,7 @@ namespace mpc {
   /// Makes copy_constructible but not copy_assignable types copy_assignable.
   template <copy_constructible_object T>
   class copyable_box {
-    [[no_unique_address]] std::optional<T> instance_;
+    [[no_unique_address]] std::optional<T> instance_ = std::nullopt;
 
   public:
     template <class... Args>
@@ -67,11 +67,17 @@ namespace mpc {
       return *this;
     }
 
-    constexpr const T& operator*() const noexcept {
+    constexpr const T& operator*() const& noexcept {
       return *instance_;
     }
-    constexpr T& operator*() noexcept {
+    constexpr const T&& operator*() const&& noexcept {
+      return std::move(*instance_);
+    }
+    constexpr T& operator*() & noexcept {
       return *instance_;
+    }
+    constexpr T&& operator*() && noexcept {
+      return std::move(*instance_);
     }
 
     constexpr const T* operator->() const noexcept {
@@ -116,7 +122,7 @@ namespace mpc {
   template <copy_constructible_object T>
   requires doesnt_need_empty_state_for_copy<T> and doesnt_need_empty_state_for_move<T>
   class copyable_box<T> {
-    [[no_unique_address]] T instance_;
+    [[no_unique_address]] T instance_{};
 
   public:
     template <class... Args>
@@ -127,7 +133,7 @@ namespace mpc {
 
     constexpr copyable_box()                               //
       noexcept(std::is_nothrow_default_constructible_v<T>) //
-      requires std::default_initializable<T> : instance_() {}
+      requires std::default_initializable<T> : instance_{} {}
 
     constexpr copyable_box(const copyable_box&) = default;
     constexpr copyable_box(copyable_box&&) = default;
@@ -157,11 +163,17 @@ namespace mpc {
       return *this;
     }
 
-    constexpr const T& operator*() const noexcept {
+    constexpr const T& operator*() const& noexcept {
       return instance_;
     }
-    constexpr T& operator*() noexcept {
+    constexpr const T&& operator*() const&& noexcept {
+      return std::move(instance_);
+    }
+    constexpr T& operator*() & noexcept {
       return instance_;
+    }
+    constexpr T&& operator*() && noexcept {
+      return std::move(instance_);
     }
 
     constexpr const T* operator->() const noexcept {

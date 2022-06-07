@@ -19,19 +19,25 @@ namespace mpc {
     constexpr Identity()                                   //
       noexcept(std::is_nothrow_default_constructible_v<T>) //
       requires std::default_initializable<T>               //
-      : instance_{std::in_place} {}
+      : instance_(std::in_place) {}
 
     template <class U = T>
     requires std::constructible_from<T, U&&>
     constexpr explicit Identity(U&& u) //
       noexcept(std::is_nothrow_constructible_v<T, U&&>)
-      : instance_{std::in_place, std::forward<U>(u)} {}
+      : instance_(std::in_place, std::forward<U>(u)) {}
 
-    constexpr const T& operator*() const noexcept {
+    constexpr const T& operator*() const& noexcept {
       return *instance_;
     }
-    constexpr T& operator*() noexcept {
+    constexpr const T&& operator*() const&& noexcept {
+      return std::move(*instance_);
+    }
+    constexpr T& operator*() & noexcept {
       return *instance_;
+    }
+    constexpr T&& operator*() && noexcept {
+      return std::move(*instance_);
     }
 
     constexpr const T* operator->() const noexcept {
