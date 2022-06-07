@@ -104,27 +104,33 @@ template&lt;class... Args&gt; <br />
 requires std::is_constructible_v&lt;T, Args...&gt;</td></tr>
 <tr class="memitem:ab2e63effad8e75ca0768c20c6ddf5352"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><b>copyable_box</b> (std::in_place_t, Args &amp;&amp;... args) noexcept(std::is_nothrow_constructible_v&lt; T, Args... &gt;)</td></tr>
 <tr class="separator:ab2e63effad8e75ca0768c20c6ddf5352"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6dca8c75bec8f89c054bf366638716d"><td class="memItemLeft" align="right" valign="top"><a id="ab6dca8c75bec8f89c054bf366638716d" name="ab6dca8c75bec8f89c054bf366638716d"></a>
-constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>copyable_box</b> (<a class="el" href="classmpc_1_1copyable__box.html">copyable_box</a> const &amp;)=default</td></tr>
-<tr class="separator:ab6dca8c75bec8f89c054bf366638716d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9266bd8f19122098c4e90ebfb5596f2b"><td class="memItemLeft" align="right" valign="top"><a id="a9266bd8f19122098c4e90ebfb5596f2b" name="a9266bd8f19122098c4e90ebfb5596f2b"></a>
+constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>copyable_box</b> (const <a class="el" href="classmpc_1_1copyable__box.html">copyable_box</a> &amp;)=default</td></tr>
+<tr class="separator:a9266bd8f19122098c4e90ebfb5596f2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3091a624e34d397733033a87fa19af8"><td class="memItemLeft" align="right" valign="top"><a id="ac3091a624e34d397733033a87fa19af8" name="ac3091a624e34d397733033a87fa19af8"></a>
 constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>copyable_box</b> (<a class="el" href="classmpc_1_1copyable__box.html">copyable_box</a> &amp;&amp;)=default</td></tr>
 <tr class="separator:ac3091a624e34d397733033a87fa19af8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b5843f50ce2433ce06e2dc26566a3ee"><td class="memItemLeft" align="right" valign="top"><a id="a8b5843f50ce2433ce06e2dc26566a3ee" name="a8b5843f50ce2433ce06e2dc26566a3ee"></a>
-constexpr <a class="el" href="classmpc_1_1copyable__box.html">copyable_box</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classmpc_1_1copyable__box.html">copyable_box</a> const &amp;other) noexcept(std::is_nothrow_copy_constructible_v&lt; T &gt;)</td></tr>
-<tr class="separator:a8b5843f50ce2433ce06e2dc26566a3ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac389a5465fffebcd4789edbb5f2fda6b"><td class="memItemLeft" align="right" valign="top"><a id="ac389a5465fffebcd4789edbb5f2fda6b" name="ac389a5465fffebcd4789edbb5f2fda6b"></a>
+constexpr <a class="el" href="classmpc_1_1copyable__box.html">copyable_box</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classmpc_1_1copyable__box.html">copyable_box</a> &amp;other) noexcept(std::is_nothrow_copy_constructible_v&lt; T &gt;)</td></tr>
+<tr class="separator:ac389a5465fffebcd4789edbb5f2fda6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add16e951765c3fad66fb5c08d2cb1855"><td class="memItemLeft" align="right" valign="top"><a id="add16e951765c3fad66fb5c08d2cb1855" name="add16e951765c3fad66fb5c08d2cb1855"></a>
 constexpr <a class="el" href="classmpc_1_1copyable__box.html">copyable_box</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classmpc_1_1copyable__box.html">copyable_box</a> &amp;&amp;)=default</td></tr>
 <tr class="separator:add16e951765c3fad66fb5c08d2cb1855"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa920bd59c018900cfe04b21df61a7999"><td class="memItemLeft" align="right" valign="top"><a id="aa920bd59c018900cfe04b21df61a7999" name="aa920bd59c018900cfe04b21df61a7999"></a>
 constexpr <a class="el" href="classmpc_1_1copyable__box.html">copyable_box</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classmpc_1_1copyable__box.html">copyable_box</a> &amp;&amp;other) noexcept(std::is_nothrow_move_constructible_v&lt; T &gt;)</td></tr>
 <tr class="separator:aa920bd59c018900cfe04b21df61a7999"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aacad2a6f228e839f927b0c4428a4f0a7"><td class="memItemLeft" align="right" valign="top"><a id="aacad2a6f228e839f927b0c4428a4f0a7" name="aacad2a6f228e839f927b0c4428a4f0a7"></a>
-constexpr T const &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> () const noexcept</td></tr>
-<tr class="separator:aacad2a6f228e839f927b0c4428a4f0a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4225eff4f6fd039f14097bccfacf4878"><td class="memItemLeft" align="right" valign="top"><a id="a4225eff4f6fd039f14097bccfacf4878" name="a4225eff4f6fd039f14097bccfacf4878"></a>
-constexpr T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> () noexcept</td></tr>
-<tr class="separator:a4225eff4f6fd039f14097bccfacf4878"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a205dceac7f93d817dfdadb6d33639316"><td class="memItemLeft" align="right" valign="top"><a id="a205dceac7f93d817dfdadb6d33639316" name="a205dceac7f93d817dfdadb6d33639316"></a>
+constexpr const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> () const &amp;noexcept</td></tr>
+<tr class="separator:a205dceac7f93d817dfdadb6d33639316"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3040cba568d5cbb407ce6027f6ddbf7"><td class="memItemLeft" align="right" valign="top"><a id="aa3040cba568d5cbb407ce6027f6ddbf7" name="aa3040cba568d5cbb407ce6027f6ddbf7"></a>
+constexpr const T &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> () const &amp;&amp;noexcept</td></tr>
+<tr class="separator:aa3040cba568d5cbb407ce6027f6ddbf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c93211c703fd01703fb04cd591c59b6"><td class="memItemLeft" align="right" valign="top"><a id="a0c93211c703fd01703fb04cd591c59b6" name="a0c93211c703fd01703fb04cd591c59b6"></a>
+constexpr T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> () &amp;noexcept</td></tr>
+<tr class="separator:a0c93211c703fd01703fb04cd591c59b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94c2738c595671df9c41ff6a9c216822"><td class="memItemLeft" align="right" valign="top"><a id="a94c2738c595671df9c41ff6a9c216822" name="a94c2738c595671df9c41ff6a9c216822"></a>
+constexpr T &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> () &amp;&amp;noexcept</td></tr>
+<tr class="separator:a94c2738c595671df9c41ff6a9c216822"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60045a77f5a2b7eda562859f3291c6ff"><td class="memItemLeft" align="right" valign="top"><a id="a60045a77f5a2b7eda562859f3291c6ff" name="a60045a77f5a2b7eda562859f3291c6ff"></a>
 constexpr const T *&#160;</td><td class="memItemRight" valign="bottom"><b>operator-&gt;</b> () const noexcept</td></tr>
 <tr class="separator:a60045a77f5a2b7eda562859f3291c6ff"><td class="memSeparator" colspan="2">&#160;</td></tr>

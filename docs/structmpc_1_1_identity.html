@@ -86,6 +86,7 @@ $(document).ready(function(){initNavTree('structmpc_1_1_identity.html',''); init
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="structmpc_1_1_identity-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">mpc::Identity&lt; T &gt; Struct Template Reference</div></div>
@@ -97,6 +98,12 @@ $(document).ready(function(){initNavTree('structmpc_1_1_identity.html',''); init
 
 <p><code>#include &lt;<a class="el" href="data_2functor_2identity_8hpp_source.html">identity.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:af1345857f4404978720159efc81da89a"><td class="memItemLeft" align="right" valign="top"><a id="af1345857f4404978720159efc81da89a" name="af1345857f4404978720159efc81da89a"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>value_type</b> = T</td></tr>
+<tr class="separator:af1345857f4404978720159efc81da89a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a47ca8740c328ad665869a6189e024f04"><td class="memTemplParams" colspan="2"><a id="a47ca8740c328ad665869a6189e024f04" name="a47ca8740c328ad665869a6189e024f04"></a>
@@ -104,12 +111,18 @@ template&lt;class U  = T&gt; <br />
 requires std::constructible_from&lt;T, U&amp;&amp;&gt;</td></tr>
 <tr class="memitem:a47ca8740c328ad665869a6189e024f04"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Identity</b> (U &amp;&amp;u) noexcept(std::is_nothrow_constructible_v&lt; T, U &amp;&amp; &gt;)</td></tr>
 <tr class="separator:a47ca8740c328ad665869a6189e024f04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a910a75a68e226267bf1ae1e8f0a88fcb"><td class="memItemLeft" align="right" valign="top"><a id="a910a75a68e226267bf1ae1e8f0a88fcb" name="a910a75a68e226267bf1ae1e8f0a88fcb"></a>
-constexpr const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> () const noexcept</td></tr>
-<tr class="separator:a910a75a68e226267bf1ae1e8f0a88fcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12f01541803ad5f1446beb7e721c77ff"><td class="memItemLeft" align="right" valign="top"><a id="a12f01541803ad5f1446beb7e721c77ff" name="a12f01541803ad5f1446beb7e721c77ff"></a>
-constexpr T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> () noexcept</td></tr>
-<tr class="separator:a12f01541803ad5f1446beb7e721c77ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a906d8f01e389e21d8697009d700a4e8d"><td class="memItemLeft" align="right" valign="top"><a id="a906d8f01e389e21d8697009d700a4e8d" name="a906d8f01e389e21d8697009d700a4e8d"></a>
+constexpr const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> () const &amp;noexcept</td></tr>
+<tr class="separator:a906d8f01e389e21d8697009d700a4e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0b89c86bf86a7678a1b351b1cd89a95"><td class="memItemLeft" align="right" valign="top"><a id="ad0b89c86bf86a7678a1b351b1cd89a95" name="ad0b89c86bf86a7678a1b351b1cd89a95"></a>
+constexpr const T &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> () const &amp;&amp;noexcept</td></tr>
+<tr class="separator:ad0b89c86bf86a7678a1b351b1cd89a95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdb5ccfdc55bd71513cd7cd5f25931f8"><td class="memItemLeft" align="right" valign="top"><a id="acdb5ccfdc55bd71513cd7cd5f25931f8" name="acdb5ccfdc55bd71513cd7cd5f25931f8"></a>
+constexpr T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> () &amp;noexcept</td></tr>
+<tr class="separator:acdb5ccfdc55bd71513cd7cd5f25931f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c2d9cc799e22deb17911ae540390dea"><td class="memItemLeft" align="right" valign="top"><a id="a4c2d9cc799e22deb17911ae540390dea" name="a4c2d9cc799e22deb17911ae540390dea"></a>
+constexpr T &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> () &amp;&amp;noexcept</td></tr>
+<tr class="separator:a4c2d9cc799e22deb17911ae540390dea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3549682e14e76f0a700358fdeba3040"><td class="memItemLeft" align="right" valign="top"><a id="ab3549682e14e76f0a700358fdeba3040" name="ab3549682e14e76f0a700358fdeba3040"></a>
 constexpr const T *&#160;</td><td class="memItemRight" valign="bottom"><b>operator-&gt;</b> () const noexcept</td></tr>
 <tr class="separator:ab3549682e14e76f0a700358fdeba3040"><td class="memSeparator" colspan="2">&#160;</td></tr>
