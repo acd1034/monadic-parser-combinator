@@ -16,6 +16,7 @@ jobs:
     name: ${{matrix.compiler}} ${{matrix.build_type}}
     # The type of runner that the job will run on
     runs-on: macos-latest
+    timeout-minutes: 30
     # A matrix allows you to create multiple jobs by performing variable substitution
     # in a single job definition
     strategy:

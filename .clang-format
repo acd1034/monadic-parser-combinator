@@ -1,13 +1,17 @@
-# https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+# version 14.0.0: https://releases.llvm.org/14.0.0/tools/clang/docs/ClangFormatStyleOptions.html
+# latest: https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+
 # generals
 BreakBeforeBraces: Attach
 ColumnLimit: 100
+CommentPragmas: '^ NO-FORMAT:'
 ContinuationIndentWidth: 2
 IndentWidth: 2
 ReflowComments: false
 UseTab: Never
 
 # language core
+# AlwaysBreakAfterReturnType: All
 AlwaysBreakTemplateDeclarations: true
 BreakBeforeBinaryOperators: NonAssignment
 BreakConstructorInitializers: BeforeColon
@@ -18,19 +22,13 @@ PointerAlignment: Left
 
 # short description
 AllowShortCaseLabelsOnASingleLine: true
-# AllowShortEnumsOnASingleLine: true
+AllowShortEnumsOnASingleLine: true
 AllowShortLoopsOnASingleLine: true
+AllowShortBlocksOnASingleLine: Always # Never, Empty, Always
+AllowShortFunctionsOnASingleLine: Empty # None, InlineOnly, Empty, Inline, All
+AllowShortIfStatementsOnASingleLine: WithoutElse # Never, WithoutElse, Always
+AllowShortLambdasOnASingleLine: All # None, Empty, Inline, All
 
-# Never, Empty, Always
-# AllowShortBlocksOnASingleLine:
-# None, InlineOnly, Empty, Inline, All
-AllowShortFunctionsOnASingleLine: Empty
-# Never, WithoutElse, Always
-AllowShortIfStatementsOnASingleLine: Always
-# None, Empty, Inline, All
-AllowShortLambdasOnASingleLine: All
-
-CommentPragmas: '^ no-format:'
 IncludeCategories:
   # Headers in <> without extension.
   - Regex:    '<([A-Za-z0-9\/-_])+>'
