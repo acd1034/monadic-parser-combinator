@@ -26,7 +26,7 @@ namespace mpc {
   /// Makes copy_constructible but not copy_assignable types copy_assignable.
   template <copy_constructible_object T>
   class copyable_box {
-    [[no_unique_address]] std::optional<T> instance_;
+    [[no_unique_address]] std::optional<T> instance_ = std::nullopt;
 
   public:
     template <class... Args>
@@ -39,13 +39,14 @@ namespace mpc {
       noexcept(std::is_nothrow_default_constructible_v<T>) //
       requires std::default_initializable<T> : instance_(std::in_place) {}
 
-    constexpr copyable_box(copyable_box const&) = default;
+    constexpr copyable_box(const copyable_box&) = default;
     constexpr copyable_box(copyable_box&&) = default;
 
     constexpr copyable_box&
-    operator=(copyable_box const& other) noexcept(std::is_nothrow_copy_constructible_v<T>) {
+    operator=(const copyable_box& other) noexcept(std::is_nothrow_copy_constructible_v<T>) {
       if (this != std::addressof(other)) {
-        if (other.has_value()) instance_.emplace(*other);
+        if (other.has_value())
+          instance_.emplace(*other);
         else
           instance_.reset();
       }
@@ -58,18 +59,25 @@ namespace mpc {
     constexpr copyable_box&
     operator=(copyable_box&& other) noexcept(std::is_nothrow_move_constructible_v<T>) {
       if (this != std::addressof(other)) {
-        if (other.has_value()) instance_.emplace(std::move(*other));
+        if (other.has_value())
+          instance_.emplace(std::move(*other));
         else
           instance_.reset();
       }
       return *this;
     }
 
-    constexpr T const& operator*() const noexcept {
+    constexpr const T& operator*() const& noexcept {
       return *instance_;
     }
-    constexpr T& operator*() noexcept {
+    constexpr const T&& operator*() const&& noexcept {
+      return std::move(*instance_);
+    }
+    constexpr T& operator*() & noexcept {
       return *instance_;
+    }
+    constexpr T&& operator*() && noexcept {
+      return std::move(*instance_);
     }
 
     constexpr const T* operator->() const noexcept {
@@ -114,7 +122,7 @@ namespace mpc {
   template <copy_constructible_object T>
   requires doesnt_need_empty_state_for_copy<T> and doesnt_need_empty_state_for_move<T>
   class copyable_box<T> {
-    [[no_unique_address]] T instance_;
+    [[no_unique_address]] T instance_{};
 
   public:
     template <class... Args>
@@ -125,19 +133,19 @@ namespace mpc {
 
     constexpr copyable_box()                               //
       noexcept(std::is_nothrow_default_constructible_v<T>) //
-      requires std::default_initializable<T> : instance_() {}
+      requires std::default_initializable<T> : instance_{} {}
 
-    constexpr copyable_box(copyable_box const&) = default;
+    constexpr copyable_box(const copyable_box&) = default;
     constexpr copyable_box(copyable_box&&) = default;
 
     // Implementation of assignment operators in case we perform optimization (1)
-    constexpr copyable_box& operator=(copyable_box const&) requires std::copyable<T>
+    constexpr copyable_box& operator=(const copyable_box&) requires std::copyable<T>
     = default;
     constexpr copyable_box& operator=(copyable_box&&) requires std::movable<T>
     = default;
 
     // Implementation of assignment operators in case we perform optimization (2)
-    constexpr copyable_box& operator=(copyable_box const& other) noexcept {
+    constexpr copyable_box& operator=(const copyable_box& other) noexcept {
       static_assert(std::is_nothrow_copy_constructible_v<T>);
       if (this != std::addressof(other)) {
         std::destroy_at(std::addressof(instance_));
@@ -155,11 +163,17 @@ namespace mpc {
       return *this;
     }
 
-    constexpr T const& operator*() const noexcept {
+    constexpr const T& operator*() const& noexcept {
       return instance_;
     }
-    constexpr T& operator*() noexcept {
+    constexpr const T&& operator*() const&& noexcept {
+      return std::move(instance_);
+    }
+    constexpr T& operator*() & noexcept {
       return instance_;
+    }
+    constexpr T&& operator*() && noexcept {
+      return std::move(instance_);
     }
 
     constexpr const T* operator->() const noexcept {

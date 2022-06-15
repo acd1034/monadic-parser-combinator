@@ -51,11 +51,13 @@ namespace mpc {
   namespace detail {
     template <class S>
     struct make_StateT_op {
+      using state_type = const std::decay_t<S>&;
+
       template <class Fn>
-      requires std::invocable<std::decay_t<Fn>, const std::decay_t<S>&> and monad<std::invoke_result_t<std::decay_t<Fn>, const std::decay_t<S>&>>
+      requires std::invocable<std::decay_t<Fn>, state_type> and monad<std::invoke_result_t<std::decay_t<Fn>, state_type>>
       constexpr auto operator()(Fn&& f) const {
-        using M = std::invoke_result_t<std::decay_t<Fn>, const std::decay_t<S>&>;
-        return StateT<const std::decay_t<S>&, M>(std::forward<Fn>(f));
+        using M = std::invoke_result_t<std::decay_t<Fn>, state_type>;
+        return StateT<state_type, M>(std::forward<Fn>(f));
       }
     };
 
