@@ -6,6 +6,7 @@
 #include <mpc/control/state/class.hpp>
 #include <mpc/control/trans/class.hpp>
 #include <mpc/data/functor/identity.hpp>
+#include <mpc/functional/function.hpp>
 #include <mpc/prelude/compose.hpp>
 #include <mpc/prelude/fst.hpp>
 
@@ -23,8 +24,8 @@ namespace mpc {
 
   /// newtype StateT s m a = StateT { runStateT :: s -> m (a,s) }
   template <class S, monad M>
-  struct StateT : Identity<partially_applicable<std::function<M(S)>>> {
-    using Identity<partially_applicable<std::function<M(S)>>>::Identity;
+  struct StateT : Identity<partially_applicable<mpc::function<M(S)>>> {
+    using Identity<partially_applicable<mpc::function<M(S)>>>::Identity;
     using state_type = S;
     using monad_type = M;
   };
