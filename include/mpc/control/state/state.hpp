@@ -43,11 +43,13 @@ namespace mpc {
   namespace detail {
     template <class S>
     struct make_State_op {
+      using state_type = std::decay_t<S>;
+
       template <class Fn>
-      requires std::invocable<std::decay_t<Fn>, const std::decay_t<S>&> and is_Identity<std::invoke_result_t<std::decay_t<Fn>, const std::decay_t<S>&>>
+      requires std::invocable<Fn&, state_type> and is_Identity<std::invoke_result_t<Fn&, state_type>>
       constexpr auto operator()(Fn&& f) const {
-        using M = std::invoke_result_t<std::decay_t<Fn>, const std::decay_t<S>&>;
-        return State<const std::decay_t<S>&, M>(std::forward<Fn>(f));
+        using M = std::invoke_result_t<Fn&, state_type>;
+        return State<state_type, M>(std::forward<Fn>(f));
       }
     };
 
