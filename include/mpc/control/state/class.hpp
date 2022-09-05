@@ -176,10 +176,11 @@ namespace mpc {
     struct getss_op {
       struct closure {
         template <class Fn, class T>
-        constexpr auto operator()(Fn&& f, const T& t) const noexcept(
+        constexpr auto operator()(Fn&& f, T t) const noexcept(
           noexcept(   std::make_pair(std::invoke(std::forward<Fn>(f), t), t)))
           -> decltype(std::make_pair(std::invoke(std::forward<Fn>(f), t), t)) {
-          return      std::make_pair(std::invoke(std::forward<Fn>(f), t), t);
+          auto t2 = t;
+          return      std::make_pair(std::invoke(std::forward<Fn>(f), std::move(t)), std::move(t2));
         }
       };
 

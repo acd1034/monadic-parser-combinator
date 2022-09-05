@@ -248,10 +248,11 @@ namespace mpc {
       struct combine_op {
         struct closure {
           template <is_StateT ST1, is_StateT ST2, class T>
-          constexpr auto operator()(ST1&& x, ST2&& y, const T& t) const
+          constexpr auto operator()(ST1&& x, ST2&& y, T t) const
             noexcept(noexcept(mpc::combine(run_StateT % std::forward<ST1>(x) % t, run_StateT % std::forward<ST2>(y) % t)))
             -> decltype(      mpc::combine(run_StateT % std::forward<ST1>(x) % t, run_StateT % std::forward<ST2>(y) % t)) {
-            return            mpc::combine(run_StateT % std::forward<ST1>(x) % t, run_StateT % std::forward<ST2>(y) % t);
+            auto t2 = t;
+            return            mpc::combine(run_StateT % std::forward<ST1>(x) % std::move(t), run_StateT % std::forward<ST2>(y) % std::move(t2));
           }
         };
 
