@@ -5,41 +5,54 @@
 #include <mpc/stdfundamental.hpp>
 
 namespace mpc {
-  template <class Ret, class... Args>
+  template <class Ret, class Arg>
   struct _function {
     constexpr virtual ~_function() = default;
-    constexpr virtual Ret operator()(Args...) const = 0;
+    constexpr virtual Ret operator()(const Arg&) const = 0;
+    constexpr virtual Ret operator()(Arg&&) const = 0;
   };
 
-  template <class F, class Ret, class... Args>
-  struct _function_impl : _function<Ret, Args...> {
+  template <class F, class Ret, class Arg>
+  struct _function_impl : _function<Ret, Arg> {
   private:
     F f_;
 
   public:
     constexpr _function_impl(const F& f) : f_(f) {}
     constexpr _function_impl(F&& f) : f_(std::move(f)) {}
-    constexpr Ret operator()(Args... args) const override {
-      return std::invoke(f_, std::forward<Args>(args)...);
+    constexpr Ret operator()(const Arg& arg) const override {
+      return std::invoke(f_, arg);
+    }
+    constexpr Ret operator()(Arg&& arg) const override {
+      return std::invoke(f_, std::move(arg));
     }
   };
 
   template <class>
   struct function;
 
-  template <class Ret, class... Args>
-  struct function<Ret(Args...)> {
+  template <class Ret, class Arg>
+  requires (not std::is_reference_v<Arg>)
+  struct function<Ret(Arg)> {
   private:
-    std::shared_ptr<_function<Ret, Args...>> instance_ = nullptr;
+    std::shared_ptr<_function<Ret, Arg>> instance_ = nullptr;
 
   public:
     template <class F>
     constexpr function(F&& f)
-      : instance_(std::make_shared<_function_impl<std::decay_t<F>, Ret, Args...>>(
+      : instance_(std::make_shared<_function_impl<std::decay_t<F>, Ret, Arg>>(
         std::forward<F>(f))) {}
-
-    constexpr Ret operator()(Args... args) const {
-      return instance_->operator()(std::forward<Args>(args)...);
+    constexpr Ret operator()(const Arg& arg) const {
+      return instance_->operator()(arg);
+    }
+    constexpr Ret operator()(Arg&& arg) const {
+      return instance_->operator()(std::move(arg));
+    }
+    constexpr Ret operator%(const Arg& arg) const {
+      return instance_->operator()(arg);
+    }
+    constexpr Ret operator%(Arg&& arg) const {
+      return instance_->operator()(std::move(arg));
     }
   };
 } // namespace mpc

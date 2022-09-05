@@ -1,11 +1,12 @@
 /// @file stateT.hpp
 #pragma once
-#include <functional> // std::function, std::invoke
+#include <functional> // std::invoke
 #include <mpc/control/alternative.hpp>
 #include <mpc/control/monad.hpp>
 #include <mpc/control/state/class.hpp>
 #include <mpc/control/trans/class.hpp>
 #include <mpc/data/functor/identity.hpp>
+#include <mpc/functional/function.hpp>
 #include <mpc/prelude/compose.hpp>
 #include <mpc/prelude/fst.hpp>
 
@@ -23,8 +24,8 @@ namespace mpc {
 
   /// newtype StateT s m a = StateT { runStateT :: s -> m (a,s) }
   template <class S, monad M>
-  struct StateT : Identity<partially_applicable<std::function<M(S)>>> {
-    using Identity<partially_applicable<std::function<M(S)>>>::Identity;
+  struct StateT : Identity<mpc::function<M(S)>> {
+    using Identity<mpc::function<M(S)>>::Identity;
     using state_type = S;
     using monad_type = M;
   };
@@ -51,12 +52,12 @@ namespace mpc {
   namespace detail {
     template <class S>
     struct make_StateT_op {
-      using state_type = const std::decay_t<S>&;
+      using state_type = std::decay_t<S>;
 
       template <class Fn>
-      requires std::invocable<std::decay_t<Fn>, state_type> and monad<std::invoke_result_t<std::decay_t<Fn>, state_type>>
+      requires std::invocable<Fn&, state_type> and monad<std::invoke_result_t<Fn&, state_type>>
       constexpr auto operator()(Fn&& f) const {
-        using M = std::invoke_result_t<std::decay_t<Fn>, state_type>;
+        using M = std::invoke_result_t<Fn&, state_type>;
         return StateT<state_type, M>(std::forward<Fn>(f));
       }
     };

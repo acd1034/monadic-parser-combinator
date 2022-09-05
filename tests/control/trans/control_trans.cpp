@@ -6,7 +6,7 @@
 #include "../../stdfundamental.hpp"
 
 TEST_CASE("trans", "[trans][state]") {
-  using ST = mpc::StateT<const int&, mpc::Identity<std::pair<int, int>>>;
+  using ST = mpc::StateT<int, mpc::Identity<std::pair<int, int>>>;
   static_assert(mpc::functor<ST>);
   static_assert(mpc::applicative<ST>);
   static_assert(mpc::monad<ST>);
@@ -81,8 +81,8 @@ TEST_CASE("trans", "[trans][state]") {
 }
 
 TEST_CASE("trans StateT alternative", "[trans][statet][alternative]") {
-  using ST1 = mpc::StateT<const int&, mpc::Identity<std::pair<int, int>>>;
-  using ST2 = mpc::StateT<const int&, mpc::maybe<std::pair<int, int>>>;
+  using ST1 = mpc::StateT<int, mpc::Identity<std::pair<int, int>>>;
+  using ST2 = mpc::StateT<int, mpc::maybe<std::pair<int, int>>>;
   static_assert(not mpc::alternative<ST1>);
   static_assert(mpc::alternative<ST2>);
 }
