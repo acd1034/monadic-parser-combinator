@@ -66,6 +66,14 @@ var namespaces_dup =
         [ "replace2nd", "namespacempc_1_1functors.html#a9f6f060bce652dddfbd1429f63fff069", null ]
       ] ],
       [ "monads", "namespacempc_1_1monads.html", "namespacempc_1_1monads" ],
+      [ "ranges", null, [
+        [ "detail", null, [
+          [ "begin_fn", "structmpc_1_1ranges_1_1detail_1_1begin__fn.html", null ],
+          [ "end_fn", "structmpc_1_1ranges_1_1detail_1_1end__fn.html", null ]
+        ] ],
+        [ "range", "conceptmpc_1_1ranges_1_1range.html", null ],
+        [ "input_range", "conceptmpc_1_1ranges_1_1input__range.html", null ]
+      ] ],
       [ "states", null, [
         [ "detail", null, [
           [ "gets_op", "structmpc_1_1states_1_1detail_1_1gets__op.html", "structmpc_1_1states_1_1detail_1_1gets__op" ],
@@ -84,6 +92,7 @@ var namespaces_dup =
       [ "applicative_traits< Identity< T > >", "structmpc_1_1applicative__traits_3_01_identity_3_01_t_01_4_01_4.html", null ],
       [ "applicative_traits< maybe< T1 > >", "structmpc_1_1applicative__traits_3_01maybe_3_01_t1_01_4_01_4.html", "structmpc_1_1applicative__traits_3_01maybe_3_01_t1_01_4_01_4" ],
       [ "applicative_traits< StateT< S, M > >", "structmpc_1_1applicative__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4.html", "structmpc_1_1applicative__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4" ],
+      [ "applicative_traits< std::list< T > >", "structmpc_1_1applicative__traits_3_01std_1_1list_3_01_t_01_4_01_4.html", "structmpc_1_1applicative__traits_3_01std_1_1list_3_01_t_01_4_01_4" ],
       [ "copyable_box", "classmpc_1_1copyable__box.html", null ],
       [ "copyable_box< T >", "classmpc_1_1copyable__box_3_01_t_01_4.html", null ],
       [ "function", "structmpc_1_1function.html", null ],
@@ -93,6 +102,7 @@ var namespaces_dup =
       [ "functor_traits< Identity< T > >", "structmpc_1_1functor__traits_3_01_identity_3_01_t_01_4_01_4.html", "structmpc_1_1functor__traits_3_01_identity_3_01_t_01_4_01_4" ],
       [ "functor_traits< maybe< T1 > >", "structmpc_1_1functor__traits_3_01maybe_3_01_t1_01_4_01_4.html", "structmpc_1_1functor__traits_3_01maybe_3_01_t1_01_4_01_4" ],
       [ "functor_traits< StateT< S, M > >", "structmpc_1_1functor__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4.html", "structmpc_1_1functor__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4" ],
+      [ "functor_traits< std::list< T > >", "structmpc_1_1functor__traits_3_01std_1_1list_3_01_t_01_4_01_4.html", "structmpc_1_1functor__traits_3_01std_1_1list_3_01_t_01_4_01_4" ],
       [ "Identity", "structmpc_1_1_identity.html", null ],
       [ "is_tuple_like", "structmpc_1_1is__tuple__like.html", null ],
       [ "is_tuple_like< T, std::void_t< decltype(std::tuple_size< T >::value)> >", "structmpc_1_1is__tuple__like_3_01_t_00_01std_1_1void__t_3_01decltype_07std_1_1tuple__size_3_01_t_01_4_1_1value_08_4_01_4.html", null ],
@@ -123,6 +133,7 @@ var namespaces_dup =
       [ "monad_trans", "conceptmpc_1_1monad__trans.html", null ],
       [ "is_either", "conceptmpc_1_1is__either.html", null ],
       [ "is_Identity", "conceptmpc_1_1is___identity.html", null ],
+      [ "is_list", "conceptmpc_1_1is__list.html", null ],
       [ "is_maybe", "conceptmpc_1_1is__maybe.html", null ],
       [ "copy_constructible_object", "conceptmpc_1_1copy__constructible__object.html", null ],
       [ "tuple_like", "conceptmpc_1_1tuple__like.html", null ],

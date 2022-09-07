@@ -17,6 +17,7 @@ var annotated_dup =
         [ "clone_volatile", "structmpc_1_1detail_1_1clone__volatile.html", null ],
         [ "combine_op", "structmpc_1_1detail_1_1combine__op.html", null ],
         [ "compose_op", "structmpc_1_1detail_1_1compose__op.html", "structmpc_1_1detail_1_1compose__op" ],
+        [ "cons_op", "structmpc_1_1detail_1_1cons__op.html", null ],
         [ "constant_op", "structmpc_1_1detail_1_1constant__op.html", null ],
         [ "copy_const", "structmpc_1_1detail_1_1copy__const.html", null ],
         [ "copy_cv", "structmpc_1_1detail_1_1copy__cv.html", null ],
@@ -32,6 +33,7 @@ var annotated_dup =
         [ "exec_StateT_op", "structmpc_1_1detail_1_1exec___state_t__op.html", null ],
         [ "flip_op", "structmpc_1_1detail_1_1flip__op.html", "structmpc_1_1detail_1_1flip__op" ],
         [ "fmap_op", "structmpc_1_1detail_1_1fmap__op.html", null ],
+        [ "foldr_op", "structmpc_1_1detail_1_1foldr__op.html", null ],
         [ "gets_op", "structmpc_1_1detail_1_1gets__op.html", null ],
         [ "getss_op", "structmpc_1_1detail_1_1getss__op.html", "structmpc_1_1detail_1_1getss__op" ],
         [ "is_either_impl", "structmpc_1_1detail_1_1is__either__impl.html", null ],
@@ -42,6 +44,8 @@ var annotated_dup =
         [ "is_Identity_impl< Identity< T > >", "structmpc_1_1detail_1_1is___identity__impl_3_01_identity_3_01_t_01_4_01_4.html", null ],
         [ "is_implicitly_convertible", "structmpc_1_1detail_1_1is__implicitly__convertible.html", null ],
         [ "is_implicitly_default_constructible", "structmpc_1_1detail_1_1is__implicitly__default__constructible.html", null ],
+        [ "is_list_impl", "structmpc_1_1detail_1_1is__list__impl.html", null ],
+        [ "is_list_impl< std::list< T, Alloc > >", "structmpc_1_1detail_1_1is__list__impl_3_01std_1_1list_3_01_t_00_01_alloc_01_4_01_4.html", null ],
         [ "is_maybe_impl", "structmpc_1_1detail_1_1is__maybe__impl.html", null ],
         [ "is_maybe_impl< maybe< T > >", "structmpc_1_1detail_1_1is__maybe__impl_3_01maybe_3_01_t_01_4_01_4.html", null ],
         [ "is_State_impl", "structmpc_1_1detail_1_1is___state__impl.html", null ],
@@ -80,6 +84,7 @@ var annotated_dup =
         [ "run_State_op", "structmpc_1_1detail_1_1run___state__op.html", null ],
         [ "run_StateT_op", "structmpc_1_1detail_1_1run___state_t__op.html", null ],
         [ "seq_apply_op", "structmpc_1_1detail_1_1seq__apply__op.html", null ],
+        [ "sequence_op", "structmpc_1_1detail_1_1sequence__op.html", null ],
         [ "state_op", "structmpc_1_1detail_1_1state__op.html", null ],
         [ "StateT_alternative_traits_combine", "structmpc_1_1detail_1_1_state_t__alternative__traits__combine.html", null ],
         [ "StateT_alternative_traits_combine< ST >", "structmpc_1_1detail_1_1_state_t__alternative__traits__combine_3_01_s_t_01_4.html", "structmpc_1_1detail_1_1_state_t__alternative__traits__combine_3_01_s_t_01_4" ],
@@ -94,6 +99,12 @@ var annotated_dup =
           [ "discard1st_op", "structmpc_1_1monads_1_1detail_1_1discard1st__op.html", null ],
           [ "fmap_op", "structmpc_1_1monads_1_1detail_1_1fmap__op.html", null ],
           [ "seq_apply_op", "structmpc_1_1monads_1_1detail_1_1seq__apply__op.html", "structmpc_1_1monads_1_1detail_1_1seq__apply__op" ]
+        ] ]
+      ] ],
+      [ "ranges", null, [
+        [ "detail", null, [
+          [ "begin_fn", "structmpc_1_1ranges_1_1detail_1_1begin__fn.html", null ],
+          [ "end_fn", "structmpc_1_1ranges_1_1detail_1_1end__fn.html", null ]
         ] ]
       ] ],
       [ "states", null, [
@@ -112,6 +123,7 @@ var annotated_dup =
       [ "applicative_traits< Identity< T > >", "structmpc_1_1applicative__traits_3_01_identity_3_01_t_01_4_01_4.html", null ],
       [ "applicative_traits< maybe< T1 > >", "structmpc_1_1applicative__traits_3_01maybe_3_01_t1_01_4_01_4.html", "structmpc_1_1applicative__traits_3_01maybe_3_01_t1_01_4_01_4" ],
       [ "applicative_traits< StateT< S, M > >", "structmpc_1_1applicative__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4.html", "structmpc_1_1applicative__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4" ],
+      [ "applicative_traits< std::list< T > >", "structmpc_1_1applicative__traits_3_01std_1_1list_3_01_t_01_4_01_4.html", "structmpc_1_1applicative__traits_3_01std_1_1list_3_01_t_01_4_01_4" ],
       [ "copyable_box", "classmpc_1_1copyable__box.html", null ],
       [ "copyable_box< T >", "classmpc_1_1copyable__box_3_01_t_01_4.html", null ],
       [ "function", "structmpc_1_1function.html", null ],
@@ -121,6 +133,7 @@ var annotated_dup =
       [ "functor_traits< Identity< T > >", "structmpc_1_1functor__traits_3_01_identity_3_01_t_01_4_01_4.html", "structmpc_1_1functor__traits_3_01_identity_3_01_t_01_4_01_4" ],
       [ "functor_traits< maybe< T1 > >", "structmpc_1_1functor__traits_3_01maybe_3_01_t1_01_4_01_4.html", "structmpc_1_1functor__traits_3_01maybe_3_01_t1_01_4_01_4" ],
       [ "functor_traits< StateT< S, M > >", "structmpc_1_1functor__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4.html", "structmpc_1_1functor__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4" ],
+      [ "functor_traits< std::list< T > >", "structmpc_1_1functor__traits_3_01std_1_1list_3_01_t_01_4_01_4.html", "structmpc_1_1functor__traits_3_01std_1_1list_3_01_t_01_4_01_4" ],
       [ "Identity", "structmpc_1_1_identity.html", null ],
       [ "is_tuple_like", "structmpc_1_1is__tuple__like.html", null ],
       [ "is_tuple_like< T, std::void_t< decltype(std::tuple_size< T >::value)> >", "structmpc_1_1is__tuple__like_3_01_t_00_01std_1_1void__t_3_01decltype_07std_1_1tuple__size_3_01_t_01_4_1_1value_08_4_01_4.html", null ],

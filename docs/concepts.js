@@ -18,6 +18,7 @@ var concepts =
       [ "monad_trans", "conceptmpc_1_1monad__trans.html", null ],
       [ "is_either", "conceptmpc_1_1is__either.html", null ],
       [ "is_Identity", "conceptmpc_1_1is___identity.html", null ],
+      [ "is_list", "conceptmpc_1_1is__list.html", null ],
       [ "is_maybe", "conceptmpc_1_1is__maybe.html", null ],
       [ "copy_constructible_object", "conceptmpc_1_1copy__constructible__object.html", null ],
       [ "tuple_like", "conceptmpc_1_1tuple__like.html", null ]

@@ -9,6 +9,7 @@ var dir_daed19cc8e35db4a3a2df7a49f7001de =
     [ "data.hpp", "data_8hpp.html", null ],
     [ "functional.hpp", "functional_8hpp.html", null ],
     [ "prelude.hpp", "prelude_8hpp.html", null ],
+    [ "ranges.hpp", "ranges_8hpp.html", "ranges_8hpp" ],
     [ "stdfundamental.hpp", "stdfundamental_8hpp.html", "stdfundamental_8hpp" ],
     [ "type_traits.hpp", "type__traits_8hpp.html", "type__traits_8hpp" ],
     [ "utility.hpp", "utility_8hpp.html", null ]
