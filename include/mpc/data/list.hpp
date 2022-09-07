@@ -4,13 +4,21 @@
 #include <functional> // std::invoke
 #include <iterator>
 #include <list>
-#include <ranges> // std::ranges::input_range, etc.
 #include <mpc/control/monad.hpp>
 #include <mpc/prelude.hpp> // identity
 
-#if defined(__cpp_lib_ranges)
-
 namespace mpc {
+  namespace detail {
+    template <class>
+    struct is_list_impl : std::false_type {};
+
+    template <class T, class Alloc>
+    struct is_list_impl<std::list<T, Alloc>> : std::true_type {};
+  } // namespace detail
+
+  template <class T>
+  concept is_list = detail::is_list_impl<std::remove_cvref_t<T>>::value;
+
   // cons, foldr
   namespace detail {
     struct cons_op {
@@ -114,5 +122,3 @@ namespace mpc {
     inline constexpr partially_applicable<detail::sequence_op> sequence;
   } // namespace cpo
 } // namespace mpc
-
-#endif
