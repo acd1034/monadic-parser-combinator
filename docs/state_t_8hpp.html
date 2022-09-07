@@ -204,6 +204,10 @@ template&lt;is_StateT ST&gt; </td></tr>
 template&lt;is_StateT ST&gt; </td></tr>
 <tr class="memitem:a848f0f592bcb42d7c84dd1ab3020685e"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::StateT_monad_t</b> = typename std::remove_cvref_t&lt; ST &gt;::monad_type</td></tr>
 <tr class="separator:a848f0f592bcb42d7c84dd1ab3020685e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d982a3a5ccf6cdd38afa52090baeff5"><td class="memTemplParams" colspan="2"><a id="a4d982a3a5ccf6cdd38afa52090baeff5" name="a4d982a3a5ccf6cdd38afa52090baeff5"></a>
+template&lt;is_StateT ST&gt; </td></tr>
+<tr class="memitem:a4d982a3a5ccf6cdd38afa52090baeff5"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::eval_StateT_t</b> = decltype(mpc::fmap(fst, std::declval&lt; StateT_monad_t&lt; ST &gt; &gt;()))</td></tr>
+<tr class="separator:a4d982a3a5ccf6cdd38afa52090baeff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>

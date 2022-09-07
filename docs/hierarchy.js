@@ -96,7 +96,7 @@ var hierarchy =
     [ "mpc::states::detail::gets_op< ST >", "structmpc_1_1states_1_1detail_1_1gets__op.html", null ],
     [ "mpc::detail::getss_op< ST >", "structmpc_1_1detail_1_1getss__op.html", null ],
     [ "mpc::holding< class >", "structmpc_1_1holding.html", null ],
-    [ "mpc::holding< std::remove_cvref_t< decltype(mpc::fmap(mpc::fst, std::declval< M >()))> >", "structmpc_1_1holding.html", [
+    [ "mpc::holding< std::remove_cvref_t< eval_StateT_t< StateT< S, M > > > >", "structmpc_1_1holding.html", [
       [ "mpc::holding< StateT< S, M > >", "structmpc_1_1holding_3_01_state_t_3_01_s_00_01_m_01_4_01_4.html", null ]
     ] ],
     [ "mpc::holding< std::remove_cvref_t< T > >", "structmpc_1_1holding.html", [
