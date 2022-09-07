@@ -1,6 +1,7 @@
 /// @file ranges.hpp
 #pragma once
 #include <iterator>
+#include <mpc/stdfundamental.hpp>
 
 #if defined(__cpp_lib_ranges)
 
