@@ -32,6 +32,12 @@ namespace mpc {
         ret.emplace_front(std::forward<T>(t));
         return ret;
       }
+
+      template <class T, class L>
+      requires std::same_as<std::remove_cvref_t<L>, std::string>
+      constexpr auto operator()(T&& t, L&& l) const {
+        return std::forward<T>(t) + std::forward<L>(l);
+      }
     };
 
     struct foldr_op {
@@ -111,7 +117,10 @@ namespace mpc {
       constexpr auto operator()(const std::list<T>& l) const {
         // FIXME: 不正な方法で monad の value_type を取得している
         using U = std::remove_cvref_t<decltype(mpc::bind(l.front(), identity))>;
-        return foldr(mpc::liftA2 % cons, mpc::returns<T> % std::list<U>{}, l);
+        if constexpr (std::same_as<U, char>)
+          return foldr(mpc::liftA2 % cons, mpc::returns<T> % std::string{}, l);
+        else
+          return foldr(mpc::liftA2 % cons, mpc::returns<T> % std::list<U>{}, l);
       }
     };
   } // namespace detail
