@@ -26,16 +26,9 @@ namespace mpc {
   // cons, foldr
   namespace detail {
     struct cons_op {
-      template <class T, class U>
-      constexpr auto operator()(T&& t, const std::list<U>& l) const {
-        auto ret = l;
-        ret.emplace_front(std::forward<T>(t));
-        return ret;
-      }
-
-      template <class T, class U>
-      constexpr auto operator()(T&& t, std::list<U>&& l) const {
-        auto ret = std::move(l);
+      template <class T, is_list L>
+      constexpr auto operator()(T&& t, L&& l) const {
+        auto ret = std::forward<L>(l);
         ret.emplace_front(std::forward<T>(t));
         return ret;
       }
@@ -47,8 +40,8 @@ namespace mpc {
         if (first == last) {
           return std::forward<T>(init);
         } else {
-          auto tmp = first;
-          return std::invoke(op, *tmp, this->operator()(op, std::forward<T>(init), ++first, last));
+          auto tmp = first++;
+          return std::invoke(op, *tmp, this->operator()(op, std::forward<T>(init), first, last));
         }
       }
 
