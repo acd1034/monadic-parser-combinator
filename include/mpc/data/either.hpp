@@ -2,6 +2,7 @@
 #pragma once
 #include <functional> // std::invoke
 #include <variant>
+#include <mpc/control/holding.hpp>
 #include <mpc/control/monad.hpp>
 #include <mpc/prelude.hpp>
 #include <mpc/utility/alternative_value_t.hpp>
@@ -43,6 +44,9 @@ namespace mpc {
 
   template <class T>
   concept is_either = detail::is_either_impl<std::remove_cvref_t<T>>::value;
+
+  template <class T, class U>
+  struct holding<either<T, U>> : std::type_identity<U> {};
 
   /// instance Functor (Either a) where
   ///   fmap _ (Left x) = Left x

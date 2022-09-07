@@ -14,12 +14,17 @@ TEST_CASE("data list", "[data]") {
   static_assert(mpc::functor<std::list<int>>);
   static_assert(mpc::applicative<std::list<int>>);
   // static_assert(mpc::monad<std::list<int>>);
-  std::list l{1, 2, 3, 4, 5};
-  CHECK(mpc::foldr(mpc::plus, 0, l) == 15);
+  {
+    std::list l{1, 2, 3, 4, 5};
+    CHECK(mpc::foldr(mpc::plus, 0, l) == 15);
+  }
   {
     using maybe1 = mpc::maybe<int>;
-    std::list m{maybe1{mpc::make_just(1)}, maybe1{mpc::make_just(2)}, maybe1{mpc::make_just(3)},
-                maybe1{mpc::make_just(4)}, maybe1{mpc::make_just(5)}};
+    std::list m{
+      maybe1{mpc::make_just(1)}, maybe1{mpc::make_just(2)}, maybe1{mpc::make_just(3)},
+      maybe1{mpc::make_just(4)}, maybe1{mpc::make_just(5)},
+    };
+    std::list l{1, 2, 3, 4, 5};
     CHECK(mpc::sequence(m) == mpc::maybe<std::list<int>>{mpc::make_just(l)});
   }
 }
