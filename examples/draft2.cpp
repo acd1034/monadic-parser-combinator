@@ -90,8 +90,10 @@ inline constexpr auto char1 = applicable([](char c) {
          or left % ("expecting char "s + mpc::quoted(std::move(c2)));
 });
 
-// many p = ((:) <$> p <*> many p) <|> return []
-// inline constexpr auto many = applicable([](auto&& p){})
+// https://hackage.haskell.org/package/base-4.17.0.0/docs/Control-Applicative.html#v:many
+// https://hackage.haskell.org/package/base-4.17.0.0/docs/src/GHC.Base.html#many
+// some v = (:) <$> v <*> many v
+// many v = some v <|> pure []
 
 int main() {
   const auto anyChar = satisfy % (mpc::constant % true);
@@ -101,7 +103,11 @@ int main() {
   const auto test1 = mpc::sequence % std::list{anyChar, anyChar};
   const auto test2 = mpc::sequence % std::list{anyChar, anyChar, anyChar};
   const auto test3 = mpc::sequence % std::list{alpha, digit, digit};
-  const auto test4 = digit or alpha;
+  const auto test4 = alpha or digit;
+  const auto test5 = mpc::sequence % std::list{alpha, digit, digit, digit};
+  // test6 = sequence $ letter : replicate 3 digit
+  // const auto test7 = many % alpha;
+  // const auto test8 = many % test4;
 
   parseTest(1, anyChar, ""); // NG
   parseTest(2, anyChar, "abc");
@@ -122,4 +128,12 @@ int main() {
   parseTest(17, test4, "a");
   parseTest(18, test4, "1");
   parseTest(19, test4, "!"); // NG
+  parseTest(20, test5, "a123");
+  parseTest(21, test5, "ab123"); // NG
+  // parseTest(22, test6, "a123");
+  // parseTest(23, test6, "ab123"); // NG
+  // parseTest(24, test7, "abc123");
+  // parseTest(25, test7, "123abc");
+  // parseTest(26, test8, "abc123");
+  // parseTest(27, test8, "123abc");
 }
