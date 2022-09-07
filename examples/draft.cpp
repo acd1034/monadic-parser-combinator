@@ -20,15 +20,13 @@ template <class T>
 template <class V>
 using Monad = mpc::either<std::string, V>;
 
-using Result = std::pair<char, std::string_view>;
-
-using ST = mpc::StateT<std::string_view, mpc::either<std::string, Result>>;
+using ST = mpc::StateT<std::string_view, Monad<std::pair<char, std::string_view>>>;
 
 template <mpc::is_StateT ST2>
 using StateT_value_in_monad_t =
   decltype(mpc::fmap(mpc::fst, std::declval<mpc::StateT_monad_t<ST2>>()));
 
-constexpr Result //
+constexpr std::pair<char, std::string_view> //
 decomp(std::string_view sv) {
   return {sv.front(), sv.substr(1)};
 }
@@ -61,7 +59,7 @@ struct mpc::alternative_traits<mpc::either<std::string, T>> {
 inline constexpr auto satisfy = //
   applicable([](std::predicate<char> auto pred) {
     return mpc::make_StateT<std::string_view>(applicable(
-      [](auto pred, std::string_view sv) -> mpc::either<std::string, Result> {
+      [](auto pred, std::string_view sv) -> Monad<std::pair<char, std::string_view>> {
         if (std::ranges::empty(sv)) {
           return mpc::make_left("unexpected end of input"s);
         } else if (auto [x, xs] = decomp(sv); not std::invoke(pred, x)) {
