@@ -8,6 +8,13 @@ using namespace std::literals;
 using mpc::operators::alternatives::operator||;
 template <class Op, class... Args>
 using applicable = mpc::partially_applicable<Op, Args...>;
+
+template <class CharT, class Traits, class T>
+auto& operator<<(std::basic_ostream<CharT, Traits>& os, const std::list<T>& l) {
+  for (const auto& x : l) { os << x; }
+  return os;
+}
+
 template <class T>
 [[deprecated]] constexpr void type_of() {}
 
@@ -90,28 +97,28 @@ int main() {
   const auto anyChar = satisfy % (mpc::constant % true);
   const auto digit = satisfy % mpc::isdigit or left % "expecting digit"s;
   const auto alpha = satisfy % mpc::isalpha or left % "expecting alpha"s;
-  // FIXME
-  // const auto test1 = mpc::sequence % std::list{anyChar, anyChar};
-  // const auto test2 = mpc::sequence % std::list{anyChar, anyChar, anyChar};
-  // const auto test3 = mpc::sequence % std::list{alpha, digit, digit};
+  // auto test = mpc::foldr(mpc::liftA2 % mpc::cons, mpc::returns<decltype(anyChar)> % std::list<char>{}, std::list{anyChar, anyChar});
+  const auto test1 = mpc::sequence % std::list{anyChar, anyChar};
+  const auto test2 = mpc::sequence % std::list{anyChar, anyChar, anyChar};
+  const auto test3 = mpc::sequence % std::list{alpha, digit, digit};
   const auto test4 = digit or alpha;
 
   parseTest(1, anyChar, ""); // NG
   parseTest(2, anyChar, "abc");
-  // parseTest(3, test1, "abc");
-  // parseTest(4, test2, "abc");
-  // parseTest(5, test2, "12"); // NG
-  // parseTest(6, test2, "123");
+  parseTest(3, test1, "abc");
+  parseTest(4, test2, "abc");
+  parseTest(5, test2, "12"); // NG
+  parseTest(6, test2, "123");
   parseTest(7, char1 % 'a', "abc");
   parseTest(8, char1 % 'a', "123"); // NG
   parseTest(9, digit, "abc");       // NG
   parseTest(10, digit, "123");
   parseTest(11, alpha, "abc");
   parseTest(12, alpha, "123"); // NG
-  // parseTest(13, test3, "abc"); // NG
-  // parseTest(14, test3, "123"); // NG
-  // parseTest(15, test3, "a23");
-  // parseTest(16, test3, "a234");
+  parseTest(13, test3, "abc"); // NG
+  parseTest(14, test3, "123"); // NG
+  parseTest(15, test3, "a23");
+  parseTest(16, test3, "a234");
   parseTest(17, test4, "a");
   parseTest(18, test4, "1");
   parseTest(19, test4, "!"); // NG
