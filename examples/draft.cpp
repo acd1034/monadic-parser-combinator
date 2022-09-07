@@ -31,6 +31,15 @@ decomp(std::string_view sv) {
   return {sv.front(), sv.substr(1)};
 }
 
+void parseTest(const std::size_t n, const auto& st, std::string_view sv) {
+  const auto result = mpc::eval_StateT % st % sv;
+  if (result.index() == 0) {
+    std::cout << n << " [" << sv << "] " << *std::get<0>(result) << std::endl;
+  } else {
+    std::cout << n << ' ' << *std::get<1>(result) << std::endl;
+  }
+};
+
 template <class T>
 struct mpc::alternative_traits<mpc::either<std::string, T>> {
   static constexpr auto combine = [](const auto& m1, const auto& m2) //
@@ -45,15 +54,6 @@ struct mpc::alternative_traits<mpc::either<std::string, T>> {
       return m1;
     }
   };
-};
-
-inline constexpr auto parseTest = [](const auto& st, std::string_view sv) -> void {
-  const auto result = mpc::eval_StateT % st % sv;
-  if (result.index() == 0) {
-    std::cout << "[" << sv << "] " << *std::get<0>(result) << std::endl;
-  } else {
-    std::cout << *std::get<1>(result) << std::endl;
-  }
 };
 
 inline constexpr auto satisfy = //
@@ -90,23 +90,23 @@ int main() {
   // const auto test3 = mpc::sequence % std::list{alpha, digit, digit};
   const auto test4 = digit or alpha;
 
-  parseTest(anyChar, ""); // NG
-  parseTest(anyChar, "abc");
-  // parseTest(test1, "abc");
-  // parseTest(test2, "abc");
-  // parseTest(test2, "12"); // NG
-  // parseTest(test2, "123");
-  parseTest(char1 % 'a', "abc");
-  parseTest(char1 % 'a', "123"); // NG
-  parseTest(digit, "abc");       // NG
-  parseTest(digit, "123");
-  parseTest(alpha, "abc");
-  parseTest(alpha, "123"); // NG
-  // parseTest(test3, "abc"); // NG
-  // parseTest(test3, "123"); // NG
-  // parseTest(test3, "a23");
-  // parseTest(test3, "a234");
-  parseTest(test4, "a");
-  parseTest(test4, "1");
-  parseTest(test4, "!"); // NG
+  parseTest(1, anyChar, ""); // NG
+  parseTest(2, anyChar, "abc");
+  // parseTest(3, test1, "abc");
+  // parseTest(4, test2, "abc");
+  // parseTest(5, test2, "12"); // NG
+  // parseTest(6, test2, "123");
+  parseTest(7, char1 % 'a', "abc");
+  parseTest(8, char1 % 'a', "123"); // NG
+  parseTest(9, digit, "abc");       // NG
+  parseTest(10, digit, "123");
+  parseTest(11, alpha, "abc");
+  parseTest(12, alpha, "123"); // NG
+  // parseTest(13, test3, "abc"); // NG
+  // parseTest(14, test3, "123"); // NG
+  // parseTest(15, test3, "a23");
+  // parseTest(16, test3, "a234");
+  parseTest(17, test4, "a");
+  parseTest(18, test4, "1");
+  parseTest(19, test4, "!"); // NG
 }
