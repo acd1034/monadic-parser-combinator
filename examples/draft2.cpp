@@ -34,9 +34,9 @@ Result decomp(String&& str) {
 void parseTest(const std::size_t n, const auto& parser, std::string_view sv) {
   const auto result = mpc::eval_StateT % parser % std::list(sv.begin(), sv.end());
   if (result.index() == 0) {
-    std::cout << n << " [" << sv << "] " << *std::get<0>(result) << std::endl;
+    std::cout << n << " [" << sv << "] " << *mpc::fst(result) << std::endl;
   } else {
-    std::cout << n << ' ' << *std::get<1>(result) << std::endl;
+    std::cout << n << ' ' << *mpc::snd(result) << std::endl;
   }
 };
 
@@ -46,8 +46,7 @@ struct mpc::alternative_traits<mpc::either<std::string, T>> {
     -> mpc::either<std::string, T> {
     if (m1.index() == 0) {
       if (m2.index() == 0) {
-        return mpc::make_left(*std::get<0>(MPC_FORWARD(m1)) + " AND "
-                              + *std::get<0>(MPC_FORWARD(m2)));
+        return mpc::make_left(*mpc::fst(MPC_FORWARD(m1)) + " AND " + *mpc::fst(MPC_FORWARD(m2)));
       } else {
         return MPC_FORWARD(m2);
       }
