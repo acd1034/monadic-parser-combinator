@@ -4,6 +4,9 @@ var hierarchy =
       [ "mpc::detail::is_implicitly_default_constructible< T >", "structmpc_1_1detail_1_1is__implicitly__default__constructible.html", null ],
       [ "mpc::is_tuple_like< T, std::void_t< decltype(std::tuple_size< T >::value)> >", "structmpc_1_1is__tuple__like_3_01_t_00_01std_1_1void__t_3_01decltype_07std_1_1tuple__size_3_01_t_01_4_1_1value_08_4_01_4.html", null ]
     ] ],
+    [ "mpc::_function< Ret, Arg >", "structmpc_1_1__function.html", [
+      [ "mpc::_function_impl< F, Ret, Arg >", "structmpc_1_1__function__impl.html", null ]
+    ] ],
     [ "mpc::alternative_traits< class >", "structmpc_1_1alternative__traits.html", null ],
     [ "mpc::alternative_traits< maybe< T1 > >", "structmpc_1_1alternative__traits_3_01maybe_3_01_t1_01_4_01_4.html", null ],
     [ "mpc::applicative_traits< class >", "structmpc_1_1applicative__traits.html", null ],
@@ -74,6 +77,8 @@ var hierarchy =
     [ "mpc::functor_traits< maybe< T1 > >::fmap_op", "structmpc_1_1functor__traits_3_01maybe_3_01_t1_01_4_01_4_1_1fmap__op.html", null ],
     [ "mpc::functor_traits< StateT< S, M > >::fmap_op", "structmpc_1_1functor__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4_1_1fmap__op.html", null ],
     [ "mpc::monads::detail::fmap_op", "structmpc_1_1monads_1_1detail_1_1fmap__op.html", null ],
+    [ "mpc::function< class >", "structmpc_1_1function.html", null ],
+    [ "mpc::function< Ret(Arg)>", "structmpc_1_1function_3_01_ret_07_arg_08_4.html", null ],
     [ "mpc::functor_traits< class >", "structmpc_1_1functor__traits.html", null ],
     [ "mpc::functor_traits< either< T1, T2 > >", "structmpc_1_1functor__traits_3_01either_3_01_t1_00_01_t2_01_4_01_4.html", null ],
     [ "mpc::functor_traits< Identity< T > >", "structmpc_1_1functor__traits_3_01_identity_3_01_t_01_4_01_4.html", null ],
@@ -83,7 +88,7 @@ var hierarchy =
     [ "mpc::states::detail::gets_op< ST >", "structmpc_1_1states_1_1detail_1_1gets__op.html", null ],
     [ "mpc::detail::getss_op< ST >", "structmpc_1_1detail_1_1getss__op.html", null ],
     [ "mpc::Identity< T >", "structmpc_1_1_identity.html", null ],
-    [ "mpc::Identity< partially_applicable< std::function< M(S)> > >", "structmpc_1_1_identity.html", [
+    [ "mpc::Identity< mpc::function< M(S)> >", "structmpc_1_1_identity.html", [
       [ "mpc::StateT< S, M >", "structmpc_1_1_state_t.html", null ]
     ] ],
     [ "mpc::index_constant", null, [

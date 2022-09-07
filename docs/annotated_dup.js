@@ -102,6 +102,8 @@ var annotated_dup =
           [ "put_op", "structmpc_1_1states_1_1detail_1_1put__op.html", "structmpc_1_1states_1_1detail_1_1put__op" ]
         ] ]
       ] ],
+      [ "_function", "structmpc_1_1__function.html", null ],
+      [ "_function_impl", "structmpc_1_1__function__impl.html", null ],
       [ "alternative_traits", "structmpc_1_1alternative__traits.html", null ],
       [ "alternative_traits< maybe< T1 > >", "structmpc_1_1alternative__traits_3_01maybe_3_01_t1_01_4_01_4.html", "structmpc_1_1alternative__traits_3_01maybe_3_01_t1_01_4_01_4" ],
       [ "alternative_traits< StateT< S, M > >", "structmpc_1_1alternative__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4.html", null ],
@@ -112,6 +114,8 @@ var annotated_dup =
       [ "applicative_traits< StateT< S, M > >", "structmpc_1_1applicative__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4.html", "structmpc_1_1applicative__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4" ],
       [ "copyable_box", "classmpc_1_1copyable__box.html", null ],
       [ "copyable_box< T >", "classmpc_1_1copyable__box_3_01_t_01_4.html", null ],
+      [ "function", "structmpc_1_1function.html", null ],
+      [ "function< Ret(Arg)>", "structmpc_1_1function_3_01_ret_07_arg_08_4.html", null ],
       [ "functor_traits", "structmpc_1_1functor__traits.html", null ],
       [ "functor_traits< either< T1, T2 > >", "structmpc_1_1functor__traits_3_01either_3_01_t1_00_01_t2_01_4_01_4.html", "structmpc_1_1functor__traits_3_01either_3_01_t1_00_01_t2_01_4_01_4" ],
       [ "functor_traits< Identity< T > >", "structmpc_1_1functor__traits_3_01_identity_3_01_t_01_4_01_4.html", "structmpc_1_1functor__traits_3_01_identity_3_01_t_01_4_01_4" ],

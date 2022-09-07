@@ -95,17 +95,17 @@ $(document).ready(function(){initNavTree('structmpc_1_1detail_1_1make___state_t_
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ac30d653a12935a245ddc9d7057d969e4"><td class="memItemLeft" align="right" valign="top"><a id="ac30d653a12935a245ddc9d7057d969e4" name="ac30d653a12935a245ddc9d7057d969e4"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>state_type</b> = const std::decay_t&lt; S &gt; &amp;</td></tr>
-<tr class="separator:ac30d653a12935a245ddc9d7057d969e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6976564a8f9ca1f807eb3676a2a59345"><td class="memItemLeft" align="right" valign="top"><a id="a6976564a8f9ca1f807eb3676a2a59345" name="a6976564a8f9ca1f807eb3676a2a59345"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>state_type</b> = std::decay_t&lt; S &gt;</td></tr>
+<tr class="separator:a6976564a8f9ca1f807eb3676a2a59345"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a13187364e15ca57d9ce0f0c3b0d6ff69"><td class="memTemplParams" colspan="2"><a id="a13187364e15ca57d9ce0f0c3b0d6ff69" name="a13187364e15ca57d9ce0f0c3b0d6ff69"></a>
+<tr class="memitem:a737f2f00cfaec8743bfad017281770dd"><td class="memTemplParams" colspan="2"><a id="a737f2f00cfaec8743bfad017281770dd" name="a737f2f00cfaec8743bfad017281770dd"></a>
 template&lt;class Fn &gt; <br />
-requires std::invocable&lt;std::decay_t&lt;Fn&gt;, state_type&gt;</td></tr>
-<tr class="memitem:a13187364e15ca57d9ce0f0c3b0d6ff69"><td class="memTemplItemLeft" align="right" valign="top">and constexpr monad&lt; std::invoke_result_t&lt; std::decay_t&lt; Fn &gt;, state_type &gt; &gt; auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator()</b> (Fn &amp;&amp;f) const</td></tr>
-<tr class="separator:a13187364e15ca57d9ce0f0c3b0d6ff69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+requires std::invocable&lt;Fn&amp;, state_type&gt;</td></tr>
+<tr class="memitem:a737f2f00cfaec8743bfad017281770dd"><td class="memTemplItemLeft" align="right" valign="top">and constexpr monad&lt; std::invoke_result_t&lt; Fn &amp;, state_type &gt; &gt; auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator()</b> (Fn &amp;&amp;f) const</td></tr>
+<tr class="separator:a737f2f00cfaec8743bfad017281770dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/mpc/control/state/<a class="el" href="state_t_8hpp_source.html">stateT.hpp</a></li>
