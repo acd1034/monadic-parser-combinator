@@ -3,6 +3,7 @@ var state_t_8hpp =
     [ "mpc::StateT< S, M >", "structmpc_1_1_state_t.html", null ],
     [ "mpc::detail::is_StateT_impl< class >", "structmpc_1_1detail_1_1is___state_t__impl.html", null ],
     [ "mpc::detail::is_StateT_impl< StateT< S, M > >", "structmpc_1_1detail_1_1is___state_t__impl_3_01_state_t_3_01_s_00_01_m_01_4_01_4.html", null ],
+    [ "mpc::holding< StateT< S, M > >", "structmpc_1_1holding_3_01_state_t_3_01_s_00_01_m_01_4_01_4.html", null ],
     [ "mpc::detail::make_StateT_op< S >", "structmpc_1_1detail_1_1make___state_t__op.html", null ],
     [ "mpc::detail::run_StateT_op", "structmpc_1_1detail_1_1run___state_t__op.html", null ],
     [ "mpc::monad_traits< StateT< S, M > >", "structmpc_1_1monad__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4.html", "structmpc_1_1monad__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4" ],

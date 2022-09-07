@@ -5,6 +5,7 @@ var dir_208dfe54f78f31e93ac241a8170a8015 =
     [ "alternative.hpp", "alternative_8hpp.html", "alternative_8hpp" ],
     [ "applicative.hpp", "applicative_8hpp.html", "applicative_8hpp" ],
     [ "functor.hpp", "control_2functor_8hpp.html", "control_2functor_8hpp" ],
+    [ "holding.hpp", "holding_8hpp.html", "holding_8hpp" ],
     [ "monad.hpp", "monad_8hpp.html", "monad_8hpp" ],
     [ "state.hpp", "state_8hpp.html", null ],
     [ "trans.hpp", "trans_8hpp.html", null ]

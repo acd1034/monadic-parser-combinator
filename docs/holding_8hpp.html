@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>mpc: include/mpc/control.hpp File Reference</title>
+<title>mpc: include/mpc/control/holding.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -66,7 +66,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('control_8hpp.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('holding_8hpp.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -85,24 +85,40 @@ $(document).ready(function(){initNavTree('control_8hpp.html',''); initResizable(
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">control.hpp File Reference</div></div>
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a>  </div>
+  <div class="headertitle"><div class="title">holding.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="alternative_8hpp_source.html">mpc/control/alternative.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="applicative_8hpp_source.html">mpc/control/applicative.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="control_2functor_8hpp_source.html">mpc/control/functor.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="holding_8hpp_source.html">mpc/control/holding.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="monad_8hpp_source.html">mpc/control/monad.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="state_8hpp_source.html">mpc/control/state.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="trans_8hpp_source.html">mpc/control/trans.hpp</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="stdfundamental_8hpp_source.html">mpc/stdfundamental.hpp</a>&gt;</code><br />
 </div>
-<p><a href="control_8hpp_source.html">Go to the source code of this file.</a></p>
+<p><a href="holding_8hpp_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1holding__or.html">mpc::holding_or&lt; T, U &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1holding__or_3_01_t_00_01_u_01_4.html">mpc::holding_or&lt; T, U &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a2618933fd2ccbf2d9ab511faec303f46"><td class="memTemplParams" colspan="2"><a id="a2618933fd2ccbf2d9ab511faec303f46" name="a2618933fd2ccbf2d9ab511faec303f46"></a>
+template&lt;class T &gt; </td></tr>
+<tr class="memitem:a2618933fd2ccbf2d9ab511faec303f46"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::holding_t</b> = typename holding&lt; T &gt;::type</td></tr>
+<tr class="separator:a2618933fd2ccbf2d9ab511faec303f46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a468afdaea93ca18d578c39875a58c996"><td class="memTemplParams" colspan="2"><a id="a468afdaea93ca18d578c39875a58c996" name="a468afdaea93ca18d578c39875a58c996"></a>
+template&lt;class T , class U &gt; </td></tr>
+<tr class="memitem:a468afdaea93ca18d578c39875a58c996"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::holding_or_t</b> = typename holding_or&lt; T, U &gt;::type</td></tr>
+<tr class="separator:a468afdaea93ca18d578c39875a58c996"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_daed19cc8e35db4a3a2df7a49f7001de.html">mpc</a></li><li class="navelem"><a class="el" href="control_8hpp.html">control.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_daed19cc8e35db4a3a2df7a49f7001de.html">mpc</a></li><li class="navelem"><a class="el" href="dir_208dfe54f78f31e93ac241a8170a8015.html">control</a></li><li class="navelem"><a class="el" href="holding_8hpp.html">holding.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>

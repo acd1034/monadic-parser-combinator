@@ -95,6 +95,13 @@ var hierarchy =
     [ "mpc::detail::gets_op< ST >", "structmpc_1_1detail_1_1gets__op.html", null ],
     [ "mpc::states::detail::gets_op< ST >", "structmpc_1_1states_1_1detail_1_1gets__op.html", null ],
     [ "mpc::detail::getss_op< ST >", "structmpc_1_1detail_1_1getss__op.html", null ],
+    [ "mpc::holding< class >", "structmpc_1_1holding.html", null ],
+    [ "mpc::holding< std::remove_cvref_t< decltype(mpc::fmap(mpc::fst, std::declval< M >()))> >", "structmpc_1_1holding.html", [
+      [ "mpc::holding< StateT< S, M > >", "structmpc_1_1holding_3_01_state_t_3_01_s_00_01_m_01_4_01_4.html", null ]
+    ] ],
+    [ "mpc::holding< std::remove_cvref_t< T > >", "structmpc_1_1holding.html", [
+      [ "mpc::holding_or< T, U >", "structmpc_1_1holding__or_3_01_t_00_01_u_01_4.html", null ]
+    ] ],
     [ "mpc::Identity< T >", "structmpc_1_1_identity.html", null ],
     [ "mpc::Identity< mpc::function< M(S)> >", "structmpc_1_1_identity.html", [
       [ "mpc::StateT< S, M >", "structmpc_1_1_state_t.html", null ]
@@ -189,6 +196,10 @@ var hierarchy =
       [ "mpc::detail::is_maybe_impl< maybe< T > >", "structmpc_1_1detail_1_1is__maybe__impl_3_01maybe_3_01_t_01_4_01_4.html", null ]
     ] ],
     [ "std::tuple_element< Idx, mpc::single< T, Tag > >", "structstd_1_1tuple__element_3_01_idx_00_01mpc_1_1single_3_01_t_00_01_tag_01_4_01_4.html", null ],
+    [ "std::type_identity", null, [
+      [ "mpc::holding< either< T, U > >", "structmpc_1_1holding_3_01either_3_01_t_00_01_u_01_4_01_4.html", null ],
+      [ "mpc::holding_or< T, U >", "structmpc_1_1holding__or.html", null ]
+    ] ],
     [ "mpc::detail::with_StateT_op", "structmpc_1_1detail_1_1with___state_t__op.html", null ],
     [ "mpc::Ts", null, [
       [ "mpc::overloaded< Ts >", "structmpc_1_1overloaded.html", null ]

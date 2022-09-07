@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['perfect_5fforward_2ehpp_0',['perfect_forward.hpp',['../perfect__forward_8hpp.html',1,'']]],
-  ['prelude_2ehpp_1',['prelude.hpp',['../prelude_8hpp.html',1,'']]]
+  ['operations_2ehpp_0',['operations.hpp',['../operations_8hpp.html',1,'']]],
+  ['overloaded_2ehpp_1',['overloaded.hpp',['../overloaded_8hpp.html',1,'']]]
 ];
