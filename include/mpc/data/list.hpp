@@ -1,13 +1,17 @@
 /// @file list.hpp
 #pragma once
-#include <algorithm>  // std::ranges::transform
+#include <algorithm>  // std::transform
 #include <functional> // std::invoke
 #include <iterator>
 #include <list>
 #include <mpc/control/monad.hpp>
 #include <mpc/prelude.hpp> // identity
+#include <mpc/ranges.hpp>
 
 namespace mpc {
+  // List operations
+  // https://hackage.haskell.org/package/base-4.17.0.0/docs/Prelude.html#g:13
+
   namespace detail {
     template <class>
     struct is_list_impl : std::false_type {};
@@ -43,16 +47,15 @@ namespace mpc {
         if (first == last) {
           return std::forward<T>(init);
         } else {
-          return std::invoke(
-            op, *first,
-            this->operator()(op, std::forward<T>(init), std::ranges::next(first), last));
+          auto tmp = first;
+          return std::invoke(op, *tmp, this->operator()(op, std::forward<T>(init), ++first, last));
         }
       }
 
-      template <class Fn, std::movable T, std::ranges::input_range R>
+      template <class Fn, std::movable T, mpc::ranges::input_range R>
       constexpr auto operator()(Fn&& op, T&& init, R&& r) const -> T {
-        return this->operator()(std::forward<Fn>(op), std::forward<T>(init), std::ranges::begin(r),
-                                std::ranges::end(r));
+        return this->operator()(std::forward<Fn>(op), std::forward<T>(init), mpc::ranges::begin(r),
+                                mpc::ranges::end(r));
       }
     };
   } // namespace detail
@@ -67,10 +70,10 @@ namespace mpc {
   template <class T>
   struct functor_traits<std::list<T>> {
     struct fmap_op {
-      template <class Fn, class U>
-      constexpr auto operator()(Fn&& f, const std::list<U>& l) const {
-        std::list<std::invoke_result_t<Fn, U>> ret(std::ranges::size(l));
-        std::ranges::transform(l, std::begin(ret), std::forward<Fn>(f));
+      template <class Fn, is_list L>
+      constexpr auto operator()(Fn f, L&& l) const {
+        std::list<std::invoke_result_t<Fn&, mpc::ranges::range_reference_t<L>>> ret(l.size());
+        std::transform(l.begin(), l.end(), ret.begin(), std::move(f));
         return ret;
       }
     };
@@ -89,11 +92,13 @@ namespace mpc {
     };
 
     struct liftA2_op {
-      template <class Fn, class U1, class U2>
-      constexpr auto operator()(Fn&& f, const std::list<U1>& l1, const std::list<U2>& l2) const {
-        const auto n = std::min(std::ranges::size(l1), std::ranges::size(l2));
-        std::list<std::invoke_result_t<Fn, U1, U2>> ret(n);
-        std::ranges::transform(l1, l2, std::begin(ret), std::forward<Fn>(f));
+      template <class Fn, is_list L1, is_list L2>
+      constexpr auto operator()(Fn f, L1&& l1, L2&& l2) const {
+        const auto n = std::min(l1.size(), l2.size());
+        std::list<std::invoke_result_t<Fn&, mpc::ranges::range_reference_t<L1>,
+                                       mpc::ranges::range_reference_t<L2>>>
+          ret(n);
+        std::transform(l1.begin(), l1.end(), l2.begin(), l2.end(), ret.begin(), std::move(f));
         return ret;
       }
     };
