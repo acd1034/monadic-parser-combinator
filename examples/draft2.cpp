@@ -26,11 +26,7 @@ template <class T>
 
 using String = std::list<char>;
 using Result = std::pair<char, String>;
-using ST = mpc::StateT<String, mpc::either<std::string, Result>>;
-
-template <mpc::is_StateT ST2>
-using StateT_value_in_monad_t =
-  decltype(mpc::fmap(mpc::fst, std::declval<mpc::StateT_monad_t<ST2>>()));
+using Parser = mpc::StateT<String, mpc::either<std::string, Result>>;
 
 Result decomp(String&& str) {
   auto c = str.front();
@@ -79,8 +75,8 @@ inline constexpr auto satisfy = //
   });
 
 inline constexpr auto left =
-  mpc::compose
-  % mpc::lift<ST> % applicable([](/* std::string */ auto&& str) -> StateT_value_in_monad_t<ST> {
+  mpc::compose % mpc::lift<Parser> //
+  % applicable([](/* std::string */ auto&& str) -> mpc::eval_StateT_t<Parser> {
       return mpc::make_left(MPC_FORWARD(str));
     });
 
