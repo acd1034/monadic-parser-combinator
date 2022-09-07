@@ -48,6 +48,9 @@ namespace mpc {
   template <is_StateT ST>
   using StateT_monad_t = typename std::remove_cvref_t<ST>::monad_type;
 
+  template <class S, monad M>
+  struct holding<StateT<S, M>> : holding<std::remove_cvref_t<decltype(mpc::fmap(mpc::fst, std::declval<M>()))>> {};
+
   // make_StateT, run_StateT
   namespace detail {
     template <class S>
