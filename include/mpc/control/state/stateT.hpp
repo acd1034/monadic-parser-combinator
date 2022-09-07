@@ -2,6 +2,7 @@
 #pragma once
 #include <functional> // std::invoke
 #include <mpc/control/alternative.hpp>
+#include <mpc/control/holding.hpp>
 #include <mpc/control/monad.hpp>
 #include <mpc/control/state/class.hpp>
 #include <mpc/control/trans/class.hpp>
