@@ -4,6 +4,7 @@
 #include <functional> // std::invoke
 #include <iterator>
 #include <list>
+#include <mpc/control/holding.hpp>
 #include <mpc/control/monad.hpp>
 #include <mpc/prelude.hpp> // identity
 #include <mpc/ranges.hpp>
@@ -110,14 +111,25 @@ namespace mpc {
   };
 
   // sequence
+  // https://hackage.haskell.org/package/base-4.17.0.0/docs/src/Data.Traversable.html#traverse
+  // https://hackage.haskell.org/package/base-4.17.0.0/docs/src/Data.Traversable.html#Traversable
+  // traverse :: Applicative f => (a -> f b) -> t a -> f (t b)
+  // traverse f = sequenceA . fmap f
+  //
+  // sequenceA :: Applicative f => t (f a) -> f (t a)
+  // sequenceA = traverse id
+  //
+  // instance Traversable [] where
+  //   traverse f = List.foldr cons_f (pure [])
+  //     where cons_f x ys = liftA2 (:) (f x) ys
   namespace detail {
     struct sequence_op {
       // FIXME: 本来 applicative T
       template <monad T>
       constexpr auto operator()(const std::list<T>& l) const {
         // FIXME: 不正な方法で monad の value_type を取得している
-        using U = std::remove_cvref_t<decltype(mpc::bind(l.front(), identity))>;
-        if constexpr (std::same_as<U, char>)
+        using U = holding_or_t<T, std::remove_cvref_t<decltype(mpc::bind(l.front(), identity))>>;
+        if constexpr (false)
           return foldr(mpc::liftA2 % cons, mpc::returns<T> % std::string{}, l);
         else
           return foldr(mpc::liftA2 % cons, mpc::returns<T> % std::list<U>{}, l);
