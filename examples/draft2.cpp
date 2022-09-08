@@ -104,6 +104,8 @@ int main() {
   // test6 = sequence $ letter : replicate 3 digit
   // const auto test7 = many % alpha;
   // const auto test8 = many % test4;
+  const auto test9 = mpc::sequence % std::list{char1 % 'a', char1 % 'b'}
+                     or mpc::sequence % std::list{char1 % 'a', char1 % 'c'};
 
   parseTest(1, anyChar, ""); // NG
   parseTest(2, anyChar, "abc");
@@ -132,4 +134,6 @@ int main() {
   // parseTest(25, test7, "123abc");
   // parseTest(26, test8, "abc123");
   // parseTest(27, test8, "123abc");
+  parseTest(28, test9, "ab");
+  parseTest(29, test9, "ac"); // NG but succeed
 }
