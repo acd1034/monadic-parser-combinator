@@ -34,8 +34,8 @@ Result decomp(String&& str) {
   return {c, std::move(str)};
 }
 
-void parseTest(const std::size_t n, const auto& parser, std::string_view sv) {
-  const auto result = mpc::eval_StateT % parser % std::list(sv.begin(), sv.end());
+void parseTest(const std::size_t n, /* Parser */ auto&& parser, std::string_view sv) {
+  const auto result = mpc::eval_StateT % MPC_FORWARD(parser) % std::list(sv.begin(), sv.end());
   if (result.index() == 0) {
     std::cout << n << " [" << sv << "] " << *mpc::fst(result) << std::endl;
   } else {
@@ -76,8 +76,7 @@ inline constexpr auto satisfy = //
 
 inline constexpr auto try1 = applicable([](/* Parser */ auto&& parser) {
   return mpc::make_StateT<String>(applicable(
-    [](
-      /* Parser */ auto&& parser, /* String */ auto&& str) {
+    [](/* Parser */ auto&& parser, /* String */ auto&& str) {
       return mpc::run_StateT % MPC_FORWARD(parser) % MPC_FORWARD(str);
     },
     MPC_FORWARD(parser)));
@@ -97,7 +96,8 @@ inline constexpr auto char1 = applicable([](char c) {
 
 inline constexpr auto string = applicable([](std::string_view sv) {
   std::list l(sv.begin(), sv.end());
-  return mpc::sequence % mpc::fmap(applicable([](char c) { return char1 % std::move(c); }), std::move(l));
+  return mpc::sequence
+         % mpc::fmap(applicable([](char c) { return char1 % std::move(c); }), std::move(l));
 });
 
 // https://hackage.haskell.org/package/base-4.17.0.0/docs/Control-Applicative.html#v:many
