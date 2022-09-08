@@ -123,7 +123,7 @@ int main() {
   const auto test10 = try1(mpc::sequence % std::list{char1 % 'a', char1 % 'b'})
                       or mpc::sequence % std::list{char1 % 'a', char1 % 'c'};
   const auto test11 = string % "ab" or string % "ac";
-  // test12 = try (string "ab") <|> string "ac"
+  const auto test12 = try1(string % "ab") or string % "ac";
   const auto test13 = mpc::sequence % std::list{char1 % 'a', char1 % 'b' or char1 % 'c'};
 
   parseTest(1, anyChar, ""); // NG
@@ -159,8 +159,8 @@ int main() {
   parseTest(31, test10, "ac");
   parseTest(32, test11, "ab");
   parseTest(33, test11, "ac"); // NG but succeed
-  // parseTest(34, test12, "ab");
-  // parseTest(35, test12, "ac");
+  parseTest(34, test12, "ab");
+  parseTest(35, test12, "ac");
   parseTest(36, test13, "ab");
   parseTest(37, test13, "ac");
 }
