@@ -72,7 +72,8 @@ namespace mpc {
     struct fmap_op {
       template <class Fn, is_list L>
       constexpr auto operator()(Fn f, L&& l) const {
-        std::list<std::invoke_result_t<Fn&, mpc::ranges::range_reference_t<L>>> ret(l.size());
+        using U = std::remove_cvref_t<std::invoke_result_t<Fn&, mpc::ranges::range_reference_t<L>>>;
+        std::list<U> ret(l.size());
         std::transform(l.begin(), l.end(), ret.begin(), std::move(f));
         return ret;
       }
@@ -94,10 +95,10 @@ namespace mpc {
     struct liftA2_op {
       template <class Fn, is_list L1, is_list L2>
       constexpr auto operator()(Fn f, L1&& l1, L2&& l2) const {
+        using U = std::remove_cvref_t<std::invoke_result_t<Fn&, mpc::ranges::range_reference_t<L1>,
+                                                           mpc::ranges::range_reference_t<L2>>>;
         const auto n = std::min(l1.size(), l2.size());
-        std::list<std::invoke_result_t<Fn&, mpc::ranges::range_reference_t<L1>,
-                                       mpc::ranges::range_reference_t<L2>>>
-          ret(n);
+        std::list<U> ret(n);
         std::transform(l1.begin(), l1.end(), l2.begin(), l2.end(), ret.begin(), std::move(f));
         return ret;
       }

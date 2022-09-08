@@ -95,6 +95,11 @@ inline constexpr auto char1 = applicable([](char c) {
          or left % ("expecting char "s + mpc::quoted(std::move(c2)));
 });
 
+inline constexpr auto string = applicable([](std::string_view sv) {
+  std::list l(sv.begin(), sv.end());
+  return mpc::sequence % mpc::fmap(applicable([](char c) { return char1 % std::move(c); }), std::move(l));
+});
+
 // https://hackage.haskell.org/package/base-4.17.0.0/docs/Control-Applicative.html#v:many
 // https://hackage.haskell.org/package/base-4.17.0.0/docs/src/GHC.Base.html#many
 // some v = (:) <$> v <*> many v
@@ -117,7 +122,7 @@ int main() {
                      or mpc::sequence % std::list{char1 % 'a', char1 % 'c'};
   const auto test10 = try1(mpc::sequence % std::list{char1 % 'a', char1 % 'b'})
                       or mpc::sequence % std::list{char1 % 'a', char1 % 'c'};
-  // test11 =      string "ab"  <|> string "ac"
+  const auto test11 = string % "ab" or string % "ac";
   // test12 = try (string "ab") <|> string "ac"
   const auto test13 = mpc::sequence % std::list{char1 % 'a', char1 % 'b' or char1 % 'c'};
 
@@ -152,8 +157,8 @@ int main() {
   parseTest(29, test9, "ac"); // NG but succeed
   parseTest(30, test10, "ab");
   parseTest(31, test10, "ac");
-  // parseTest(32, test11, "ab");
-  // parseTest(33, test11, "ac"); // NG
+  parseTest(32, test11, "ab");
+  parseTest(33, test11, "ac"); // NG but succeed
   // parseTest(34, test12, "ab");
   // parseTest(35, test12, "ac");
   parseTest(36, test13, "ab");

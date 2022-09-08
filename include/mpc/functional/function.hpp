@@ -35,6 +35,7 @@ namespace mpc {
     std::shared_ptr<_function<Ret, Arg>> instance_ = nullptr;
 
   public:
+    function() = default;
     template <class F>
     requires std::invocable<std::decay_t<F>&, Arg> and std::same_as<std::invoke_result_t<std::decay_t<F>&, Arg>, Ret>
     constexpr function(F&& f)
