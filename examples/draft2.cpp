@@ -102,7 +102,9 @@ inline constexpr auto string = applicable([](std::string_view sv) {
 
 // https://hackage.haskell.org/package/base-4.17.0.0/docs/Control-Applicative.html#v:many
 // https://hackage.haskell.org/package/base-4.17.0.0/docs/src/GHC.Base.html#many
+// some :: f a -> f [a]
 // some v = (:) <$> v <*> many v
+// many :: f a -> f [a]
 // many v = some v <|> pure []
 
 int main() {
