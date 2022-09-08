@@ -74,6 +74,15 @@ inline constexpr auto satisfy = //
       std::move(pred)));
   });
 
+inline constexpr auto try1 = applicable([](/* Parser */ auto&& parser) {
+  return mpc::make_StateT<String>(applicable(
+    [](
+      /* Parser */ auto&& parser, /* String */ auto&& str) {
+      return mpc::run_StateT % MPC_FORWARD(parser) % MPC_FORWARD(str);
+    },
+    MPC_FORWARD(parser)));
+});
+
 inline constexpr auto left =
   mpc::compose % mpc::lift<Parser> //
   % applicable([](/* std::string */ auto&& str) -> mpc::eval_StateT_t<Parser> {
@@ -106,6 +115,11 @@ int main() {
   // const auto test8 = many % test4;
   const auto test9 = mpc::sequence % std::list{char1 % 'a', char1 % 'b'}
                      or mpc::sequence % std::list{char1 % 'a', char1 % 'c'};
+  const auto test10 = try1(mpc::sequence % std::list{char1 % 'a', char1 % 'b'})
+                      or mpc::sequence % std::list{char1 % 'a', char1 % 'c'};
+  // test11 =      string "ab"  <|> string "ac"
+  // test12 = try (string "ab") <|> string "ac"
+  const auto test13 = mpc::sequence % std::list{char1 % 'a', char1 % 'b' or char1 % 'c'};
 
   parseTest(1, anyChar, ""); // NG
   parseTest(2, anyChar, "abc");
@@ -136,4 +150,12 @@ int main() {
   // parseTest(27, test8, "123abc");
   parseTest(28, test9, "ab");
   parseTest(29, test9, "ac"); // NG but succeed
+  parseTest(30, test10, "ab");
+  parseTest(31, test10, "ac");
+  // parseTest(32, test11, "ab");
+  // parseTest(33, test11, "ac"); // NG
+  // parseTest(34, test12, "ab");
+  // parseTest(35, test12, "ac");
+  parseTest(36, test13, "ab");
+  parseTest(37, test13, "ac");
 }
