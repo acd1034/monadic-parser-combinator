@@ -106,6 +106,24 @@ inline constexpr auto string = applicable([](std::string_view sv) {
 // some v = (:) <$> v <*> many v
 // many :: f a -> f [a]
 // many v = some v <|> pure []
+auto _many(/* Parser */ auto&& parser, /* String */ auto&& str, std::list<Parser>&& l)
+  -> decltype(mpc::run_StateT % (mpc::sequence % l) % str) {
+  l.push_back(parser);
+  if (auto&& result = mpc::run_StateT % (mpc::sequence % l) % str; result.index() == 0) {
+    l.pop_back();
+    return mpc::run_StateT % (mpc::sequence % std::move(l)) % MPC_FORWARD(str);
+  } else {
+    return _many(MPC_FORWARD(parser), MPC_FORWARD(str), std::move(l));
+  }
+}
+
+inline constexpr auto many = applicable([](/* Parser */ auto&& parser) {
+  return mpc::make_StateT<String>(applicable(
+    [](/* Parser */ auto&& parser, /* String */ auto&& str) {
+      return _many(MPC_FORWARD(parser), MPC_FORWARD(str), std::list<Parser>{});
+    },
+    MPC_FORWARD(parser)));
+});
 
 int main() {
   const auto anyChar = satisfy % (mpc::constant % true);
@@ -118,8 +136,8 @@ int main() {
   const auto test4 = alpha or digit;
   const auto test5 = mpc::sequence % std::list{alpha, digit, digit, digit};
   // test6 = sequence $ letter : replicate 3 digit
-  // const auto test7 = many % alpha;
-  // const auto test8 = many % test4;
+  const auto test7 = many % alpha;
+  const auto test8 = many % test4;
   const auto test9 = mpc::sequence % std::list{char1 % 'a', char1 % 'b'}
                      or mpc::sequence % std::list{char1 % 'a', char1 % 'c'};
   const auto test10 = try1(mpc::sequence % std::list{char1 % 'a', char1 % 'b'})
@@ -151,10 +169,10 @@ int main() {
   parseTest(21, test5, "ab123"); // NG
   // parseTest(22, test6, "a123");
   // parseTest(23, test6, "ab123"); // NG
-  // parseTest(24, test7, "abc123");
-  // parseTest(25, test7, "123abc");
-  // parseTest(26, test8, "abc123");
-  // parseTest(27, test8, "123abc");
+  parseTest(24, test7, "abc123");
+  parseTest(25, test7, "123abc");
+  parseTest(26, test8, "abc123");
+  parseTest(27, test8, "123abc");
   parseTest(28, test9, "ab");
   parseTest(29, test9, "ac"); // NG but succeed
   parseTest(30, test10, "ab");
