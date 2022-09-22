@@ -1,4 +1,4 @@
-# Haskell-like feature supports in C++
+# `mpc`: Haskell-like feature supports in C++
 [![Linux build status](https://github.com/acd1034/monadic-parser-combinator/actions/workflows/linux-build.yml/badge.svg)](https://github.com/acd1034/monadic-parser-combinator/actions/workflows/linux-build.yml)
 <!-- [![macOS build status](https://github.com/acd1034/monadic-parser-combinator/actions/workflows/macos-build.yml/badge.svg)](https://github.com/acd1034/monadic-parser-combinator/actions/workflows/macos-build.yml) -->
 This library aims to implement a monadic parser combinator in C++ (still under development).
@@ -31,7 +31,7 @@ main = print $ runState threeTicks 5 -- (18,8)
 Using this library, you can rewrite this code in C++ as follows:
 
 ```cpp
-using ST = mpc::StateT<const int&, mpc::Identity<std::pair<int, int>>>;
+using ST = mpc::StateT<int, mpc::Identity<int>>;
 constexpr auto fn1 = [](int n, auto&&) { return n; };
 constexpr auto fn2 = [](int n1, int n2, int n3) { return n1 + n2 + n3; };
 
