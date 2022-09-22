@@ -1,12 +1,10 @@
 var searchData=
 [
-  ['haskell_2dlike_20feature_20supports_20in_20c_2b_2b_0',['Haskell-like feature supports in C++',['../index.html',1,'']]],
-  ['holding_1',['holding',['../structmpc_1_1holding.html',1,'mpc']]],
-  ['holding_2ehpp_2',['holding.hpp',['../holding_8hpp.html',1,'']]],
-  ['holding_3c_20either_3c_20t_2c_20u_20_3e_20_3e_3',['holding&lt; either&lt; T, U &gt; &gt;',['../structmpc_1_1holding_3_01either_3_01_t_00_01_u_01_4_01_4.html',1,'mpc']]],
-  ['holding_3c_20statet_3c_20s_2c_20m_20_3e_20_3e_4',['holding&lt; StateT&lt; S, M &gt; &gt;',['../structmpc_1_1holding_3_01_state_t_3_01_s_00_01_m_01_4_01_4.html',1,'mpc']]],
-  ['holding_3c_20std_3a_3aremove_5fcvref_5ft_3c_20eval_5fstatet_5ft_3c_20statet_3c_20s_2c_20m_20_3e_20_3e_20_3e_20_3e_5',['holding&lt; std::remove_cvref_t&lt; eval_StateT_t&lt; StateT&lt; S, M &gt; &gt; &gt; &gt;',['../structmpc_1_1holding.html',1,'mpc']]],
-  ['holding_3c_20std_3a_3aremove_5fcvref_5ft_3c_20t_20_3e_20_3e_6',['holding&lt; std::remove_cvref_t&lt; T &gt; &gt;',['../structmpc_1_1holding.html',1,'mpc']]],
-  ['holding_5for_7',['holding_or',['../structmpc_1_1holding__or.html',1,'mpc']]],
-  ['holding_5for_3c_20t_2c_20u_20_3e_8',['holding_or&lt; T, U &gt;',['../structmpc_1_1holding__or_3_01_t_00_01_u_01_4.html',1,'mpc']]]
+  ['get_0',['get',['../single_8hpp.html#ab0c50cca5b9c8f628b1fd571732ff239',1,'mpc::get(single&lt; T, Tag &gt; &amp;s)'],['../single_8hpp.html#a0019e244975376aafd4eae059fc0f108',1,'mpc::get(const single&lt; T, Tag &gt; &amp;s)'],['../single_8hpp.html#a0dbc12af726eb4e45ff7441e76233c47',1,'mpc::get(single&lt; T, Tag &gt; &amp;&amp;s)'],['../single_8hpp.html#ac4805487b2d996aaacafc762d71de72b',1,'mpc::get(const single&lt; T, Tag &gt; &amp;&amp;s)']]],
+  ['gets_1',['gets',['../namespacempc_1_1cpo.html#ad6cc1b0bf14899eaff9c1de49b5e1b38',1,'mpc::gets()'],['../namespacempc_1_1cpo.html#ad6cc1b0bf14899eaff9c1de49b5e1b38',1,'mpc::cpo::gets()'],['../state_2class_8hpp.html#aceeb23861ed9eb86253125bc296931e3',1,'mpc::states::gets()']]],
+  ['gets_5fop_2',['gets_op',['../structmpc_1_1detail_1_1gets__op.html',1,'mpc::detail::gets_op&lt; ST &gt;'],['../structmpc_1_1states_1_1detail_1_1gets__op.html',1,'mpc::states::detail::gets_op&lt; ST &gt;']]],
+  ['getss_3',['getss',['../namespacempc_1_1cpo.html#ac8d11a179b363e9817689fa688fd15b9',1,'mpc::getss()'],['../namespacempc_1_1cpo.html#ac8d11a179b363e9817689fa688fd15b9',1,'mpc::cpo::getss()']]],
+  ['getss_5fop_4',['getss_op',['../structmpc_1_1detail_1_1getss__op.html',1,'mpc::detail']]],
+  ['greater_5',['greater',['../namespacempc_1_1cpo.html#a2458c5325e6e1b4e1df3b391ff83c12f',1,'mpc::greater()'],['../namespacempc_1_1cpo.html#a2458c5325e6e1b4e1df3b391ff83c12f',1,'mpc::cpo::greater()']]],
+  ['greater_5fequal_6',['greater_equal',['../namespacempc_1_1cpo.html#aab9b33a11f18a7161b5081c245298c1e',1,'mpc::greater_equal()'],['../namespacempc_1_1cpo.html#aab9b33a11f18a7161b5081c245298c1e',1,'mpc::cpo::greater_equal()']]]
 ];

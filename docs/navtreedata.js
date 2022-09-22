@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "mpc", "index.html", [
-    [ "Haskell-like feature supports in C++", "index.html", [
+    [ "<tt>mpc</tt>: Haskell-like feature supports in C++", "index.html", [
       [ "First example", "index.html#autotoc_md1", null ],
       [ "Supported Compilers", "index.html#autotoc_md2", null ],
       [ "Library Dependencies", "index.html#autotoc_md3", null ]

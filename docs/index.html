@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>mpc: Haskell-like feature supports in C++</title>
+<title>mpc: &lt;tt&gt;mpc&lt;/tt&gt;: Haskell-like feature supports in C++</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -85,7 +85,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Haskell-like feature supports in C++ </div></div>
+  <div class="headertitle"><div class="title"><code>mpc</code>: Haskell-like feature supports in C++ </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p ><a class="anchor" id="md_README"></a><a href="https://github.com/acd1034/monadic-parser-combinator/actions/workflows/linux-build.yml"><img src="https://github.com/acd1034/monadic-parser-combinator/actions/workflows/linux-build.yml/badge.svg" alt="Linux build status" style="pointer-events: none;" class="inline"/></a></p>
@@ -110,7 +110,7 @@ First example</h1>
 <div class="line">main :: IO ()</div>
 <div class="line">main = print $ runState threeTicks 5 -- (18,8)</div>
 </div><!-- fragment --><p >Using this library, you can rewrite this code in C++ as follows:</p>
-<div class="fragment"><div class="line"><span class="keyword">using</span> ST = <a class="code hl_struct" href="structmpc_1_1_state_t.html">mpc::StateT&lt;const int&amp;, mpc::Identity&lt;std::pair&lt;int, int&gt;</a>&gt;&gt;;</div>
+<div class="fragment"><div class="line"><span class="keyword">using</span> ST = <a class="code hl_struct" href="structmpc_1_1_state_t.html">mpc::StateT&lt;int, mpc::Identity&lt;int&gt;</a>&gt;;</div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">auto</span> fn1 = [](<span class="keywordtype">int</span> n, <span class="keyword">auto</span>&amp;&amp;) { <span class="keywordflow">return</span> n; };</div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">auto</span> fn2 = [](<span class="keywordtype">int</span> n1, <span class="keywordtype">int</span> n2, <span class="keywordtype">int</span> n3) { <span class="keywordflow">return</span> n1 + n2 + n3; };</div>
 <div class="line"> </div>
