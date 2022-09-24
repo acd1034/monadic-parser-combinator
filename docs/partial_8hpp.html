@@ -87,13 +87,14 @@ $(document).ready(function(){initNavTree('partial_8hpp.html',''); initResizable(
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">partial.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;<a class="el" href="copyable__box_8hpp_source.html">mpc/utility/copyable_box.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="forward__like_8hpp_source.html">mpc/utility/forward_like.hpp</a>&gt;</code><br />
 </div>
 <p><a href="partial_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -103,25 +104,18 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements a perfect-forwarding call wrapper.  <a href="structmpc_1_1partial.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:a404af6d11aff98293af8dad7b1ce20e4"><td class="memTemplParams" colspan="2"><a id="a404af6d11aff98293af8dad7b1ce20e4" name="a404af6d11aff98293af8dad7b1ce20e4"></a>
-template&lt;class T , class U &gt; </td></tr>
-<tr class="memitem:a404af6d11aff98293af8dad7b1ce20e4"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::__override_ref_t</b> = std::conditional_t&lt; std::is_rvalue_reference_v&lt; T &gt;, std::remove_reference_t&lt; U &gt; &amp;&amp;, U &amp; &gt;</td></tr>
-<tr class="separator:a404af6d11aff98293af8dad7b1ce20e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcd044c9047f51c62de9f8d42f786673"><td class="memTemplParams" colspan="2"><a id="adcd044c9047f51c62de9f8d42f786673" name="adcd044c9047f51c62de9f8d42f786673"></a>
-template&lt;class T , class U &gt; </td></tr>
-<tr class="memitem:adcd044c9047f51c62de9f8d42f786673"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::__copy_const_t</b> = std::conditional_t&lt; std::is_const_v&lt; std::remove_reference_t&lt; T &gt; &gt;, U const, U &gt;</td></tr>
-<tr class="separator:adcd044c9047f51c62de9f8d42f786673"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3cebee73e8d3be0cab3000563e8d440b"><td class="memTemplParams" colspan="2"><a id="a3cebee73e8d3be0cab3000563e8d440b" name="a3cebee73e8d3be0cab3000563e8d440b"></a>
-template&lt;class T , class U &gt; </td></tr>
-<tr class="memitem:a3cebee73e8d3be0cab3000563e8d440b"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::__forward_like_t</b> = __override_ref_t&lt; T &amp;&amp;, __copy_const_t&lt; T, std::remove_reference_t&lt; U &gt; &gt; &gt;</td></tr>
-<tr class="separator:a3cebee73e8d3be0cab3000563e8d440b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a98c69a3a2fc93840cf0f45989d47a755"><td class="memTemplParams" colspan="2"><a id="a98c69a3a2fc93840cf0f45989d47a755" name="a98c69a3a2fc93840cf0f45989d47a755"></a>
+template&lt;class Op , class Tuple , std::size_t... Idx, class... Args&gt; </td></tr>
+<tr class="memitem:a98c69a3a2fc93840cf0f45989d47a755"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::make_partial_impl</b> (Op &amp;&amp;op, Tuple &amp;&amp;tuple, std::index_sequence&lt; Idx... &gt;, Args &amp;&amp;... args) noexcept(noexcept(partial(std::forward&lt; Op &gt;(op), std::get&lt; Idx &gt;(std::forward&lt; Tuple &gt;(tuple))..., std::forward&lt; Args &gt;(args)...))) -&gt; decltype(partial(std::forward&lt; Op &gt;(op), std::get&lt; Idx &gt;(std::forward&lt; Tuple &gt;(tuple))..., std::forward&lt; Args &gt;(args)...))</td></tr>
+<tr class="separator:a98c69a3a2fc93840cf0f45989d47a755"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeece7cc78bb1754a4509dddee5746f81"><td class="memTemplParams" colspan="2"><a id="aeece7cc78bb1754a4509dddee5746f81" name="aeece7cc78bb1754a4509dddee5746f81"></a>
+template&lt;class Op , class... Args, class  = std::enable_if_t&lt;is_partial_v&lt;std::remove_cvref_t&lt;Op&gt;&gt;&gt;&gt; </td></tr>
+<tr class="memitem:aeece7cc78bb1754a4509dddee5746f81"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::make_partial</b> (Op &amp;&amp;op, Args &amp;&amp;... args) noexcept(noexcept(make_partial_impl(forward_like&lt; Op &gt;(op.op_), forward_like&lt; Op &gt;(op.bound_), std::make_index_sequence&lt; std::tuple_size_v&lt; decltype(op.bound_)&gt; &gt;(), std::forward&lt; Args &gt;(args)...))) -&gt; decltype(make_partial_impl(forward_like&lt; Op &gt;(op.op_), forward_like&lt; Op &gt;(op.bound_), std::make_index_sequence&lt; std::tuple_size_v&lt; decltype(op.bound_)&gt; &gt;(), std::forward&lt; Args &gt;(args)...))</td></tr>
+<tr class="separator:aeece7cc78bb1754a4509dddee5746f81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6ec20c527d19fdd513aeb0fb32fe957"><td class="memTemplParams" colspan="2"><a id="af6ec20c527d19fdd513aeb0fb32fe957" name="af6ec20c527d19fdd513aeb0fb32fe957"></a>
-template&lt;class Op , class Tuple , std::size_t... Idx, class... Args, class  = std::enable_if_t&lt;std::is_invocable_v&lt;Op, __forward_like_t&lt;Tuple, std::tuple_element_t&lt;Idx, std::remove_cvref_t&lt;Tuple&gt;&gt;&gt;..., Args...&gt;&gt;&gt; </td></tr>
+template&lt;class Op , class Tuple , std::size_t... Idx, class... Args, class  = std::enable_if_t&lt;std::is_invocable_v&lt;Op, forward_like_t&lt;Tuple, std::tuple_element_t&lt;Idx, std::remove_cvref_t&lt;Tuple&gt;&gt;&gt;..., Args...&gt;&gt;&gt; </td></tr>
 <tr class="memitem:af6ec20c527d19fdd513aeb0fb32fe957"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::__call</b> (Op &amp;&amp;op, Tuple &amp;&amp;tuple, std::index_sequence&lt; Idx... &gt;, Args &amp;&amp;... args) noexcept(noexcept(std::invoke(std::forward&lt; Op &gt;(op), std::get&lt; Idx &gt;(std::forward&lt; Tuple &gt;(tuple))..., std::forward&lt; Args &gt;(args)...))) -&gt; decltype(std::invoke(std::forward&lt; Op &gt;(op), std::get&lt; Idx &gt;(std::forward&lt; Tuple &gt;(tuple))..., std::forward&lt; Args &gt;(args)...))</td></tr>
 <tr class="separator:af6ec20c527d19fdd513aeb0fb32fe957"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa23b29da8d02aed0e93d918f1711b1be"><td class="memTemplParams" colspan="2"><a id="aa23b29da8d02aed0e93d918f1711b1be" name="aa23b29da8d02aed0e93d918f1711b1be"></a>
@@ -129,6 +123,17 @@ template&lt;class Op , class... Args&gt; </td></tr>
 <tr class="memitem:aa23b29da8d02aed0e93d918f1711b1be"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::partial</b> (Op, Args...) -&gt; partial&lt; Op, Args... &gt;</td></tr>
 <tr class="memdesc:aa23b29da8d02aed0e93d918f1711b1be"><td class="mdescLeft">&#160;</td><td class="mdescRight">A deduction guide for partial. <br /></td></tr>
 <tr class="separator:aa23b29da8d02aed0e93d918f1711b1be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a8e030fe247100e68dd2233bf38c468c6"><td class="memTemplParams" colspan="2"><a id="a8e030fe247100e68dd2233bf38c468c6" name="a8e030fe247100e68dd2233bf38c468c6"></a>
+template&lt;class T &gt; </td></tr>
+<tr class="memitem:a8e030fe247100e68dd2233bf38c468c6"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::is_partial_v</b> = false</td></tr>
+<tr class="separator:a8e030fe247100e68dd2233bf38c468c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acacbe5c6b0644cb3436999345b4d375d"><td class="memTemplParams" colspan="2"><a id="acacbe5c6b0644cb3436999345b4d375d" name="acacbe5c6b0644cb3436999345b4d375d"></a>
+template&lt;copy_constructible_object Op, class... Bound&gt; </td></tr>
+<tr class="memitem:acacbe5c6b0644cb3436999345b4d375d"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>mpc::is_partial_v&lt; partial&lt; Op, Bound... &gt; &gt;</b> = true</td></tr>
+<tr class="separator:acacbe5c6b0644cb3436999345b4d375d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -87,6 +87,7 @@ $(document).ready(function(){initNavTree('structmpc_1_1partial.html',''); initRe
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="structmpc_1_1partial-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">mpc::partial&lt; Op, Bound &gt; Struct Template Reference</div></div>
 </div><!--header-->
@@ -149,6 +150,13 @@ template&lt;class Arg &gt; </td></tr>
 template&lt;class Arg &gt; </td></tr>
 <tr class="memitem:afa972345e6d70d88c0996921936746de"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator%</b> (Arg &amp;&amp;arg) const &amp;&amp;noexcept(noexcept(std::move(*this)(std::forward&lt; Arg &gt;(arg)))) -&gt; decltype(std::move(*this)(std::forward&lt; Arg &gt;(arg)))</td></tr>
 <tr class="separator:afa972345e6d70d88c0996921936746de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a10ed07c04088ac5da0b179f4eacb6410"><td class="memTemplParams" colspan="2"><a id="a10ed07c04088ac5da0b179f4eacb6410" name="a10ed07c04088ac5da0b179f4eacb6410"></a>
+template&lt;class Op2 , class... Args, class &gt; </td></tr>
+<tr class="memitem:a10ed07c04088ac5da0b179f4eacb6410"><td class="memTemplItemLeft" align="right" valign="top">constexpr friend auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>make_partial</b> (Op2 &amp;&amp;, Args &amp;&amp;...)</td></tr>
+<tr class="separator:a10ed07c04088ac5da0b179f4eacb6410"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;copy_constructible_object Op, class... Bound&gt;<br />
