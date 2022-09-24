@@ -56,9 +56,10 @@ namespace mpc {
 
   /// エラーメッセージを受け取り、必ず失敗するパーサーを返す。
   inline constexpr auto left = //
-    compose % lift<Parser> % partial([](similar_to<ParseError> auto&& str) -> eval_StateT_t<Parser> {
-      return make_left(MPC_FORWARD(str));
-    });
+    compose
+    % lift<Parser> % partial([](similar_to<ParseError> auto&& str) -> eval_StateT_t<Parser> {
+        return make_left(MPC_FORWARD(str));
+      });
 
   /// パーサーを受け取り、パーサーを返す。このパーサーはパースに失敗しても直ちにエラーとならない。
   inline constexpr auto try1 = //
@@ -93,6 +94,7 @@ namespace mpc {
         MPC_FORWARD(pred)));
     });
 
+  /// 文字を受け取り、パーサーを返す。このパーサーは、文字列の先頭が渡した文字に一致する場合にそれを返す。
   inline constexpr auto char1 = //
     partial([](char c) {
       using namespace operators::alternatives;
@@ -101,5 +103,13 @@ namespace mpc {
       auto c2 = c;
       return satisfy % (equal_to % std::move(c))
              or left % ("expecting char "s + mpc::quoted(std::move(c2)));
+    });
+
+  /// 文字列を受け取り、パーサーを返す。このパーサーは、文字列の先頭が渡した文字列から始まる場合にそれを返す。
+  inline constexpr auto string = //
+    partial([](std::string_view sv) {
+      return sequence
+             % fmap(partial([](char c) { return char1 % std::move(c); }),
+                    std::list(sv.begin(), sv.end()));
     });
 } // namespace mpc
