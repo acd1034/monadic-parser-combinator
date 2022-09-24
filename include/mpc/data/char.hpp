@@ -2,6 +2,7 @@
 #pragma once
 #include <cctype>
 #include <string>
+#include <mpc/functional/partial.hpp>
 #include <mpc/prelude.hpp>
 
 namespace mpc {
@@ -84,29 +85,29 @@ namespace mpc {
 
   inline namespace cpo {
     /// Partially applicable std::isalnum.
-    inline constexpr partially_applicable<detail::isalnum_op> isalnum{};
+    inline constexpr partial<detail::isalnum_op> isalnum{};
     /// Partially applicable std::isalpha.
-    inline constexpr partially_applicable<detail::isalpha_op> isalpha{};
+    inline constexpr partial<detail::isalpha_op> isalpha{};
     /// Partially applicable std::islower.
-    inline constexpr partially_applicable<detail::islower_op> islower{};
+    inline constexpr partial<detail::islower_op> islower{};
     /// Partially applicable std::isupper.
-    inline constexpr partially_applicable<detail::isupper_op> isupper{};
+    inline constexpr partial<detail::isupper_op> isupper{};
     /// Partially applicable std::isdigit.
-    inline constexpr partially_applicable<detail::isdigit_op> isdigit{};
+    inline constexpr partial<detail::isdigit_op> isdigit{};
     /// Partially applicable std::isxdigit.
-    inline constexpr partially_applicable<detail::isxdigit_op> isxdigit{};
+    inline constexpr partial<detail::isxdigit_op> isxdigit{};
     /// Partially applicable std::iscntrl.
-    inline constexpr partially_applicable<detail::iscntrl_op> iscntrl{};
+    inline constexpr partial<detail::iscntrl_op> iscntrl{};
     /// Partially applicable std::isgraph.
-    inline constexpr partially_applicable<detail::isgraph_op> isgraph{};
+    inline constexpr partial<detail::isgraph_op> isgraph{};
     /// Partially applicable std::isspace.
-    inline constexpr partially_applicable<detail::isspace_op> isspace{};
+    inline constexpr partial<detail::isspace_op> isspace{};
     /// Partially applicable std::isblank.
-    inline constexpr partially_applicable<detail::isblank_op> isblank{};
+    inline constexpr partial<detail::isblank_op> isblank{};
     /// Partially applicable std::isprint.
-    inline constexpr partially_applicable<detail::isprint_op> isprint{};
+    inline constexpr partial<detail::isprint_op> isprint{};
     /// Partially applicable std::ispunct.
-    inline constexpr partially_applicable<detail::ispunct_op> ispunct{};
+    inline constexpr partial<detail::ispunct_op> ispunct{};
   } // namespace cpo
 
   /// Surrounds a string with delimiter.

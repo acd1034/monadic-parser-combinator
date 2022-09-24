@@ -1,12 +1,12 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include <mpc/functional/perfect_forward.hpp>
+#include <mpc/functional/partial.hpp>
 #include <mpc/prelude.hpp>
 #include "../stdfundamental.hpp"
 
 using add_op = decltype([](const auto& x, const auto& y) { return x + y; });
 
-inline constexpr mpc::partially_applicable<add_op> add;
+inline constexpr mpc::partial<add_op> add;
 
 TEST_CASE("prelude compose", "[prelude][compose]") {
   {
@@ -53,7 +53,7 @@ TEST_CASE("prelude compose", "[prelude][compose]") {
 
 using add3way_op = decltype([](const auto& x, const auto& y, const auto& z) { return x + y + z; });
 
-inline constexpr mpc::partially_applicable<add3way_op> add3way;
+inline constexpr mpc::partial<add3way_op> add3way;
 
 TEST_CASE("prelude flip", "[prelude][flip]") {
   {

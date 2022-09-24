@@ -1,7 +1,7 @@
 /// @file flip.hpp
 #pragma once
 #include <functional> // std::invoke
-#include <mpc/functional/perfect_forward.hpp>
+#include <mpc/functional/partial.hpp>
 
 // clang-format off
 
@@ -16,12 +16,12 @@ namespace mpc {
           { return    std::invoke(std::forward<Fn>(f), std::forward<U>(u), std::forward<T>(t), std::forward<Args>(args)...); }
       };
 
-      // NOTE: You cannot write as `partially_applicable<closure>{}(std::forward<Fn>(f))`.
+      // NOTE: You cannot write as `partial<closure>{}(std::forward<Fn>(f))`.
       template<class Fn>
       constexpr auto operator()(Fn&& f) const noexcept(
-        noexcept(   partially_applicable(closure{}, std::forward<Fn>(f))))
-        -> decltype(partially_applicable(closure{}, std::forward<Fn>(f)))
-        { return    partially_applicable(closure{}, std::forward<Fn>(f)); }
+        noexcept(   partial(closure{}, std::forward<Fn>(f))))
+        -> decltype(partial(closure{}, std::forward<Fn>(f)))
+        { return    partial(closure{}, std::forward<Fn>(f)); }
     };
   } // namespace detail
 
@@ -29,7 +29,7 @@ namespace mpc {
     /**
      * @brief Returns a binary function which flips the first and second argument.
      */
-    inline constexpr partially_applicable<detail::flip_op> flip;
+    inline constexpr partial<detail::flip_op> flip;
   }
 } // namespace mpc
 

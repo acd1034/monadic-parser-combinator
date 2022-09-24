@@ -3,6 +3,7 @@
 #include <functional> // std::invoke
 #include <mpc/control/state/stateT.hpp>
 #include <mpc/data/functor/identity.hpp>
+#include <mpc/functional/partial.hpp>
 #include <mpc/prelude/compose.hpp>
 #include <mpc/prelude/fst.hpp>
 
@@ -64,9 +65,9 @@ namespace mpc {
 
   inline namespace cpo {
     template <class S>
-    inline constexpr partially_applicable<detail::make_State_op<S>> make_State{};
+    inline constexpr partial<detail::make_State_op<S>> make_State{};
 
-    inline constexpr partially_applicable<detail::run_State_op> run_State{};
+    inline constexpr partial<detail::run_State_op> run_State{};
   } // namespace cpo
 
   // Grobal methods:
@@ -108,14 +109,14 @@ namespace mpc {
   } // namespace detail
 
   inline namespace cpo {
-    inline constexpr partially_applicable<detail::eval_State_op> eval_State{};
+    inline constexpr partial<detail::eval_State_op> eval_State{};
 
-    inline constexpr partially_applicable<detail::exec_State_op> exec_State{};
+    inline constexpr partial<detail::exec_State_op> exec_State{};
 
-    inline constexpr partially_applicable<detail::map_State_op> map_State{};
+    inline constexpr partial<detail::map_State_op> map_State{};
 
     inline constexpr auto with_State = with_StateT;
   } // namespace cpo
-}
+} // namespace mpc
 
 // clang-format on

@@ -1,6 +1,6 @@
 /// @file class.hpp
 #pragma once
-#include <mpc/functional/perfect_forward.hpp>
+#include <mpc/functional/partial.hpp>
 
 namespace mpc {
   // monad_trans
@@ -32,6 +32,6 @@ namespace mpc {
   inline namespace cpo {
     /// lift :: (Monad m) => m a -> t m a
     template <class TR>
-    inline constexpr partially_applicable<detail::lift_op<TR>> lift{};
+    inline constexpr partial<detail::lift_op<TR>> lift{};
   } // namespace cpo
 } // namespace mpc

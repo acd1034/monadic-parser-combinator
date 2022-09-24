@@ -1,7 +1,7 @@
 /// @file alternative.hpp
 #pragma once
 #include <mpc/control/applicative.hpp>
-#include <mpc/functional/perfect_forward.hpp>
+#include <mpc/functional/partial.hpp>
 
 // clang-format off
 
@@ -71,7 +71,7 @@ namespace mpc {
     inline constexpr detail::empty_op<F> empty{};
 
     /// @copydoc mpc::detail::combine_op
-    inline constexpr partially_applicable<detail::combine_op> combine{};
+    inline constexpr partial<detail::combine_op> combine{};
   } // namespace cpo
 
   // Grobal methods

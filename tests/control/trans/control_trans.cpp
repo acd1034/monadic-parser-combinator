@@ -37,9 +37,9 @@ TEST_CASE("trans", "[trans][state]") {
     CHECK(s2 == 6);
   }
   {
-    // NOTE: fn1 を partially_applicable でなくすことはできない(なんで?)
+    // NOTE: fn1 を partial でなくすことはできない(なんで?)
     // constexpr auto fn1 = [](int n, auto&&) { return n; };
-    constexpr auto fn1 = mpc::partially_applicable([](int n, auto&&) { return n; });
+    constexpr auto fn1 = mpc::partial([](int n, auto&&) { return n; });
     const auto gets = *mpc::gets<ST>;
     const auto fn2 = mpc::fmap(fn1, gets);
     const auto modify = mpc::modify<ST> % (mpc::plus % 1);
@@ -54,7 +54,7 @@ TEST_CASE("trans", "[trans][state]") {
     // clang-format off
     constexpr auto fn1 = [](int n, auto&&) { return n; };
     const auto tick = mpc::liftA2(
-      mpc::partially_applicable(fn1),
+      mpc::partial(fn1),
       *mpc::gets<ST>,
       mpc::modify<ST> % (mpc::plus % 1)
     );
@@ -66,7 +66,7 @@ TEST_CASE("trans", "[trans][state]") {
 
     constexpr auto fn2 = [](int n1, int n2, int n3) { return n1 + n2 + n3; };
     const auto threeTicks = mpc::liftA<3>(
-      mpc::partially_applicable(fn2),
+      mpc::partial(fn2),
       tick,
       tick,
       tick

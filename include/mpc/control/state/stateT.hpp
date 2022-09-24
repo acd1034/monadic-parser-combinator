@@ -8,6 +8,7 @@
 #include <mpc/control/trans/class.hpp>
 #include <mpc/data/functor/identity.hpp>
 #include <mpc/functional/function.hpp>
+#include <mpc/functional/partial.hpp>
 #include <mpc/prelude/compose.hpp>
 #include <mpc/prelude/fst.hpp>
 
@@ -79,9 +80,9 @@ namespace mpc {
 
   inline namespace cpo {
     template <class S>
-    inline constexpr partially_applicable<detail::make_StateT_op<S>> make_StateT{};
+    inline constexpr partial<detail::make_StateT_op<S>> make_StateT{};
 
-    inline constexpr partially_applicable<detail::run_StateT_op> run_StateT{};
+    inline constexpr partial<detail::run_StateT_op> run_StateT{};
   } // namespace cpo
 
   // instances:
@@ -113,23 +114,23 @@ namespace mpc {
           noexcept(
             mpc::bind(
             run_StateT % std::forward<ST>(x) % std::forward<T>(t),
-            partially_applicable(nested_closure{}, std::forward<Fn>(f)))))
+            partial(nested_closure{}, std::forward<Fn>(f)))))
           -> decltype(
             mpc::bind(
             run_StateT % std::forward<ST>(x) % std::forward<T>(t),
-            partially_applicable(nested_closure{}, std::forward<Fn>(f)))) {
+            partial(nested_closure{}, std::forward<Fn>(f)))) {
           return
             mpc::bind(
             run_StateT % std::forward<ST>(x) % std::forward<T>(t),
-            partially_applicable(nested_closure{}, std::forward<Fn>(f)));
+            partial(nested_closure{}, std::forward<Fn>(f)));
         }
       };
 
       template <is_StateT ST, class Fn>
       constexpr auto operator()(ST&& x, Fn&& f) const noexcept(
-          noexcept(   make_StateT<S>(partially_applicable(closure{}, std::forward<ST>(x), std::forward<Fn>(f)))))
-          -> decltype(make_StateT<S>(partially_applicable(closure{}, std::forward<ST>(x), std::forward<Fn>(f)))) {
-        return        make_StateT<S>(partially_applicable(closure{}, std::forward<ST>(x), std::forward<Fn>(f)));
+          noexcept(   make_StateT<S>(partial(closure{}, std::forward<ST>(x), std::forward<Fn>(f)))))
+          -> decltype(make_StateT<S>(partial(closure{}, std::forward<ST>(x), std::forward<Fn>(f)))) {
+        return        make_StateT<S>(partial(closure{}, std::forward<ST>(x), std::forward<Fn>(f)));
       }
     };
 
@@ -156,24 +157,24 @@ namespace mpc {
         constexpr auto operator()(Fn&& f, ST&& x, T&& t) const noexcept(
           noexcept(
             mpc::fmap(
-            partially_applicable(nested_closure{}, std::forward<Fn>(f)),
+            partial(nested_closure{}, std::forward<Fn>(f)),
             run_StateT % std::forward<ST>(x) % std::forward<T>(t))))
           -> decltype(
             mpc::fmap(
-            partially_applicable(nested_closure{}, std::forward<Fn>(f)),
+            partial(nested_closure{}, std::forward<Fn>(f)),
             run_StateT % std::forward<ST>(x) % std::forward<T>(t))) {
           return
             mpc::fmap(
-            partially_applicable(nested_closure{}, std::forward<Fn>(f)),
+            partial(nested_closure{}, std::forward<Fn>(f)),
             run_StateT % std::forward<ST>(x) % std::forward<T>(t));
         }
       };
 
       template <class Fn, is_StateT ST>
       constexpr auto operator()(Fn&& f, ST&& x) const noexcept(
-          noexcept(   make_StateT<S>(partially_applicable(closure{}, std::forward<Fn>(f), std::forward<ST>(x)))))
-          -> decltype(make_StateT<S>(partially_applicable(closure{}, std::forward<Fn>(f), std::forward<ST>(x)))) {
-        return        make_StateT<S>(partially_applicable(closure{}, std::forward<Fn>(f), std::forward<ST>(x)));
+          noexcept(   make_StateT<S>(partial(closure{}, std::forward<Fn>(f), std::forward<ST>(x)))))
+          -> decltype(make_StateT<S>(partial(closure{}, std::forward<Fn>(f), std::forward<ST>(x)))) {
+        return        make_StateT<S>(partial(closure{}, std::forward<Fn>(f), std::forward<ST>(x)));
       }
     };
 
@@ -203,9 +204,9 @@ namespace mpc {
 
       template <class A>
       constexpr auto operator()(A&& a) const noexcept(
-        noexcept(   make_StateT<S>(partially_applicable(closure{}, std::forward<A>(a)))))
-        -> decltype(make_StateT<S>(partially_applicable(closure{}, std::forward<A>(a)))) {
-        return      make_StateT<S>(partially_applicable(closure{}, std::forward<A>(a)));
+        noexcept(   make_StateT<S>(partial(closure{}, std::forward<A>(a)))))
+        -> decltype(make_StateT<S>(partial(closure{}, std::forward<A>(a)))) {
+        return      make_StateT<S>(partial(closure{}, std::forward<A>(a)));
       }
     };
 
@@ -265,9 +266,9 @@ namespace mpc {
 
         template <is_StateT ST1, is_StateT ST2>
         constexpr auto operator()(ST1&& x, ST2&& y) const
-          noexcept(noexcept(make_StateT<StateT_state_t<ST>>(partially_applicable(closure{}, std::forward<ST1>(x), std::forward<ST2>(y)))))
-          -> decltype(      make_StateT<StateT_state_t<ST>>(partially_applicable(closure{}, std::forward<ST1>(x), std::forward<ST2>(y)))) {
-          return            make_StateT<StateT_state_t<ST>>(partially_applicable(closure{}, std::forward<ST1>(x), std::forward<ST2>(y)));
+          noexcept(noexcept(make_StateT<StateT_state_t<ST>>(partial(closure{}, std::forward<ST1>(x), std::forward<ST2>(y)))))
+          -> decltype(      make_StateT<StateT_state_t<ST>>(partial(closure{}, std::forward<ST1>(x), std::forward<ST2>(y)))) {
+          return            make_StateT<StateT_state_t<ST>>(partial(closure{}, std::forward<ST1>(x), std::forward<ST2>(y)));
         }
       };
 
@@ -300,17 +301,17 @@ namespace mpc {
       struct closure {
         template <monad N, class T>
         constexpr auto operator()(N&& n, T&& t) const
-          noexcept(noexcept(mpc::fmap(partially_applicable(nested_closure{}, std::forward<T>(t)), std::forward<N>(n))))
-          -> decltype(      mpc::fmap(partially_applicable(nested_closure{}, std::forward<T>(t)), std::forward<N>(n))) {
-          return            mpc::fmap(partially_applicable(nested_closure{}, std::forward<T>(t)), std::forward<N>(n));
+          noexcept(noexcept(mpc::fmap(partial(nested_closure{}, std::forward<T>(t)), std::forward<N>(n))))
+          -> decltype(      mpc::fmap(partial(nested_closure{}, std::forward<T>(t)), std::forward<N>(n))) {
+          return            mpc::fmap(partial(nested_closure{}, std::forward<T>(t)), std::forward<N>(n));
         }
       };
 
       template <monad N>
       constexpr auto operator()(N&& n) const
-        noexcept(noexcept(make_StateT<S>(partially_applicable(closure{}, std::forward<N>(n)))))
-        -> decltype(      make_StateT<S>(partially_applicable(closure{}, std::forward<N>(n)))) {
-        return            make_StateT<S>(partially_applicable(closure{}, std::forward<N>(n)));
+        noexcept(noexcept(make_StateT<S>(partial(closure{}, std::forward<N>(n)))))
+        -> decltype(      make_StateT<S>(partial(closure{}, std::forward<N>(n)))) {
+        return            make_StateT<S>(partial(closure{}, std::forward<N>(n)));
       }
     };
 
@@ -381,13 +382,13 @@ namespace mpc {
   } // namespace detail
 
   inline namespace cpo {
-    inline constexpr partially_applicable<detail::eval_StateT_op> eval_StateT{};
+    inline constexpr partial<detail::eval_StateT_op> eval_StateT{};
 
-    inline constexpr partially_applicable<detail::exec_StateT_op> exec_StateT{};
+    inline constexpr partial<detail::exec_StateT_op> exec_StateT{};
 
-    inline constexpr partially_applicable<detail::map_StateT_op> map_StateT{};
+    inline constexpr partial<detail::map_StateT_op> map_StateT{};
 
-    inline constexpr partially_applicable<detail::with_StateT_op> with_StateT{};
+    inline constexpr partial<detail::with_StateT_op> with_StateT{};
   } // namespace cpo
 } // namespace mpc
 

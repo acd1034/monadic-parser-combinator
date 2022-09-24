@@ -7,7 +7,7 @@
 using namespace std::literals;
 using mpc::operators::alternatives::operator||;
 template <class Op, class... Args>
-using applicable = mpc::partially_applicable<Op, Args...>;
+using applicable = mpc::partial<Op, Args...>;
 
 template <class CharT, class Traits, class T>
 auto& operator<<(std::basic_ostream<CharT, Traits>& os, const std::list<T>& l) {

@@ -6,7 +6,7 @@
 using namespace std::literals;
 using mpc::operators::alternatives::operator||;
 template <class Op, class... Args>
-using applicable = mpc::partially_applicable<Op, Args...>;
+using applicable = mpc::partial<Op, Args...>;
 
 template <class T>
 [[deprecated]] constexpr void type_of() {}
