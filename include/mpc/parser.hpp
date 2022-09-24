@@ -56,7 +56,7 @@ namespace mpc {
 
   /// エラーメッセージを受け取り、必ず失敗するパーサーを返す。
   inline constexpr auto left = //
-    compose % lift<Parser> % partial([](similar_to<String> auto&& str) -> eval_StateT_t<Parser> {
+    compose % lift<Parser> % partial([](similar_to<ParseError> auto&& str) -> eval_StateT_t<Parser> {
       return make_left(MPC_FORWARD(str));
     });
 
@@ -91,5 +91,15 @@ namespace mpc {
           }
         },
         MPC_FORWARD(pred)));
+    });
+
+  inline constexpr auto char1 = //
+    partial([](char c) {
+      using namespace operators::alternatives;
+      using namespace std::string_literals;
+
+      auto c2 = c;
+      return satisfy % (equal_to % std::move(c))
+             or left % ("expecting char "s + mpc::quoted(std::move(c2)));
     });
 } // namespace mpc

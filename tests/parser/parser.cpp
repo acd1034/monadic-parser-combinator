@@ -14,9 +14,8 @@ void CHECK_FAIL(mpc::similar_to<mpc::Parser> auto&& parser, std::string_view sv)
   CHECK(result.index() == 0);
 }
 
-template <class T>
 void CHECK_SUCCEED(mpc::similar_to<mpc::Parser> auto&& parser, std::string_view sv,
-                   const T& expected) {
+                   const auto& expected) {
   auto result = mpc::eval_StateT % MPC_FORWARD(parser) % mpc::String(sv.begin(), sv.end());
   CHECK(result.index() == 1);
   CHECK(*mpc::snd(result) == expected);
@@ -24,4 +23,7 @@ void CHECK_SUCCEED(mpc::similar_to<mpc::Parser> auto&& parser, std::string_view 
 
 TEST_CASE("parser min", "[parser][min]") {
   CHECK_SUCCEED(mpc::satisfy % mpc::isdigit, "0", '0');
+  CHECK_FAIL(mpc::satisfy % mpc::isdigit, "a");
+  CHECK_SUCCEED(mpc::char1 % 'a', "a", 'a');
+  CHECK_FAIL(mpc::char1 % 'a', "b");
 }
