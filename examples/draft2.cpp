@@ -28,12 +28,6 @@ using String = std::list<char>;
 using Result = std::pair<char, String>;
 using Parser = mpc::StateT<String, mpc::either<std::string, Result>>;
 
-Result decomp(String&& str) {
-  auto c = str.front();
-  str.pop_front();
-  return {c, std::move(str)};
-}
-
 void parseTest(const std::size_t n, /* Parser */ auto&& parser, std::string_view sv) {
   auto&& result = mpc::eval_StateT % MPC_FORWARD(parser) % std::list(sv.begin(), sv.end());
   if (result.index() == 0) {
@@ -65,7 +59,7 @@ inline constexpr auto satisfy = //
       [](auto pred, String str) -> mpc::either<std::string, Result> {
         if (str.empty()) {
           return mpc::make_left("unexpected end of input"s);
-        } else if (auto [x, xs] = decomp(std::move(str)); not std::invoke(pred, x)) {
+        } else if (auto [x, xs] = mpc::decomp(std::move(str)); not std::invoke(pred, x)) {
           return mpc::make_left("unexpected "s + mpc::quoted(x));
         } else {
           return mpc::make_right(std::make_pair(x, std::move(xs)));

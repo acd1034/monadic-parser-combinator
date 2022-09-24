@@ -34,11 +34,16 @@ namespace mpc {
         ret.emplace_front(std::forward<T>(t));
         return ret;
       }
+    };
 
-      template <class T, class L>
-      requires std::same_as<std::remove_cvref_t<L>, std::string>
-      constexpr auto operator()(T&& t, L&& l) const {
-        return std::forward<T>(t) + std::forward<L>(l);
+    struct decomp_op {
+      template <is_list L>
+      constexpr auto operator()(L&& l) const {
+        assert(!l.empty());
+        auto tail = std::forward<L>(l);
+        auto head = std::move(tail.front());
+        tail.pop_front();
+        return std::make_pair(std::move(head), std::move(tail));
       }
     };
 
@@ -63,6 +68,8 @@ namespace mpc {
 
   inline namespace cpo {
     inline constexpr partial<detail::cons_op> cons;
+
+    inline constexpr partial<detail::decomp_op> decomp;
 
     inline constexpr partial<detail::foldr_op> foldr;
   } // namespace cpo
@@ -131,10 +138,7 @@ namespace mpc {
       constexpr auto operator()(const std::list<T>& l) const {
         // FIXME: 不正な方法で monad の value_type を取得している
         using U = holding_or_t<T, std::remove_cvref_t<decltype(mpc::bind(l.front(), identity))>>;
-        if constexpr (false)
-          return foldr(mpc::liftA2 % cons, mpc::returns<T> % std::string{}, l);
-        else
-          return foldr(mpc::liftA2 % cons, mpc::returns<T> % std::list<U>{}, l);
+        return foldr(mpc::liftA2 % cons, mpc::returns<T> % std::list<U>{}, l);
       }
     };
   } // namespace detail
