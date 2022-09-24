@@ -38,6 +38,7 @@ struct mpc::alternative_traits<mpc::either<mpc::ParseError, std::pair<T, mpc::St
 namespace mpc {
   // Parsers
 
+  /// パーサーと文字列を受け取り、パースする。パースに成功した場合、パース結果を表示する。失敗した場合、エラーメッセージを表示する。
   inline constexpr auto parse_test = //
     partial([](similar_to<Parser> auto&& parser, std::string_view sv) {
       auto result = eval_StateT % MPC_FORWARD(parser) % String(sv.begin(), sv.end());
@@ -53,6 +54,13 @@ namespace mpc {
 
   // Combinators
 
+  /// エラーメッセージを受け取り、必ず失敗するパーサーを返す。
+  inline constexpr auto left = //
+    compose % lift<Parser> % partial([](similar_to<String> auto&& str) -> eval_StateT_t<Parser> {
+      return make_left(MPC_FORWARD(str));
+    });
+
+  /// パーサーを受け取り、パーサーを返す。このパーサーはパースに失敗しても直ちにエラーとならない。
   inline constexpr auto try1 = //
     partial([](similar_to<Parser> auto&& parser) {
       return make_StateT<String>(partial(
@@ -66,6 +74,7 @@ namespace mpc {
 namespace mpc {
   // Character Parsing
 
+  /// 述語を受け取り、パーサーを返す。このパーサーは、文字列の先頭が述語を満たす場合にそれを返す。
   inline constexpr auto satisfy = //
     partial([](std::predicate<char> auto&& pred) {
       return make_StateT<String>(partial(
@@ -83,4 +92,4 @@ namespace mpc {
         },
         MPC_FORWARD(pred)));
     });
-}
+} // namespace mpc
