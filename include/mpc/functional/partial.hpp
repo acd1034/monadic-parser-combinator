@@ -2,6 +2,7 @@
 #pragma once
 #include <functional> // std::invoke
 #include <mpc/utility/copyable_box.hpp>
+#include <mpc/utility/forward_like.hpp>
 
 // clang-format off
 
@@ -13,19 +14,37 @@ namespace mpc {
   template <copy_constructible_object Op, class... Bound>
   struct partial;
 
-  template <class T, class U>
-  using __override_ref_t =
-    std::conditional_t<std::is_rvalue_reference_v<T>, std::remove_reference_t<U>&&, U&>;
+  template <class T>
+  inline constexpr bool is_partial_v = false;
 
-  template <class T, class U>
-  using __copy_const_t =
-    std::conditional_t<std::is_const_v<std::remove_reference_t<T>>, U const, U>;
+  template <copy_constructible_object Op, class... Bound>
+  inline constexpr bool is_partial_v<partial<Op, Bound...>> = true;
 
-  template <class T, class U>
-  using __forward_like_t = __override_ref_t<T&&, __copy_const_t<T, std::remove_reference_t<U>>>;
+  template <class Op, class Tuple, std::size_t... Idx, class... Args>
+  constexpr auto make_partial_impl(Op&& op, Tuple&& tuple, std::index_sequence<Idx...>, Args&&... args) noexcept(
+    noexcept(   partial(std::forward<Op>(op), std::get<Idx>(std::forward<Tuple>(tuple))..., std::forward<Args>(args)...)))
+    -> decltype(partial(std::forward<Op>(op), std::get<Idx>(std::forward<Tuple>(tuple))..., std::forward<Args>(args)...)) {
+    return      partial(std::forward<Op>(op), std::get<Idx>(std::forward<Tuple>(tuple))..., std::forward<Args>(args)...);
+  }
+
+  template <class Op, class... Args,
+            class = std::enable_if_t<is_partial_v<std::remove_cvref_t<Op>>>>
+  constexpr auto make_partial(Op&& op, Args&&... args) noexcept(
+    noexcept(   make_partial_impl(forward_like<Op>(op.op_), forward_like<Op>(op.bound_), std::make_index_sequence<std::tuple_size_v<decltype(op.bound_)>>(), std::forward<Args>(args)...)))
+    -> decltype(make_partial_impl(forward_like<Op>(op.op_), forward_like<Op>(op.bound_), std::make_index_sequence<std::tuple_size_v<decltype(op.bound_)>>(), std::forward<Args>(args)...)) {
+    return      make_partial_impl(forward_like<Op>(op.op_), forward_like<Op>(op.bound_), std::make_index_sequence<std::tuple_size_v<decltype(op.bound_)>>(), std::forward<Args>(args)...);
+  }
+
+  template <class Op, class... Args,
+            class = std::enable_if_t<!is_partial_v<std::remove_cvref_t<Op>>>>
+  constexpr auto make_partial(Op&& op, Args&&... args) noexcept(
+    noexcept(   partial(std::forward<Op>(op), std::forward<Args>(args)...)))
+    -> decltype(partial(std::forward<Op>(op), std::forward<Args>(args)...)) {
+    return      partial(std::forward<Op>(op), std::forward<Args>(args)...);
+  }
 
   template <class Op, class Tuple, std::size_t... Idx, class... Args,
-            class = std::enable_if_t<std::is_invocable_v<Op, __forward_like_t<Tuple, std::tuple_element_t<Idx, std::remove_cvref_t<Tuple>>>..., Args...>>>
+            class = std::enable_if_t<std::is_invocable_v<Op, forward_like_t<Tuple, std::tuple_element_t<Idx, std::remove_cvref_t<Tuple>>>..., Args...>>>
   constexpr auto __call(Op&& op, Tuple&& tuple, std::index_sequence<Idx...>, Args&&... args) noexcept(
     noexcept(   std::invoke(std::forward<Op>(op), std::get<Idx>(std::forward<Tuple>(tuple))..., std::forward<Args>(args)...)))
     -> decltype(std::invoke(std::forward<Op>(op), std::get<Idx>(std::forward<Tuple>(tuple))..., std::forward<Args>(args)...)) {
@@ -33,7 +52,7 @@ namespace mpc {
   }
 
   template <class Op, class Tuple, std::size_t... Idx, class... Args,
-            class = std::enable_if_t<!std::is_invocable_v<Op, __forward_like_t<Tuple, std::tuple_element_t<Idx, std::remove_cvref_t<Tuple>>>..., Args...>>>
+            class = std::enable_if_t<!std::is_invocable_v<Op, forward_like_t<Tuple, std::tuple_element_t<Idx, std::remove_cvref_t<Tuple>>>..., Args...>>>
   constexpr auto __call(Op&& op, Tuple&& tuple, std::index_sequence<Idx...>, Args&&... args) noexcept(
     noexcept(   partial(std::forward<Op>(op), std::get<Idx>(std::forward<Tuple>(tuple))..., std::forward<Args>(args)...)))
     -> decltype(partial(std::forward<Op>(op), std::get<Idx>(std::forward<Tuple>(tuple))..., std::forward<Args>(args)...)) {
@@ -45,6 +64,9 @@ namespace mpc {
   private:
     copyable_box<Op> op_{};
     std::tuple<Bound...> bound_{};
+
+    template <class Op2, class... Args, class>
+    friend constexpr auto make_partial(Op2&&, Args&&...);
 
   public:
     constexpr explicit partial()

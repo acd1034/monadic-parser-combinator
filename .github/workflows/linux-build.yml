@@ -18,7 +18,8 @@ jobs:
         pkg_name:
           - g++-11
           # - clang-13
-        build_type: [Debug, Release]
+        # build_type: [Debug, Release]
+        build_type: [Debug]
         std: [20]
         include:
           - pkg_name: g++-11
