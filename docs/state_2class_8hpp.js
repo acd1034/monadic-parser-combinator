@@ -13,9 +13,9 @@ var state_2class_8hpp =
     [ "mpc::detail::getss_op< ST >::closure", "structmpc_1_1detail_1_1getss__op_1_1closure.html", null ],
     [ "gets", "state_2class_8hpp.html#ad6cc1b0bf14899eaff9c1de49b5e1b38", null ],
     [ "gets", "state_2class_8hpp.html#aceeb23861ed9eb86253125bc296931e3", null ],
-    [ "getss", "state_2class_8hpp.html#ac8d11a179b363e9817689fa688fd15b9", null ],
-    [ "modify", "state_2class_8hpp.html#a12c33aac5fa434e0fd36fd14006b7650", null ],
-    [ "put", "state_2class_8hpp.html#ae40d14fe4ebda0850c8415a9825aa1f6", null ],
-    [ "put", "state_2class_8hpp.html#ac22d8a085f8edf729994a6bb100245db", null ],
-    [ "state", "state_2class_8hpp.html#a1dcfcbeaac438c90e8bc7a936834c661", null ]
+    [ "getss", "state_2class_8hpp.html#aac20be8b068ed58fb6b902dd95bd093e", null ],
+    [ "modify", "state_2class_8hpp.html#a8aec76ba90e971bdd17e8fa76b7c7315", null ],
+    [ "put", "state_2class_8hpp.html#ac26a35a4ebb345dfc477737fad4218ad", null ],
+    [ "put", "state_2class_8hpp.html#af703213224a7cd30c4fc36de1f33710b", null ],
+    [ "state", "state_2class_8hpp.html#ae979cfeb91fd7f9a86a61c44b1033541", null ]
 ];

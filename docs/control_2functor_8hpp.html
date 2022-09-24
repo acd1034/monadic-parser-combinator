@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('control_2functor_8hpp.html',''); initR
   <div class="headertitle"><div class="title">functor.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="perfect__forward_8hpp_source.html">mpc/functional/perfect_forward.hpp</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="partial_8hpp_source.html">mpc/functional/partial.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="compose_8hpp_source.html">mpc/prelude/compose.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="constant_8hpp_source.html">mpc/prelude/constant.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="flip_8hpp_source.html">mpc/prelude/flip.hpp</a>&gt;</code><br />
@@ -129,12 +129,12 @@ Concepts</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ab5ca2976cd9fdf7360be0372e9f0d0a7"><td class="memItemLeft" align="right" valign="top">constexpr partially_applicable&lt; detail::fmap_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#ab5ca2976cd9fdf7360be0372e9f0d0a7">mpc::cpo::fmap</a> {}</td></tr>
-<tr class="memdesc:ab5ca2976cd9fdf7360be0372e9f0d0a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">fmap :: (a -&gt; b) -&gt; f a -&gt; f b  <a href="namespacempc_1_1cpo.html#ab5ca2976cd9fdf7360be0372e9f0d0a7">More...</a><br /></td></tr>
-<tr class="separator:ab5ca2976cd9fdf7360be0372e9f0d0a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6dc14de2a9f4b8879562ce2f6dbf9dd5"><td class="memItemLeft" align="right" valign="top">constexpr partially_applicable&lt; detail::replace2nd_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a6dc14de2a9f4b8879562ce2f6dbf9dd5">mpc::cpo::replace2nd</a> {}</td></tr>
-<tr class="memdesc:a6dc14de2a9f4b8879562ce2f6dbf9dd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace2nd :: a -&gt; f b -&gt; f a  <a href="namespacempc_1_1cpo.html#a6dc14de2a9f4b8879562ce2f6dbf9dd5">More...</a><br /></td></tr>
-<tr class="separator:a6dc14de2a9f4b8879562ce2f6dbf9dd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c7062e64bc9157e2e2ee07134c4a595"><td class="memItemLeft" align="right" valign="top">constexpr partial&lt; detail::fmap_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a4c7062e64bc9157e2e2ee07134c4a595">mpc::cpo::fmap</a> {}</td></tr>
+<tr class="memdesc:a4c7062e64bc9157e2e2ee07134c4a595"><td class="mdescLeft">&#160;</td><td class="mdescRight">fmap :: (a -&gt; b) -&gt; f a -&gt; f b  <a href="namespacempc_1_1cpo.html#a4c7062e64bc9157e2e2ee07134c4a595">More...</a><br /></td></tr>
+<tr class="separator:a4c7062e64bc9157e2e2ee07134c4a595"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5be62c19a7b913f963bbe77c7b38482f"><td class="memItemLeft" align="right" valign="top">constexpr partial&lt; detail::replace2nd_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a5be62c19a7b913f963bbe77c7b38482f">mpc::cpo::replace2nd</a> {}</td></tr>
+<tr class="memdesc:a5be62c19a7b913f963bbe77c7b38482f"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace2nd :: a -&gt; f b -&gt; f a  <a href="namespacempc_1_1cpo.html#a5be62c19a7b913f963bbe77c7b38482f">More...</a><br /></td></tr>
+<tr class="separator:a5be62c19a7b913f963bbe77c7b38482f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f6f060bce652dddfbd1429f63fff069"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1functors.html#a9f6f060bce652dddfbd1429f63fff069">mpc::functors::replace2nd</a> = compose(mpc::fmap, constant)</td></tr>
 <tr class="memdesc:a9f6f060bce652dddfbd1429f63fff069"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace2nd :: a -&gt; f b -&gt; f a  <a href="namespacempc_1_1functors.html#a9f6f060bce652dddfbd1429f63fff069">More...</a><br /></td></tr>
 <tr class="separator:a9f6f060bce652dddfbd1429f63fff069"><td class="memSeparator" colspan="2">&#160;</td></tr>

@@ -66,8 +66,6 @@ var namespacempc_1_1detail =
     [ "map_State_op", "structmpc_1_1detail_1_1map___state__op.html", null ],
     [ "map_StateT_op", "structmpc_1_1detail_1_1map___state_t__op.html", null ],
     [ "modify_op", "structmpc_1_1detail_1_1modify__op.html", "structmpc_1_1detail_1_1modify__op" ],
-    [ "perfect_forward_impl", "structmpc_1_1detail_1_1perfect__forward__impl.html", null ],
-    [ "perfect_forward_impl< Op, std::index_sequence< Idx... >, Bound... >", "structmpc_1_1detail_1_1perfect__forward__impl_3_01_op_00_01std_1_1index__sequence_3_01_idx_8_8_8_01_4_00_01_bound_8_8_8_01_4.html", null ],
     [ "pure_op", "structmpc_1_1detail_1_1pure__op.html", null ],
     [ "put_op", "structmpc_1_1detail_1_1put__op.html", null ],
     [ "replace2nd_op", "structmpc_1_1detail_1_1replace2nd__op.html", null ],
@@ -97,7 +95,6 @@ var namespacempc_1_1detail =
     [ "copy_reference_t", "namespacempc_1_1detail.html#af421d34facb1a934ea17f16f199d7079", null ],
     [ "copy_volatile_t", "namespacempc_1_1detail.html#abb8f33a0ef104452ff5bcaec92779df4", null ],
     [ "make_reversed_index_sequence", "namespacempc_1_1detail.html#a21c97c06ebb8280087b72c3a6e8e2e01", null ],
-    [ "perfect_forward", "namespacempc_1_1detail.html#a8a11701d6ae8ca49445907f994be9448", null ],
     [ "is_explicitly_convertible_v", "namespacempc_1_1detail.html#aa63feab5ad75249515bd726f87f329f6", null ],
     [ "is_implicitly_convertible_v", "namespacempc_1_1detail.html#a005d0bb21a143a66ff4daebc723471f3", null ],
     [ "is_implicitly_default_constructible_v", "namespacempc_1_1detail.html#aae63c23ef9b93dbe50cc6b6bd984eccd", null ]

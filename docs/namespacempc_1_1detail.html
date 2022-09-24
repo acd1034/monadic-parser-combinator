@@ -259,12 +259,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1modify__op.html">modify_op</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">modify :: MonadState s m =&gt; (s -&gt; s) -&gt; m ()  <a href="structmpc_1_1detail_1_1modify__op.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1perfect__forward__impl.html">perfect_forward_impl</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">perfect_forward_impl  <a href="structmpc_1_1detail_1_1perfect__forward__impl.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1perfect__forward__impl_3_01_op_00_01std_1_1index__sequence_3_01_idx_8_8_8_01_4_00_01_bound_8_8_8_01_4.html">perfect_forward_impl&lt; Op, std::index_sequence&lt; Idx... &gt;, Bound... &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A partial specialization of <a class="el" href="structmpc_1_1detail_1_1perfect__forward__impl.html" title="perfect_forward_impl">perfect_forward_impl</a>.  <a href="structmpc_1_1detail_1_1perfect__forward__impl_3_01_op_00_01std_1_1index__sequence_3_01_idx_8_8_8_01_4_00_01_bound_8_8_8_01_4.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1pure__op.html">pure_op</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">pure :: a -&gt; f a  <a href="structmpc_1_1detail_1_1pure__op.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -314,11 +308,6 @@ Concepts</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a8a11701d6ae8ca49445907f994be9448"><td class="memTemplParams" colspan="2"><a id="a8a11701d6ae8ca49445907f994be9448" name="a8a11701d6ae8ca49445907f994be9448"></a>
-template&lt;class Op , class... Args&gt; </td></tr>
-<tr class="memitem:a8a11701d6ae8ca49445907f994be9448"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>perfect_forward</b> = <a class="el" href="structmpc_1_1detail_1_1perfect__forward__impl.html">perfect_forward_impl</a>&lt; Op, std::index_sequence_for&lt; Args... &gt;, Args... &gt;</td></tr>
-<tr class="memdesc:a8a11701d6ae8ca49445907f994be9448"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements a perfect-forwarding call wrapper. <br /></td></tr>
-<tr class="separator:a8a11701d6ae8ca49445907f994be9448"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21c97c06ebb8280087b72c3a6e8e2e01"><td class="memTemplParams" colspan="2"><a id="a21c97c06ebb8280087b72c3a6e8e2e01" name="a21c97c06ebb8280087b72c3a6e8e2e01"></a>
 template&lt;std::size_t N&gt; </td></tr>
 <tr class="memitem:a21c97c06ebb8280087b72c3a6e8e2e01"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>make_reversed_index_sequence</b> = decltype(reversed_index_sequence_impl(std::make_index_sequence&lt; N &gt;{}))</td></tr>

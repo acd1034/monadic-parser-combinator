@@ -95,6 +95,7 @@ $(document).ready(function(){initNavTree('char_8hpp.html',''); initResizable(); 
 <div class="contents">
 <div class="textblock"><code>#include &lt;cctype&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
+<code>#include &lt;<a class="el" href="partial_8hpp_source.html">mpc/functional/partial.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="prelude_8hpp_source.html">mpc/prelude.hpp</a>&gt;</code><br />
 </div>
 <p><a href="char_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -165,54 +166,54 @@ template&lt;class charT , class traits , class Allocator &gt; </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a416a9ea4a289da89ac45579a9823a24e"><td class="memItemLeft" align="right" valign="top"><a id="a416a9ea4a289da89ac45579a9823a24e" name="a416a9ea4a289da89ac45579a9823a24e"></a>
-constexpr partially_applicable&lt; detail::isalnum_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::isalnum</b> {}</td></tr>
-<tr class="memdesc:a416a9ea4a289da89ac45579a9823a24e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isalnum. <br /></td></tr>
-<tr class="separator:a416a9ea4a289da89ac45579a9823a24e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35474e060847e82662094e0c49a7f478"><td class="memItemLeft" align="right" valign="top"><a id="a35474e060847e82662094e0c49a7f478" name="a35474e060847e82662094e0c49a7f478"></a>
-constexpr partially_applicable&lt; detail::isalpha_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::isalpha</b> {}</td></tr>
-<tr class="memdesc:a35474e060847e82662094e0c49a7f478"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isalpha. <br /></td></tr>
-<tr class="separator:a35474e060847e82662094e0c49a7f478"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a390d39e7ca4e6101416b50d7ec7b7275"><td class="memItemLeft" align="right" valign="top"><a id="a390d39e7ca4e6101416b50d7ec7b7275" name="a390d39e7ca4e6101416b50d7ec7b7275"></a>
-constexpr partially_applicable&lt; detail::islower_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::islower</b> {}</td></tr>
-<tr class="memdesc:a390d39e7ca4e6101416b50d7ec7b7275"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::islower. <br /></td></tr>
-<tr class="separator:a390d39e7ca4e6101416b50d7ec7b7275"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6767ff35a54f69aa72ab714e7b4f37e7"><td class="memItemLeft" align="right" valign="top"><a id="a6767ff35a54f69aa72ab714e7b4f37e7" name="a6767ff35a54f69aa72ab714e7b4f37e7"></a>
-constexpr partially_applicable&lt; detail::isupper_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::isupper</b> {}</td></tr>
-<tr class="memdesc:a6767ff35a54f69aa72ab714e7b4f37e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isupper. <br /></td></tr>
-<tr class="separator:a6767ff35a54f69aa72ab714e7b4f37e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a943b9218d93ee550bad981b83762f463"><td class="memItemLeft" align="right" valign="top"><a id="a943b9218d93ee550bad981b83762f463" name="a943b9218d93ee550bad981b83762f463"></a>
-constexpr partially_applicable&lt; detail::isdigit_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::isdigit</b> {}</td></tr>
-<tr class="memdesc:a943b9218d93ee550bad981b83762f463"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isdigit. <br /></td></tr>
-<tr class="separator:a943b9218d93ee550bad981b83762f463"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af57d5b69a669fe561b3ecec19f5e34d4"><td class="memItemLeft" align="right" valign="top"><a id="af57d5b69a669fe561b3ecec19f5e34d4" name="af57d5b69a669fe561b3ecec19f5e34d4"></a>
-constexpr partially_applicable&lt; detail::isxdigit_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::isxdigit</b> {}</td></tr>
-<tr class="memdesc:af57d5b69a669fe561b3ecec19f5e34d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isxdigit. <br /></td></tr>
-<tr class="separator:af57d5b69a669fe561b3ecec19f5e34d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b79d33fa60a16c4738da03e6cf85197"><td class="memItemLeft" align="right" valign="top"><a id="a5b79d33fa60a16c4738da03e6cf85197" name="a5b79d33fa60a16c4738da03e6cf85197"></a>
-constexpr partially_applicable&lt; detail::iscntrl_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::iscntrl</b> {}</td></tr>
-<tr class="memdesc:a5b79d33fa60a16c4738da03e6cf85197"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::iscntrl. <br /></td></tr>
-<tr class="separator:a5b79d33fa60a16c4738da03e6cf85197"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f7652eb5d6af38d92c76b7cb6c54317"><td class="memItemLeft" align="right" valign="top"><a id="a7f7652eb5d6af38d92c76b7cb6c54317" name="a7f7652eb5d6af38d92c76b7cb6c54317"></a>
-constexpr partially_applicable&lt; detail::isgraph_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::isgraph</b> {}</td></tr>
-<tr class="memdesc:a7f7652eb5d6af38d92c76b7cb6c54317"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isgraph. <br /></td></tr>
-<tr class="separator:a7f7652eb5d6af38d92c76b7cb6c54317"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a0ad18b6f5caa98de54bcd74a3e88e5"><td class="memItemLeft" align="right" valign="top"><a id="a5a0ad18b6f5caa98de54bcd74a3e88e5" name="a5a0ad18b6f5caa98de54bcd74a3e88e5"></a>
-constexpr partially_applicable&lt; detail::isspace_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::isspace</b> {}</td></tr>
-<tr class="memdesc:a5a0ad18b6f5caa98de54bcd74a3e88e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isspace. <br /></td></tr>
-<tr class="separator:a5a0ad18b6f5caa98de54bcd74a3e88e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05f103bd83bbf00e572b736a121c981b"><td class="memItemLeft" align="right" valign="top"><a id="a05f103bd83bbf00e572b736a121c981b" name="a05f103bd83bbf00e572b736a121c981b"></a>
-constexpr partially_applicable&lt; detail::isblank_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::isblank</b> {}</td></tr>
-<tr class="memdesc:a05f103bd83bbf00e572b736a121c981b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isblank. <br /></td></tr>
-<tr class="separator:a05f103bd83bbf00e572b736a121c981b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca8bb99270764adacd724ed7b8075bf5"><td class="memItemLeft" align="right" valign="top"><a id="aca8bb99270764adacd724ed7b8075bf5" name="aca8bb99270764adacd724ed7b8075bf5"></a>
-constexpr partially_applicable&lt; detail::isprint_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::isprint</b> {}</td></tr>
-<tr class="memdesc:aca8bb99270764adacd724ed7b8075bf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isprint. <br /></td></tr>
-<tr class="separator:aca8bb99270764adacd724ed7b8075bf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02127d0a7106b1e05cd352e10398bca4"><td class="memItemLeft" align="right" valign="top"><a id="a02127d0a7106b1e05cd352e10398bca4" name="a02127d0a7106b1e05cd352e10398bca4"></a>
-constexpr partially_applicable&lt; detail::ispunct_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::ispunct</b> {}</td></tr>
-<tr class="memdesc:a02127d0a7106b1e05cd352e10398bca4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::ispunct. <br /></td></tr>
-<tr class="separator:a02127d0a7106b1e05cd352e10398bca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fe1f50d194ba5f6c8878fb61bdc9202"><td class="memItemLeft" align="right" valign="top"><a id="a7fe1f50d194ba5f6c8878fb61bdc9202" name="a7fe1f50d194ba5f6c8878fb61bdc9202"></a>
+constexpr partial&lt; detail::isalnum_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::isalnum</b> {}</td></tr>
+<tr class="memdesc:a7fe1f50d194ba5f6c8878fb61bdc9202"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isalnum. <br /></td></tr>
+<tr class="separator:a7fe1f50d194ba5f6c8878fb61bdc9202"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af669897160a8156d312dbc5be9a0cb3f"><td class="memItemLeft" align="right" valign="top"><a id="af669897160a8156d312dbc5be9a0cb3f" name="af669897160a8156d312dbc5be9a0cb3f"></a>
+constexpr partial&lt; detail::isalpha_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::isalpha</b> {}</td></tr>
+<tr class="memdesc:af669897160a8156d312dbc5be9a0cb3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isalpha. <br /></td></tr>
+<tr class="separator:af669897160a8156d312dbc5be9a0cb3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75fb5eb266777d805b57dcbb8ff5cbef"><td class="memItemLeft" align="right" valign="top"><a id="a75fb5eb266777d805b57dcbb8ff5cbef" name="a75fb5eb266777d805b57dcbb8ff5cbef"></a>
+constexpr partial&lt; detail::islower_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::islower</b> {}</td></tr>
+<tr class="memdesc:a75fb5eb266777d805b57dcbb8ff5cbef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::islower. <br /></td></tr>
+<tr class="separator:a75fb5eb266777d805b57dcbb8ff5cbef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cb10cd546a0578b63de7cfc33851c0a"><td class="memItemLeft" align="right" valign="top"><a id="a1cb10cd546a0578b63de7cfc33851c0a" name="a1cb10cd546a0578b63de7cfc33851c0a"></a>
+constexpr partial&lt; detail::isupper_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::isupper</b> {}</td></tr>
+<tr class="memdesc:a1cb10cd546a0578b63de7cfc33851c0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isupper. <br /></td></tr>
+<tr class="separator:a1cb10cd546a0578b63de7cfc33851c0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a564abc044d4b11991ac2df0a3433bc59"><td class="memItemLeft" align="right" valign="top"><a id="a564abc044d4b11991ac2df0a3433bc59" name="a564abc044d4b11991ac2df0a3433bc59"></a>
+constexpr partial&lt; detail::isdigit_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::isdigit</b> {}</td></tr>
+<tr class="memdesc:a564abc044d4b11991ac2df0a3433bc59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isdigit. <br /></td></tr>
+<tr class="separator:a564abc044d4b11991ac2df0a3433bc59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a864518f9a355f7e7c96a311949031a93"><td class="memItemLeft" align="right" valign="top"><a id="a864518f9a355f7e7c96a311949031a93" name="a864518f9a355f7e7c96a311949031a93"></a>
+constexpr partial&lt; detail::isxdigit_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::isxdigit</b> {}</td></tr>
+<tr class="memdesc:a864518f9a355f7e7c96a311949031a93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isxdigit. <br /></td></tr>
+<tr class="separator:a864518f9a355f7e7c96a311949031a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29363140ef9b222c611f96c75db9a86f"><td class="memItemLeft" align="right" valign="top"><a id="a29363140ef9b222c611f96c75db9a86f" name="a29363140ef9b222c611f96c75db9a86f"></a>
+constexpr partial&lt; detail::iscntrl_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::iscntrl</b> {}</td></tr>
+<tr class="memdesc:a29363140ef9b222c611f96c75db9a86f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::iscntrl. <br /></td></tr>
+<tr class="separator:a29363140ef9b222c611f96c75db9a86f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f549ed5f700f8b34d66ef9be7d05245"><td class="memItemLeft" align="right" valign="top"><a id="a0f549ed5f700f8b34d66ef9be7d05245" name="a0f549ed5f700f8b34d66ef9be7d05245"></a>
+constexpr partial&lt; detail::isgraph_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::isgraph</b> {}</td></tr>
+<tr class="memdesc:a0f549ed5f700f8b34d66ef9be7d05245"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isgraph. <br /></td></tr>
+<tr class="separator:a0f549ed5f700f8b34d66ef9be7d05245"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa70ac2e401a34ea57c9913e352199418"><td class="memItemLeft" align="right" valign="top"><a id="aa70ac2e401a34ea57c9913e352199418" name="aa70ac2e401a34ea57c9913e352199418"></a>
+constexpr partial&lt; detail::isspace_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::isspace</b> {}</td></tr>
+<tr class="memdesc:aa70ac2e401a34ea57c9913e352199418"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isspace. <br /></td></tr>
+<tr class="separator:aa70ac2e401a34ea57c9913e352199418"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a480f5f25e73ea871636166753be5a8d3"><td class="memItemLeft" align="right" valign="top"><a id="a480f5f25e73ea871636166753be5a8d3" name="a480f5f25e73ea871636166753be5a8d3"></a>
+constexpr partial&lt; detail::isblank_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::isblank</b> {}</td></tr>
+<tr class="memdesc:a480f5f25e73ea871636166753be5a8d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isblank. <br /></td></tr>
+<tr class="separator:a480f5f25e73ea871636166753be5a8d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9edf1a9b89b01c05a4426565543fd4ea"><td class="memItemLeft" align="right" valign="top"><a id="a9edf1a9b89b01c05a4426565543fd4ea" name="a9edf1a9b89b01c05a4426565543fd4ea"></a>
+constexpr partial&lt; detail::isprint_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::isprint</b> {}</td></tr>
+<tr class="memdesc:a9edf1a9b89b01c05a4426565543fd4ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isprint. <br /></td></tr>
+<tr class="separator:a9edf1a9b89b01c05a4426565543fd4ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e43d508f72abe6a9ee1566da4dea6dd"><td class="memItemLeft" align="right" valign="top"><a id="a1e43d508f72abe6a9ee1566da4dea6dd" name="a1e43d508f72abe6a9ee1566da4dea6dd"></a>
+constexpr partial&lt; detail::ispunct_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::ispunct</b> {}</td></tr>
+<tr class="memdesc:a1e43d508f72abe6a9ee1566da4dea6dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::ispunct. <br /></td></tr>
+<tr class="separator:a1e43d508f72abe6a9ee1566da4dea6dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

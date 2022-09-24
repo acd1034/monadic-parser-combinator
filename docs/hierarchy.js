@@ -150,10 +150,7 @@ var hierarchy =
     [ "mpc::monad_traits< StateT< S, M > >::bind_op::nested_closure", "structmpc_1_1monad__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4_1_1bind__op_1_1nested__closure.html", null ],
     [ "mpc::monad_trans_traits< StateT< S, M > >::lift_op::nested_closure", "structmpc_1_1monad__trans__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4_1_1lift__op_1_1nested__closure.html", null ],
     [ "mpc::nothing_t", "structmpc_1_1nothing__t.html", null ],
-    [ "mpc::detail::perfect_forward_impl< class, class,... >", "structmpc_1_1detail_1_1perfect__forward__impl.html", [
-      [ "mpc::partially_applicable< Op, Args >", "structmpc_1_1partially__applicable.html", null ]
-    ] ],
-    [ "mpc::detail::perfect_forward_impl< Op, std::index_sequence< Idx... >, Bound... >", "structmpc_1_1detail_1_1perfect__forward__impl_3_01_op_00_01std_1_1index__sequence_3_01_idx_8_8_8_01_4_00_01_bound_8_8_8_01_4.html", null ],
+    [ "mpc::partial< Op, Bound >", "structmpc_1_1partial.html", null ],
     [ "mpc::applicative_traits< either< T1, T2 > >::pure_op", "structmpc_1_1applicative__traits_3_01either_3_01_t1_00_01_t2_01_4_01_4_1_1pure__op.html", null ],
     [ "mpc::applicative_traits< maybe< T1 > >::pure_op", "structmpc_1_1applicative__traits_3_01maybe_3_01_t1_01_4_01_4_1_1pure__op.html", null ],
     [ "mpc::applicative_traits< StateT< S, M > >::pure_op", "structmpc_1_1applicative__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4_1_1pure__op.html", null ],

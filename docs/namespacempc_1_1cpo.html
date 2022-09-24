@@ -100,285 +100,285 @@ Variables</h2></td></tr>
 <tr class="memitem:a7fdbc0223c46e98d77892d1f7b30e1ed"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1detail_1_1empty__op.html">detail::empty_op</a>&lt; F &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a7fdbc0223c46e98d77892d1f7b30e1ed">empty</a> {}</td></tr>
 <tr class="memdesc:a7fdbc0223c46e98d77892d1f7b30e1ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">empty :: f a  <a href="namespacempc_1_1cpo.html#a7fdbc0223c46e98d77892d1f7b30e1ed">More...</a><br /></td></tr>
 <tr class="separator:a7fdbc0223c46e98d77892d1f7b30e1ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a584c372430df327bc483221cc417ab69"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1combine__op.html">detail::combine_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a584c372430df327bc483221cc417ab69">combine</a> {}</td></tr>
-<tr class="memdesc:a584c372430df327bc483221cc417ab69"><td class="mdescLeft">&#160;</td><td class="mdescRight">combine :: f a -&gt; f a -&gt; f a  <a href="namespacempc_1_1cpo.html#a584c372430df327bc483221cc417ab69">More...</a><br /></td></tr>
-<tr class="separator:a584c372430df327bc483221cc417ab69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d58f566fc229a23e3932f6978917f38"><td class="memTemplParams" colspan="2">template&lt;class F &gt; </td></tr>
-<tr class="memitem:a7d58f566fc229a23e3932f6978917f38"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1pure__op.html">detail::pure_op</a>&lt; F &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a7d58f566fc229a23e3932f6978917f38">pure</a> {}</td></tr>
-<tr class="memdesc:a7d58f566fc229a23e3932f6978917f38"><td class="mdescLeft">&#160;</td><td class="mdescRight">pure :: a -&gt; f a  <a href="namespacempc_1_1cpo.html#a7d58f566fc229a23e3932f6978917f38">More...</a><br /></td></tr>
-<tr class="separator:a7d58f566fc229a23e3932f6978917f38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04df8104b2d516b92f3203352f3920f0"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1seq__apply__op.html">detail::seq_apply_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a04df8104b2d516b92f3203352f3920f0">seq_apply</a> {}</td></tr>
-<tr class="memdesc:a04df8104b2d516b92f3203352f3920f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">seq_apply :: f (a -&gt; b) -&gt; f a -&gt; f b  <a href="namespacempc_1_1cpo.html#a04df8104b2d516b92f3203352f3920f0">More...</a><br /></td></tr>
-<tr class="separator:a04df8104b2d516b92f3203352f3920f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5186a2a3226bbca445c15e1d90c3b351"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1lift_a2__op.html">detail::liftA2_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a5186a2a3226bbca445c15e1d90c3b351">liftA2</a> {}</td></tr>
-<tr class="memdesc:a5186a2a3226bbca445c15e1d90c3b351"><td class="mdescLeft">&#160;</td><td class="mdescRight">liftA2 :: (a -&gt; b -&gt; c) -&gt; f a -&gt; f b -&gt; f c  <a href="namespacempc_1_1cpo.html#a5186a2a3226bbca445c15e1d90c3b351">More...</a><br /></td></tr>
-<tr class="separator:a5186a2a3226bbca445c15e1d90c3b351"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5017642bac57e204cd2170b4c41a17f5"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1discard2nd__op.html">detail::discard2nd_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a5017642bac57e204cd2170b4c41a17f5">discard2nd</a> {}</td></tr>
-<tr class="memdesc:a5017642bac57e204cd2170b4c41a17f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">discard2nd :: f a -&gt; f b -&gt; f a  <a href="namespacempc_1_1cpo.html#a5017642bac57e204cd2170b4c41a17f5">More...</a><br /></td></tr>
-<tr class="separator:a5017642bac57e204cd2170b4c41a17f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59142d967055caf4ad9618e27d8ca7de"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1discard1st__op.html">detail::discard1st_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a59142d967055caf4ad9618e27d8ca7de">discard1st</a> {}</td></tr>
-<tr class="memdesc:a59142d967055caf4ad9618e27d8ca7de"><td class="mdescLeft">&#160;</td><td class="mdescRight">discard1st :: f a -&gt; f b -&gt; f b  <a href="namespacempc_1_1cpo.html#a59142d967055caf4ad9618e27d8ca7de">More...</a><br /></td></tr>
-<tr class="separator:a59142d967055caf4ad9618e27d8ca7de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6beef39dbe542631ad79201d7d656467"><td class="memTemplParams" colspan="2">template&lt;std::size_t N&gt; </td></tr>
-<tr class="memitem:a6beef39dbe542631ad79201d7d656467"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1lift_a__op.html">detail::liftA_op</a>&lt; N &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a6beef39dbe542631ad79201d7d656467">liftA</a> {}</td></tr>
-<tr class="memdesc:a6beef39dbe542631ad79201d7d656467"><td class="mdescLeft">&#160;</td><td class="mdescRight">liftA :: Applicative f =&gt; (a -&gt; b -&gt; ... -&gt; z) -&gt; f a -&gt; f b -&gt; ... -&gt; f z  <a href="namespacempc_1_1cpo.html#a6beef39dbe542631ad79201d7d656467">More...</a><br /></td></tr>
-<tr class="separator:a6beef39dbe542631ad79201d7d656467"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5ca2976cd9fdf7360be0372e9f0d0a7"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1fmap__op.html">detail::fmap_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#ab5ca2976cd9fdf7360be0372e9f0d0a7">fmap</a> {}</td></tr>
-<tr class="memdesc:ab5ca2976cd9fdf7360be0372e9f0d0a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">fmap :: (a -&gt; b) -&gt; f a -&gt; f b  <a href="namespacempc_1_1cpo.html#ab5ca2976cd9fdf7360be0372e9f0d0a7">More...</a><br /></td></tr>
-<tr class="separator:ab5ca2976cd9fdf7360be0372e9f0d0a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6dc14de2a9f4b8879562ce2f6dbf9dd5"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1replace2nd__op.html">detail::replace2nd_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a6dc14de2a9f4b8879562ce2f6dbf9dd5">replace2nd</a> {}</td></tr>
-<tr class="memdesc:a6dc14de2a9f4b8879562ce2f6dbf9dd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace2nd :: a -&gt; f b -&gt; f a  <a href="namespacempc_1_1cpo.html#a6dc14de2a9f4b8879562ce2f6dbf9dd5">More...</a><br /></td></tr>
-<tr class="separator:a6dc14de2a9f4b8879562ce2f6dbf9dd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb013568ac918cba3600456074cb02f8"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#acb013568ac918cba3600456074cb02f8">replace1st</a> = <a class="el" href="namespacempc_1_1cpo.html#a353f903d797461ab6e9df5fe0e1dda14">flip</a> % mpc::replace2nd</td></tr>
+<tr class="memitem:a8326f1624f8a413378413c0a618f517b"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1combine__op.html">detail::combine_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a8326f1624f8a413378413c0a618f517b">combine</a> {}</td></tr>
+<tr class="memdesc:a8326f1624f8a413378413c0a618f517b"><td class="mdescLeft">&#160;</td><td class="mdescRight">combine :: f a -&gt; f a -&gt; f a  <a href="namespacempc_1_1cpo.html#a8326f1624f8a413378413c0a618f517b">More...</a><br /></td></tr>
+<tr class="separator:a8326f1624f8a413378413c0a618f517b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad467a3c953e24cc3ecb260ab7b65e6ca"><td class="memTemplParams" colspan="2">template&lt;class F &gt; </td></tr>
+<tr class="memitem:ad467a3c953e24cc3ecb260ab7b65e6ca"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1pure__op.html">detail::pure_op</a>&lt; F &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#ad467a3c953e24cc3ecb260ab7b65e6ca">pure</a> {}</td></tr>
+<tr class="memdesc:ad467a3c953e24cc3ecb260ab7b65e6ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">pure :: a -&gt; f a  <a href="namespacempc_1_1cpo.html#ad467a3c953e24cc3ecb260ab7b65e6ca">More...</a><br /></td></tr>
+<tr class="separator:ad467a3c953e24cc3ecb260ab7b65e6ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a962a7747ceb759fd4962dc7ce639e6d8"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1seq__apply__op.html">detail::seq_apply_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a962a7747ceb759fd4962dc7ce639e6d8">seq_apply</a> {}</td></tr>
+<tr class="memdesc:a962a7747ceb759fd4962dc7ce639e6d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">seq_apply :: f (a -&gt; b) -&gt; f a -&gt; f b  <a href="namespacempc_1_1cpo.html#a962a7747ceb759fd4962dc7ce639e6d8">More...</a><br /></td></tr>
+<tr class="separator:a962a7747ceb759fd4962dc7ce639e6d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a014b694870e535d87135de840bcf4dab"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1lift_a2__op.html">detail::liftA2_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a014b694870e535d87135de840bcf4dab">liftA2</a> {}</td></tr>
+<tr class="memdesc:a014b694870e535d87135de840bcf4dab"><td class="mdescLeft">&#160;</td><td class="mdescRight">liftA2 :: (a -&gt; b -&gt; c) -&gt; f a -&gt; f b -&gt; f c  <a href="namespacempc_1_1cpo.html#a014b694870e535d87135de840bcf4dab">More...</a><br /></td></tr>
+<tr class="separator:a014b694870e535d87135de840bcf4dab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b775d73e83da4f2905ce77f255d424b"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1discard2nd__op.html">detail::discard2nd_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a8b775d73e83da4f2905ce77f255d424b">discard2nd</a> {}</td></tr>
+<tr class="memdesc:a8b775d73e83da4f2905ce77f255d424b"><td class="mdescLeft">&#160;</td><td class="mdescRight">discard2nd :: f a -&gt; f b -&gt; f a  <a href="namespacempc_1_1cpo.html#a8b775d73e83da4f2905ce77f255d424b">More...</a><br /></td></tr>
+<tr class="separator:a8b775d73e83da4f2905ce77f255d424b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a561134dbc85367ed24a771597fcd62"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1discard1st__op.html">detail::discard1st_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a3a561134dbc85367ed24a771597fcd62">discard1st</a> {}</td></tr>
+<tr class="memdesc:a3a561134dbc85367ed24a771597fcd62"><td class="mdescLeft">&#160;</td><td class="mdescRight">discard1st :: f a -&gt; f b -&gt; f b  <a href="namespacempc_1_1cpo.html#a3a561134dbc85367ed24a771597fcd62">More...</a><br /></td></tr>
+<tr class="separator:a3a561134dbc85367ed24a771597fcd62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e7c401b172b5308d88fcc942f2af7c1"><td class="memTemplParams" colspan="2">template&lt;std::size_t N&gt; </td></tr>
+<tr class="memitem:a2e7c401b172b5308d88fcc942f2af7c1"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1lift_a__op.html">detail::liftA_op</a>&lt; N &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a2e7c401b172b5308d88fcc942f2af7c1">liftA</a> {}</td></tr>
+<tr class="memdesc:a2e7c401b172b5308d88fcc942f2af7c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">liftA :: Applicative f =&gt; (a -&gt; b -&gt; ... -&gt; z) -&gt; f a -&gt; f b -&gt; ... -&gt; f z  <a href="namespacempc_1_1cpo.html#a2e7c401b172b5308d88fcc942f2af7c1">More...</a><br /></td></tr>
+<tr class="separator:a2e7c401b172b5308d88fcc942f2af7c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c7062e64bc9157e2e2ee07134c4a595"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1fmap__op.html">detail::fmap_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a4c7062e64bc9157e2e2ee07134c4a595">fmap</a> {}</td></tr>
+<tr class="memdesc:a4c7062e64bc9157e2e2ee07134c4a595"><td class="mdescLeft">&#160;</td><td class="mdescRight">fmap :: (a -&gt; b) -&gt; f a -&gt; f b  <a href="namespacempc_1_1cpo.html#a4c7062e64bc9157e2e2ee07134c4a595">More...</a><br /></td></tr>
+<tr class="separator:a4c7062e64bc9157e2e2ee07134c4a595"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5be62c19a7b913f963bbe77c7b38482f"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1replace2nd__op.html">detail::replace2nd_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a5be62c19a7b913f963bbe77c7b38482f">replace2nd</a> {}</td></tr>
+<tr class="memdesc:a5be62c19a7b913f963bbe77c7b38482f"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace2nd :: a -&gt; f b -&gt; f a  <a href="namespacempc_1_1cpo.html#a5be62c19a7b913f963bbe77c7b38482f">More...</a><br /></td></tr>
+<tr class="separator:a5be62c19a7b913f963bbe77c7b38482f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb013568ac918cba3600456074cb02f8"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#acb013568ac918cba3600456074cb02f8">replace1st</a> = <a class="el" href="namespacempc_1_1cpo.html#a9c408ac244b89d6886a40c7ee3d5e425">flip</a> % mpc::replace2nd</td></tr>
 <tr class="memdesc:acb013568ac918cba3600456074cb02f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace1st :: Functor f =&gt; f a -&gt; b -&gt; f b  <a href="namespacempc_1_1cpo.html#acb013568ac918cba3600456074cb02f8">More...</a><br /></td></tr>
 <tr class="separator:acb013568ac918cba3600456074cb02f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f31ba0116cf1ac796bebc195ca0e0dc"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1bind__op.html">detail::bind_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a9f31ba0116cf1ac796bebc195ca0e0dc">bind</a> {}</td></tr>
-<tr class="memdesc:a9f31ba0116cf1ac796bebc195ca0e0dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">bind :: forall a b. m a -&gt; (a -&gt; m b) -&gt; m b  <a href="namespacempc_1_1cpo.html#a9f31ba0116cf1ac796bebc195ca0e0dc">More...</a><br /></td></tr>
-<tr class="separator:a9f31ba0116cf1ac796bebc195ca0e0dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16a0eceaae8fa9e73712464598a96e6f"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1bind__op.html">detail::bind_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a16a0eceaae8fa9e73712464598a96e6f">bind</a> {}</td></tr>
+<tr class="memdesc:a16a0eceaae8fa9e73712464598a96e6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">bind :: forall a b. m a -&gt; (a -&gt; m b) -&gt; m b  <a href="namespacempc_1_1cpo.html#a16a0eceaae8fa9e73712464598a96e6f">More...</a><br /></td></tr>
+<tr class="separator:a16a0eceaae8fa9e73712464598a96e6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa44352f4b8552dcf4e66ee714268dfbb"><td class="memTemplParams" colspan="2">template&lt;class M &gt; </td></tr>
 <tr class="memitem:aa44352f4b8552dcf4e66ee714268dfbb"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#aa44352f4b8552dcf4e66ee714268dfbb">returns</a> = mpc::pure&lt;M&gt;</td></tr>
 <tr class="memdesc:aa44352f4b8552dcf4e66ee714268dfbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns :: a -&gt; m a  <a href="namespacempc_1_1cpo.html#aa44352f4b8552dcf4e66ee714268dfbb">More...</a><br /></td></tr>
 <tr class="separator:aa44352f4b8552dcf4e66ee714268dfbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a127b5dcfffcc0e6ca503b31e352ff6e9"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1karrow__op.html">detail::karrow_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a127b5dcfffcc0e6ca503b31e352ff6e9">karrow</a> {}</td></tr>
-<tr class="memdesc:a127b5dcfffcc0e6ca503b31e352ff6e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">karrow :: Monad m =&gt; (a -&gt; m b) -&gt; (b -&gt; m c) -&gt; (a -&gt; m c)  <a href="namespacempc_1_1cpo.html#a127b5dcfffcc0e6ca503b31e352ff6e9">More...</a><br /></td></tr>
-<tr class="separator:a127b5dcfffcc0e6ca503b31e352ff6e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1dcfcbeaac438c90e8bc7a936834c661"><td class="memTemplParams" colspan="2"><a id="a1dcfcbeaac438c90e8bc7a936834c661" name="a1dcfcbeaac438c90e8bc7a936834c661"></a>
+<tr class="memitem:a7c487c5d268537f3ad835773fd8a1340"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1karrow__op.html">detail::karrow_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacempc_1_1cpo.html#a7c487c5d268537f3ad835773fd8a1340">karrow</a> {}</td></tr>
+<tr class="memdesc:a7c487c5d268537f3ad835773fd8a1340"><td class="mdescLeft">&#160;</td><td class="mdescRight">karrow :: Monad m =&gt; (a -&gt; m b) -&gt; (b -&gt; m c) -&gt; (a -&gt; m c)  <a href="namespacempc_1_1cpo.html#a7c487c5d268537f3ad835773fd8a1340">More...</a><br /></td></tr>
+<tr class="separator:a7c487c5d268537f3ad835773fd8a1340"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae979cfeb91fd7f9a86a61c44b1033541"><td class="memTemplParams" colspan="2"><a id="ae979cfeb91fd7f9a86a61c44b1033541" name="ae979cfeb91fd7f9a86a61c44b1033541"></a>
 template&lt;class ST &gt; </td></tr>
-<tr class="memitem:a1dcfcbeaac438c90e8bc7a936834c661"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1state__op.html">detail::state_op</a>&lt; ST &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>state</b> {}</td></tr>
-<tr class="memdesc:a1dcfcbeaac438c90e8bc7a936834c661"><td class="mdescLeft">&#160;</td><td class="mdescRight">state :: (s -&gt; (a, s)) -&gt; m a <br /></td></tr>
-<tr class="separator:a1dcfcbeaac438c90e8bc7a936834c661"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae979cfeb91fd7f9a86a61c44b1033541"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1state__op.html">detail::state_op</a>&lt; ST &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>state</b> {}</td></tr>
+<tr class="memdesc:ae979cfeb91fd7f9a86a61c44b1033541"><td class="mdescLeft">&#160;</td><td class="mdescRight">state :: (s -&gt; (a, s)) -&gt; m a <br /></td></tr>
+<tr class="separator:ae979cfeb91fd7f9a86a61c44b1033541"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6cc1b0bf14899eaff9c1de49b5e1b38"><td class="memTemplParams" colspan="2"><a id="ad6cc1b0bf14899eaff9c1de49b5e1b38" name="ad6cc1b0bf14899eaff9c1de49b5e1b38"></a>
 template&lt;class ST &gt; </td></tr>
 <tr class="memitem:ad6cc1b0bf14899eaff9c1de49b5e1b38"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1detail_1_1gets__op.html">detail::gets_op</a>&lt; ST &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>gets</b> {}</td></tr>
 <tr class="memdesc:ad6cc1b0bf14899eaff9c1de49b5e1b38"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets :: m s <br /></td></tr>
 <tr class="separator:ad6cc1b0bf14899eaff9c1de49b5e1b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae40d14fe4ebda0850c8415a9825aa1f6"><td class="memTemplParams" colspan="2"><a id="ae40d14fe4ebda0850c8415a9825aa1f6" name="ae40d14fe4ebda0850c8415a9825aa1f6"></a>
+<tr class="memitem:ac26a35a4ebb345dfc477737fad4218ad"><td class="memTemplParams" colspan="2"><a id="ac26a35a4ebb345dfc477737fad4218ad" name="ac26a35a4ebb345dfc477737fad4218ad"></a>
 template&lt;class ST &gt; </td></tr>
-<tr class="memitem:ae40d14fe4ebda0850c8415a9825aa1f6"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1put__op.html">detail::put_op</a>&lt; ST &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>put</b> {}</td></tr>
-<tr class="memdesc:ae40d14fe4ebda0850c8415a9825aa1f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">put :: s -&gt; m () <br /></td></tr>
-<tr class="separator:ae40d14fe4ebda0850c8415a9825aa1f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12c33aac5fa434e0fd36fd14006b7650"><td class="memTemplParams" colspan="2"><a id="a12c33aac5fa434e0fd36fd14006b7650" name="a12c33aac5fa434e0fd36fd14006b7650"></a>
+<tr class="memitem:ac26a35a4ebb345dfc477737fad4218ad"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1put__op.html">detail::put_op</a>&lt; ST &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>put</b> {}</td></tr>
+<tr class="memdesc:ac26a35a4ebb345dfc477737fad4218ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">put :: s -&gt; m () <br /></td></tr>
+<tr class="separator:ac26a35a4ebb345dfc477737fad4218ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8aec76ba90e971bdd17e8fa76b7c7315"><td class="memTemplParams" colspan="2"><a id="a8aec76ba90e971bdd17e8fa76b7c7315" name="a8aec76ba90e971bdd17e8fa76b7c7315"></a>
 template&lt;class ST &gt; </td></tr>
-<tr class="memitem:a12c33aac5fa434e0fd36fd14006b7650"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1modify__op.html">detail::modify_op</a>&lt; std::remove_cvref_t&lt; ST &gt; &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>modify</b> {}</td></tr>
-<tr class="memdesc:a12c33aac5fa434e0fd36fd14006b7650"><td class="mdescLeft">&#160;</td><td class="mdescRight">modify :: MonadState s m =&gt; (s -&gt; s) -&gt; m () <br /></td></tr>
-<tr class="separator:a12c33aac5fa434e0fd36fd14006b7650"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8d11a179b363e9817689fa688fd15b9"><td class="memTemplParams" colspan="2"><a id="ac8d11a179b363e9817689fa688fd15b9" name="ac8d11a179b363e9817689fa688fd15b9"></a>
+<tr class="memitem:a8aec76ba90e971bdd17e8fa76b7c7315"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1modify__op.html">detail::modify_op</a>&lt; std::remove_cvref_t&lt; ST &gt; &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>modify</b> {}</td></tr>
+<tr class="memdesc:a8aec76ba90e971bdd17e8fa76b7c7315"><td class="mdescLeft">&#160;</td><td class="mdescRight">modify :: MonadState s m =&gt; (s -&gt; s) -&gt; m () <br /></td></tr>
+<tr class="separator:a8aec76ba90e971bdd17e8fa76b7c7315"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac20be8b068ed58fb6b902dd95bd093e"><td class="memTemplParams" colspan="2"><a id="aac20be8b068ed58fb6b902dd95bd093e" name="aac20be8b068ed58fb6b902dd95bd093e"></a>
 template&lt;class ST &gt; </td></tr>
-<tr class="memitem:ac8d11a179b363e9817689fa688fd15b9"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1getss__op.html">detail::getss_op</a>&lt; std::remove_cvref_t&lt; ST &gt; &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>getss</b> {}</td></tr>
-<tr class="memdesc:ac8d11a179b363e9817689fa688fd15b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">getss :: MonadState s m =&gt; (s -&gt; a) -&gt; m a <br /></td></tr>
-<tr class="separator:ac8d11a179b363e9817689fa688fd15b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8805276195933f9e2f78e6f51cfdc670"><td class="memTemplParams" colspan="2"><a id="a8805276195933f9e2f78e6f51cfdc670" name="a8805276195933f9e2f78e6f51cfdc670"></a>
+<tr class="memitem:aac20be8b068ed58fb6b902dd95bd093e"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1getss__op.html">detail::getss_op</a>&lt; std::remove_cvref_t&lt; ST &gt; &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>getss</b> {}</td></tr>
+<tr class="memdesc:aac20be8b068ed58fb6b902dd95bd093e"><td class="mdescLeft">&#160;</td><td class="mdescRight">getss :: MonadState s m =&gt; (s -&gt; a) -&gt; m a <br /></td></tr>
+<tr class="separator:aac20be8b068ed58fb6b902dd95bd093e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d9ca82bd06ab043a13c2e32a4bae09e"><td class="memTemplParams" colspan="2"><a id="a4d9ca82bd06ab043a13c2e32a4bae09e" name="a4d9ca82bd06ab043a13c2e32a4bae09e"></a>
 template&lt;class S &gt; </td></tr>
-<tr class="memitem:a8805276195933f9e2f78e6f51cfdc670"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1make___state__op.html">detail::make_State_op</a>&lt; S &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>make_State</b> {}</td></tr>
-<tr class="separator:a8805276195933f9e2f78e6f51cfdc670"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a338e4a524b0701570870f22168238884"><td class="memItemLeft" align="right" valign="top"><a id="a338e4a524b0701570870f22168238884" name="a338e4a524b0701570870f22168238884"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1run___state__op.html">detail::run_State_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>run_State</b> {}</td></tr>
-<tr class="separator:a338e4a524b0701570870f22168238884"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2dea6598655dbc001be1df17dd0ea66d"><td class="memItemLeft" align="right" valign="top"><a id="a2dea6598655dbc001be1df17dd0ea66d" name="a2dea6598655dbc001be1df17dd0ea66d"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1eval___state__op.html">detail::eval_State_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>eval_State</b> {}</td></tr>
-<tr class="separator:a2dea6598655dbc001be1df17dd0ea66d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3805789c4f2d39d39b946d02d18b86ff"><td class="memItemLeft" align="right" valign="top"><a id="a3805789c4f2d39d39b946d02d18b86ff" name="a3805789c4f2d39d39b946d02d18b86ff"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1exec___state__op.html">detail::exec_State_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>exec_State</b> {}</td></tr>
-<tr class="separator:a3805789c4f2d39d39b946d02d18b86ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8c5301b268d754cc5be27162b0b2ef8"><td class="memItemLeft" align="right" valign="top"><a id="ac8c5301b268d754cc5be27162b0b2ef8" name="ac8c5301b268d754cc5be27162b0b2ef8"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1map___state__op.html">detail::map_State_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>map_State</b> {}</td></tr>
-<tr class="separator:ac8c5301b268d754cc5be27162b0b2ef8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d9ca82bd06ab043a13c2e32a4bae09e"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1make___state__op.html">detail::make_State_op</a>&lt; S &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>make_State</b> {}</td></tr>
+<tr class="separator:a4d9ca82bd06ab043a13c2e32a4bae09e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee80092724abfe7f0d9af0030342c90a"><td class="memItemLeft" align="right" valign="top"><a id="aee80092724abfe7f0d9af0030342c90a" name="aee80092724abfe7f0d9af0030342c90a"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1run___state__op.html">detail::run_State_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>run_State</b> {}</td></tr>
+<tr class="separator:aee80092724abfe7f0d9af0030342c90a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb5af918d61db05768236699336953b0"><td class="memItemLeft" align="right" valign="top"><a id="aeb5af918d61db05768236699336953b0" name="aeb5af918d61db05768236699336953b0"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1eval___state__op.html">detail::eval_State_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>eval_State</b> {}</td></tr>
+<tr class="separator:aeb5af918d61db05768236699336953b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7494900255d1560bd2101cf6f2c14c5"><td class="memItemLeft" align="right" valign="top"><a id="ab7494900255d1560bd2101cf6f2c14c5" name="ab7494900255d1560bd2101cf6f2c14c5"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1exec___state__op.html">detail::exec_State_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>exec_State</b> {}</td></tr>
+<tr class="separator:ab7494900255d1560bd2101cf6f2c14c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7277e50d779b69a2e717cf070cc0eae"><td class="memItemLeft" align="right" valign="top"><a id="ab7277e50d779b69a2e717cf070cc0eae" name="ab7277e50d779b69a2e717cf070cc0eae"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1map___state__op.html">detail::map_State_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>map_State</b> {}</td></tr>
+<tr class="separator:ab7277e50d779b69a2e717cf070cc0eae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8122e0d66788f63e3860505b08fb8a2"><td class="memItemLeft" align="right" valign="top"><a id="ad8122e0d66788f63e3860505b08fb8a2" name="ad8122e0d66788f63e3860505b08fb8a2"></a>
 constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>with_State</b> = with_StateT</td></tr>
 <tr class="separator:ad8122e0d66788f63e3860505b08fb8a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a811b475886d65687c34957f7e5e44b21"><td class="memTemplParams" colspan="2"><a id="a811b475886d65687c34957f7e5e44b21" name="a811b475886d65687c34957f7e5e44b21"></a>
+<tr class="memitem:aefec5202a84ebace8559a423de093852"><td class="memTemplParams" colspan="2"><a id="aefec5202a84ebace8559a423de093852" name="aefec5202a84ebace8559a423de093852"></a>
 template&lt;class S &gt; </td></tr>
-<tr class="memitem:a811b475886d65687c34957f7e5e44b21"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1make___state_t__op.html">detail::make_StateT_op</a>&lt; S &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>make_StateT</b> {}</td></tr>
-<tr class="separator:a811b475886d65687c34957f7e5e44b21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a339735ad1abbc3b17dfbea8987b7f93e"><td class="memItemLeft" align="right" valign="top"><a id="a339735ad1abbc3b17dfbea8987b7f93e" name="a339735ad1abbc3b17dfbea8987b7f93e"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1run___state_t__op.html">detail::run_StateT_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>run_StateT</b> {}</td></tr>
-<tr class="separator:a339735ad1abbc3b17dfbea8987b7f93e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0501289a6e7d86ba1b0fad9af0ebdcd0"><td class="memItemLeft" align="right" valign="top"><a id="a0501289a6e7d86ba1b0fad9af0ebdcd0" name="a0501289a6e7d86ba1b0fad9af0ebdcd0"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1eval___state_t__op.html">detail::eval_StateT_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>eval_StateT</b> {}</td></tr>
-<tr class="separator:a0501289a6e7d86ba1b0fad9af0ebdcd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac126728c4c40b00003eea78e4c3a3c1b"><td class="memItemLeft" align="right" valign="top"><a id="ac126728c4c40b00003eea78e4c3a3c1b" name="ac126728c4c40b00003eea78e4c3a3c1b"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1exec___state_t__op.html">detail::exec_StateT_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>exec_StateT</b> {}</td></tr>
-<tr class="separator:ac126728c4c40b00003eea78e4c3a3c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25b214994f2fa36b557d0e9ff93f1670"><td class="memItemLeft" align="right" valign="top"><a id="a25b214994f2fa36b557d0e9ff93f1670" name="a25b214994f2fa36b557d0e9ff93f1670"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1map___state_t__op.html">detail::map_StateT_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>map_StateT</b> {}</td></tr>
-<tr class="separator:a25b214994f2fa36b557d0e9ff93f1670"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b76c3ada7cdbb15c35cb1950883ef5a"><td class="memItemLeft" align="right" valign="top"><a id="a6b76c3ada7cdbb15c35cb1950883ef5a" name="a6b76c3ada7cdbb15c35cb1950883ef5a"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1with___state_t__op.html">detail::with_StateT_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>with_StateT</b> {}</td></tr>
-<tr class="separator:a6b76c3ada7cdbb15c35cb1950883ef5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76ff5b556da810565018661fb0bbe031"><td class="memTemplParams" colspan="2"><a id="a76ff5b556da810565018661fb0bbe031" name="a76ff5b556da810565018661fb0bbe031"></a>
+<tr class="memitem:aefec5202a84ebace8559a423de093852"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1make___state_t__op.html">detail::make_StateT_op</a>&lt; S &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>make_StateT</b> {}</td></tr>
+<tr class="separator:aefec5202a84ebace8559a423de093852"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c1e9f4400443b510fc46a8973fa90ed"><td class="memItemLeft" align="right" valign="top"><a id="a5c1e9f4400443b510fc46a8973fa90ed" name="a5c1e9f4400443b510fc46a8973fa90ed"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1run___state_t__op.html">detail::run_StateT_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>run_StateT</b> {}</td></tr>
+<tr class="separator:a5c1e9f4400443b510fc46a8973fa90ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae537adf2222bde8c9f052b93e0e717d4"><td class="memItemLeft" align="right" valign="top"><a id="ae537adf2222bde8c9f052b93e0e717d4" name="ae537adf2222bde8c9f052b93e0e717d4"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1eval___state_t__op.html">detail::eval_StateT_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>eval_StateT</b> {}</td></tr>
+<tr class="separator:ae537adf2222bde8c9f052b93e0e717d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43d9c28f496dbf51c935321f86343d9a"><td class="memItemLeft" align="right" valign="top"><a id="a43d9c28f496dbf51c935321f86343d9a" name="a43d9c28f496dbf51c935321f86343d9a"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1exec___state_t__op.html">detail::exec_StateT_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>exec_StateT</b> {}</td></tr>
+<tr class="separator:a43d9c28f496dbf51c935321f86343d9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68d3dfd1ff08fdf5f8cf7af38da4bbcd"><td class="memItemLeft" align="right" valign="top"><a id="a68d3dfd1ff08fdf5f8cf7af38da4bbcd" name="a68d3dfd1ff08fdf5f8cf7af38da4bbcd"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1map___state_t__op.html">detail::map_StateT_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>map_StateT</b> {}</td></tr>
+<tr class="separator:a68d3dfd1ff08fdf5f8cf7af38da4bbcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5924088694fa1539cbb998c1962bdd89"><td class="memItemLeft" align="right" valign="top"><a id="a5924088694fa1539cbb998c1962bdd89" name="a5924088694fa1539cbb998c1962bdd89"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1with___state_t__op.html">detail::with_StateT_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>with_StateT</b> {}</td></tr>
+<tr class="separator:a5924088694fa1539cbb998c1962bdd89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d5f2f536ebe655923ae5f0cff698c68"><td class="memTemplParams" colspan="2"><a id="a5d5f2f536ebe655923ae5f0cff698c68" name="a5d5f2f536ebe655923ae5f0cff698c68"></a>
 template&lt;class TR &gt; </td></tr>
-<tr class="memitem:a76ff5b556da810565018661fb0bbe031"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1lift__op.html">detail::lift_op</a>&lt; TR &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>lift</b> {}</td></tr>
-<tr class="memdesc:a76ff5b556da810565018661fb0bbe031"><td class="mdescLeft">&#160;</td><td class="mdescRight">lift :: (Monad m) =&gt; m a -&gt; t m a <br /></td></tr>
-<tr class="separator:a76ff5b556da810565018661fb0bbe031"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a416a9ea4a289da89ac45579a9823a24e"><td class="memItemLeft" align="right" valign="top"><a id="a416a9ea4a289da89ac45579a9823a24e" name="a416a9ea4a289da89ac45579a9823a24e"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1isalnum__op.html">detail::isalnum_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isalnum</b> {}</td></tr>
-<tr class="memdesc:a416a9ea4a289da89ac45579a9823a24e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isalnum. <br /></td></tr>
-<tr class="separator:a416a9ea4a289da89ac45579a9823a24e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35474e060847e82662094e0c49a7f478"><td class="memItemLeft" align="right" valign="top"><a id="a35474e060847e82662094e0c49a7f478" name="a35474e060847e82662094e0c49a7f478"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1isalpha__op.html">detail::isalpha_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isalpha</b> {}</td></tr>
-<tr class="memdesc:a35474e060847e82662094e0c49a7f478"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isalpha. <br /></td></tr>
-<tr class="separator:a35474e060847e82662094e0c49a7f478"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a390d39e7ca4e6101416b50d7ec7b7275"><td class="memItemLeft" align="right" valign="top"><a id="a390d39e7ca4e6101416b50d7ec7b7275" name="a390d39e7ca4e6101416b50d7ec7b7275"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1islower__op.html">detail::islower_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>islower</b> {}</td></tr>
-<tr class="memdesc:a390d39e7ca4e6101416b50d7ec7b7275"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::islower. <br /></td></tr>
-<tr class="separator:a390d39e7ca4e6101416b50d7ec7b7275"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6767ff35a54f69aa72ab714e7b4f37e7"><td class="memItemLeft" align="right" valign="top"><a id="a6767ff35a54f69aa72ab714e7b4f37e7" name="a6767ff35a54f69aa72ab714e7b4f37e7"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1isupper__op.html">detail::isupper_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isupper</b> {}</td></tr>
-<tr class="memdesc:a6767ff35a54f69aa72ab714e7b4f37e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isupper. <br /></td></tr>
-<tr class="separator:a6767ff35a54f69aa72ab714e7b4f37e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a943b9218d93ee550bad981b83762f463"><td class="memItemLeft" align="right" valign="top"><a id="a943b9218d93ee550bad981b83762f463" name="a943b9218d93ee550bad981b83762f463"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1isdigit__op.html">detail::isdigit_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isdigit</b> {}</td></tr>
-<tr class="memdesc:a943b9218d93ee550bad981b83762f463"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isdigit. <br /></td></tr>
-<tr class="separator:a943b9218d93ee550bad981b83762f463"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af57d5b69a669fe561b3ecec19f5e34d4"><td class="memItemLeft" align="right" valign="top"><a id="af57d5b69a669fe561b3ecec19f5e34d4" name="af57d5b69a669fe561b3ecec19f5e34d4"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1isxdigit__op.html">detail::isxdigit_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isxdigit</b> {}</td></tr>
-<tr class="memdesc:af57d5b69a669fe561b3ecec19f5e34d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isxdigit. <br /></td></tr>
-<tr class="separator:af57d5b69a669fe561b3ecec19f5e34d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b79d33fa60a16c4738da03e6cf85197"><td class="memItemLeft" align="right" valign="top"><a id="a5b79d33fa60a16c4738da03e6cf85197" name="a5b79d33fa60a16c4738da03e6cf85197"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1iscntrl__op.html">detail::iscntrl_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>iscntrl</b> {}</td></tr>
-<tr class="memdesc:a5b79d33fa60a16c4738da03e6cf85197"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::iscntrl. <br /></td></tr>
-<tr class="separator:a5b79d33fa60a16c4738da03e6cf85197"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f7652eb5d6af38d92c76b7cb6c54317"><td class="memItemLeft" align="right" valign="top"><a id="a7f7652eb5d6af38d92c76b7cb6c54317" name="a7f7652eb5d6af38d92c76b7cb6c54317"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1isgraph__op.html">detail::isgraph_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isgraph</b> {}</td></tr>
-<tr class="memdesc:a7f7652eb5d6af38d92c76b7cb6c54317"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isgraph. <br /></td></tr>
-<tr class="separator:a7f7652eb5d6af38d92c76b7cb6c54317"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a0ad18b6f5caa98de54bcd74a3e88e5"><td class="memItemLeft" align="right" valign="top"><a id="a5a0ad18b6f5caa98de54bcd74a3e88e5" name="a5a0ad18b6f5caa98de54bcd74a3e88e5"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1isspace__op.html">detail::isspace_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isspace</b> {}</td></tr>
-<tr class="memdesc:a5a0ad18b6f5caa98de54bcd74a3e88e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isspace. <br /></td></tr>
-<tr class="separator:a5a0ad18b6f5caa98de54bcd74a3e88e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05f103bd83bbf00e572b736a121c981b"><td class="memItemLeft" align="right" valign="top"><a id="a05f103bd83bbf00e572b736a121c981b" name="a05f103bd83bbf00e572b736a121c981b"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1isblank__op.html">detail::isblank_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isblank</b> {}</td></tr>
-<tr class="memdesc:a05f103bd83bbf00e572b736a121c981b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isblank. <br /></td></tr>
-<tr class="separator:a05f103bd83bbf00e572b736a121c981b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca8bb99270764adacd724ed7b8075bf5"><td class="memItemLeft" align="right" valign="top"><a id="aca8bb99270764adacd724ed7b8075bf5" name="aca8bb99270764adacd724ed7b8075bf5"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1isprint__op.html">detail::isprint_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isprint</b> {}</td></tr>
-<tr class="memdesc:aca8bb99270764adacd724ed7b8075bf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isprint. <br /></td></tr>
-<tr class="separator:aca8bb99270764adacd724ed7b8075bf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02127d0a7106b1e05cd352e10398bca4"><td class="memItemLeft" align="right" valign="top"><a id="a02127d0a7106b1e05cd352e10398bca4" name="a02127d0a7106b1e05cd352e10398bca4"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1ispunct__op.html">detail::ispunct_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ispunct</b> {}</td></tr>
-<tr class="memdesc:a02127d0a7106b1e05cd352e10398bca4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::ispunct. <br /></td></tr>
-<tr class="separator:a02127d0a7106b1e05cd352e10398bca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30188281590e3be0ab24bd535240300e"><td class="memItemLeft" align="right" valign="top"><a id="a30188281590e3be0ab24bd535240300e" name="a30188281590e3be0ab24bd535240300e"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1make___identity__op.html">detail::make_Identity_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>make_Identity</b> {}</td></tr>
-<tr class="separator:a30188281590e3be0ab24bd535240300e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19d8ba91b8f157fc86d8f6e09a14815d"><td class="memItemLeft" align="right" valign="top"><a id="a19d8ba91b8f157fc86d8f6e09a14815d" name="a19d8ba91b8f157fc86d8f6e09a14815d"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1run___identity__op.html">detail::run_Identity_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>run_Identity</b> {}</td></tr>
-<tr class="separator:a19d8ba91b8f157fc86d8f6e09a14815d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92b5da7728aec61168580a90d510bcc5"><td class="memItemLeft" align="right" valign="top"><a id="a92b5da7728aec61168580a90d510bcc5" name="a92b5da7728aec61168580a90d510bcc5"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1cons__op.html">detail::cons_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>cons</b></td></tr>
-<tr class="separator:a92b5da7728aec61168580a90d510bcc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cdd2d8bc74ce2a78d4922bdd45c67c0"><td class="memItemLeft" align="right" valign="top"><a id="a4cdd2d8bc74ce2a78d4922bdd45c67c0" name="a4cdd2d8bc74ce2a78d4922bdd45c67c0"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1foldr__op.html">detail::foldr_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>foldr</b></td></tr>
-<tr class="separator:a4cdd2d8bc74ce2a78d4922bdd45c67c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf1e54e2be9efb5cd3df5f81a619228b"><td class="memItemLeft" align="right" valign="top"><a id="abf1e54e2be9efb5cd3df5f81a619228b" name="abf1e54e2be9efb5cd3df5f81a619228b"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1sequence__op.html">detail::sequence_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>sequence</b></td></tr>
-<tr class="separator:abf1e54e2be9efb5cd3df5f81a619228b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc73248afbbc6f0180e7d855fda46d36"><td class="memItemLeft" align="right" valign="top"><a id="abc73248afbbc6f0180e7d855fda46d36" name="abc73248afbbc6f0180e7d855fda46d36"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1compose__op.html">detail::compose_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>compose</b></td></tr>
-<tr class="memdesc:abc73248afbbc6f0180e7d855fda46d36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function composition. <br /></td></tr>
-<tr class="separator:abc73248afbbc6f0180e7d855fda46d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afee448c356aceb3970f0a619f1c7e444"><td class="memItemLeft" align="right" valign="top"><a id="afee448c356aceb3970f0a619f1c7e444" name="afee448c356aceb3970f0a619f1c7e444"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1constant__op.html">detail::constant_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>constant</b></td></tr>
-<tr class="memdesc:afee448c356aceb3970f0a619f1c7e444"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a unary function always returning the first input. <br /></td></tr>
-<tr class="separator:afee448c356aceb3970f0a619f1c7e444"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a353f903d797461ab6e9df5fe0e1dda14"><td class="memItemLeft" align="right" valign="top"><a id="a353f903d797461ab6e9df5fe0e1dda14" name="a353f903d797461ab6e9df5fe0e1dda14"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; <a class="el" href="structmpc_1_1detail_1_1flip__op.html">detail::flip_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>flip</b></td></tr>
-<tr class="memdesc:a353f903d797461ab6e9df5fe0e1dda14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a binary function which flips the first and second argument. <br /></td></tr>
-<tr class="separator:a353f903d797461ab6e9df5fe0e1dda14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44239d0f2cf2745f7491cc03f19c772c"><td class="memItemLeft" align="right" valign="top"><a id="a44239d0f2cf2745f7491cc03f19c772c" name="a44239d0f2cf2745f7491cc03f19c772c"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; detail::_fst::get_op&lt; 0 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fst</b></td></tr>
-<tr class="memdesc:a44239d0f2cf2745f7491cc03f19c772c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the first element of the given tuple-like object. <br /></td></tr>
-<tr class="separator:a44239d0f2cf2745f7491cc03f19c772c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48ecb56dfb9ee26bc8f0cf0fc2718dd9"><td class="memItemLeft" align="right" valign="top"><a id="a48ecb56dfb9ee26bc8f0cf0fc2718dd9" name="a48ecb56dfb9ee26bc8f0cf0fc2718dd9"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; detail::_fst::get_op&lt; 1 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>snd</b></td></tr>
-<tr class="memdesc:a48ecb56dfb9ee26bc8f0cf0fc2718dd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the second element of the given tuple-like object. <br /></td></tr>
-<tr class="separator:a48ecb56dfb9ee26bc8f0cf0fc2718dd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e39fa25f902e5bcdea6ec5ba5411c5c"><td class="memItemLeft" align="right" valign="top"><a id="a2e39fa25f902e5bcdea6ec5ba5411c5c" name="a2e39fa25f902e5bcdea6ec5ba5411c5c"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; std::identity &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>identity</b> {}</td></tr>
-<tr class="memdesc:a2e39fa25f902e5bcdea6ec5ba5411c5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identity mapping. <br /></td></tr>
-<tr class="separator:a2e39fa25f902e5bcdea6ec5ba5411c5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a165c08bf9fa6afa4e9d3e9feb7ac14"><td class="memItemLeft" align="right" valign="top"><a id="a6a165c08bf9fa6afa4e9d3e9feb7ac14" name="a6a165c08bf9fa6afa4e9d3e9feb7ac14"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; std::plus&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>plus</b></td></tr>
-<tr class="memdesc:a6a165c08bf9fa6afa4e9d3e9feb7ac14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::plus&lt;&gt;. <br /></td></tr>
-<tr class="separator:a6a165c08bf9fa6afa4e9d3e9feb7ac14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16f5f8c9731c43a6054d0ffec9198b1a"><td class="memItemLeft" align="right" valign="top"><a id="a16f5f8c9731c43a6054d0ffec9198b1a" name="a16f5f8c9731c43a6054d0ffec9198b1a"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; std::minus&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>minus</b></td></tr>
-<tr class="memdesc:a16f5f8c9731c43a6054d0ffec9198b1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::minus&lt;&gt;. <br /></td></tr>
-<tr class="separator:a16f5f8c9731c43a6054d0ffec9198b1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82d7216e455aed881b7df94c664808d1"><td class="memItemLeft" align="right" valign="top"><a id="a82d7216e455aed881b7df94c664808d1" name="a82d7216e455aed881b7df94c664808d1"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; std::multiplies&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>multiplies</b></td></tr>
-<tr class="memdesc:a82d7216e455aed881b7df94c664808d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::multiplies&lt;&gt;. <br /></td></tr>
-<tr class="separator:a82d7216e455aed881b7df94c664808d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56664b858ea32891ce24269c8c5a2b53"><td class="memItemLeft" align="right" valign="top"><a id="a56664b858ea32891ce24269c8c5a2b53" name="a56664b858ea32891ce24269c8c5a2b53"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; std::divides&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>divides</b></td></tr>
-<tr class="memdesc:a56664b858ea32891ce24269c8c5a2b53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::divides&lt;&gt;. <br /></td></tr>
-<tr class="separator:a56664b858ea32891ce24269c8c5a2b53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d39f6cb6bbe9e7dab5dd908ccff302d"><td class="memItemLeft" align="right" valign="top"><a id="a4d39f6cb6bbe9e7dab5dd908ccff302d" name="a4d39f6cb6bbe9e7dab5dd908ccff302d"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; std::modulus&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>modulus</b></td></tr>
-<tr class="memdesc:a4d39f6cb6bbe9e7dab5dd908ccff302d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::modulus&lt;&gt;. <br /></td></tr>
-<tr class="separator:a4d39f6cb6bbe9e7dab5dd908ccff302d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3313d2ef13acf4ddbe9715a4646af8f2"><td class="memItemLeft" align="right" valign="top"><a id="a3313d2ef13acf4ddbe9715a4646af8f2" name="a3313d2ef13acf4ddbe9715a4646af8f2"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; std::negate&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>negate</b></td></tr>
-<tr class="memdesc:a3313d2ef13acf4ddbe9715a4646af8f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::negate&lt;&gt;. <br /></td></tr>
-<tr class="separator:a3313d2ef13acf4ddbe9715a4646af8f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a155f7bd438e0161b62f4b8d661c006f6"><td class="memItemLeft" align="right" valign="top"><a id="a155f7bd438e0161b62f4b8d661c006f6" name="a155f7bd438e0161b62f4b8d661c006f6"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; std::ranges::equal_to &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>equal_to</b></td></tr>
-<tr class="memdesc:a155f7bd438e0161b62f4b8d661c006f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::ranges::equal_to. <br /></td></tr>
-<tr class="separator:a155f7bd438e0161b62f4b8d661c006f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a813e76a5641a1435bdaea01b5ec57265"><td class="memItemLeft" align="right" valign="top"><a id="a813e76a5641a1435bdaea01b5ec57265" name="a813e76a5641a1435bdaea01b5ec57265"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; std::ranges::not_equal_to &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>not_equal_to</b></td></tr>
-<tr class="memdesc:a813e76a5641a1435bdaea01b5ec57265"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::ranges::not_equal_to. <br /></td></tr>
-<tr class="separator:a813e76a5641a1435bdaea01b5ec57265"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2458c5325e6e1b4e1df3b391ff83c12f"><td class="memItemLeft" align="right" valign="top"><a id="a2458c5325e6e1b4e1df3b391ff83c12f" name="a2458c5325e6e1b4e1df3b391ff83c12f"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; std::ranges::greater &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>greater</b></td></tr>
-<tr class="memdesc:a2458c5325e6e1b4e1df3b391ff83c12f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::ranges::greater. <br /></td></tr>
-<tr class="separator:a2458c5325e6e1b4e1df3b391ff83c12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd88bf101c37d05a004191658eb5c0dc"><td class="memItemLeft" align="right" valign="top"><a id="acd88bf101c37d05a004191658eb5c0dc" name="acd88bf101c37d05a004191658eb5c0dc"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; std::ranges::less &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>less</b></td></tr>
-<tr class="memdesc:acd88bf101c37d05a004191658eb5c0dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::ranges::less. <br /></td></tr>
-<tr class="separator:acd88bf101c37d05a004191658eb5c0dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab9b33a11f18a7161b5081c245298c1e"><td class="memItemLeft" align="right" valign="top"><a id="aab9b33a11f18a7161b5081c245298c1e" name="aab9b33a11f18a7161b5081c245298c1e"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; std::ranges::greater_equal &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>greater_equal</b></td></tr>
-<tr class="memdesc:aab9b33a11f18a7161b5081c245298c1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::ranges::greater_equal. <br /></td></tr>
-<tr class="separator:aab9b33a11f18a7161b5081c245298c1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91bbd57a786f97cc626f6c14fc9fcc4f"><td class="memItemLeft" align="right" valign="top"><a id="a91bbd57a786f97cc626f6c14fc9fcc4f" name="a91bbd57a786f97cc626f6c14fc9fcc4f"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; std::ranges::less_equal &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>less_equal</b></td></tr>
-<tr class="memdesc:a91bbd57a786f97cc626f6c14fc9fcc4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::ranges::less_equal. <br /></td></tr>
-<tr class="separator:a91bbd57a786f97cc626f6c14fc9fcc4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae23b11dbc0794292c86930492bfd65b"><td class="memItemLeft" align="right" valign="top"><a id="aae23b11dbc0794292c86930492bfd65b" name="aae23b11dbc0794292c86930492bfd65b"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; std::logical_and&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>logical_and</b></td></tr>
-<tr class="memdesc:aae23b11dbc0794292c86930492bfd65b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::logical_and&lt;&gt;. <br /></td></tr>
-<tr class="separator:aae23b11dbc0794292c86930492bfd65b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad59db74d94690866ff217c32c6dafd18"><td class="memItemLeft" align="right" valign="top"><a id="ad59db74d94690866ff217c32c6dafd18" name="ad59db74d94690866ff217c32c6dafd18"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; std::logical_or&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>logical_or</b></td></tr>
-<tr class="memdesc:ad59db74d94690866ff217c32c6dafd18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::logical_or&lt;&gt;. <br /></td></tr>
-<tr class="separator:ad59db74d94690866ff217c32c6dafd18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2dc5ec632902c0dd0f57d6b1523a8461"><td class="memItemLeft" align="right" valign="top"><a id="a2dc5ec632902c0dd0f57d6b1523a8461" name="a2dc5ec632902c0dd0f57d6b1523a8461"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; std::logical_not&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>logical_not</b></td></tr>
-<tr class="memdesc:a2dc5ec632902c0dd0f57d6b1523a8461"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::logical_not&lt;&gt;. <br /></td></tr>
-<tr class="separator:a2dc5ec632902c0dd0f57d6b1523a8461"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7431f3cb22d904d6351f7a2fcf261d95"><td class="memItemLeft" align="right" valign="top"><a id="a7431f3cb22d904d6351f7a2fcf261d95" name="a7431f3cb22d904d6351f7a2fcf261d95"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; std::bit_and&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>bit_and</b></td></tr>
-<tr class="memdesc:a7431f3cb22d904d6351f7a2fcf261d95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::bit_and&lt;&gt;. <br /></td></tr>
-<tr class="separator:a7431f3cb22d904d6351f7a2fcf261d95"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe189cc495dae14ed4c3976f1a518348"><td class="memItemLeft" align="right" valign="top"><a id="abe189cc495dae14ed4c3976f1a518348" name="abe189cc495dae14ed4c3976f1a518348"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; std::bit_or&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>bit_or</b></td></tr>
-<tr class="memdesc:abe189cc495dae14ed4c3976f1a518348"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::bit_or&lt;&gt;. <br /></td></tr>
-<tr class="separator:abe189cc495dae14ed4c3976f1a518348"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74a68722242c14fe53410b38f8a2947f"><td class="memItemLeft" align="right" valign="top"><a id="a74a68722242c14fe53410b38f8a2947f" name="a74a68722242c14fe53410b38f8a2947f"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; std::bit_xor&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>bit_xor</b></td></tr>
-<tr class="memdesc:a74a68722242c14fe53410b38f8a2947f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::bit_xor&lt;&gt;. <br /></td></tr>
-<tr class="separator:a74a68722242c14fe53410b38f8a2947f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a941464e6dcb0136f609e89f0da4598d6"><td class="memItemLeft" align="right" valign="top"><a id="a941464e6dcb0136f609e89f0da4598d6" name="a941464e6dcb0136f609e89f0da4598d6"></a>
-constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt; std::bit_not&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>bit_not</b></td></tr>
-<tr class="memdesc:a941464e6dcb0136f609e89f0da4598d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::bit_not&lt;&gt;. <br /></td></tr>
-<tr class="separator:a941464e6dcb0136f609e89f0da4598d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d5f2f536ebe655923ae5f0cff698c68"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1lift__op.html">detail::lift_op</a>&lt; TR &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>lift</b> {}</td></tr>
+<tr class="memdesc:a5d5f2f536ebe655923ae5f0cff698c68"><td class="mdescLeft">&#160;</td><td class="mdescRight">lift :: (Monad m) =&gt; m a -&gt; t m a <br /></td></tr>
+<tr class="separator:a5d5f2f536ebe655923ae5f0cff698c68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fe1f50d194ba5f6c8878fb61bdc9202"><td class="memItemLeft" align="right" valign="top"><a id="a7fe1f50d194ba5f6c8878fb61bdc9202" name="a7fe1f50d194ba5f6c8878fb61bdc9202"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1isalnum__op.html">detail::isalnum_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isalnum</b> {}</td></tr>
+<tr class="memdesc:a7fe1f50d194ba5f6c8878fb61bdc9202"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isalnum. <br /></td></tr>
+<tr class="separator:a7fe1f50d194ba5f6c8878fb61bdc9202"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af669897160a8156d312dbc5be9a0cb3f"><td class="memItemLeft" align="right" valign="top"><a id="af669897160a8156d312dbc5be9a0cb3f" name="af669897160a8156d312dbc5be9a0cb3f"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1isalpha__op.html">detail::isalpha_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isalpha</b> {}</td></tr>
+<tr class="memdesc:af669897160a8156d312dbc5be9a0cb3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isalpha. <br /></td></tr>
+<tr class="separator:af669897160a8156d312dbc5be9a0cb3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75fb5eb266777d805b57dcbb8ff5cbef"><td class="memItemLeft" align="right" valign="top"><a id="a75fb5eb266777d805b57dcbb8ff5cbef" name="a75fb5eb266777d805b57dcbb8ff5cbef"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1islower__op.html">detail::islower_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>islower</b> {}</td></tr>
+<tr class="memdesc:a75fb5eb266777d805b57dcbb8ff5cbef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::islower. <br /></td></tr>
+<tr class="separator:a75fb5eb266777d805b57dcbb8ff5cbef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cb10cd546a0578b63de7cfc33851c0a"><td class="memItemLeft" align="right" valign="top"><a id="a1cb10cd546a0578b63de7cfc33851c0a" name="a1cb10cd546a0578b63de7cfc33851c0a"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1isupper__op.html">detail::isupper_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isupper</b> {}</td></tr>
+<tr class="memdesc:a1cb10cd546a0578b63de7cfc33851c0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isupper. <br /></td></tr>
+<tr class="separator:a1cb10cd546a0578b63de7cfc33851c0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a564abc044d4b11991ac2df0a3433bc59"><td class="memItemLeft" align="right" valign="top"><a id="a564abc044d4b11991ac2df0a3433bc59" name="a564abc044d4b11991ac2df0a3433bc59"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1isdigit__op.html">detail::isdigit_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isdigit</b> {}</td></tr>
+<tr class="memdesc:a564abc044d4b11991ac2df0a3433bc59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isdigit. <br /></td></tr>
+<tr class="separator:a564abc044d4b11991ac2df0a3433bc59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a864518f9a355f7e7c96a311949031a93"><td class="memItemLeft" align="right" valign="top"><a id="a864518f9a355f7e7c96a311949031a93" name="a864518f9a355f7e7c96a311949031a93"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1isxdigit__op.html">detail::isxdigit_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isxdigit</b> {}</td></tr>
+<tr class="memdesc:a864518f9a355f7e7c96a311949031a93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isxdigit. <br /></td></tr>
+<tr class="separator:a864518f9a355f7e7c96a311949031a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29363140ef9b222c611f96c75db9a86f"><td class="memItemLeft" align="right" valign="top"><a id="a29363140ef9b222c611f96c75db9a86f" name="a29363140ef9b222c611f96c75db9a86f"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1iscntrl__op.html">detail::iscntrl_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>iscntrl</b> {}</td></tr>
+<tr class="memdesc:a29363140ef9b222c611f96c75db9a86f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::iscntrl. <br /></td></tr>
+<tr class="separator:a29363140ef9b222c611f96c75db9a86f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f549ed5f700f8b34d66ef9be7d05245"><td class="memItemLeft" align="right" valign="top"><a id="a0f549ed5f700f8b34d66ef9be7d05245" name="a0f549ed5f700f8b34d66ef9be7d05245"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1isgraph__op.html">detail::isgraph_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isgraph</b> {}</td></tr>
+<tr class="memdesc:a0f549ed5f700f8b34d66ef9be7d05245"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isgraph. <br /></td></tr>
+<tr class="separator:a0f549ed5f700f8b34d66ef9be7d05245"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa70ac2e401a34ea57c9913e352199418"><td class="memItemLeft" align="right" valign="top"><a id="aa70ac2e401a34ea57c9913e352199418" name="aa70ac2e401a34ea57c9913e352199418"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1isspace__op.html">detail::isspace_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isspace</b> {}</td></tr>
+<tr class="memdesc:aa70ac2e401a34ea57c9913e352199418"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isspace. <br /></td></tr>
+<tr class="separator:aa70ac2e401a34ea57c9913e352199418"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a480f5f25e73ea871636166753be5a8d3"><td class="memItemLeft" align="right" valign="top"><a id="a480f5f25e73ea871636166753be5a8d3" name="a480f5f25e73ea871636166753be5a8d3"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1isblank__op.html">detail::isblank_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isblank</b> {}</td></tr>
+<tr class="memdesc:a480f5f25e73ea871636166753be5a8d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isblank. <br /></td></tr>
+<tr class="separator:a480f5f25e73ea871636166753be5a8d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9edf1a9b89b01c05a4426565543fd4ea"><td class="memItemLeft" align="right" valign="top"><a id="a9edf1a9b89b01c05a4426565543fd4ea" name="a9edf1a9b89b01c05a4426565543fd4ea"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1isprint__op.html">detail::isprint_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>isprint</b> {}</td></tr>
+<tr class="memdesc:a9edf1a9b89b01c05a4426565543fd4ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::isprint. <br /></td></tr>
+<tr class="separator:a9edf1a9b89b01c05a4426565543fd4ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e43d508f72abe6a9ee1566da4dea6dd"><td class="memItemLeft" align="right" valign="top"><a id="a1e43d508f72abe6a9ee1566da4dea6dd" name="a1e43d508f72abe6a9ee1566da4dea6dd"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1ispunct__op.html">detail::ispunct_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ispunct</b> {}</td></tr>
+<tr class="memdesc:a1e43d508f72abe6a9ee1566da4dea6dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::ispunct. <br /></td></tr>
+<tr class="separator:a1e43d508f72abe6a9ee1566da4dea6dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff687a0c198dea3846217e05a8775547"><td class="memItemLeft" align="right" valign="top"><a id="aff687a0c198dea3846217e05a8775547" name="aff687a0c198dea3846217e05a8775547"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1make___identity__op.html">detail::make_Identity_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>make_Identity</b> {}</td></tr>
+<tr class="separator:aff687a0c198dea3846217e05a8775547"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cda67c27bdefd5c1f1ffa123fa062ae"><td class="memItemLeft" align="right" valign="top"><a id="a8cda67c27bdefd5c1f1ffa123fa062ae" name="a8cda67c27bdefd5c1f1ffa123fa062ae"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1run___identity__op.html">detail::run_Identity_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>run_Identity</b> {}</td></tr>
+<tr class="separator:a8cda67c27bdefd5c1f1ffa123fa062ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcb910429e3606eb4e031b300b0820a7"><td class="memItemLeft" align="right" valign="top"><a id="adcb910429e3606eb4e031b300b0820a7" name="adcb910429e3606eb4e031b300b0820a7"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1cons__op.html">detail::cons_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>cons</b></td></tr>
+<tr class="separator:adcb910429e3606eb4e031b300b0820a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59283da37f998cc700a111f254c259b3"><td class="memItemLeft" align="right" valign="top"><a id="a59283da37f998cc700a111f254c259b3" name="a59283da37f998cc700a111f254c259b3"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1foldr__op.html">detail::foldr_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>foldr</b></td></tr>
+<tr class="separator:a59283da37f998cc700a111f254c259b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53ffd48c21b4382d506995dba3234e43"><td class="memItemLeft" align="right" valign="top"><a id="a53ffd48c21b4382d506995dba3234e43" name="a53ffd48c21b4382d506995dba3234e43"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1sequence__op.html">detail::sequence_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>sequence</b></td></tr>
+<tr class="separator:a53ffd48c21b4382d506995dba3234e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a2bed88bb16a0dc9ccad4ffe9eff901"><td class="memItemLeft" align="right" valign="top"><a id="a3a2bed88bb16a0dc9ccad4ffe9eff901" name="a3a2bed88bb16a0dc9ccad4ffe9eff901"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1compose__op.html">detail::compose_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>compose</b></td></tr>
+<tr class="memdesc:a3a2bed88bb16a0dc9ccad4ffe9eff901"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function composition. <br /></td></tr>
+<tr class="separator:a3a2bed88bb16a0dc9ccad4ffe9eff901"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a194379d82645a15bcf10bed51838a3e6"><td class="memItemLeft" align="right" valign="top"><a id="a194379d82645a15bcf10bed51838a3e6" name="a194379d82645a15bcf10bed51838a3e6"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1constant__op.html">detail::constant_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>constant</b></td></tr>
+<tr class="memdesc:a194379d82645a15bcf10bed51838a3e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a unary function always returning the first input. <br /></td></tr>
+<tr class="separator:a194379d82645a15bcf10bed51838a3e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c408ac244b89d6886a40c7ee3d5e425"><td class="memItemLeft" align="right" valign="top"><a id="a9c408ac244b89d6886a40c7ee3d5e425" name="a9c408ac244b89d6886a40c7ee3d5e425"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; <a class="el" href="structmpc_1_1detail_1_1flip__op.html">detail::flip_op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>flip</b></td></tr>
+<tr class="memdesc:a9c408ac244b89d6886a40c7ee3d5e425"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a binary function which flips the first and second argument. <br /></td></tr>
+<tr class="separator:a9c408ac244b89d6886a40c7ee3d5e425"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcb077a7482537a3e5c402a9eeec21b4"><td class="memItemLeft" align="right" valign="top"><a id="adcb077a7482537a3e5c402a9eeec21b4" name="adcb077a7482537a3e5c402a9eeec21b4"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; detail::_fst::get_op&lt; 0 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fst</b></td></tr>
+<tr class="memdesc:adcb077a7482537a3e5c402a9eeec21b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the first element of the given tuple-like object. <br /></td></tr>
+<tr class="separator:adcb077a7482537a3e5c402a9eeec21b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c149f4a11c66a8b285aa24d8817b7be"><td class="memItemLeft" align="right" valign="top"><a id="a0c149f4a11c66a8b285aa24d8817b7be" name="a0c149f4a11c66a8b285aa24d8817b7be"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; detail::_fst::get_op&lt; 1 &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>snd</b></td></tr>
+<tr class="memdesc:a0c149f4a11c66a8b285aa24d8817b7be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the second element of the given tuple-like object. <br /></td></tr>
+<tr class="separator:a0c149f4a11c66a8b285aa24d8817b7be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe6a70967c4aa279f498d73de472f629"><td class="memItemLeft" align="right" valign="top"><a id="abe6a70967c4aa279f498d73de472f629" name="abe6a70967c4aa279f498d73de472f629"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; std::identity &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>identity</b> {}</td></tr>
+<tr class="memdesc:abe6a70967c4aa279f498d73de472f629"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identity mapping. <br /></td></tr>
+<tr class="separator:abe6a70967c4aa279f498d73de472f629"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a729bccb81b34f1aee8615f8ae8a2d6b2"><td class="memItemLeft" align="right" valign="top"><a id="a729bccb81b34f1aee8615f8ae8a2d6b2" name="a729bccb81b34f1aee8615f8ae8a2d6b2"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; std::plus&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>plus</b></td></tr>
+<tr class="memdesc:a729bccb81b34f1aee8615f8ae8a2d6b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::plus&lt;&gt;. <br /></td></tr>
+<tr class="separator:a729bccb81b34f1aee8615f8ae8a2d6b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3698176d9502b8c04c036fb942ca0f4"><td class="memItemLeft" align="right" valign="top"><a id="af3698176d9502b8c04c036fb942ca0f4" name="af3698176d9502b8c04c036fb942ca0f4"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; std::minus&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>minus</b></td></tr>
+<tr class="memdesc:af3698176d9502b8c04c036fb942ca0f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::minus&lt;&gt;. <br /></td></tr>
+<tr class="separator:af3698176d9502b8c04c036fb942ca0f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53b08c4d7a281bdd18a5a29987aef074"><td class="memItemLeft" align="right" valign="top"><a id="a53b08c4d7a281bdd18a5a29987aef074" name="a53b08c4d7a281bdd18a5a29987aef074"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; std::multiplies&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>multiplies</b></td></tr>
+<tr class="memdesc:a53b08c4d7a281bdd18a5a29987aef074"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::multiplies&lt;&gt;. <br /></td></tr>
+<tr class="separator:a53b08c4d7a281bdd18a5a29987aef074"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a84dd51be4406962b7daee2863db0f2"><td class="memItemLeft" align="right" valign="top"><a id="a2a84dd51be4406962b7daee2863db0f2" name="a2a84dd51be4406962b7daee2863db0f2"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; std::divides&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>divides</b></td></tr>
+<tr class="memdesc:a2a84dd51be4406962b7daee2863db0f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::divides&lt;&gt;. <br /></td></tr>
+<tr class="separator:a2a84dd51be4406962b7daee2863db0f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a535726ad4f682919f159bc17b61795c3"><td class="memItemLeft" align="right" valign="top"><a id="a535726ad4f682919f159bc17b61795c3" name="a535726ad4f682919f159bc17b61795c3"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; std::modulus&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>modulus</b></td></tr>
+<tr class="memdesc:a535726ad4f682919f159bc17b61795c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::modulus&lt;&gt;. <br /></td></tr>
+<tr class="separator:a535726ad4f682919f159bc17b61795c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7f7d316fc22c060a34c705c58a4575d"><td class="memItemLeft" align="right" valign="top"><a id="ad7f7d316fc22c060a34c705c58a4575d" name="ad7f7d316fc22c060a34c705c58a4575d"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; std::negate&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>negate</b></td></tr>
+<tr class="memdesc:ad7f7d316fc22c060a34c705c58a4575d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::negate&lt;&gt;. <br /></td></tr>
+<tr class="separator:ad7f7d316fc22c060a34c705c58a4575d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab366fdb0c3220bfe3bea0c5ed07de347"><td class="memItemLeft" align="right" valign="top"><a id="ab366fdb0c3220bfe3bea0c5ed07de347" name="ab366fdb0c3220bfe3bea0c5ed07de347"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; std::ranges::equal_to &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>equal_to</b></td></tr>
+<tr class="memdesc:ab366fdb0c3220bfe3bea0c5ed07de347"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::ranges::equal_to. <br /></td></tr>
+<tr class="separator:ab366fdb0c3220bfe3bea0c5ed07de347"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa53777a592995fa963235a7ffdf776b7"><td class="memItemLeft" align="right" valign="top"><a id="aa53777a592995fa963235a7ffdf776b7" name="aa53777a592995fa963235a7ffdf776b7"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; std::ranges::not_equal_to &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>not_equal_to</b></td></tr>
+<tr class="memdesc:aa53777a592995fa963235a7ffdf776b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::ranges::not_equal_to. <br /></td></tr>
+<tr class="separator:aa53777a592995fa963235a7ffdf776b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9095ce47d817f25585a871779b6b6215"><td class="memItemLeft" align="right" valign="top"><a id="a9095ce47d817f25585a871779b6b6215" name="a9095ce47d817f25585a871779b6b6215"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; std::ranges::greater &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>greater</b></td></tr>
+<tr class="memdesc:a9095ce47d817f25585a871779b6b6215"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::ranges::greater. <br /></td></tr>
+<tr class="separator:a9095ce47d817f25585a871779b6b6215"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a304fc7987e5e32331f116f8649c9c70a"><td class="memItemLeft" align="right" valign="top"><a id="a304fc7987e5e32331f116f8649c9c70a" name="a304fc7987e5e32331f116f8649c9c70a"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; std::ranges::less &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>less</b></td></tr>
+<tr class="memdesc:a304fc7987e5e32331f116f8649c9c70a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::ranges::less. <br /></td></tr>
+<tr class="separator:a304fc7987e5e32331f116f8649c9c70a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54bb67b9e28c2e33b31b6bbacecb66f3"><td class="memItemLeft" align="right" valign="top"><a id="a54bb67b9e28c2e33b31b6bbacecb66f3" name="a54bb67b9e28c2e33b31b6bbacecb66f3"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; std::ranges::greater_equal &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>greater_equal</b></td></tr>
+<tr class="memdesc:a54bb67b9e28c2e33b31b6bbacecb66f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::ranges::greater_equal. <br /></td></tr>
+<tr class="separator:a54bb67b9e28c2e33b31b6bbacecb66f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59d7fe29348122b4bf09c61137420f02"><td class="memItemLeft" align="right" valign="top"><a id="a59d7fe29348122b4bf09c61137420f02" name="a59d7fe29348122b4bf09c61137420f02"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; std::ranges::less_equal &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>less_equal</b></td></tr>
+<tr class="memdesc:a59d7fe29348122b4bf09c61137420f02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::ranges::less_equal. <br /></td></tr>
+<tr class="separator:a59d7fe29348122b4bf09c61137420f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c02ee82f42b90a7596a54bd0f99d999"><td class="memItemLeft" align="right" valign="top"><a id="a0c02ee82f42b90a7596a54bd0f99d999" name="a0c02ee82f42b90a7596a54bd0f99d999"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; std::logical_and&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>logical_and</b></td></tr>
+<tr class="memdesc:a0c02ee82f42b90a7596a54bd0f99d999"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::logical_and&lt;&gt;. <br /></td></tr>
+<tr class="separator:a0c02ee82f42b90a7596a54bd0f99d999"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a393acb09cbd4a9d2585873c97e22ab94"><td class="memItemLeft" align="right" valign="top"><a id="a393acb09cbd4a9d2585873c97e22ab94" name="a393acb09cbd4a9d2585873c97e22ab94"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; std::logical_or&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>logical_or</b></td></tr>
+<tr class="memdesc:a393acb09cbd4a9d2585873c97e22ab94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::logical_or&lt;&gt;. <br /></td></tr>
+<tr class="separator:a393acb09cbd4a9d2585873c97e22ab94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7d9b66ef1f70c40059a7cf68268b431"><td class="memItemLeft" align="right" valign="top"><a id="ac7d9b66ef1f70c40059a7cf68268b431" name="ac7d9b66ef1f70c40059a7cf68268b431"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; std::logical_not&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>logical_not</b></td></tr>
+<tr class="memdesc:ac7d9b66ef1f70c40059a7cf68268b431"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::logical_not&lt;&gt;. <br /></td></tr>
+<tr class="separator:ac7d9b66ef1f70c40059a7cf68268b431"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4179bf7ff3ab5af9d2550b94d564da2f"><td class="memItemLeft" align="right" valign="top"><a id="a4179bf7ff3ab5af9d2550b94d564da2f" name="a4179bf7ff3ab5af9d2550b94d564da2f"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; std::bit_and&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>bit_and</b></td></tr>
+<tr class="memdesc:a4179bf7ff3ab5af9d2550b94d564da2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::bit_and&lt;&gt;. <br /></td></tr>
+<tr class="separator:a4179bf7ff3ab5af9d2550b94d564da2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a5e5b2a78b29a8476710c51b1745aab"><td class="memItemLeft" align="right" valign="top"><a id="a0a5e5b2a78b29a8476710c51b1745aab" name="a0a5e5b2a78b29a8476710c51b1745aab"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; std::bit_or&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>bit_or</b></td></tr>
+<tr class="memdesc:a0a5e5b2a78b29a8476710c51b1745aab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::bit_or&lt;&gt;. <br /></td></tr>
+<tr class="separator:a0a5e5b2a78b29a8476710c51b1745aab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2733d2471dc83e0ea0db94dd14c426d3"><td class="memItemLeft" align="right" valign="top"><a id="a2733d2471dc83e0ea0db94dd14c426d3" name="a2733d2471dc83e0ea0db94dd14c426d3"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; std::bit_xor&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>bit_xor</b></td></tr>
+<tr class="memdesc:a2733d2471dc83e0ea0db94dd14c426d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::bit_xor&lt;&gt;. <br /></td></tr>
+<tr class="separator:a2733d2471dc83e0ea0db94dd14c426d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade528a29154f2efc618874abad708443"><td class="memItemLeft" align="right" valign="top"><a id="ade528a29154f2efc618874abad708443" name="ade528a29154f2efc618874abad708443"></a>
+constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt; std::bit_not&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>bit_not</b></td></tr>
+<tr class="memdesc:ade528a29154f2efc618874abad708443"><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially applicable std::bit_not&lt;&gt;. <br /></td></tr>
+<tr class="separator:ade528a29154f2efc618874abad708443"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Customization point objects are here. </p>
 </div><h2 class="groupheader">Variable Documentation</h2>
-<a id="a9f31ba0116cf1ac796bebc195ca0e0dc" name="a9f31ba0116cf1ac796bebc195ca0e0dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f31ba0116cf1ac796bebc195ca0e0dc">&#9670;&nbsp;</a></span>bind</h2>
+<a id="a16a0eceaae8fa9e73712464598a96e6f" name="a16a0eceaae8fa9e73712464598a96e6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16a0eceaae8fa9e73712464598a96e6f">&#9670;&nbsp;</a></span>bind</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -387,7 +387,7 @@ constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt;<a class="el" href="structmpc_1_1detail_1_1bind__op.html">detail::bind_op</a>&gt; mpc::cpo::bind {}</td>
+          <td class="memname">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt;<a class="el" href="structmpc_1_1detail_1_1bind__op.html">detail::bind_op</a>&gt; mpc::cpo::bind {}</td>
         </tr>
       </table>
   </td>
@@ -402,8 +402,8 @@ constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially
 
 </div>
 </div>
-<a id="a584c372430df327bc483221cc417ab69" name="a584c372430df327bc483221cc417ab69"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a584c372430df327bc483221cc417ab69">&#9670;&nbsp;</a></span>combine</h2>
+<a id="a8326f1624f8a413378413c0a618f517b" name="a8326f1624f8a413378413c0a618f517b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8326f1624f8a413378413c0a618f517b">&#9670;&nbsp;</a></span>combine</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -412,7 +412,7 @@ constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt;<a class="el" href="structmpc_1_1detail_1_1combine__op.html">detail::combine_op</a>&gt; mpc::cpo::combine {}</td>
+          <td class="memname">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt;<a class="el" href="structmpc_1_1detail_1_1combine__op.html">detail::combine_op</a>&gt; mpc::cpo::combine {}</td>
         </tr>
       </table>
   </td>
@@ -427,8 +427,8 @@ constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially
 
 </div>
 </div>
-<a id="a59142d967055caf4ad9618e27d8ca7de" name="a59142d967055caf4ad9618e27d8ca7de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59142d967055caf4ad9618e27d8ca7de">&#9670;&nbsp;</a></span>discard1st</h2>
+<a id="a3a561134dbc85367ed24a771597fcd62" name="a3a561134dbc85367ed24a771597fcd62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a561134dbc85367ed24a771597fcd62">&#9670;&nbsp;</a></span>discard1st</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -437,7 +437,7 @@ constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt;<a class="el" href="structmpc_1_1detail_1_1discard1st__op.html">detail::discard1st_op</a>&gt; mpc::cpo::discard1st {}</td>
+          <td class="memname">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt;<a class="el" href="structmpc_1_1detail_1_1discard1st__op.html">detail::discard1st_op</a>&gt; mpc::cpo::discard1st {}</td>
         </tr>
       </table>
   </td>
@@ -452,8 +452,8 @@ constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially
 
 </div>
 </div>
-<a id="a5017642bac57e204cd2170b4c41a17f5" name="a5017642bac57e204cd2170b4c41a17f5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5017642bac57e204cd2170b4c41a17f5">&#9670;&nbsp;</a></span>discard2nd</h2>
+<a id="a8b775d73e83da4f2905ce77f255d424b" name="a8b775d73e83da4f2905ce77f255d424b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b775d73e83da4f2905ce77f255d424b">&#9670;&nbsp;</a></span>discard2nd</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -462,7 +462,7 @@ constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt;<a class="el" href="structmpc_1_1detail_1_1discard2nd__op.html">detail::discard2nd_op</a>&gt; mpc::cpo::discard2nd {}</td>
+          <td class="memname">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt;<a class="el" href="structmpc_1_1detail_1_1discard2nd__op.html">detail::discard2nd_op</a>&gt; mpc::cpo::discard2nd {}</td>
         </tr>
       </table>
   </td>
@@ -504,8 +504,8 @@ template&lt;class F &gt; </div>
 
 </div>
 </div>
-<a id="ab5ca2976cd9fdf7360be0372e9f0d0a7" name="ab5ca2976cd9fdf7360be0372e9f0d0a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5ca2976cd9fdf7360be0372e9f0d0a7">&#9670;&nbsp;</a></span>fmap</h2>
+<a id="a4c7062e64bc9157e2e2ee07134c4a595" name="a4c7062e64bc9157e2e2ee07134c4a595"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c7062e64bc9157e2e2ee07134c4a595">&#9670;&nbsp;</a></span>fmap</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -514,7 +514,7 @@ template&lt;class F &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt;<a class="el" href="structmpc_1_1detail_1_1fmap__op.html">detail::fmap_op</a>&gt; mpc::cpo::fmap {}</td>
+          <td class="memname">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt;<a class="el" href="structmpc_1_1detail_1_1fmap__op.html">detail::fmap_op</a>&gt; mpc::cpo::fmap {}</td>
         </tr>
       </table>
   </td>
@@ -528,8 +528,8 @@ template&lt;class F &gt; </div>
 
 </div>
 </div>
-<a id="a127b5dcfffcc0e6ca503b31e352ff6e9" name="a127b5dcfffcc0e6ca503b31e352ff6e9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a127b5dcfffcc0e6ca503b31e352ff6e9">&#9670;&nbsp;</a></span>karrow</h2>
+<a id="a7c487c5d268537f3ad835773fd8a1340" name="a7c487c5d268537f3ad835773fd8a1340"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c487c5d268537f3ad835773fd8a1340">&#9670;&nbsp;</a></span>karrow</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -538,7 +538,7 @@ template&lt;class F &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt;<a class="el" href="structmpc_1_1detail_1_1karrow__op.html">detail::karrow_op</a>&gt; mpc::cpo::karrow {}</td>
+          <td class="memname">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt;<a class="el" href="structmpc_1_1detail_1_1karrow__op.html">detail::karrow_op</a>&gt; mpc::cpo::karrow {}</td>
         </tr>
       </table>
   </td>
@@ -549,14 +549,14 @@ template&lt;class F &gt; </div>
 </div><div class="memdoc">
 
 <p>karrow :: Monad m =&gt; (a -&gt; m b) -&gt; (b -&gt; m c) -&gt; (a -&gt; m c) </p>
-<p >(&gt;=&gt;) in Haskell </p><div class="fragment"><div class="line"><a class="code hl_variable" href="namespacempc_1_1cpo.html#a127b5dcfffcc0e6ca503b31e352ff6e9">karrow</a> f g x = f x `<a class="code hl_variable" href="namespacempc_1_1cpo.html#a9f31ba0116cf1ac796bebc195ca0e0dc">bind</a>` g</div>
-<div class="ttc" id="anamespacempc_1_1cpo_html_a127b5dcfffcc0e6ca503b31e352ff6e9"><div class="ttname"><a href="namespacempc_1_1cpo.html#a127b5dcfffcc0e6ca503b31e352ff6e9">mpc::cpo::karrow</a></div><div class="ttdeci">constexpr partially_applicable&lt; detail::karrow_op &gt; karrow</div><div class="ttdoc">karrow :: Monad m =&gt; (a -&gt; m b) -&gt; (b -&gt; m c) -&gt; (a -&gt; m c)</div><div class="ttdef"><b>Definition:</b> monad.hpp:146</div></div>
-<div class="ttc" id="anamespacempc_1_1cpo_html_a9f31ba0116cf1ac796bebc195ca0e0dc"><div class="ttname"><a href="namespacempc_1_1cpo.html#a9f31ba0116cf1ac796bebc195ca0e0dc">mpc::cpo::bind</a></div><div class="ttdeci">constexpr partially_applicable&lt; detail::bind_op &gt; bind</div><div class="ttdoc">bind :: forall a b. m a -&gt; (a -&gt; m b) -&gt; m b</div><div class="ttdef"><b>Definition:</b> monad.hpp:45</div></div>
+<p >(&gt;=&gt;) in Haskell </p><div class="fragment"><div class="line"><a class="code hl_variable" href="namespacempc_1_1cpo.html#a7c487c5d268537f3ad835773fd8a1340">karrow</a> f g x = f x `<a class="code hl_variable" href="namespacempc_1_1cpo.html#a16a0eceaae8fa9e73712464598a96e6f">bind</a>` g</div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a16a0eceaae8fa9e73712464598a96e6f"><div class="ttname"><a href="namespacempc_1_1cpo.html#a16a0eceaae8fa9e73712464598a96e6f">mpc::cpo::bind</a></div><div class="ttdeci">constexpr partial&lt; detail::bind_op &gt; bind</div><div class="ttdoc">bind :: forall a b. m a -&gt; (a -&gt; m b) -&gt; m b</div><div class="ttdef"><b>Definition:</b> monad.hpp:45</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a7c487c5d268537f3ad835773fd8a1340"><div class="ttname"><a href="namespacempc_1_1cpo.html#a7c487c5d268537f3ad835773fd8a1340">mpc::cpo::karrow</a></div><div class="ttdeci">constexpr partial&lt; detail::karrow_op &gt; karrow</div><div class="ttdoc">karrow :: Monad m =&gt; (a -&gt; m b) -&gt; (b -&gt; m c) -&gt; (a -&gt; m c)</div><div class="ttdef"><b>Definition:</b> monad.hpp:146</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
-<a id="a6beef39dbe542631ad79201d7d656467" name="a6beef39dbe542631ad79201d7d656467"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6beef39dbe542631ad79201d7d656467">&#9670;&nbsp;</a></span>liftA</h2>
+<a id="a2e7c401b172b5308d88fcc942f2af7c1" name="a2e7c401b172b5308d88fcc942f2af7c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e7c401b172b5308d88fcc942f2af7c1">&#9670;&nbsp;</a></span>liftA</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -567,7 +567,7 @@ template&lt;std::size_t N&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt;<a class="el" href="structmpc_1_1detail_1_1lift_a__op.html">detail::liftA_op</a>&lt;N&gt; &gt; mpc::cpo::liftA {}</td>
+          <td class="memname">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt;<a class="el" href="structmpc_1_1detail_1_1lift_a__op.html">detail::liftA_op</a>&lt;N&gt; &gt; mpc::cpo::liftA {}</td>
         </tr>
       </table>
   </td>
@@ -578,15 +578,15 @@ template&lt;std::size_t N&gt; </div>
 </div><div class="memdoc">
 
 <p>liftA :: Applicative f =&gt; (a -&gt; b -&gt; ... -&gt; z) -&gt; f a -&gt; f b -&gt; ... -&gt; f z </p>
-<div class="fragment"><div class="line"><a class="code hl_variable" href="namespacempc_1_1cpo.html#a6beef39dbe542631ad79201d7d656467">liftA</a> f a b ... z = f `<a class="code hl_variable" href="namespacempc_1_1cpo.html#ab5ca2976cd9fdf7360be0372e9f0d0a7">fmap</a>` a `<a class="code hl_variable" href="namespacempc_1_1cpo.html#a04df8104b2d516b92f3203352f3920f0">seq_apply</a>` b `<a class="code hl_variable" href="namespacempc_1_1cpo.html#a04df8104b2d516b92f3203352f3920f0">seq_apply</a>` ... `<a class="code hl_variable" href="namespacempc_1_1cpo.html#a04df8104b2d516b92f3203352f3920f0">seq_apply</a>` z</div>
-<div class="ttc" id="anamespacempc_1_1cpo_html_a04df8104b2d516b92f3203352f3920f0"><div class="ttname"><a href="namespacempc_1_1cpo.html#a04df8104b2d516b92f3203352f3920f0">mpc::cpo::seq_apply</a></div><div class="ttdeci">constexpr partially_applicable&lt; detail::seq_apply_op &gt; seq_apply</div><div class="ttdoc">seq_apply :: f (a -&gt; b) -&gt; f a -&gt; f b</div><div class="ttdef"><b>Definition:</b> applicative.hpp:99</div></div>
-<div class="ttc" id="anamespacempc_1_1cpo_html_a6beef39dbe542631ad79201d7d656467"><div class="ttname"><a href="namespacempc_1_1cpo.html#a6beef39dbe542631ad79201d7d656467">mpc::cpo::liftA</a></div><div class="ttdeci">constexpr partially_applicable&lt; detail::liftA_op&lt; N &gt; &gt; liftA</div><div class="ttdoc">liftA :: Applicative f =&gt; (a -&gt; b -&gt; ... -&gt; z) -&gt; f a -&gt; f b -&gt; ... -&gt; f z</div><div class="ttdef"><b>Definition:</b> applicative.hpp:249</div></div>
-<div class="ttc" id="anamespacempc_1_1cpo_html_ab5ca2976cd9fdf7360be0372e9f0d0a7"><div class="ttname"><a href="namespacempc_1_1cpo.html#ab5ca2976cd9fdf7360be0372e9f0d0a7">mpc::cpo::fmap</a></div><div class="ttdeci">constexpr partially_applicable&lt; detail::fmap_op &gt; fmap</div><div class="ttdoc">fmap :: (a -&gt; b) -&gt; f a -&gt; f b</div><div class="ttdef"><b>Definition:</b> functor.hpp:50</div></div>
+<div class="fragment"><div class="line"><a class="code hl_variable" href="namespacempc_1_1cpo.html#a2e7c401b172b5308d88fcc942f2af7c1">liftA</a> f a b ... z = f `<a class="code hl_variable" href="namespacempc_1_1cpo.html#a4c7062e64bc9157e2e2ee07134c4a595">fmap</a>` a `<a class="code hl_variable" href="namespacempc_1_1cpo.html#a962a7747ceb759fd4962dc7ce639e6d8">seq_apply</a>` b `<a class="code hl_variable" href="namespacempc_1_1cpo.html#a962a7747ceb759fd4962dc7ce639e6d8">seq_apply</a>` ... `<a class="code hl_variable" href="namespacempc_1_1cpo.html#a962a7747ceb759fd4962dc7ce639e6d8">seq_apply</a>` z</div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a2e7c401b172b5308d88fcc942f2af7c1"><div class="ttname"><a href="namespacempc_1_1cpo.html#a2e7c401b172b5308d88fcc942f2af7c1">mpc::cpo::liftA</a></div><div class="ttdeci">constexpr partial&lt; detail::liftA_op&lt; N &gt; &gt; liftA</div><div class="ttdoc">liftA :: Applicative f =&gt; (a -&gt; b -&gt; ... -&gt; z) -&gt; f a -&gt; f b -&gt; ... -&gt; f z</div><div class="ttdef"><b>Definition:</b> applicative.hpp:249</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a4c7062e64bc9157e2e2ee07134c4a595"><div class="ttname"><a href="namespacempc_1_1cpo.html#a4c7062e64bc9157e2e2ee07134c4a595">mpc::cpo::fmap</a></div><div class="ttdeci">constexpr partial&lt; detail::fmap_op &gt; fmap</div><div class="ttdoc">fmap :: (a -&gt; b) -&gt; f a -&gt; f b</div><div class="ttdef"><b>Definition:</b> functor.hpp:50</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a962a7747ceb759fd4962dc7ce639e6d8"><div class="ttname"><a href="namespacempc_1_1cpo.html#a962a7747ceb759fd4962dc7ce639e6d8">mpc::cpo::seq_apply</a></div><div class="ttdeci">constexpr partial&lt; detail::seq_apply_op &gt; seq_apply</div><div class="ttdoc">seq_apply :: f (a -&gt; b) -&gt; f a -&gt; f b</div><div class="ttdef"><b>Definition:</b> applicative.hpp:99</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
-<a id="a5186a2a3226bbca445c15e1d90c3b351" name="a5186a2a3226bbca445c15e1d90c3b351"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5186a2a3226bbca445c15e1d90c3b351">&#9670;&nbsp;</a></span>liftA2</h2>
+<a id="a014b694870e535d87135de840bcf4dab" name="a014b694870e535d87135de840bcf4dab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a014b694870e535d87135de840bcf4dab">&#9670;&nbsp;</a></span>liftA2</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -595,7 +595,7 @@ template&lt;std::size_t N&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt;<a class="el" href="structmpc_1_1detail_1_1lift_a2__op.html">detail::liftA2_op</a>&gt; mpc::cpo::liftA2 {}</td>
+          <td class="memname">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt;<a class="el" href="structmpc_1_1detail_1_1lift_a2__op.html">detail::liftA2_op</a>&gt; mpc::cpo::liftA2 {}</td>
         </tr>
       </table>
   </td>
@@ -609,8 +609,8 @@ template&lt;std::size_t N&gt; </div>
 
 </div>
 </div>
-<a id="a7d58f566fc229a23e3932f6978917f38" name="a7d58f566fc229a23e3932f6978917f38"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7d58f566fc229a23e3932f6978917f38">&#9670;&nbsp;</a></span>pure</h2>
+<a id="ad467a3c953e24cc3ecb260ab7b65e6ca" name="ad467a3c953e24cc3ecb260ab7b65e6ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad467a3c953e24cc3ecb260ab7b65e6ca">&#9670;&nbsp;</a></span>pure</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -621,7 +621,7 @@ template&lt;class F &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt;<a class="el" href="structmpc_1_1detail_1_1pure__op.html">detail::pure_op</a>&lt;F&gt; &gt; mpc::cpo::pure {}</td>
+          <td class="memname">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt;<a class="el" href="structmpc_1_1detail_1_1pure__op.html">detail::pure_op</a>&lt;F&gt; &gt; mpc::cpo::pure {}</td>
         </tr>
       </table>
   </td>
@@ -645,7 +645,7 @@ template&lt;class F &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto mpc::cpo::replace1st = <a class="el" href="namespacempc_1_1cpo.html#a353f903d797461ab6e9df5fe0e1dda14">flip</a> % mpc::replace2nd</td>
+          <td class="memname">constexpr auto mpc::cpo::replace1st = <a class="el" href="namespacempc_1_1cpo.html#a9c408ac244b89d6886a40c7ee3d5e425">flip</a> % mpc::replace2nd</td>
         </tr>
       </table>
   </td>
@@ -656,15 +656,15 @@ template&lt;class F &gt; </div>
 </div><div class="memdoc">
 
 <p>replace1st :: Functor f =&gt; f a -&gt; b -&gt; f b </p>
-<p >($&gt;) in Haskell </p><div class="fragment"><div class="line"><a class="code hl_variable" href="namespacempc_1_1cpo.html#acb013568ac918cba3600456074cb02f8">replace1st</a> = <a class="code hl_variable" href="namespacempc_1_1cpo.html#a353f903d797461ab6e9df5fe0e1dda14">flip</a> <a class="code hl_variable" href="namespacempc_1_1cpo.html#a6dc14de2a9f4b8879562ce2f6dbf9dd5">replace2nd</a></div>
-<div class="ttc" id="anamespacempc_1_1cpo_html_a353f903d797461ab6e9df5fe0e1dda14"><div class="ttname"><a href="namespacempc_1_1cpo.html#a353f903d797461ab6e9df5fe0e1dda14">mpc::cpo::flip</a></div><div class="ttdeci">constexpr partially_applicable&lt; detail::flip_op &gt; flip</div><div class="ttdoc">Returns a binary function which flips the first and second argument.</div><div class="ttdef"><b>Definition:</b> flip.hpp:32</div></div>
-<div class="ttc" id="anamespacempc_1_1cpo_html_a6dc14de2a9f4b8879562ce2f6dbf9dd5"><div class="ttname"><a href="namespacempc_1_1cpo.html#a6dc14de2a9f4b8879562ce2f6dbf9dd5">mpc::cpo::replace2nd</a></div><div class="ttdeci">constexpr partially_applicable&lt; detail::replace2nd_op &gt; replace2nd</div><div class="ttdoc">replace2nd :: a -&gt; f b -&gt; f a</div><div class="ttdef"><b>Definition:</b> functor.hpp:53</div></div>
+<p >($&gt;) in Haskell </p><div class="fragment"><div class="line"><a class="code hl_variable" href="namespacempc_1_1cpo.html#acb013568ac918cba3600456074cb02f8">replace1st</a> = <a class="code hl_variable" href="namespacempc_1_1cpo.html#a9c408ac244b89d6886a40c7ee3d5e425">flip</a> <a class="code hl_variable" href="namespacempc_1_1cpo.html#a5be62c19a7b913f963bbe77c7b38482f">replace2nd</a></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a5be62c19a7b913f963bbe77c7b38482f"><div class="ttname"><a href="namespacempc_1_1cpo.html#a5be62c19a7b913f963bbe77c7b38482f">mpc::cpo::replace2nd</a></div><div class="ttdeci">constexpr partial&lt; detail::replace2nd_op &gt; replace2nd</div><div class="ttdoc">replace2nd :: a -&gt; f b -&gt; f a</div><div class="ttdef"><b>Definition:</b> functor.hpp:53</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_a9c408ac244b89d6886a40c7ee3d5e425"><div class="ttname"><a href="namespacempc_1_1cpo.html#a9c408ac244b89d6886a40c7ee3d5e425">mpc::cpo::flip</a></div><div class="ttdeci">constexpr partial&lt; detail::flip_op &gt; flip</div><div class="ttdoc">Returns a binary function which flips the first and second argument.</div><div class="ttdef"><b>Definition:</b> flip.hpp:32</div></div>
 <div class="ttc" id="anamespacempc_1_1cpo_html_acb013568ac918cba3600456074cb02f8"><div class="ttname"><a href="namespacempc_1_1cpo.html#acb013568ac918cba3600456074cb02f8">mpc::cpo::replace1st</a></div><div class="ttdeci">constexpr auto replace1st</div><div class="ttdoc">replace1st :: Functor f =&gt; f a -&gt; b -&gt; f b</div><div class="ttdef"><b>Definition:</b> functor.hpp:78</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
-<a id="a6dc14de2a9f4b8879562ce2f6dbf9dd5" name="a6dc14de2a9f4b8879562ce2f6dbf9dd5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6dc14de2a9f4b8879562ce2f6dbf9dd5">&#9670;&nbsp;</a></span>replace2nd</h2>
+<a id="a5be62c19a7b913f963bbe77c7b38482f" name="a5be62c19a7b913f963bbe77c7b38482f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5be62c19a7b913f963bbe77c7b38482f">&#9670;&nbsp;</a></span>replace2nd</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -673,7 +673,7 @@ template&lt;class F &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt;<a class="el" href="structmpc_1_1detail_1_1replace2nd__op.html">detail::replace2nd_op</a>&gt; mpc::cpo::replace2nd {}</td>
+          <td class="memname">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt;<a class="el" href="structmpc_1_1detail_1_1replace2nd__op.html">detail::replace2nd_op</a>&gt; mpc::cpo::replace2nd {}</td>
         </tr>
       </table>
   </td>
@@ -711,14 +711,14 @@ template&lt;class M &gt; </div>
 </div><div class="memdoc">
 
 <p>returns :: a -&gt; m a </p>
-<div class="fragment"><div class="line"><a class="code hl_variable" href="namespacempc_1_1cpo.html#aa44352f4b8552dcf4e66ee714268dfbb">returns</a> = <a class="code hl_variable" href="namespacempc_1_1cpo.html#a7d58f566fc229a23e3932f6978917f38">pure</a></div>
-<div class="ttc" id="anamespacempc_1_1cpo_html_a7d58f566fc229a23e3932f6978917f38"><div class="ttname"><a href="namespacempc_1_1cpo.html#a7d58f566fc229a23e3932f6978917f38">mpc::cpo::pure</a></div><div class="ttdeci">constexpr partially_applicable&lt; detail::pure_op&lt; F &gt; &gt; pure</div><div class="ttdoc">pure :: a -&gt; f a</div><div class="ttdef"><b>Definition:</b> applicative.hpp:96</div></div>
+<div class="fragment"><div class="line"><a class="code hl_variable" href="namespacempc_1_1cpo.html#aa44352f4b8552dcf4e66ee714268dfbb">returns</a> = <a class="code hl_variable" href="namespacempc_1_1cpo.html#ad467a3c953e24cc3ecb260ab7b65e6ca">pure</a></div>
 <div class="ttc" id="anamespacempc_1_1cpo_html_aa44352f4b8552dcf4e66ee714268dfbb"><div class="ttname"><a href="namespacempc_1_1cpo.html#aa44352f4b8552dcf4e66ee714268dfbb">mpc::cpo::returns</a></div><div class="ttdeci">constexpr auto returns</div><div class="ttdoc">returns :: a -&gt; m a</div><div class="ttdef"><b>Definition:</b> monad.hpp:143</div></div>
+<div class="ttc" id="anamespacempc_1_1cpo_html_ad467a3c953e24cc3ecb260ab7b65e6ca"><div class="ttname"><a href="namespacempc_1_1cpo.html#ad467a3c953e24cc3ecb260ab7b65e6ca">mpc::cpo::pure</a></div><div class="ttdeci">constexpr partial&lt; detail::pure_op&lt; F &gt; &gt; pure</div><div class="ttdoc">pure :: a -&gt; f a</div><div class="ttdef"><b>Definition:</b> applicative.hpp:96</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
-<a id="a04df8104b2d516b92f3203352f3920f0" name="a04df8104b2d516b92f3203352f3920f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04df8104b2d516b92f3203352f3920f0">&#9670;&nbsp;</a></span>seq_apply</h2>
+<a id="a962a7747ceb759fd4962dc7ce639e6d8" name="a962a7747ceb759fd4962dc7ce639e6d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a962a7747ceb759fd4962dc7ce639e6d8">&#9670;&nbsp;</a></span>seq_apply</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -727,7 +727,7 @@ template&lt;class M &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="structmpc_1_1partially__applicable.html">partially_applicable</a>&lt;<a class="el" href="structmpc_1_1detail_1_1seq__apply__op.html">detail::seq_apply_op</a>&gt; mpc::cpo::seq_apply {}</td>
+          <td class="memname">constexpr <a class="el" href="structmpc_1_1partial.html">partial</a>&lt;<a class="el" href="structmpc_1_1detail_1_1seq__apply__op.html">detail::seq_apply_op</a>&gt; mpc::cpo::seq_apply {}</td>
         </tr>
       </table>
   </td>

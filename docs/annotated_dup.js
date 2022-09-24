@@ -75,8 +75,6 @@ var annotated_dup =
         [ "map_State_op", "structmpc_1_1detail_1_1map___state__op.html", null ],
         [ "map_StateT_op", "structmpc_1_1detail_1_1map___state_t__op.html", null ],
         [ "modify_op", "structmpc_1_1detail_1_1modify__op.html", "structmpc_1_1detail_1_1modify__op" ],
-        [ "perfect_forward_impl", "structmpc_1_1detail_1_1perfect__forward__impl.html", null ],
-        [ "perfect_forward_impl< Op, std::index_sequence< Idx... >, Bound... >", "structmpc_1_1detail_1_1perfect__forward__impl_3_01_op_00_01std_1_1index__sequence_3_01_idx_8_8_8_01_4_00_01_bound_8_8_8_01_4.html", null ],
         [ "pure_op", "structmpc_1_1detail_1_1pure__op.html", null ],
         [ "put_op", "structmpc_1_1detail_1_1put__op.html", null ],
         [ "replace2nd_op", "structmpc_1_1detail_1_1replace2nd__op.html", null ],
@@ -153,7 +151,7 @@ var annotated_dup =
       [ "monad_trans_traits< StateT< S, M > >", "structmpc_1_1monad__trans__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4.html", "structmpc_1_1monad__trans__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4" ],
       [ "nothing_t", "structmpc_1_1nothing__t.html", null ],
       [ "overloaded", "structmpc_1_1overloaded.html", null ],
-      [ "partially_applicable", "structmpc_1_1partially__applicable.html", null ],
+      [ "partial", "structmpc_1_1partial.html", null ],
       [ "single", "structmpc_1_1single.html", null ],
       [ "StateT", "structmpc_1_1_state_t.html", null ]
     ] ],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['partially_5fapplicable_0',['partially_applicable',['../perfect__forward_8hpp.html#abc549369ff0ddcfc5b5dddc70c7b488f',1,'mpc']]]
+  ['partial_0',['partial',['../partial_8hpp.html#aa23b29da8d02aed0e93d918f1711b1be',1,'mpc']]]
 ];

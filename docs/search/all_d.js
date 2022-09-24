@@ -20,10 +20,10 @@ var searchData=
   ['map_5fstatet_5fop_17',['map_StateT_op',['../structmpc_1_1detail_1_1map___state_t__op.html',1,'mpc::detail']]],
   ['maybe_18',['maybe',['../maybe_8hpp.html#a043d19fc4cddbee1ad0e2c7074aa0900',1,'mpc']]],
   ['maybe_2ehpp_19',['maybe.hpp',['../maybe_8hpp.html',1,'']]],
-  ['minus_20',['minus',['../namespacempc_1_1cpo.html#a16f5f8c9731c43a6054d0ffec9198b1a',1,'mpc::cpo::minus()'],['../namespacempc_1_1cpo.html#a16f5f8c9731c43a6054d0ffec9198b1a',1,'mpc::minus()']]],
-  ['modify_21',['modify',['../namespacempc_1_1cpo.html#a12c33aac5fa434e0fd36fd14006b7650',1,'mpc::modify()'],['../namespacempc_1_1cpo.html#a12c33aac5fa434e0fd36fd14006b7650',1,'mpc::cpo::modify()']]],
+  ['minus_20',['minus',['../namespacempc_1_1cpo.html#af3698176d9502b8c04c036fb942ca0f4',1,'mpc::cpo::minus()'],['../namespacempc_1_1cpo.html#af3698176d9502b8c04c036fb942ca0f4',1,'mpc::minus()']]],
+  ['modify_21',['modify',['../namespacempc_1_1cpo.html#a8aec76ba90e971bdd17e8fa76b7c7315',1,'mpc::modify()'],['../namespacempc_1_1cpo.html#a8aec76ba90e971bdd17e8fa76b7c7315',1,'mpc::cpo::modify()']]],
   ['modify_5fop_22',['modify_op',['../structmpc_1_1detail_1_1modify__op.html',1,'mpc::detail']]],
-  ['modulus_23',['modulus',['../namespacempc_1_1cpo.html#a4d39f6cb6bbe9e7dab5dd908ccff302d',1,'mpc::modulus()'],['../namespacempc_1_1cpo.html#a4d39f6cb6bbe9e7dab5dd908ccff302d',1,'mpc::cpo::modulus()']]],
+  ['modulus_23',['modulus',['../namespacempc_1_1cpo.html#a535726ad4f682919f159bc17b61795c3',1,'mpc::modulus()'],['../namespacempc_1_1cpo.html#a535726ad4f682919f159bc17b61795c3',1,'mpc::cpo::modulus()']]],
   ['monad_24',['monad',['../conceptmpc_1_1monad.html',1,'mpc']]],
   ['monad_2ehpp_25',['monad.hpp',['../monad_8hpp.html',1,'']]],
   ['monad_5fstate_5ftraits_26',['monad_state_traits',['../structmpc_1_1monad__state__traits.html',1,'mpc']]],
@@ -37,6 +37,6 @@ var searchData=
   ['monad_5ftrans_5ftraits_34',['monad_trans_traits',['../structmpc_1_1monad__trans__traits.html',1,'mpc']]],
   ['monad_5ftrans_5ftraits_3c_20statet_3c_20s_2c_20m_20_3e_20_3e_35',['monad_trans_traits&lt; StateT&lt; S, M &gt; &gt;',['../structmpc_1_1monad__trans__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4.html',1,'mpc']]],
   ['monads_36',['monads',['../namespacempc_1_1monads.html',1,'mpc']]],
-  ['multiplies_37',['multiplies',['../namespacempc_1_1cpo.html#a82d7216e455aed881b7df94c664808d1',1,'mpc::multiplies()'],['../namespacempc_1_1cpo.html#a82d7216e455aed881b7df94c664808d1',1,'mpc::cpo::multiplies()']]],
+  ['multiplies_37',['multiplies',['../namespacempc_1_1cpo.html#a53b08c4d7a281bdd18a5a29987aef074',1,'mpc::multiplies()'],['../namespacempc_1_1cpo.html#a53b08c4d7a281bdd18a5a29987aef074',1,'mpc::cpo::multiplies()']]],
   ['tuple_5flike_38',['tuple_like',['../conceptmpc_1_1tuple__like.html',1,'mpc']]]
 ];
