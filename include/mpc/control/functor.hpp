@@ -1,6 +1,6 @@
 /// @file functor.hpp
 #pragma once
-#include <mpc/functional/perfect_forward.hpp>
+#include <mpc/functional/partial.hpp>
 #include <mpc/prelude/compose.hpp>
 #include <mpc/prelude/constant.hpp>
 #include <mpc/prelude/flip.hpp>
@@ -47,10 +47,10 @@ namespace mpc {
 
   inline namespace cpo {
     /// @copydoc mpc::detail::fmap_op
-    inline constexpr partially_applicable<detail::fmap_op> fmap{};
+    inline constexpr partial<detail::fmap_op> fmap{};
 
     /// @copydoc mpc::detail::replace2nd_op
-    inline constexpr partially_applicable<detail::replace2nd_op> replace2nd{};
+    inline constexpr partial<detail::replace2nd_op> replace2nd{};
   } // namespace cpo
 
   /// Methods deducible from other methods of @link mpc::functor functor @endlink.

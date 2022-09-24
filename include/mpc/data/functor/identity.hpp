@@ -2,6 +2,7 @@
 #pragma once
 #include <functional> // std::invoke
 #include <mpc/control/monad.hpp>
+#include <mpc/functional/partial.hpp>
 #include <mpc/prelude.hpp>
 #include <mpc/utility/copyable_box.hpp>
 
@@ -81,9 +82,9 @@ namespace mpc {
   } // namespace detail
 
   inline namespace cpo {
-    inline constexpr partially_applicable<detail::make_Identity_op> make_Identity{};
+    inline constexpr partial<detail::make_Identity_op> make_Identity{};
 
-    inline constexpr partially_applicable<detail::run_Identity_op> run_Identity{};
+    inline constexpr partial<detail::run_Identity_op> run_Identity{};
   } // namespace cpo
 
   // clang-format off

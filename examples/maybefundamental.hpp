@@ -3,7 +3,7 @@
 #include <functional> // std::invoke
 #include <variant>
 #include <mpc/control/monad.hpp>
-#include <mpc/functional/perfect_forward.hpp>
+#include <mpc/functional/partial.hpp>
 #include <mpc/utility/single.hpp>
 
 struct nothing_t {

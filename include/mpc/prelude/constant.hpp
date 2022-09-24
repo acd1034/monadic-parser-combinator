@@ -1,6 +1,6 @@
 /// @file constant.hpp
 #pragma once
-#include <mpc/functional/perfect_forward.hpp>
+#include <mpc/functional/partial.hpp>
 
 namespace mpc {
   namespace detail {
@@ -18,6 +18,6 @@ namespace mpc {
     /**
      * @brief Returns a unary function always returning the first input.
      */
-    inline constexpr partially_applicable<detail::constant_op> constant;
+    inline constexpr partial<detail::constant_op> constant;
   } // namespace cpo
 } // namespace mpc

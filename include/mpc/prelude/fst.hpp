@@ -1,6 +1,6 @@
 /// @file fst.hpp
 #pragma once
-#include <mpc/functional/perfect_forward.hpp>
+#include <mpc/functional/partial.hpp>
 
 namespace mpc {
   /// @cond undocumented
@@ -26,11 +26,11 @@ namespace mpc {
     /**
      * @brief Returns the first element of the given tuple-like object.
      */
-    inline constexpr partially_applicable<detail::_fst::get_op<0>> fst;
+    inline constexpr partial<detail::_fst::get_op<0>> fst;
 
     /**
      * @brief Returns the second element of the given tuple-like object.
      */
-    inline constexpr partially_applicable<detail::_fst::get_op<1>> snd;
+    inline constexpr partial<detail::_fst::get_op<1>> snd;
   } // namespace cpo
 } // namespace mpc

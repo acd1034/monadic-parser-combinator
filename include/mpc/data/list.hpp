@@ -6,6 +6,7 @@
 #include <list>
 #include <mpc/control/holding.hpp>
 #include <mpc/control/monad.hpp>
+#include <mpc/functional/partial.hpp>
 #include <mpc/prelude.hpp> // identity
 #include <mpc/ranges.hpp>
 
@@ -61,9 +62,9 @@ namespace mpc {
   } // namespace detail
 
   inline namespace cpo {
-    inline constexpr partially_applicable<detail::cons_op> cons;
+    inline constexpr partial<detail::cons_op> cons;
 
-    inline constexpr partially_applicable<detail::foldr_op> foldr;
+    inline constexpr partial<detail::foldr_op> foldr;
   } // namespace cpo
 
   // instances
@@ -139,6 +140,6 @@ namespace mpc {
   } // namespace detail
 
   inline namespace cpo {
-    inline constexpr partially_applicable<detail::sequence_op> sequence;
+    inline constexpr partial<detail::sequence_op> sequence;
   } // namespace cpo
 } // namespace mpc

@@ -1,4 +1,4 @@
-/// @file partially_applicable.hpp
+/// @file partial.hpp
 #pragma once
 #include <functional> // std::invoke
 #include <mpc/utility/copyable_box.hpp>
@@ -6,12 +6,12 @@
 // clang-format off
 
 namespace mpc {
-  // partially_applicable
+  // partial
   // https://github.com/llvm/llvm-project/blob/main/libcxx/include/__functional/perfect_forward.h
 
   /// Implements a perfect-forwarding call wrapper.
   template <copy_constructible_object Op, class... Bound>
-  struct partially_applicable;
+  struct partial;
 
   template <class T, class U>
   using __override_ref_t =
@@ -35,36 +35,36 @@ namespace mpc {
   template <class Op, class Tuple, std::size_t... Idx, class... Args,
             class = std::enable_if_t<!std::is_invocable_v<Op, __forward_like_t<Tuple, std::tuple_element_t<Idx, std::remove_cvref_t<Tuple>>>..., Args...>>>
   constexpr auto __call(Op&& op, Tuple&& tuple, std::index_sequence<Idx...>, Args&&... args) noexcept(
-    noexcept(   partially_applicable(std::forward<Op>(op), std::get<Idx>(std::forward<Tuple>(tuple))..., std::forward<Args>(args)...)))
-    -> decltype(partially_applicable(std::forward<Op>(op), std::get<Idx>(std::forward<Tuple>(tuple))..., std::forward<Args>(args)...)) {
-    return      partially_applicable(std::forward<Op>(op), std::get<Idx>(std::forward<Tuple>(tuple))..., std::forward<Args>(args)...);
+    noexcept(   partial(std::forward<Op>(op), std::get<Idx>(std::forward<Tuple>(tuple))..., std::forward<Args>(args)...)))
+    -> decltype(partial(std::forward<Op>(op), std::get<Idx>(std::forward<Tuple>(tuple))..., std::forward<Args>(args)...)) {
+    return      partial(std::forward<Op>(op), std::get<Idx>(std::forward<Tuple>(tuple))..., std::forward<Args>(args)...);
   }
 
   template <copy_constructible_object Op, class... Bound>
-  struct partially_applicable {
+  struct partial {
   private:
     copyable_box<Op> op_{};
     std::tuple<Bound...> bound_{};
 
   public:
-    constexpr explicit partially_applicable()
+    constexpr explicit partial()
     requires std::default_initializable<Op> and (std::default_initializable<Bound> and ...) = default;
 
     template <class... BoundArgs,
               class = std::enable_if_t<std::is_constructible_v<std::tuple<Bound...>, BoundArgs&&...>>>
-    constexpr explicit partially_applicable(Op const& op, BoundArgs&&... bound)
+    constexpr explicit partial(Op const& op, BoundArgs&&... bound)
       : op_(std::in_place, op), bound_(std::forward<BoundArgs>(bound)...) {}
 
     template <class... BoundArgs,
               class = std::enable_if_t<std::is_constructible_v<std::tuple<Bound...>, BoundArgs&&...>>>
-    constexpr explicit partially_applicable(Op&& op, BoundArgs&&... bound)
+    constexpr explicit partial(Op&& op, BoundArgs&&... bound)
       : op_(std::in_place, std::move(op)), bound_(std::forward<BoundArgs>(bound)...) {}
 
-    partially_applicable(partially_applicable const&) = default;
-    partially_applicable(partially_applicable&&) = default;
+    partial(partial const&) = default;
+    partial(partial&&) = default;
 
-    partially_applicable& operator=(partially_applicable const&) = default;
-    partially_applicable& operator=(partially_applicable&&) = default;
+    partial& operator=(partial const&) = default;
+    partial& operator=(partial&&) = default;
 
     // operator()
     template <class... Args>
@@ -125,9 +125,9 @@ namespace mpc {
     }
   };
 
-  /// @dguide partially_applicable
+  /// @dguide partial
   template <class Op, class... Args>
-  partially_applicable(Op, Args...) -> partially_applicable<Op, Args...>;
+  partial(Op, Args...) -> partial<Op, Args...>;
 } // namespace mpc
 
 // clang-format on
