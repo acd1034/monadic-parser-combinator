@@ -36,6 +36,8 @@ struct mpc::alternative_traits<mpc::either<mpc::ParseError, std::pair<T, mpc::St
 };
 
 namespace mpc {
+  // Parsers
+
   inline constexpr auto parse_test = //
     partial([](similar_to<Parser> auto&& parser, std::string_view sv) {
       auto result = eval_StateT % MPC_FORWARD(parser) % String(sv.begin(), sv.end());
@@ -48,9 +50,22 @@ namespace mpc {
         std::cout << std::endl;
       }
     });
+
+  // Combinators
+
+  inline constexpr auto try1 = //
+    partial([](similar_to<Parser> auto&& parser) {
+      return make_StateT<String>(partial(
+        [](auto&& parser2, similar_to<String> auto&& str) {
+          return run_StateT % MPC_FORWARD(parser2) % MPC_FORWARD(str);
+        },
+        MPC_FORWARD(parser)));
+    });
 } // namespace mpc
 
 namespace mpc {
+  // Character Parsing
+
   inline constexpr auto satisfy = //
     partial([](std::predicate<char> auto&& pred) {
       return make_StateT<String>(partial(
