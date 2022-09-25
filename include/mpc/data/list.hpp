@@ -47,6 +47,16 @@ namespace mpc {
       }
     };
 
+    struct append_op {
+      template <is_list L1, is_list L2>
+      constexpr auto operator()(L1&& l1, L2&& l2) const {
+        auto head = std::forward<L1>(l1);
+        auto tail = std::forward<L2>(l2);
+        head.splice(head.end(), std::move(tail));
+        return head;
+      }
+    };
+
     struct foldr_op {
       template <class Fn, std::movable T, std::input_iterator I, std::sentinel_for<I> S>
       constexpr auto operator()(Fn op, T&& init, I first, S last) const -> T {
@@ -70,6 +80,8 @@ namespace mpc {
     inline constexpr partial<detail::cons_op> cons;
 
     inline constexpr partial<detail::decomp_op> decomp;
+
+    inline constexpr partial<detail::append_op> append;
 
     inline constexpr partial<detail::foldr_op> foldr;
   } // namespace cpo

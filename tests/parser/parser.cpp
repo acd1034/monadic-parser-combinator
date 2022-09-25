@@ -61,6 +61,12 @@ TEST_CASE("parser min", "[parser][min]") {
     CHECK_SUCCEED(alpha_digits, "ab1234", "a"sv);
     CHECK_FAIL(alpha_digits, "1234");
   }
+  {
+    const auto alphas_digits =
+      mpc::liftA2(mpc::append, mpc::many % mpc::alpha, mpc::many % mpc::digit);
+    CHECK_SUCCEED(alphas_digits, "abc123", "abc123"sv);
+    CHECK_SUCCEED(alphas_digits, "123abc", "123"sv);
+  }
 }
 
 TEST_CASE("parser parse_test", "[parser][parse_test]") {
