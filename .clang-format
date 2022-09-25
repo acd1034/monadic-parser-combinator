@@ -20,15 +20,6 @@ FixNamespaceComments: true
 NamespaceIndentation: All
 PointerAlignment: Left
 
-# short description
-AllowShortCaseLabelsOnASingleLine: true
-AllowShortEnumsOnASingleLine: true
-AllowShortLoopsOnASingleLine: true
-AllowShortBlocksOnASingleLine: Always # Never, Empty, Always
-AllowShortFunctionsOnASingleLine: Empty # None, InlineOnly, Empty, Inline, All
-AllowShortIfStatementsOnASingleLine: WithoutElse # Never, WithoutElse, Always
-AllowShortLambdasOnASingleLine: All # None, Empty, Inline, All
-
 IncludeCategories:
   # Headers in <> without extension.
   - Regex:    '<([A-Za-z0-9\/-_])+>'
