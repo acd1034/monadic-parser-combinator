@@ -160,9 +160,20 @@ namespace mpc {
 
     inline const auto alnum = satisfy % mpc::isalnum or left % "expecting alnum"s;
     inline const auto alpha = satisfy % mpc::isalpha or left % "expecting alpha"s;
+    inline const auto lower = satisfy % mpc::islower or left % "expecting lower"s;
+    inline const auto upper = satisfy % mpc::isupper or left % "expecting upper"s;
     inline const auto digit = satisfy % mpc::isdigit or left % "expecting digit"s;
+    inline const auto xdigit = satisfy % mpc::isxdigit or left % "expecting xdigit"s;
+    inline const auto cntrl = satisfy % mpc::iscntrl or left % "expecting cntrl"s;
+    inline const auto graph = satisfy % mpc::isgraph or left % "expecting graph"s;
+    inline const auto space = satisfy % mpc::isspace or left % "expecting space"s;
+    inline const auto blank = satisfy % mpc::isblank or left % "expecting blank"s;
+    inline const auto print = satisfy % mpc::isprint or left % "expecting print"s;
+    inline const auto punct = satisfy % mpc::ispunct or left % "expecting punct"s;
     inline const auto any_char = satisfy % (constant % true);
   } // namespace detail
 
-  using detail::alnum, detail::alpha, detail::digit, detail::any_char;
+  using detail::alnum, detail::alpha, detail::lower, detail::upper, detail::digit, detail::xdigit,
+    detail::cntrl, detail::graph, detail::space, detail::blank, detail::print, detail::punct,
+    detail::any_char;
 } // namespace mpc
