@@ -47,4 +47,12 @@ TEST_CASE("parser min", "[parser][min]") {
     CHECK_SUCCEED(mpc::many1 % alnum, "abc012 ", "abc012"sv);
     CHECK_FAIL(mpc::many1 % alnum, " ");
   }
+  CHECK_SUCCEED(mpc::alnum, "a", 'a');
+  CHECK_FAIL(mpc::alnum, ",");
+  CHECK_SUCCEED(mpc::alpha, "b", 'b');
+  CHECK_FAIL(mpc::alpha, "1");
+  CHECK_SUCCEED(mpc::digit, "1", '1');
+  CHECK_FAIL(mpc::digit, "b");
+  CHECK_SUCCEED(mpc::any_char, "`", '`');
+  CHECK_FAIL(mpc::any_char, "");
 }

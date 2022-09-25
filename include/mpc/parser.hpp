@@ -37,6 +37,7 @@ struct mpc::alternative_traits<mpc::either<mpc::ParseError, std::pair<T, mpc::St
 
 namespace mpc {
   // Parsers
+  // https://hackage.haskell.org/package/parsec-3.1.15.1/docs/Text-Parsec.html#g:1
 
   /// パーサーと文字列を受け取り、パースする。パースに成功した場合、パース結果を表示する。失敗した場合、エラーメッセージを表示する。
   inline constexpr auto parse_test = //
@@ -53,6 +54,7 @@ namespace mpc {
     });
 
   // Combinators
+  // https://hackage.haskell.org/package/parsec-3.1.15.1/docs/Text-Parsec.html#g:2
 
   /// エラーメッセージを受け取り、必ず失敗するパーサーを返す。
   inline constexpr auto left = //
@@ -84,7 +86,7 @@ namespace mpc {
     }
   }
 
-  /// パーサーを受け取り、パーサーを返す。このパーサーは受け取ったパーサーを可能な限り適用した結果のリストを返す。
+  /// パーサーを受け取り、パーサーを返す。このパーサーは受け取ったパーサーを可能な限り適用した結果をリストで返す。
   /// many :: f a -> f [a]
   /// many v = some v <|> pure []
   inline constexpr auto many = //
@@ -96,8 +98,9 @@ namespace mpc {
         MPC_FORWARD(parser)));
     });
 
-  // some :: f a -> f [a]
-  // some v = (:) <$> v <*> many v
+  /// パーサーを受け取り、パーサーを返す。このパーサーは受け取ったパーサーを1回以上可能な限り適用した結果をリストで返す。
+  /// some :: f a -> f [a]
+  /// some v = (:) <$> v <*> many v
   inline constexpr auto many1 = //
     partial([](similar_to<Parser> auto&& parser) {
       return make_StateT<String>(partial(
@@ -111,6 +114,7 @@ namespace mpc {
 
 namespace mpc {
   // Character Parsing
+  // https://hackage.haskell.org/package/parsec-3.1.15.1/docs/Text-Parsec-Char.html
 
   /// 述語を受け取り、パーサーを返す。このパーサーは、文字列の先頭が述語を満たす場合にそれを返す。
   inline constexpr auto satisfy = //
@@ -149,4 +153,16 @@ namespace mpc {
              % fmap(partial([](char c) { return char1 % std::move(c); }),
                     std::list(sv.begin(), sv.end()));
     });
+
+  namespace detail {
+    using namespace operators::alternatives;
+    using namespace std::string_literals;
+
+    inline const auto alnum = satisfy % mpc::isalnum or left % "expecting alnum"s;
+    inline const auto alpha = satisfy % mpc::isalpha or left % "expecting alpha"s;
+    inline const auto digit = satisfy % mpc::isdigit or left % "expecting digit"s;
+    inline const auto any_char = satisfy % (constant % true);
+  } // namespace detail
+
+  using detail::alnum, detail::alpha, detail::digit, detail::any_char;
 } // namespace mpc
