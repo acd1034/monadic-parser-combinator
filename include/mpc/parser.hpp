@@ -95,6 +95,18 @@ namespace mpc {
         },
         MPC_FORWARD(parser)));
     });
+
+  // some :: f a -> f [a]
+  // some v = (:) <$> v <*> many v
+  inline constexpr auto many1 = //
+    partial([](similar_to<Parser> auto&& parser) {
+      return make_StateT<String>(partial(
+        [](auto&& parser2, similar_to<String> auto&& str) {
+          std::list l{parser2};
+          return _many(MPC_FORWARD(parser2), MPC_FORWARD(str), std::move(l));
+        },
+        MPC_FORWARD(parser)));
+    });
 } // namespace mpc
 
 namespace mpc {

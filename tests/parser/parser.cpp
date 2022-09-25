@@ -37,7 +37,14 @@ TEST_CASE("parser min", "[parser][min]") {
   CHECK_FAIL(mpc::char1 % 'a', "b");
   CHECK_SUCCEED(mpc::string % "abc"sv, "abc", "abc"sv);
   CHECK_FAIL(mpc::string % "abc"sv, "abd");
-  const auto alpha = mpc::satisfy % mpc::isalpha;
-  CHECK_SUCCEED(mpc::many % alpha, "abc0", "abc"sv);
-  CHECK_SUCCEED(mpc::many % alpha, "0", ""sv);
+  {
+    const auto alpha = mpc::satisfy % mpc::isalpha;
+    CHECK_SUCCEED(mpc::many % alpha, "abc0", "abc"sv);
+    CHECK_SUCCEED(mpc::many % alpha, "0", ""sv);
+  }
+  {
+    const auto alnum = mpc::satisfy % mpc::isalnum;
+    CHECK_SUCCEED(mpc::many1 % alnum, "abc012 ", "abc012"sv);
+    CHECK_FAIL(mpc::many1 % alnum, " ");
+  }
 }
