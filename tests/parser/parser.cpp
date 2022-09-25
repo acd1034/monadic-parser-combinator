@@ -167,10 +167,16 @@ TEST_CASE("parser ident", "[parser][ident]") {
   CHECK_SUCCEED(ident, "__cplu5plu5", "__cplu5plu5"sv);
   CHECK_FAIL(ident, "1");
 
-  const auto id_list = mpc::sep_by1(ident, mpc::char1 % ',');
-  CHECK_SUCCEED(id_list, "Alice,Bolice,Chris", std::list{"Alice"sv, "Bolice"sv, "Chris"sv});
-  CHECK_SUCCEED(id_list, "Alice", std::list{"Alice"sv});
-  CHECK_SUCCEED(id_list, "Alice ", std::list{"Alice"sv});
-  CHECK_SUCCEED(id_list, "Alice,", std::list{"Alice"sv});
-  CHECK_FAIL(id_list, ",");
+  const auto ids = mpc::sep_by1(ident, mpc::char1 % ',');
+  CHECK_SUCCEED(ids, "Alice,Bolice,Chris", std::list{"Alice"sv, "Bolice"sv, "Chris"sv});
+  CHECK_SUCCEED(ids, "Alice", std::list{"Alice"sv});
+  CHECK_SUCCEED(ids, "Alice ", std::list{"Alice"sv});
+  CHECK_SUCCEED(ids, "Alice,", std::list{"Alice"sv});
+  CHECK_FAIL(ids, ",");
+
+  const auto id_list = mpc::between(mpc::char1%'[',ids,mpc::char1%']');
+  CHECK_SUCCEED(id_list, "[Alice,Bolice,Chris]", std::list{"Alice"sv, "Bolice"sv, "Chris"sv});
+  CHECK_SUCCEED(id_list, "[Alice]", std::list{"Alice"sv});
+  CHECK_FAIL(id_list, "[Alice ]");
+  CHECK_FAIL(id_list, "[Alice,]");
 }
