@@ -65,7 +65,8 @@ namespace mpc {
 
   /// パーサーを受け取り、パーサーを返す。このパーサーはパースに失敗しても直ちにエラーとならない。
   inline constexpr auto try1 = //
-    partial([](similar_to<Parser> auto&& parser) {
+    // TODO: parser を is_Parser<T> で制約
+    partial([](auto&& parser) {
       return make_StateT<String>(partial(
         [](auto&& parser2, similar_to<String> auto&& str) {
           return run_StateT % MPC_FORWARD(parser2) % MPC_FORWARD(str);
