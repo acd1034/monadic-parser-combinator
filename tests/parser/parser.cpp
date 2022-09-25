@@ -160,4 +160,11 @@ TEST_CASE("parser ident", "[parser][ident]") {
   const auto ident = mpc::liftA2(mpc::cons, ident1, mpc::many % ident2);
   CHECK_SUCCEED(ident, "__cplu5plu5", "__cplu5plu5"sv);
   CHECK_FAIL(ident, "1");
+
+  const auto id_list = mpc::sep_by1(ident, mpc::char1 % ',');
+  CHECK_SUCCEED(id_list, "Alice,Bolice,Chris", std::list{"Alice"sv, "Bolice"sv, "Chris"sv});
+  CHECK_SUCCEED(id_list, "Alice", std::list{"Alice"sv});
+  CHECK_SUCCEED(id_list, "Alice ", std::list{"Alice"sv});
+  CHECK_SUCCEED(id_list, "Alice,", std::list{"Alice"sv});
+  CHECK_FAIL(id_list, ",");
 }
