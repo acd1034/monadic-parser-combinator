@@ -9,6 +9,9 @@
 namespace mpc {
 #define MPC_FORWARD(x) std::forward<decltype(x)>(x)
 
+  template <class T>
+  T decay(T); // no definition
+
   template <class T, class U>
   concept similar_to = std::same_as<std::remove_cvref_t<T>, std::remove_cvref_t<U>>;
 
@@ -98,7 +101,7 @@ namespace mpc {
       return make_StateT<String>(partial(
         [](auto&& parser2, similar_to<String> auto&& str) {
           return _many(MPC_FORWARD(parser2), MPC_FORWARD(str),
-                       std::list<std::remove_cvref_t<decltype(parser2)>>{});
+                       std::list<decltype(decay(parser2))>{});
         },
         MPC_FORWARD(parser)));
     });
