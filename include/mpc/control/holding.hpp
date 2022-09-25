@@ -7,7 +7,7 @@ namespace mpc {
   struct holding;
 
   template <class T>
-  using holding_t = typename holding<T>::type;
+  using holding_t = typename holding<std::remove_cvref_t<T>>::type;
 
   template <class T, class U>
   struct holding_or : std::type_identity<U> {};

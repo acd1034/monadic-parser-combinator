@@ -119,18 +119,26 @@ namespace mpc {
 
   /// @brief between open p close = open *> p <* close
   inline constexpr auto between = //
-    // TODO: parser, sep を is_Parser<T> で制約
+    // TODO: p, sep を is_Parser<T> で制約
     partial([](auto&& open, auto&& p, auto&& close) {
       return discard2nd(discard1st(MPC_FORWARD(open), MPC_FORWARD(p)), MPC_FORWARD(close));
     });
 
   /// @brief sep_by1 p sep = liftA2 (:) p (many (sep *> p))
   inline constexpr auto sep_by1 = //
-    // TODO: parser, sep を is_Parser<T> で制約
-    partial([](auto&& parser, auto&& sep) {
-      auto parser2 = parser;
-      return liftA2(cons, MPC_FORWARD(parser),
-                    many % discard1st(MPC_FORWARD(sep), std::move(parser2)));
+    // TODO: p, sep を is_Parser<T> で制約
+    partial([](auto&& p, auto&& sep) {
+      auto p2 = p;
+      return liftA2(cons, MPC_FORWARD(p), many % discard1st(MPC_FORWARD(sep), std::move(p2)));
+    });
+
+  /// @brief sepBy p sep = sepBy1 p sep <|> return []
+  inline constexpr auto sep_by = //
+    // TODO: p, sep を is_Parser<T> で制約
+    partial([](auto&& p, auto&& sep) {
+      using namespace operators::alternatives;
+      return sep_by1(MPC_FORWARD(p), MPC_FORWARD(sep))
+             or pure<decltype(p)>(std::list<holding_t<decltype(p)>>{});
     });
 } // namespace mpc
 
@@ -161,7 +169,6 @@ namespace mpc {
     partial([](char c) {
       using namespace operators::alternatives;
       using namespace std::string_literals;
-
       auto c2 = c;
       return satisfy % (equal_to % std::move(c))
              or left % ("expecting char "s + mpc::quoted(std::move(c2)));
