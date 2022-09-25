@@ -75,6 +75,8 @@ TEST_CASE("parser min", "[parser][min]") {
 }
 
 TEST_CASE("parser parse_test", "[parser][parse_test]") {
+  // Reference: https://qiita.com/7shi/items/b8c741e78a96ea2c10fe
+
   using namespace mpc::operators::alternatives;
   const auto test1 = mpc::sequence % std::list{mpc::any_char, mpc::any_char};
   const auto test2 = mpc::sequence % std::list{mpc::any_char, mpc::any_char, mpc::any_char};
@@ -130,4 +132,15 @@ TEST_CASE("parser parse_test", "[parser][parse_test]") {
   CHECK_SUCCEED(test12, "ac", "ac"sv);
   CHECK_SUCCEED(test13, "ab", "ab"sv);
   CHECK_SUCCEED(test13, "ac", "ac"sv);
+}
+
+TEST_CASE("parser ident", "[parser][ident]") {
+  // Reference: https://deepsource.io/blog/monadic-parser-combinators/
+
+  using namespace mpc::operators::alternatives;
+  const auto ident1 = mpc::alpha or mpc::char1 % '_';
+  const auto ident2 = mpc::alnum or mpc::char1 % '_';
+  const auto ident = mpc::liftA2(mpc::cons, ident1, mpc::many % ident2);
+  CHECK_SUCCEED(ident, "__cplu5plu5", "__cplu5plu5"sv);
+  CHECK_FAIL(ident, "1");
 }
