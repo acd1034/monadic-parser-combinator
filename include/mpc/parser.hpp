@@ -41,7 +41,8 @@ namespace mpc {
 
   /// パーサーと文字列を受け取り、パースする。パースに成功した場合、パース結果を表示する。失敗した場合、エラーメッセージを表示する。
   inline constexpr auto parse_test = //
-    partial([](similar_to<Parser> auto&& parser, std::string_view sv) {
+    // TODO: parser を is_Parser<T> で制約
+    partial([](auto&& parser, std::string_view sv) {
       auto result = eval_StateT % MPC_FORWARD(parser) % String(sv.begin(), sv.end());
       if (result.index() == 0) {
         // fail
@@ -74,7 +75,8 @@ namespace mpc {
         MPC_FORWARD(parser)));
     });
 
-  auto _many(auto&& parser, auto&& str, std::list<Parser>&& l)
+  template <class P1, similar_to<P1> P2>
+  auto _many(P1&& parser, auto&& str, std::list<P2>&& l)
     -> decltype(run_StateT % (sequence % l) % str) {
     l.push_back(parser);
     if (auto result = run_StateT % (sequence % l) % str; result.index() == 0) {
@@ -91,10 +93,12 @@ namespace mpc {
   /// many :: f a -> f [a]
   /// many v = some v <|> pure []
   inline constexpr auto many = //
-    partial([](similar_to<Parser> auto&& parser) {
+    // TODO: parser, sep を is_Parser<T> で制約
+    partial([](auto&& parser) {
       return make_StateT<String>(partial(
         [](auto&& parser2, similar_to<String> auto&& str) {
-          return _many(MPC_FORWARD(parser2), MPC_FORWARD(str), std::list<Parser>{});
+          return _many(MPC_FORWARD(parser2), MPC_FORWARD(str),
+                       std::list<std::remove_cvref_t<decltype(parser2)>>{});
         },
         MPC_FORWARD(parser)));
     });
@@ -103,13 +107,22 @@ namespace mpc {
   /// some :: f a -> f [a]
   /// some v = (:) <$> v <*> many v
   inline constexpr auto many1 = //
-    partial([](similar_to<Parser> auto&& parser) {
+    // TODO: parser, sep を is_Parser<T> で制約
+    partial([](auto&& parser) {
       return make_StateT<String>(partial(
         [](auto&& parser2, similar_to<String> auto&& str) {
           std::list l{parser2};
           return _many(MPC_FORWARD(parser2), MPC_FORWARD(str), std::move(l));
         },
         MPC_FORWARD(parser)));
+    });
+
+  inline constexpr auto sep_by1 = //
+    // TODO: parser, sep を is_Parser<T> で制約
+    partial([](auto&& parser, auto&& sep) {
+      auto parser2 = parser;
+      return liftA2(cons, MPC_FORWARD(parser),
+                    many % discard1st(MPC_FORWARD(sep), std::move(parser2)));
     });
 } // namespace mpc
 

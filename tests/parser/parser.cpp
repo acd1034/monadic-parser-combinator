@@ -6,26 +6,36 @@
 using namespace std::string_view_literals;
 
 // TODO: parser を is_Parser<T> で制約
-void CHECK_FAIL(/* mpc::similar_to<mpc::Parser> */ auto&& parser, std::string_view sv) {
+void CHECK_FAIL(auto&& parser, std::string_view sv) {
   auto result = mpc::eval_StateT % MPC_FORWARD(parser) % mpc::String(sv.begin(), sv.end());
   CHECK(result.index() == 0);
 }
 
 // TODO: parser を is_Parser<T> で制約
-void CHECK_SUCCEED(/* mpc::similar_to<mpc::Parser> */ auto&& parser, std::string_view sv,
-                   const auto& expected) {
+void CHECK_SUCCEED(auto&& parser, std::string_view sv, const auto& expected) {
   auto result = mpc::eval_StateT % MPC_FORWARD(parser) % mpc::String(sv.begin(), sv.end());
   CHECK(result.index() == 1);
   CHECK(*mpc::snd(result) == expected);
 }
 
+inline constexpr auto string_equal = [](const mpc::String& x, const std::string_view& y) {
+  return std::equal(x.begin(), x.end(), y.begin(), y.end());
+};
+
 // TODO: parser を is_Parser<T> で制約
-void CHECK_SUCCEED(/* mpc::similar_to<mpc::Parser> */ auto&& parser, std::string_view sv,
-                   const std::string_view& expected) {
+void CHECK_SUCCEED(auto&& parser, std::string_view sv, const std::string_view& expected) {
   auto result = mpc::eval_StateT % MPC_FORWARD(parser) % mpc::String(sv.begin(), sv.end());
   CHECK(result.index() == 1);
-  constexpr auto equal = [](const mpc::String& x, const std::string_view& y) {
-    return std::equal(x.begin(), x.end(), y.begin(), y.end());
+  CHECK(string_equal(*mpc::snd(result), expected));
+}
+
+// TODO: parser を is_Parser<T> で制約
+void CHECK_SUCCEED(auto&& parser, std::string_view sv,
+                   const std::list<std::string_view>& expected) {
+  auto result = mpc::eval_StateT % MPC_FORWARD(parser) % mpc::String(sv.begin(), sv.end());
+  CHECK(result.index() == 1);
+  constexpr auto equal = [](const auto& x, const auto& y) {
+    return std::equal(x.begin(), x.end(), y.begin(), y.end(), string_equal);
   };
   CHECK(equal(*mpc::snd(result), expected));
 }
@@ -71,6 +81,13 @@ TEST_CASE("parser min", "[parser][min]") {
       mpc::liftA2(mpc::append, mpc::many % mpc::alpha, mpc::many % mpc::digit);
     CHECK_SUCCEED(alphas_digits, "abc123", "abc123"sv);
     CHECK_SUCCEED(alphas_digits, "123abc", "123"sv);
+  }
+  {
+    const auto alpha_sep_by_comma =
+      mpc::sep_by1(mpc::alpha, mpc::char1 % ',');
+    CHECK_SUCCEED(alpha_sep_by_comma, "a,b,c", "abc"sv);
+    CHECK_SUCCEED(alpha_sep_by_comma, "ab", "a"sv);
+    CHECK_FAIL(alpha_sep_by_comma, ",");
   }
 }
 
