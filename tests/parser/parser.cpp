@@ -83,11 +83,17 @@ TEST_CASE("parser min", "[parser][min]") {
     CHECK_SUCCEED(alphas_digits, "123abc", "123"sv);
   }
   {
-    const auto alpha_sep_by_comma =
-      mpc::sep_by1(mpc::alpha, mpc::char1 % ',');
+    const auto alpha_sep_by_comma = mpc::sep_by1(mpc::alpha, mpc::char1 % ',');
     CHECK_SUCCEED(alpha_sep_by_comma, "a,b,c", "abc"sv);
     CHECK_SUCCEED(alpha_sep_by_comma, "ab", "a"sv);
     CHECK_FAIL(alpha_sep_by_comma, ",");
+  }
+  {
+    const auto braced_digits =
+      mpc::between(mpc::char1 % '{', mpc::many % mpc::digit, mpc::char1 % '}');
+    CHECK_SUCCEED(braced_digits, "{123}", "123"sv);
+    CHECK_FAIL(braced_digits, "123}");
+    CHECK_FAIL(braced_digits, "{123");
   }
 }
 

@@ -117,6 +117,14 @@ namespace mpc {
         MPC_FORWARD(parser)));
     });
 
+  /// @brief between open p close = open *> p <* close
+  inline constexpr auto between = //
+    // TODO: parser, sep を is_Parser<T> で制約
+    partial([](auto&& open, auto&& p, auto&& close) {
+      return discard2nd(discard1st(MPC_FORWARD(open), MPC_FORWARD(p)), MPC_FORWARD(close));
+    });
+
+  /// @brief sep_by1 p sep = liftA2 (:) p (many (sep *> p))
   inline constexpr auto sep_by1 = //
     // TODO: parser, sep を is_Parser<T> で制約
     partial([](auto&& parser, auto&& sep) {
