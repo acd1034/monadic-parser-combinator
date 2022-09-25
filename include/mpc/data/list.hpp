@@ -6,6 +6,7 @@
 #include <list>
 #include <mpc/control/holding.hpp>
 #include <mpc/control/monad.hpp>
+#include <mpc/data/maybe.hpp>
 #include <mpc/functional/partial.hpp>
 #include <mpc/prelude.hpp> // identity
 #include <mpc/ranges.hpp>
@@ -36,14 +37,18 @@ namespace mpc {
       }
     };
 
-    struct decomp_op {
+    struct uncons_op {
       template <is_list L>
-      constexpr auto operator()(L&& l) const {
-        assert(!l.empty());
-        auto tail = std::forward<L>(l);
-        auto head = std::move(tail.front());
-        tail.pop_front();
-        return std::make_pair(std::move(head), std::move(tail));
+      constexpr auto operator()(L&& l) const
+        -> maybe<std::pair<mpc::ranges::range_value_t<L>, std::remove_cvref_t<L>>> {
+        if (l.empty()) {
+          return nothing;
+        } else {
+          auto tail = std::forward<L>(l);
+          auto head = std::move(tail.front());
+          tail.pop_front();
+          return make_just(std::make_pair(std::move(head), std::move(tail)));
+        }
       }
     };
 
@@ -79,7 +84,7 @@ namespace mpc {
   inline namespace cpo {
     inline constexpr partial<detail::cons_op> cons;
 
-    inline constexpr partial<detail::decomp_op> decomp;
+    inline constexpr partial<detail::uncons_op> uncons;
 
     inline constexpr partial<detail::append_op> append;
 

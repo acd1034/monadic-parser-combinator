@@ -124,10 +124,9 @@ namespace mpc {
         [](auto&& pred2, similar_to<String> auto&& str) -> ParseResult {
           using namespace std::string_literals;
 
-          if (str.empty()) {
+          if (auto m = uncons(MPC_FORWARD(str)); m.index() == 0) {
             return make_left("unexpected end of input"s);
-          } else if (auto [x, xs] = decomp(MPC_FORWARD(str));
-                     not std::invoke(MPC_FORWARD(pred2), x)) {
+          } else if (auto [x, xs] = *snd(std::move(m)); not std::invoke(MPC_FORWARD(pred2), x)) {
             return make_left("unexpected "s + mpc::quoted(std::move(x)));
           } else {
             return make_right(std::make_pair(std::move(x), std::move(xs)));
