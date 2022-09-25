@@ -70,6 +70,31 @@ namespace mpc {
         },
         MPC_FORWARD(parser)));
     });
+
+  auto _many(auto&& parser, auto&& str, std::list<Parser>&& l)
+    -> decltype(run_StateT % (sequence % l) % str) {
+    l.push_back(parser);
+    if (auto result = run_StateT % (sequence % l) % str; result.index() == 0) {
+      // fail
+      l.pop_back();
+      return run_StateT % (sequence % std::move(l)) % MPC_FORWARD(str);
+    } else {
+      // succeed
+      return _many(MPC_FORWARD(parser), MPC_FORWARD(str), std::move(l));
+    }
+  }
+
+  /// パーサーを受け取り、パーサーを返す。このパーサーは受け取ったパーサーを可能な限り適用した結果のリストを返す。
+  /// many :: f a -> f [a]
+  /// many v = some v <|> pure []
+  inline constexpr auto many = //
+    partial([](similar_to<Parser> auto&& parser) {
+      return make_StateT<String>(partial(
+        [](auto&& parser2, similar_to<String> auto&& str) {
+          return _many(MPC_FORWARD(parser2), MPC_FORWARD(str), std::list<Parser>{});
+        },
+        MPC_FORWARD(parser)));
+    });
 } // namespace mpc
 
 namespace mpc {
@@ -105,7 +130,7 @@ namespace mpc {
              or left % ("expecting char "s + mpc::quoted(std::move(c2)));
     });
 
-  /// 文字列を受け取り、パーサーを返す。このパーサーは、文字列の先頭が渡した文字列から始まる場合にそれを返す。
+  /// 文字列を受け取り、パーサーを返す。このパーサーは、文字列の先頭が渡した文字列から始まる場合にその文字列を返す。
   inline constexpr auto string = //
     partial([](std::string_view sv) {
       return sequence
