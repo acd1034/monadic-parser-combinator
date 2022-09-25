@@ -56,6 +56,11 @@ TEST_CASE("parser min", "[parser][min]") {
   CHECK_SUCCEED(mpc::any_char, "`", '`');
   CHECK_FAIL(mpc::any_char, "");
   {
+    const auto alpha_digit = mpc::sequence % std::list{mpc::alpha, mpc::digit};
+    CHECK_SUCCEED(alpha_digit, "a1", "a1"sv);
+    CHECK_FAIL(alpha_digit, "1a");
+  }
+  {
     const auto alpha_digits = mpc::liftA2(mpc::cons, mpc::alpha, mpc::many % mpc::digit);
     CHECK_SUCCEED(alpha_digits, "a1234", "a1234"sv);
     CHECK_SUCCEED(alpha_digits, "ab1234", "a"sv);
