@@ -52,7 +52,8 @@ namespace mpc {
         std::cout << mpc::quoted(sv) << ' ' << *fst(result) << std::endl;
       } else {
         // succeed
-        for (const auto& c : *snd(result)) std::cout << c;
+        for (const auto& c : *snd(result))
+          std::cout << c;
         std::cout << std::endl;
       }
     });
@@ -78,46 +79,39 @@ namespace mpc {
         MPC_FORWARD(parser)));
     });
 
-  template <class P1, similar_to<P1> P2>
-  auto _many(P1&& parser, auto&& str, std::list<P2>&& l)
-    -> decltype(run_StateT % (sequence % l) % str) {
-    l.push_back(parser);
-    if (auto result = run_StateT % (sequence % l) % str; result.index() == 0) {
-      // fail
-      l.pop_back();
-      return run_StateT % (sequence % std::move(l)) % MPC_FORWARD(str);
-    } else {
-      // succeed
-      return _many(MPC_FORWARD(parser), MPC_FORWARD(str), std::move(l));
-    }
-  }
+  /// パーサーを受け取り、パーサーを返す。このパーサーは受け取ったパーサーを1回以上可能な限り適用した結果をリストで返す。
+  /// some :: f a -> f [a]
+  /// some v = (:) <$> v <*> many v
+  inline constexpr auto many1 = //
+    // TODO: p, sep を is_Parser<T> で制約
+    partial([](auto&& p) {
+      return make_StateT<String>(partial(
+        [](auto&& p2, similar_to<String> auto&& str)
+          -> decltype(run_StateT % (sequence % std::list{p2}) % str) {
+          const auto parse = run_StateT % MPC_FORWARD(p2);
+          auto result = parse % MPC_FORWARD(str);
+          if (result.index() == 0)
+            return make_left(*fst(std::move(result)));
+          auto [value, state] = *snd(std::move(result));
+          std::list<holding_t<decltype(p2)>> ret{std::move(value)};
+
+          for (result = parse % state; result.index() != 0; result = parse % state) {
+            std::tie(value, state) = *snd(std::move(result));
+            ret.push_back(std::move(value));
+          }
+          return make_right(std::make_pair(std::move(ret), std::move(state)));
+        },
+        MPC_FORWARD(p)));
+    });
 
   /// パーサーを受け取り、パーサーを返す。このパーサーは受け取ったパーサーを可能な限り適用した結果をリストで返す。
   /// many :: f a -> f [a]
   /// many v = some v <|> pure []
   inline constexpr auto many = //
-    // TODO: parser, sep を is_Parser<T> で制約
-    partial([](auto&& parser) {
-      return make_StateT<String>(partial(
-        [](auto&& parser2, similar_to<String> auto&& str) {
-          return _many(MPC_FORWARD(parser2), MPC_FORWARD(str),
-                       std::list<decltype(decay(parser2))>{});
-        },
-        MPC_FORWARD(parser)));
-    });
-
-  /// パーサーを受け取り、パーサーを返す。このパーサーは受け取ったパーサーを1回以上可能な限り適用した結果をリストで返す。
-  /// some :: f a -> f [a]
-  /// some v = (:) <$> v <*> many v
-  inline constexpr auto many1 = //
-    // TODO: parser, sep を is_Parser<T> で制約
-    partial([](auto&& parser) {
-      return make_StateT<String>(partial(
-        [](auto&& parser2, similar_to<String> auto&& str) {
-          std::list l{parser2};
-          return _many(MPC_FORWARD(parser2), MPC_FORWARD(str), std::move(l));
-        },
-        MPC_FORWARD(parser)));
+    // TODO: p, sep を is_Parser<T> で制約
+    partial([](auto&& p) {
+      using namespace operators::alternatives;
+      return many1(MPC_FORWARD(p)) or pure<decltype(p)>(std::list<holding_t<decltype(p)>>{});
     });
 
   /// @brief between open p close = open *> p <* close

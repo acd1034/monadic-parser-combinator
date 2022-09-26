@@ -174,7 +174,7 @@ TEST_CASE("parser ident", "[parser][ident]") {
   CHECK_SUCCEED(ids, "Alice,", std::list{"Alice"sv});
   CHECK_FAIL(ids, ",");
 
-  const auto id_list = mpc::between(mpc::char1%'[',ids,mpc::char1%']');
+  const auto id_list = mpc::between(mpc::char1 % '[', ids, mpc::char1 % ']');
   CHECK_SUCCEED(id_list, "[Alice,Bolice,Chris]", std::list{"Alice"sv, "Bolice"sv, "Chris"sv});
   CHECK_SUCCEED(id_list, "[Alice]", std::list{"Alice"sv});
   CHECK_FAIL(id_list, "[Alice ]");
