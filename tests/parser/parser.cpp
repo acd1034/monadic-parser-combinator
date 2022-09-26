@@ -228,10 +228,18 @@ TEST_CASE("parser calc", "[parser][calc]") {
   // term   = factor ("*" factor | "/" factor)*
   // factor = "(" expr ")" | number
   const auto factor = mpc::fmap(readint, num);
+  const auto termop = mpc::fmap(numop, char_token % '*' or char_token % '/');
+  const auto term = mpc::chainl1(factor, termop);
   const auto exprop = mpc::fmap(numop, char_token % '+' or char_token % '-');
-  const auto expr = mpc::chainl1(factor, exprop);
+  const auto expr = mpc::chainl1(term, exprop);
 
   CHECK_SUCCEED(expr, "10", 10);
   CHECK_SUCCEED(expr, "1 + 2 + 3 + 4", 10);
   CHECK_SUCCEED(expr, "1 + 2 - 3 + 4", 4);
+  // clang-format off
+  CHECK_SUCCEED(expr, "1*2*3 + 3*4*5 + 5*6*7", 1*2*3 + 3*4*5 + 5*6*7);
+  CHECK_SUCCEED(expr, "1*2*3 + 3*4*5 - 5*6*7", 1*2*3 + 3*4*5 - 5*6*7);
+  CHECK_SUCCEED(expr, "1*2/3 + 3/4*5 + 5*6/7", 1*2/3 + 3/4*5 + 5*6/7);
+  CHECK_SUCCEED(expr, "1*2/3 + 3/4*5 - 5*6/7", 1*2/3 + 3/4*5 - 5*6/7);
+  // clang-format on
 }
