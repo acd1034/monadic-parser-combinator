@@ -121,7 +121,7 @@ namespace mpc {
       return discard2nd(discard1st(MPC_FORWARD(open), MPC_FORWARD(p)), MPC_FORWARD(close));
     });
 
-  /// @brief sep_by1 p sep = liftA2 (:) p (many (sep *> p))
+  /// @brief sepBy1 p sep = liftA2 (:) p (many (sep *> p))
   inline constexpr auto sep_by1 = //
     // TODO: p, sep を is_Parser<T> で制約
     partial([](auto&& p, auto&& sep) {
@@ -129,7 +129,7 @@ namespace mpc {
       return liftA2(cons, MPC_FORWARD(p), many % discard1st(MPC_FORWARD(sep), std::move(p2)));
     });
 
-  /// @brief sepBy p sep = sepBy1 p sep <|> return []
+  /// @brief sepBy p sep = sepBy1 p sep <|> pure []
   inline constexpr auto sep_by = //
     // TODO: p, sep を is_Parser<T> で制約
     partial([](auto&& p, auto&& sep) {
@@ -138,14 +138,14 @@ namespace mpc {
              or pure<decltype(p)>(std::list<holding_t<decltype(p)>>{});
     });
 
-  // chainl1 p op = do {
-  //   x <- p;
-  //   rest x
-  // } where rest x = do {
-  //   f <- op;
-  //   y <- p;
-  //   rest (f x y)
-  // } <|> return x
+  /// chainl1 p op = do {
+  ///   x <- p;
+  ///   rest x
+  /// } where rest x = do {
+  ///   f <- op;
+  ///   y <- p;
+  ///   rest (f x y)
+  /// } <|> return x
   inline constexpr auto chainl1 = //
     // TODO: p, op を is_Parser<T> で制約
     partial([](auto&& p, auto&& op) {
