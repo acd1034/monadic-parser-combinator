@@ -14,7 +14,7 @@ concept streamable = requires(std::ostringstream ss, T t) {
 
 inline constexpr auto to_stream = [](std::ostringstream& ss, const auto& t) {
   if constexpr (streamable<decltype(t)>)
-    ss << '"' << t << '"';
+    ss << "\"" << t << "\"";
   else
     ss << "{?}";
 };
