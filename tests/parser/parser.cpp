@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <charconv>
+#include <sstream> // std::ostringstream
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers_templated.hpp>
 #include <mpc/parser.hpp>
@@ -8,7 +9,7 @@
 using namespace std::string_view_literals;
 
 template <class T>
-concept streamable = requires(std::ostringstream ss, T t) {
+concept streamable = requires(std::ostringstream& ss, T t) {
   ss << t;
 };
 
