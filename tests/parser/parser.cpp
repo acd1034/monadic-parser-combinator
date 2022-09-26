@@ -1,7 +1,6 @@
-#define CATCH_CONFIG_MAIN
 #include <algorithm>
 #include <charconv>
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <mpc/parser.hpp>
 #include "../stdfundamental.hpp"
 using namespace std::string_view_literals;

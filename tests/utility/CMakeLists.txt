@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.12)
 project(utility_tests CXX)
 
 # ${CMAKE_PROJECT_NAME}: project name of the root CMakeLists.txt
@@ -8,9 +8,9 @@ add_executable(${PROJECT_NAME}
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
-  iris_tests_config
-  iris::iris
-  Catch2::Catch2
+  Iris::Iris
+  IrisTestsConfig
+  Catch2::Catch2WithMain
 )
 
 add_test(${PROJECT_NAME} ${PROJECT_NAME})
