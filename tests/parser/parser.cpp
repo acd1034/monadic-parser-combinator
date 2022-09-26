@@ -3,8 +3,21 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers_templated.hpp>
 #include <mpc/parser.hpp>
+#include <mpc/utility/overloaded.hpp>
 #include "../stdfundamental.hpp"
 using namespace std::string_view_literals;
+
+template <class T>
+concept streamable = requires(std::ostringstream ss, T t) {
+  ss << t;
+};
+
+inline constexpr auto to_stream = [](std::ostringstream& ss, const auto& t) {
+  if constexpr (streamable<decltype(t)>)
+    ss << '"' << t << '"';
+  else
+    ss << "{?}";
+};
 
 struct FailsToParse : Catch::Matchers::MatcherGenericBase {
 private:
@@ -18,100 +31,137 @@ public:
   }
   std::string describe() const override {
     std::ostringstream ss;
-    ss << "fails to parse " << '"' << sv_ << '"';
+    ss << "fails to parse ";
+    to_stream(ss, sv_);
     return ss.str();
   }
 };
 
-// TODO: parser を is_Parser<T> で制約
-void CHECK_SUCCEED(auto&& parser, std::string_view sv, const auto& expected) {
-  auto result = mpc::eval_StateT % MPC_FORWARD(parser) % mpc::String(sv.begin(), sv.end());
-  CHECK(result.index() == 1);
-  CHECK(*mpc::snd(result) == expected);
-}
+inline constexpr auto equal_to =
+  mpc::overloaded(std::equal_to<>{}, [](const mpc::String& x, const std::string_view& y) {
+    return std::equal(x.begin(), x.end(), y.begin(), y.end());
+  });
 
-inline constexpr auto string_equal = [](const mpc::String& x, const std::string_view& y) {
-  return std::equal(x.begin(), x.end(), y.begin(), y.end());
+template <class T>
+struct SucceedsInParsing : Catch::Matchers::MatcherGenericBase {
+private:
+  std::string_view sv_{};
+  T expected_{};
+
+public:
+  SucceedsInParsing(std::string_view sv, const T& expected)
+    : sv_(std::move(sv)), expected_(expected) {}
+  SucceedsInParsing(std::string_view sv, T&& expected)
+    : sv_(std::move(sv)), expected_(std::move(expected)) {}
+  bool match(const auto& parser) const {
+    auto result = mpc::eval_StateT % parser % mpc::String(sv_.begin(), sv_.end());
+    if (result.index() == 0)
+      return false;
+    return equal_to(*mpc::snd(result), expected_);
+  }
+  std::string describe() const override {
+    std::ostringstream ss;
+    ss << "succeeds in parsing ";
+    to_stream(ss, sv_);
+    ss << ", which results in ";
+    to_stream(ss, expected_);
+    return ss.str();
+  }
 };
 
-// TODO: parser を is_Parser<T> で制約
-void CHECK_SUCCEED(auto&& parser, std::string_view sv, const std::string_view& expected) {
-  auto result = mpc::eval_StateT % MPC_FORWARD(parser) % mpc::String(sv.begin(), sv.end());
-  CHECK(result.index() == 1);
-  CHECK(string_equal(*mpc::snd(result), expected));
-}
+template <class T>
+struct SucceedsInParsing<std::list<T>> : Catch::Matchers::MatcherGenericBase {
+private:
+  std::string_view sv_{};
+  std::list<T> expected_{};
 
-// TODO: parser を is_Parser<T> で制約
-void CHECK_SUCCEED(auto&& parser, std::string_view sv,
-                   const std::list<std::string_view>& expected) {
-  auto result = mpc::eval_StateT % MPC_FORWARD(parser) % mpc::String(sv.begin(), sv.end());
-  CHECK(result.index() == 1);
-  constexpr auto equal = [](const auto& x, const auto& y) {
-    return std::equal(x.begin(), x.end(), y.begin(), y.end(), string_equal);
-  };
-  CHECK(equal(*mpc::snd(result), expected));
-}
+public:
+  SucceedsInParsing(std::string_view sv, const std::list<T>& expected)
+    : sv_(std::move(sv)), expected_(expected) {}
+  SucceedsInParsing(std::string_view sv, std::list<T>&& expected)
+    : sv_(std::move(sv)), expected_(std::move(expected)) {}
+  bool match(const auto& parser) const {
+    auto result = mpc::eval_StateT % parser % mpc::String(sv_.begin(), sv_.end());
+    if (result.index() == 0)
+      return false;
+    auto x = *mpc::snd(std::move(result));
+    return std::equal(x.begin(), x.end(), expected_.begin(), expected_.end(), equal_to);
+  }
+  std::string describe() const override {
+    std::ostringstream ss;
+    ss << "succeeds in parsing ";
+    to_stream(ss, sv_);
+    ss << ", which results in {";
+    const char* dlm = "";
+    for (const auto& x : expected_) {
+      ss << std::exchange(dlm, ", ");
+      to_stream(ss, x);
+    }
+    ss << "}";
+    return ss.str();
+  }
+};
 
 TEST_CASE("parser min", "[parser][min]") {
-  CHECK_SUCCEED(mpc::satisfy % mpc::isdigit, "0", '0');
+  CHECK_THAT(mpc::satisfy % mpc::isdigit, SucceedsInParsing("0", '0'));
   CHECK_THAT(mpc::satisfy % mpc::isdigit, FailsToParse("a"));
-  CHECK_SUCCEED(mpc::char1 % 'a', "a", 'a');
+  CHECK_THAT(mpc::char1 % 'a', SucceedsInParsing("a", 'a'));
   CHECK_THAT(mpc::char1 % 'a', FailsToParse("b"));
-  CHECK_SUCCEED(mpc::string % "abc"sv, "abc", "abc"sv);
+  CHECK_THAT(mpc::string % "abc"sv, SucceedsInParsing("abc", "abc"sv));
   CHECK_THAT(mpc::string % "abc"sv, FailsToParse("abd"));
   {
     const auto alpha = mpc::satisfy % mpc::isalpha;
-    CHECK_SUCCEED(mpc::many % alpha, "abc0", "abc"sv);
-    CHECK_SUCCEED(mpc::many % alpha, "0", ""sv);
+    CHECK_THAT(mpc::many % alpha, SucceedsInParsing("abc0", "abc"sv));
+    CHECK_THAT(mpc::many % alpha, SucceedsInParsing("0", ""sv));
   }
   {
     const auto alnum = mpc::satisfy % mpc::isalnum;
-    CHECK_SUCCEED(mpc::many1 % alnum, "abc012 ", "abc012"sv);
+    CHECK_THAT(mpc::many1 % alnum, SucceedsInParsing("abc012 ", "abc012"sv));
     CHECK_THAT(mpc::many1 % alnum, FailsToParse(" "));
   }
-  CHECK_SUCCEED(mpc::alnum, "a", 'a');
+  CHECK_THAT(mpc::alnum, SucceedsInParsing("a", 'a'));
   CHECK_THAT(mpc::alnum, FailsToParse(","));
-  CHECK_SUCCEED(mpc::alpha, "b", 'b');
+  CHECK_THAT(mpc::alpha, SucceedsInParsing("b", 'b'));
   CHECK_THAT(mpc::alpha, FailsToParse("1"));
-  CHECK_SUCCEED(mpc::digit, "1", '1');
+  CHECK_THAT(mpc::digit, SucceedsInParsing("1", '1'));
   CHECK_THAT(mpc::digit, FailsToParse("b"));
-  CHECK_SUCCEED(mpc::any_char, "`", '`');
+  CHECK_THAT(mpc::any_char, SucceedsInParsing("`", '`'));
   CHECK_THAT(mpc::any_char, FailsToParse(""));
   {
     const auto alpha_digit = mpc::sequence % std::list{mpc::alpha, mpc::digit};
-    CHECK_SUCCEED(alpha_digit, "a1", "a1"sv);
+    CHECK_THAT(alpha_digit, SucceedsInParsing("a1", "a1"sv));
     CHECK_THAT(alpha_digit, FailsToParse("1a"));
   }
   {
     const auto alpha_digits = mpc::liftA2(mpc::cons, mpc::alpha, mpc::many % mpc::digit);
-    CHECK_SUCCEED(alpha_digits, "a1234", "a1234"sv);
-    CHECK_SUCCEED(alpha_digits, "ab1234", "a"sv);
+    CHECK_THAT(alpha_digits, SucceedsInParsing("a1234", "a1234"sv));
+    CHECK_THAT(alpha_digits, SucceedsInParsing("ab1234", "a"sv));
     CHECK_THAT(alpha_digits, FailsToParse("1234"));
   }
   {
     const auto alphas_digits =
       mpc::liftA2(mpc::append, mpc::many % mpc::alpha, mpc::many % mpc::digit);
-    CHECK_SUCCEED(alphas_digits, "abc123", "abc123"sv);
-    CHECK_SUCCEED(alphas_digits, "123abc", "123"sv);
+    CHECK_THAT(alphas_digits, SucceedsInParsing("abc123", "abc123"sv));
+    CHECK_THAT(alphas_digits, SucceedsInParsing("123abc", "123"sv));
   }
   {
     const auto alpha_sep_by1_comma = mpc::sep_by1(mpc::alpha, mpc::char1 % ',');
-    CHECK_SUCCEED(alpha_sep_by1_comma, "a,b,c", "abc"sv);
-    CHECK_SUCCEED(alpha_sep_by1_comma, "ab", "a"sv);
+    CHECK_THAT(alpha_sep_by1_comma, SucceedsInParsing("a,b,c", "abc"sv));
+    CHECK_THAT(alpha_sep_by1_comma, SucceedsInParsing("ab", "a"sv));
     CHECK_THAT(alpha_sep_by1_comma, FailsToParse(","));
     CHECK_THAT(alpha_sep_by1_comma, FailsToParse(""));
   }
   {
     const auto alpha_sep_by_comma = mpc::sep_by(mpc::alpha, mpc::char1 % ',');
-    CHECK_SUCCEED(alpha_sep_by_comma, "a,b,c", "abc"sv);
-    CHECK_SUCCEED(alpha_sep_by_comma, "ab", "a"sv);
-    CHECK_SUCCEED(alpha_sep_by_comma, "", ""sv);
-    CHECK_SUCCEED(alpha_sep_by_comma, ",", ""sv);
+    CHECK_THAT(alpha_sep_by_comma, SucceedsInParsing("a,b,c", "abc"sv));
+    CHECK_THAT(alpha_sep_by_comma, SucceedsInParsing("ab", "a"sv));
+    CHECK_THAT(alpha_sep_by_comma, SucceedsInParsing("", ""sv));
+    CHECK_THAT(alpha_sep_by_comma, SucceedsInParsing(",", ""sv));
   }
   {
     const auto braced_digits =
       mpc::between(mpc::char1 % '{', mpc::many % mpc::digit, mpc::char1 % '}');
-    CHECK_SUCCEED(braced_digits, "{123}", "123"sv);
+    CHECK_THAT(braced_digits, SucceedsInParsing("{123}", "123"sv));
     CHECK_THAT(braced_digits, FailsToParse("123}"));
     CHECK_THAT(braced_digits, FailsToParse("{123"));
   }
@@ -139,42 +189,42 @@ TEST_CASE("parser parse_test", "[parser][parse_test]") {
     mpc::sequence % std::list{mpc::char1 % 'a', mpc::char1 % 'b' or mpc::char1 % 'c'};
 
   CHECK_THAT(mpc::any_char, FailsToParse(""));
-  CHECK_SUCCEED(mpc::any_char, "abc", 'a');
-  CHECK_SUCCEED(test1, "abc", "ab"sv);
-  CHECK_SUCCEED(test2, "abc", "abc"sv);
+  CHECK_THAT(mpc::any_char, SucceedsInParsing("abc", 'a'));
+  CHECK_THAT(test1, SucceedsInParsing("abc", "ab"sv));
+  CHECK_THAT(test2, SucceedsInParsing("abc", "abc"sv));
   CHECK_THAT(test2, FailsToParse("12"));
-  CHECK_SUCCEED(test2, "123", "123"sv);
-  CHECK_SUCCEED(mpc::char1 % 'a', "abc", 'a');
+  CHECK_THAT(test2, SucceedsInParsing("123", "123"sv));
+  CHECK_THAT(mpc::char1 % 'a', SucceedsInParsing("abc", 'a'));
   CHECK_THAT(mpc::char1 % 'a', FailsToParse("123"));
   CHECK_THAT(mpc::digit, FailsToParse("abc"));
-  CHECK_SUCCEED(mpc::digit, "123", '1');
-  CHECK_SUCCEED(mpc::alpha, "abc", 'a');
+  CHECK_THAT(mpc::digit, SucceedsInParsing("123", '1'));
+  CHECK_THAT(mpc::alpha, SucceedsInParsing("abc", 'a'));
   CHECK_THAT(mpc::alpha, FailsToParse("123"));
   CHECK_THAT(test3, FailsToParse("abc"));
   CHECK_THAT(test3, FailsToParse("123"));
-  CHECK_SUCCEED(test3, "a23", "a23"sv);
-  CHECK_SUCCEED(test3, "a234", "a23"sv);
-  CHECK_SUCCEED(test4, "a", 'a');
-  CHECK_SUCCEED(test4, "1", '1');
+  CHECK_THAT(test3, SucceedsInParsing("a23", "a23"sv));
+  CHECK_THAT(test3, SucceedsInParsing("a234", "a23"sv));
+  CHECK_THAT(test4, SucceedsInParsing("a", 'a'));
+  CHECK_THAT(test4, SucceedsInParsing("1", '1'));
   CHECK_THAT(test4, FailsToParse("!"));
-  CHECK_SUCCEED(test5, "a123", "a123"sv);
+  CHECK_THAT(test5, SucceedsInParsing("a123", "a123"sv));
   CHECK_THAT(test5, FailsToParse("ab123"));
-  // CHECK_SUCCEED(test6, "a123", "a123"sv);
+  // CHECK_THAT(test6, SucceedsInParsing("a123", "a123"sv));
   // CHECK_THAT(test6, FailsToParse("ab123"));
-  CHECK_SUCCEED(test7, "abc123", "abc"sv);
-  CHECK_SUCCEED(test7, "123abc", ""sv);
-  CHECK_SUCCEED(test8, "abc123", "abc123"sv);
-  CHECK_SUCCEED(test8, "123abc", "123abc"sv);
-  CHECK_SUCCEED(test9, "ab", "ab"sv);
-  CHECK_SUCCEED(test9, "ac", "ac"sv);
-  CHECK_SUCCEED(test10, "ab", "ab"sv);
-  CHECK_SUCCEED(test10, "ac", "ac"sv);
-  CHECK_SUCCEED(test11, "ab", "ab"sv);
-  CHECK_SUCCEED(test11, "ac", "ac"sv);
-  CHECK_SUCCEED(test12, "ab", "ab"sv);
-  CHECK_SUCCEED(test12, "ac", "ac"sv);
-  CHECK_SUCCEED(test13, "ab", "ab"sv);
-  CHECK_SUCCEED(test13, "ac", "ac"sv);
+  CHECK_THAT(test7, SucceedsInParsing("abc123", "abc"sv));
+  CHECK_THAT(test7, SucceedsInParsing("123abc", ""sv));
+  CHECK_THAT(test8, SucceedsInParsing("abc123", "abc123"sv));
+  CHECK_THAT(test8, SucceedsInParsing("123abc", "123abc"sv));
+  CHECK_THAT(test9, SucceedsInParsing("ab", "ab"sv));
+  CHECK_THAT(test9, SucceedsInParsing("ac", "ac"sv));
+  CHECK_THAT(test10, SucceedsInParsing("ab", "ab"sv));
+  CHECK_THAT(test10, SucceedsInParsing("ac", "ac"sv));
+  CHECK_THAT(test11, SucceedsInParsing("ab", "ab"sv));
+  CHECK_THAT(test11, SucceedsInParsing("ac", "ac"sv));
+  CHECK_THAT(test12, SucceedsInParsing("ab", "ab"sv));
+  CHECK_THAT(test12, SucceedsInParsing("ac", "ac"sv));
+  CHECK_THAT(test13, SucceedsInParsing("ab", "ab"sv));
+  CHECK_THAT(test13, SucceedsInParsing("ac", "ac"sv));
 }
 
 TEST_CASE("parser ident", "[parser][ident]") {
@@ -184,19 +234,21 @@ TEST_CASE("parser ident", "[parser][ident]") {
   const auto ident1 = mpc::alpha or mpc::char1 % '_';
   const auto ident2 = mpc::alnum or mpc::char1 % '_';
   const auto ident = mpc::liftA2(mpc::cons, ident1, mpc::many % ident2);
-  CHECK_SUCCEED(ident, "__cplu5plu5", "__cplu5plu5"sv);
+  CHECK_THAT(ident, SucceedsInParsing("__cplu5plu5", "__cplu5plu5"sv));
   CHECK_THAT(ident, FailsToParse("1"));
 
   const auto ids = mpc::sep_by1(ident, mpc::char1 % ',');
-  CHECK_SUCCEED(ids, "Alice,Bolice,Chris", std::list{"Alice"sv, "Bolice"sv, "Chris"sv});
-  CHECK_SUCCEED(ids, "Alice", std::list{"Alice"sv});
-  CHECK_SUCCEED(ids, "Alice ", std::list{"Alice"sv});
-  CHECK_SUCCEED(ids, "Alice,", std::list{"Alice"sv});
+  CHECK_THAT(ids,
+             SucceedsInParsing("Alice,Bolice,Chris", std::list{"Alice"sv, "Bolice"sv, "Chris"sv}));
+  CHECK_THAT(ids, SucceedsInParsing("Alice", std::list{"Alice"sv}));
+  CHECK_THAT(ids, SucceedsInParsing("Alice ", std::list{"Alice"sv}));
+  CHECK_THAT(ids, SucceedsInParsing("Alice,", std::list{"Alice"sv}));
   CHECK_THAT(ids, FailsToParse(","));
 
   const auto id_list = mpc::between(mpc::char1 % '[', ids, mpc::char1 % ']');
-  CHECK_SUCCEED(id_list, "[Alice,Bolice,Chris]", std::list{"Alice"sv, "Bolice"sv, "Chris"sv});
-  CHECK_SUCCEED(id_list, "[Alice]", std::list{"Alice"sv});
+  CHECK_THAT(id_list, SucceedsInParsing("[Alice,Bolice,Chris]",
+                                        std::list{"Alice"sv, "Bolice"sv, "Chris"sv}));
+  CHECK_THAT(id_list, SucceedsInParsing("[Alice]", std::list{"Alice"sv}));
   CHECK_THAT(id_list, FailsToParse("[Alice ]"));
   CHECK_THAT(id_list, FailsToParse("[Alice,]"));
 }
@@ -253,14 +305,14 @@ TEST_CASE("parser calc", "[parser][calc]") {
   const auto exprop = mpc::fmap(numop, char_token % '+' or char_token % '-');
   const auto expr = mpc::chainl1(term, exprop);
 
-  CHECK_SUCCEED(expr, "10", 10);
-  CHECK_SUCCEED(expr, "1 + 2 + 3 + 4", 10);
-  CHECK_SUCCEED(expr, "1 + 2 - 3 + 4", 4);
+  CHECK_THAT(expr, SucceedsInParsing("10", 10));
+  CHECK_THAT(expr, SucceedsInParsing("1 + 2 + 3 + 4", 10));
+  CHECK_THAT(expr, SucceedsInParsing("1 + 2 - 3 + 4", 4));
   // clang-format off
-  CHECK_SUCCEED(expr, "1*2*3 + 3*4*5 + 5*6*7", 1*2*3 + 3*4*5 + 5*6*7);
-  CHECK_SUCCEED(expr, "1*2*3 + 3*4*5 - 5*6*7", 1*2*3 + 3*4*5 - 5*6*7);
-  CHECK_SUCCEED(expr, "1*2/3 + 3/4*5 + 5*6/7", 1*2/3 + 3/4*5 + 5*6/7);
-  CHECK_SUCCEED(expr, "1*2/3 + 3/4*5 - 5*6/7", 1*2/3 + 3/4*5 - 5*6/7);
+  CHECK_THAT(expr, SucceedsInParsing("1*2*3 + 3*4*5 + 5*6*7", 1*2*3 + 3*4*5 + 5*6*7));
+  CHECK_THAT(expr, SucceedsInParsing("1*2*3 + 3*4*5 - 5*6*7", 1*2*3 + 3*4*5 - 5*6*7));
+  CHECK_THAT(expr, SucceedsInParsing("1*2/3 + 3/4*5 + 5*6/7", 1*2/3 + 3/4*5 + 5*6/7));
+  CHECK_THAT(expr, SucceedsInParsing("1*2/3 + 3/4*5 - 5*6/7", 1*2/3 + 3/4*5 - 5*6/7));
   // clang-format on
 
   // stmts   = stmt?
@@ -271,22 +323,14 @@ TEST_CASE("parser calc", "[parser][calc]") {
   const auto stmts = mpc::sep_by(assign, char_token % ',');
   // clang-format off
   using assign_result = std::pair<std::string, std::int64_t>;
-  CHECK_SUCCEED(assign,       "num = 1*2*3 + 3*4*5 + 5*6*7",
-                assign_result{"num", 1*2*3 + 3*4*5 + 5*6*7});
-  CHECK_SUCCEED(assign,       "num = 1*2*3 + 3*4*5 - 5*6*7",
-                assign_result{"num", 1*2*3 + 3*4*5 - 5*6*7});
-  CHECK_SUCCEED(assign,       "num = 1*2/3 + 3/4*5 + 5*6/7",
-                assign_result{"num", 1*2/3 + 3/4*5 + 5*6/7});
-  CHECK_SUCCEED(assign,       "num = 1*2/3 + 3/4*5 - 5*6/7",
-                assign_result{"num", 1*2/3 + 3/4*5 - 5*6/7});
+  CHECK_THAT(assign, SucceedsInParsing("num = 1*2*3 + 3*4*5 + 5*6*7", assign_result{"num", 1*2*3 + 3*4*5 + 5*6*7}));
+  CHECK_THAT(assign, SucceedsInParsing("num = 1*2*3 + 3*4*5 - 5*6*7", assign_result{"num", 1*2*3 + 3*4*5 - 5*6*7}));
+  CHECK_THAT(assign, SucceedsInParsing("num = 1*2/3 + 3/4*5 + 5*6/7", assign_result{"num", 1*2/3 + 3/4*5 + 5*6/7}));
+  CHECK_THAT(assign, SucceedsInParsing("num = 1*2/3 + 3/4*5 - 5*6/7", assign_result{"num", 1*2/3 + 3/4*5 - 5*6/7}));
   using stmts_result = std::list<assign_result>;
-  CHECK_SUCCEED(stmts,        "num1 = 1*2*3 ,   num2 = 3*4*5 ,   num3 = 5*6*7",
-                stmts_result{{"num1", 1*2*3}, {"num2", 3*4*5}, {"num3", 5*6*7}});
-  CHECK_SUCCEED(stmts,        "num1 = 1*2*3 ,   num2 = 3*4*5 ,   num3 = 5*6*7",
-                stmts_result{{"num1", 1*2*3}, {"num2", 3*4*5}, {"num3", 5*6*7}});
-  CHECK_SUCCEED(stmts,        "num1 = 1*2/3 ,   num2 = 3/4*5 ,   num3 = 5*6/7",
-                stmts_result{{"num1", 1*2/3}, {"num2", 3/4*5}, {"num3", 5*6/7}});
-  CHECK_SUCCEED(stmts,        "num1 = 1*2/3 ,   num2 = 3/4*5 ,   num3 = 5*6/7",
-                stmts_result{{"num1", 1*2/3}, {"num2", 3/4*5}, {"num3", 5*6/7}});
+  CHECK_THAT(stmts, SucceedsInParsing("num1 = 1*2*3 , num2 = 3*4*5 , num3 = 5*6*7", stmts_result{{"num1", 1*2*3}, {"num2", 3*4*5}, {"num3", 5*6*7}}));
+  CHECK_THAT(stmts, SucceedsInParsing("num1 = 1*2*3 , num2 = 3*4*5 , num3 = 5*6*7", stmts_result{{"num1", 1*2*3}, {"num2", 3*4*5}, {"num3", 5*6*7}}));
+  CHECK_THAT(stmts, SucceedsInParsing("num1 = 1*2/3 , num2 = 3/4*5 , num3 = 5*6/7", stmts_result{{"num1", 1*2/3}, {"num2", 3/4*5}, {"num3", 5*6/7}}));
+  CHECK_THAT(stmts, SucceedsInParsing("num1 = 1*2/3 , num2 = 3/4*5 , num3 = 5*6/7", stmts_result{{"num1", 1*2/3}, {"num2", 3/4*5}, {"num3", 5*6/7}}));
   // clang-format on
 }
