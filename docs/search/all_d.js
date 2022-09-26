@@ -22,7 +22,7 @@ var searchData=
   ['map_5fstatet_5fop_19',['map_StateT_op',['../structmpc_1_1detail_1_1map___state_t__op.html',1,'mpc::detail']]],
   ['maybe_20',['maybe',['../maybe_8hpp.html#a043d19fc4cddbee1ad0e2c7074aa0900',1,'mpc']]],
   ['maybe_2ehpp_21',['maybe.hpp',['../maybe_8hpp.html',1,'']]],
-  ['minus_22',['minus',['../namespacempc_1_1cpo.html#af3698176d9502b8c04c036fb942ca0f4',1,'mpc::cpo::minus()'],['../namespacempc_1_1cpo.html#af3698176d9502b8c04c036fb942ca0f4',1,'mpc::minus()']]],
+  ['minus_22',['minus',['../namespacempc_1_1cpo.html#af3698176d9502b8c04c036fb942ca0f4',1,'mpc::minus()'],['../namespacempc_1_1cpo.html#af3698176d9502b8c04c036fb942ca0f4',1,'mpc::cpo::minus()']]],
   ['modify_23',['modify',['../namespacempc_1_1cpo.html#a8aec76ba90e971bdd17e8fa76b7c7315',1,'mpc::cpo::modify()'],['../namespacempc_1_1cpo.html#a8aec76ba90e971bdd17e8fa76b7c7315',1,'mpc::modify()']]],
   ['modify_5fop_24',['modify_op',['../structmpc_1_1detail_1_1modify__op.html',1,'mpc::detail']]],
   ['modulus_25',['modulus',['../namespacempc_1_1cpo.html#a535726ad4f682919f159bc17b61795c3',1,'mpc::modulus()'],['../namespacempc_1_1cpo.html#a535726ad4f682919f159bc17b61795c3',1,'mpc::cpo::modulus()']]],
@@ -39,6 +39,7 @@ var searchData=
   ['monad_5ftrans_5ftraits_36',['monad_trans_traits',['../structmpc_1_1monad__trans__traits.html',1,'mpc']]],
   ['monad_5ftrans_5ftraits_3c_20statet_3c_20s_2c_20m_20_3e_20_3e_37',['monad_trans_traits&lt; StateT&lt; S, M &gt; &gt;',['../structmpc_1_1monad__trans__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4.html',1,'mpc']]],
   ['monads_38',['monads',['../namespacempc_1_1monads.html',1,'mpc']]],
-  ['multiplies_39',['multiplies',['../namespacempc_1_1cpo.html#a53b08c4d7a281bdd18a5a29987aef074',1,'mpc::cpo::multiplies()'],['../namespacempc_1_1cpo.html#a53b08c4d7a281bdd18a5a29987aef074',1,'mpc::multiplies()']]],
-  ['tuple_5flike_40',['tuple_like',['../conceptmpc_1_1tuple__like.html',1,'mpc']]]
+  ['mpc_2ehpp_39',['mpc.hpp',['../mpc_8hpp.html',1,'']]],
+  ['multiplies_40',['multiplies',['../namespacempc_1_1cpo.html#a53b08c4d7a281bdd18a5a29987aef074',1,'mpc::cpo::multiplies()'],['../namespacempc_1_1cpo.html#a53b08c4d7a281bdd18a5a29987aef074',1,'mpc::multiplies()']]],
+  ['tuple_5flike_41',['tuple_like',['../conceptmpc_1_1tuple__like.html',1,'mpc']]]
 ];
