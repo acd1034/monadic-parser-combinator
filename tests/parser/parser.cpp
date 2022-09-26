@@ -208,20 +208,21 @@ inline constexpr auto readint = //
 inline constexpr auto readstr = //
   mpc::partial(
     [](mpc::similar_to<mpc::String> auto&& s) { return std::string(s.begin(), s.end()); });
-inline constexpr auto numop = mpc::partial([](const char c, auto&& x, auto&& y) {
-  switch (c) {
-  case '+':
-    return MPC_FORWARD(x) + MPC_FORWARD(y);
-  case '-':
-    return MPC_FORWARD(x) - MPC_FORWARD(y);
-  case '*':
-    return MPC_FORWARD(x) * MPC_FORWARD(y);
-  case '/':
-    return MPC_FORWARD(x) / MPC_FORWARD(y);
-  default:
-    throw "Unexpected operator";
-  }
-});
+inline constexpr auto numop = //
+  mpc::partial([](const char c, auto&& x, auto&& y) {
+    switch (c) {
+    case '+':
+      return MPC_FORWARD(x) + MPC_FORWARD(y);
+    case '-':
+      return MPC_FORWARD(x) - MPC_FORWARD(y);
+    case '*':
+      return MPC_FORWARD(x) * MPC_FORWARD(y);
+    case '/':
+      return MPC_FORWARD(x) / MPC_FORWARD(y);
+    default:
+      throw "Unexpected operator";
+    }
+  });
 inline constexpr auto make_pair = //
   mpc::partial([](auto&& x, auto&& y) { return std::make_pair(MPC_FORWARD(x), MPC_FORWARD(y)); });
 
@@ -253,15 +254,28 @@ TEST_CASE("parser calc", "[parser][calc]") {
 
   // stmts   = stmt?
   // stmt    = assign ("," assign)*
-  // assign  = ident "=" primary
+  // assign  = ident "=" expr
   const auto assign =
     mpc::liftA2(make_pair, mpc::fmap(readstr, ident), mpc::discard1st(char_token % '=', expr));
   const auto stmts = mpc::sep_by(assign, char_token % ',');
   // clang-format off
   using assign_result = std::pair<std::string, std::int64_t>;
-  CHECK_SUCCEED(assign, "num = 1*2*3 + 3*4*5 + 5*6*7", assign_result{"num", 1*2*3 + 3*4*5 + 5*6*7});
-  CHECK_SUCCEED(assign, "num = 1*2*3 + 3*4*5 - 5*6*7", assign_result{"num", 1*2*3 + 3*4*5 - 5*6*7});
-  CHECK_SUCCEED(assign, "num = 1*2/3 + 3/4*5 + 5*6/7", assign_result{"num", 1*2/3 + 3/4*5 + 5*6/7});
-  CHECK_SUCCEED(assign, "num = 1*2/3 + 3/4*5 - 5*6/7", assign_result{"num", 1*2/3 + 3/4*5 - 5*6/7});
+  CHECK_SUCCEED(assign,       "num = 1*2*3 + 3*4*5 + 5*6*7",
+                assign_result{"num", 1*2*3 + 3*4*5 + 5*6*7});
+  CHECK_SUCCEED(assign,       "num = 1*2*3 + 3*4*5 - 5*6*7",
+                assign_result{"num", 1*2*3 + 3*4*5 - 5*6*7});
+  CHECK_SUCCEED(assign,       "num = 1*2/3 + 3/4*5 + 5*6/7",
+                assign_result{"num", 1*2/3 + 3/4*5 + 5*6/7});
+  CHECK_SUCCEED(assign,       "num = 1*2/3 + 3/4*5 - 5*6/7",
+                assign_result{"num", 1*2/3 + 3/4*5 - 5*6/7});
+  using stmts_result = std::list<assign_result>;
+  CHECK_SUCCEED(stmts,        "num1 = 1*2*3 ,   num2 = 3*4*5 ,   num3 = 5*6*7",
+                stmts_result{{"num1", 1*2*3}, {"num2", 3*4*5}, {"num3", 5*6*7}});
+  CHECK_SUCCEED(stmts,        "num1 = 1*2*3 ,   num2 = 3*4*5 ,   num3 = 5*6*7",
+                stmts_result{{"num1", 1*2*3}, {"num2", 3*4*5}, {"num3", 5*6*7}});
+  CHECK_SUCCEED(stmts,        "num1 = 1*2/3 ,   num2 = 3/4*5 ,   num3 = 5*6/7",
+                stmts_result{{"num1", 1*2/3}, {"num2", 3/4*5}, {"num3", 5*6/7}});
+  CHECK_SUCCEED(stmts,        "num1 = 1*2/3 ,   num2 = 3/4*5 ,   num3 = 5*6/7",
+                stmts_result{{"num1", 1*2/3}, {"num2", 3/4*5}, {"num3", 5*6/7}});
   // clang-format on
 }
