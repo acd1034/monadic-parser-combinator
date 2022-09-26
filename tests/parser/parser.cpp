@@ -228,9 +228,10 @@ TEST_CASE("parser calc", "[parser][calc]") {
   // term   = factor ("*" factor | "/" factor)*
   // factor = "(" expr ")" | number
   const auto factor = mpc::fmap(readint, num);
-  const auto exprop = mpc::fmap(numop, char_token % '+');
+  const auto exprop = mpc::fmap(numop, char_token % '+' or char_token % '-');
   const auto expr = mpc::chainl1(factor, exprop);
 
   CHECK_SUCCEED(expr, "10", 10);
   CHECK_SUCCEED(expr, "1 + 2 + 3 + 4", 10);
+  CHECK_SUCCEED(expr, "1 + 2 - 3 + 4", 4);
 }
