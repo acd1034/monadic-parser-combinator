@@ -9,7 +9,7 @@ inline constexpr auto readint = //
         ec == std::errc{}) {
       return num;
     } else
-      throw "conversion from chars to integer failed";
+      throw "Failed to convert chars to integer";
   });
 inline constexpr auto readstr = //
   mpc::partial(
