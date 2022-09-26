@@ -205,6 +205,9 @@ inline constexpr auto readint = //
     } else
       throw "conversion from chars to integer failed";
   });
+inline constexpr auto readstr = //
+  mpc::partial(
+    [](mpc::similar_to<mpc::String> auto&& s) { return std::string(s.begin(), s.end()); });
 inline constexpr auto numop = mpc::partial([](const char c, auto&& x, auto&& y) {
   switch (c) {
   case '+':
@@ -219,10 +222,15 @@ inline constexpr auto numop = mpc::partial([](const char c, auto&& x, auto&& y) 
     throw "Unexpected operator";
   }
 });
+inline constexpr auto make_pair = //
+  mpc::partial([](auto&& x, auto&& y) { return std::make_pair(MPC_FORWARD(x), MPC_FORWARD(y)); });
 
 TEST_CASE("parser calc", "[parser][calc]") {
   using namespace mpc::operators::alternatives;
   const auto num = token % (mpc::many1 % mpc::digit);
+  const auto ident1 = mpc::alpha or mpc::char1 % '_';
+  const auto ident2 = mpc::alnum or mpc::char1 % '_';
+  const auto ident = token % mpc::liftA2(mpc::cons, ident1, mpc::many % ident2);
 
   // expr   = term ("+" term | "-" term)*
   // term   = factor ("*" factor | "/" factor)*
@@ -241,5 +249,19 @@ TEST_CASE("parser calc", "[parser][calc]") {
   CHECK_SUCCEED(expr, "1*2*3 + 3*4*5 - 5*6*7", 1*2*3 + 3*4*5 - 5*6*7);
   CHECK_SUCCEED(expr, "1*2/3 + 3/4*5 + 5*6/7", 1*2/3 + 3/4*5 + 5*6/7);
   CHECK_SUCCEED(expr, "1*2/3 + 3/4*5 - 5*6/7", 1*2/3 + 3/4*5 - 5*6/7);
+  // clang-format on
+
+  // stmts   = stmt?
+  // stmt    = assign ("," assign)*
+  // assign  = ident "=" primary
+  const auto assign =
+    mpc::liftA2(make_pair, mpc::fmap(readstr, ident), mpc::discard1st(char_token % '=', expr));
+  const auto stmts = mpc::sep_by(assign, char_token % ',');
+  // clang-format off
+  using assign_result = std::pair<std::string, std::int64_t>;
+  CHECK_SUCCEED(assign, "num = 1*2*3 + 3*4*5 + 5*6*7", assign_result{"num", 1*2*3 + 3*4*5 + 5*6*7});
+  CHECK_SUCCEED(assign, "num = 1*2*3 + 3*4*5 - 5*6*7", assign_result{"num", 1*2*3 + 3*4*5 - 5*6*7});
+  CHECK_SUCCEED(assign, "num = 1*2/3 + 3/4*5 + 5*6/7", assign_result{"num", 1*2/3 + 3/4*5 + 5*6/7});
+  CHECK_SUCCEED(assign, "num = 1*2/3 + 3/4*5 - 5*6/7", assign_result{"num", 1*2/3 + 3/4*5 - 5*6/7});
   // clang-format on
 }
