@@ -1,6 +1,5 @@
 var NAVTREEINDEX2 =
 {
-"structmpc_1_1detail_1_1_state_t__alternative__traits__combine.html":[1,0,0,2,76],
 "structmpc_1_1detail_1_1_state_t__alternative__traits__combine_3_01_s_t_01_4.html":[1,0,0,2,77],
 "structmpc_1_1detail_1_1_state_t__alternative__traits__combine_3_01_s_t_01_4.html":[3,0,0,1,77],
 "structmpc_1_1detail_1_1_state_t__alternative__traits__combine_3_01_s_t_01_4_1_1combine__op.html":[1,0,0,2,77,0],
@@ -249,5 +248,6 @@ var NAVTREEINDEX2 =
 "structmpc_1_1monad__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4_1_1bind__op_1_1closure.html":[3,0,0,41,0,0],
 "structmpc_1_1monad__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4_1_1bind__op_1_1nested__closure.html":[1,0,0,43,0,1],
 "structmpc_1_1monad__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4_1_1bind__op_1_1nested__closure.html":[3,0,0,41,0,1],
-"structmpc_1_1monad__traits_3_01either_3_01_t1_00_01_t2_01_4_01_4.html":[1,0,0,40]
+"structmpc_1_1monad__traits_3_01either_3_01_t1_00_01_t2_01_4_01_4.html":[1,0,0,40],
+"structmpc_1_1monad__traits_3_01either_3_01_t1_00_01_t2_01_4_01_4.html":[3,0,0,38]
 };
