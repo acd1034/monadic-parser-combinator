@@ -1,5 +1,6 @@
 # `mpc`: Haskell-like feature supports in C++
 [![Linux build status](https://github.com/acd1034/monadic-parser-combinator/actions/workflows/linux-build.yml/badge.svg)](https://github.com/acd1034/monadic-parser-combinator/actions/workflows/linux-build.yml)
+[![Linux build (Release) status](https://github.com/acd1034/monadic-parser-combinator/actions/workflows/linux-build-release.yml/badge.svg)](https://github.com/acd1034/monadic-parser-combinator/actions/workflows/linux-build-release.yml)
 <!-- [![macOS build status](https://github.com/acd1034/monadic-parser-combinator/actions/workflows/macos-build.yml/badge.svg)](https://github.com/acd1034/monadic-parser-combinator/actions/workflows/macos-build.yml) -->
 This library aims to implement a monadic parser combinator in C++ (still under development).
 

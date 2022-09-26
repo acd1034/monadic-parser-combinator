@@ -1,10 +1,23 @@
-cmake_minimum_required(VERSION 3.8)
-project(iris_tests CXX)
+cmake_minimum_required(VERSION 3.12)
+project(IrisTests
+  LANGUAGES CXX
+)
 include(CTest)
 
+# Import the globally installed Iris ifCMake has been started independently in
+# this directory with tests
+if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+  find_package(Iris REQUIRED)
+endif()
+
 # This interface adds compile options to how the tests are run
-add_library(iris_tests_config INTERFACE)
-target_compile_options(iris_tests_config INTERFACE
+add_library(IrisTestsConfig INTERFACE)
+target_compile_features(IrisTestsConfig INTERFACE cxx_std_20)
+set_target_properties(IrisTestsConfig PROPERTIES
+  CXX_STANDARD_REQUIRED ON
+  CXX_EXTENSIONS OFF
+)
+target_compile_options(IrisTestsConfig INTERFACE
   -fno-strict-aliasing
   -Wall
   -Wcast-align
@@ -29,13 +42,11 @@ target_compile_options(iris_tests_config INTERFACE
     -Wno-used-but-marked-unused # GTest EXPECT_DEATH
     -Wno-weak-vtables
   >
-  $<$<CXX_COMPILER_ID:Clang>:
-    -stdlib=libc++ # Added
-    -ftemplate-backtrace-limit=0 # Added
-    # $<$<AND:$<VERSION_GREATER:$<CXX_COMPILER_VERSION>,4.99>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,6>>:
-    #   $<$<EQUAL:${IRIS_CXX_STANDARD},17>:-Wno-undefined-func-template>
-    # >
-  >
+  # $<$<CXX_COMPILER_ID:Clang>:
+  #   $<$<AND:$<VERSION_GREATER:$<CXX_COMPILER_VERSION>,4.99>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,6>>:
+  #     $<$<EQUAL:${IRIS_CXX_STANDARD},17>:-Wno-undefined-func-template>
+  #   >
+  # >
   # $<$<CXX_COMPILER_ID:AppleClang>:
   #   $<$<AND:$<VERSION_GREATER:$<CXX_COMPILER_VERSION>,9.1>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,10>>:
   #     $<$<EQUAL:${IRIS_CXX_STANDARD},17>:-Wno-undefined-func-template>
@@ -55,19 +66,10 @@ target_compile_options(iris_tests_config INTERFACE
   >
 )
 
-# Import the globally installed iris if CMake has been started independently in
-# this directory with tests
-if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
-  find_package(iris::iris REQUIRED)
-endif()
-
-# Use Catch2 as a unit testing framework
-# find_package(Catch2)
-
 Include(FetchContent)
 FetchContent_Declare(Catch2
   GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-  GIT_TAG        v2.13.6)
+  GIT_TAG        v3.0.1)
 FetchContent_MakeAvailable(Catch2)
 
 add_subdirectory(control)
