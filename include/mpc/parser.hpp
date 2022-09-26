@@ -108,7 +108,7 @@ namespace mpc {
   /// many :: f a -> f [a]
   /// many v = some v <|> pure []
   inline constexpr auto many = //
-    // TODO: p, sep を is_Parser<T> で制約
+    // TODO: p を is_Parser<T> で制約
     partial([](auto&& p) {
       using namespace operators::alternatives;
       return many1(MPC_FORWARD(p)) or pure<decltype(p)>(std::list<holding_t<decltype(p)>>{});
@@ -116,7 +116,7 @@ namespace mpc {
 
   /// @brief between open p close = open *> p <* close
   inline constexpr auto between = //
-    // TODO: p, sep を is_Parser<T> で制約
+    // TODO: open, p, close を is_Parser<T> で制約
     partial([](auto&& open, auto&& p, auto&& close) {
       return discard2nd(discard1st(MPC_FORWARD(open), MPC_FORWARD(p)), MPC_FORWARD(close));
     });
@@ -136,6 +136,45 @@ namespace mpc {
       using namespace operators::alternatives;
       return sep_by1(MPC_FORWARD(p), MPC_FORWARD(sep))
              or pure<decltype(p)>(std::list<holding_t<decltype(p)>>{});
+    });
+
+  // chainl1 p op = do {
+  //   x <- p;
+  //   rest x
+  // } where rest x = do {
+  //   f <- op;
+  //   y <- p;
+  //   rest (f x y)
+  // } <|> return x
+  inline constexpr auto chainl1 = //
+    // TODO: p, op を is_Parser<T> で制約
+    partial([](auto&& p, auto&& op) {
+      return make_StateT<String>(partial(
+        [](auto&& p2, auto&& op2, similar_to<String> auto&& str)
+          -> decltype(run_StateT % p2 % str) {
+          const auto parse = run_StateT % MPC_FORWARD(p2);
+          const auto parse_op = run_StateT % MPC_FORWARD(op2);
+
+          auto result = parse % MPC_FORWARD(str);
+          if (result.index() == 0)
+            return make_left(*fst(std::move(result)));
+          auto [value, state] = *snd(std::move(result));
+
+          for (;;) {
+            auto result_op = parse_op % state;
+            if (result_op.index() == 0)
+              break;
+            auto [fn, state_op] = *snd(std::move(result_op));
+            auto result2 = parse % std::move(state_op);
+            if (result2.index() == 0)
+              break;
+            auto [value2, state2] = *snd(std::move(result2));
+            value = fn(std::move(value), std::move(value2));
+            state = std::move(state2);
+          }
+          return make_right(std::make_pair(std::move(value), std::move(state)));
+        },
+        MPC_FORWARD(p), MPC_FORWARD(op)));
     });
 } // namespace mpc
 
