@@ -1,5 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <algorithm>
+#include <charconv>
 #include <catch2/catch.hpp>
 #include <mpc/parser.hpp>
 #include "../stdfundamental.hpp"
@@ -187,4 +188,50 @@ TEST_CASE("parser ident", "[parser][ident]") {
   CHECK_SUCCEED(id_list, "[Alice]", std::list{"Alice"sv});
   CHECK_FAIL(id_list, "[Alice ]");
   CHECK_FAIL(id_list, "[Alice,]");
+}
+
+inline const auto spaces = mpc::many % mpc::space;
+inline constexpr auto token = //
+  mpc::partial([](auto&& parser) { return mpc::discard2nd(MPC_FORWARD(parser), spaces); });
+inline constexpr auto char_token = mpc::compose(token, mpc::char1);
+
+inline constexpr auto readint = //
+  mpc::partial([](mpc::similar_to<mpc::String> auto&& s) {
+    std::string str(s.begin(), s.end());
+    std::int64_t num{};
+    if (auto [ptr, ec] = std::from_chars(str.data(), str.data() + str.size(), num);
+        ec == std::errc{}) {
+      return num;
+    } else
+      throw "conversion from chars to integer failed";
+  });
+inline constexpr auto numop = mpc::partial([](const char c, auto&& x, auto&& y) {
+  switch (c) {
+  case '+':
+    return MPC_FORWARD(x) + MPC_FORWARD(y);
+  case '-':
+    return MPC_FORWARD(x) - MPC_FORWARD(y);
+  case '*':
+    return MPC_FORWARD(x) * MPC_FORWARD(y);
+  case '/':
+    return MPC_FORWARD(x) / MPC_FORWARD(y);
+  default:
+    throw "Unexpected operator";
+  }
+});
+
+TEST_CASE("parser calc", "[parser][calc]") {
+  using namespace mpc::operators::alternatives;
+  const auto num = token % (mpc::many1 % mpc::digit);
+
+  // expr   = term ("+" term | "-" term)*
+  // term   = unary ("*" unary | "/" unary)*
+  // unary  = ("+" | "-")? factor
+  // factor = "(" expr ")" | number
+  const auto primary = mpc::fmap(readint, num);
+  const auto addop = mpc::fmap(numop, char_token % '+');
+  const auto expr = mpc::chainl1(primary, addop);
+
+  CHECK_SUCCEED(expr, "10", 10);
+  CHECK_SUCCEED(expr, "1 + 2 + 3 + 4", 10);
 }
