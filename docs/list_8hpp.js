@@ -3,6 +3,8 @@ var list_8hpp =
     [ "mpc::detail::is_list_impl< class >", "structmpc_1_1detail_1_1is__list__impl.html", null ],
     [ "mpc::detail::is_list_impl< std::list< T, Alloc > >", "structmpc_1_1detail_1_1is__list__impl_3_01std_1_1list_3_01_t_00_01_alloc_01_4_01_4.html", null ],
     [ "mpc::detail::cons_op", "structmpc_1_1detail_1_1cons__op.html", null ],
+    [ "mpc::detail::uncons_op", "structmpc_1_1detail_1_1uncons__op.html", null ],
+    [ "mpc::detail::append_op", "structmpc_1_1detail_1_1append__op.html", null ],
     [ "mpc::detail::foldr_op", "structmpc_1_1detail_1_1foldr__op.html", null ],
     [ "mpc::functor_traits< std::list< T > >", "structmpc_1_1functor__traits_3_01std_1_1list_3_01_t_01_4_01_4.html", "structmpc_1_1functor__traits_3_01std_1_1list_3_01_t_01_4_01_4" ],
     [ "mpc::functor_traits< std::list< T > >::fmap_op", "structmpc_1_1functor__traits_3_01std_1_1list_3_01_t_01_4_01_4_1_1fmap__op.html", null ],

@@ -9,6 +9,8 @@ var hierarchy =
     ] ],
     [ "mpc::alternative_traits< class >", "structmpc_1_1alternative__traits.html", null ],
     [ "mpc::alternative_traits< maybe< T1 > >", "structmpc_1_1alternative__traits_3_01maybe_3_01_t1_01_4_01_4.html", null ],
+    [ "mpc::alternative_traits< mpc::either< mpc::ParseError, std::pair< T, mpc::String > > >", "structmpc_1_1alternative__traits_3_01mpc_1_1either_3_01mpc_1_1_parse_error_00_01std_1_1pair_3_0157774616cd39bb3849597b193ab8b884.html", null ],
+    [ "mpc::detail::append_op", "structmpc_1_1detail_1_1append__op.html", null ],
     [ "mpc::applicative_traits< class >", "structmpc_1_1applicative__traits.html", null ],
     [ "mpc::applicative_traits< either< T1, T2 > >", "structmpc_1_1applicative__traits_3_01either_3_01_t1_00_01_t2_01_4_01_4.html", null ],
     [ "mpc::applicative_traits< Identity< T > >", "structmpc_1_1applicative__traits_3_01_identity_3_01_t_01_4_01_4.html", null ],
@@ -197,6 +199,7 @@ var hierarchy =
       [ "mpc::holding< either< T, U > >", "structmpc_1_1holding_3_01either_3_01_t_00_01_u_01_4_01_4.html", null ],
       [ "mpc::holding_or< T, U >", "structmpc_1_1holding__or.html", null ]
     ] ],
+    [ "mpc::detail::uncons_op", "structmpc_1_1detail_1_1uncons__op.html", null ],
     [ "mpc::detail::with_StateT_op", "structmpc_1_1detail_1_1with___state_t__op.html", null ],
     [ "mpc::Ts", null, [
       [ "mpc::overloaded< Ts >", "structmpc_1_1overloaded.html", null ]

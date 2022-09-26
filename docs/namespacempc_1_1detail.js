@@ -1,5 +1,6 @@
 var namespacempc_1_1detail =
 [
+    [ "append_op", "structmpc_1_1detail_1_1append__op.html", null ],
     [ "bind_op", "structmpc_1_1detail_1_1bind__op.html", null ],
     [ "clone_const", "structmpc_1_1detail_1_1clone__const.html", null ],
     [ "clone_cv", "structmpc_1_1detail_1_1clone__cv.html", null ],
@@ -81,6 +82,7 @@ var namespacempc_1_1detail =
     [ "StateT_alternative_traits_empty< ST >", "structmpc_1_1detail_1_1_state_t__alternative__traits__empty_3_01_s_t_01_4.html", "structmpc_1_1detail_1_1_state_t__alternative__traits__empty_3_01_s_t_01_4" ],
     [ "tagged_union_impl", "structmpc_1_1detail_1_1tagged__union__impl.html", null ],
     [ "tagged_union_impl< std::index_sequence< Idx... >, Args... >", "structmpc_1_1detail_1_1tagged__union__impl_3_01std_1_1index__sequence_3_01_idx_8_8_8_01_4_00_01_args_8_8_8_01_4.html", null ],
+    [ "uncons_op", "structmpc_1_1detail_1_1uncons__op.html", null ],
     [ "with_StateT_op", "structmpc_1_1detail_1_1with___state_t__op.html", null ],
     [ "has_alternative_traits_empty", "conceptmpc_1_1detail_1_1has__alternative__traits__empty.html", null ],
     [ "has_alternative_traits_combine", "conceptmpc_1_1detail_1_1has__alternative__traits__combine.html", null ],

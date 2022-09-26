@@ -99,6 +99,7 @@ $(document).ready(function(){initNavTree('list_8hpp.html',''); initResizable(); 
 <code>#include &lt;list&gt;</code><br />
 <code>#include &lt;<a class="el" href="holding_8hpp_source.html">mpc/control/holding.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="monad_8hpp_source.html">mpc/control/monad.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="maybe_8hpp_source.html">mpc/data/maybe.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="partial_8hpp_source.html">mpc/functional/partial.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="prelude_8hpp_source.html">mpc/prelude.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="ranges_8hpp_source.html">mpc/ranges.hpp</a>&gt;</code><br />
@@ -112,6 +113,10 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1is__list__impl_3_01std_1_1list_3_01_t_00_01_alloc_01_4_01_4.html">mpc::detail::is_list_impl&lt; std::list&lt; T, Alloc &gt; &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1cons__op.html">mpc::detail::cons_op</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1uncons__op.html">mpc::detail::uncons_op</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1append__op.html">mpc::detail::append_op</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1foldr__op.html">mpc::detail::foldr_op</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -142,6 +147,12 @@ Variables</h2></td></tr>
 <tr class="memitem:adcb910429e3606eb4e031b300b0820a7"><td class="memItemLeft" align="right" valign="top"><a id="adcb910429e3606eb4e031b300b0820a7" name="adcb910429e3606eb4e031b300b0820a7"></a>
 constexpr partial&lt; detail::cons_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::cons</b></td></tr>
 <tr class="separator:adcb910429e3606eb4e031b300b0820a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a835f3ad34a90c5add96c59295c41799b"><td class="memItemLeft" align="right" valign="top"><a id="a835f3ad34a90c5add96c59295c41799b" name="a835f3ad34a90c5add96c59295c41799b"></a>
+constexpr partial&lt; detail::uncons_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::uncons</b></td></tr>
+<tr class="separator:a835f3ad34a90c5add96c59295c41799b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa11eeadbc32bc45f9874fb8b8def0c1c"><td class="memItemLeft" align="right" valign="top"><a id="aa11eeadbc32bc45f9874fb8b8def0c1c" name="aa11eeadbc32bc45f9874fb8b8def0c1c"></a>
+constexpr partial&lt; detail::append_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::append</b></td></tr>
+<tr class="separator:aa11eeadbc32bc45f9874fb8b8def0c1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59283da37f998cc700a111f254c259b3"><td class="memItemLeft" align="right" valign="top"><a id="a59283da37f998cc700a111f254c259b3" name="a59283da37f998cc700a111f254c259b3"></a>
 constexpr partial&lt; detail::foldr_op &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mpc::cpo::foldr</b></td></tr>
 <tr class="separator:a59283da37f998cc700a111f254c259b3"><td class="memSeparator" colspan="2">&#160;</td></tr>

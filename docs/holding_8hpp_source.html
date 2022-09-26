@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('holding_8hpp_source.html',''); initRes
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="structmpc_1_1holding.html">    7</a></span>  <span class="keyword">struct </span><a class="code hl_struct" href="structmpc_1_1holding.html">holding</a>;</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>  <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>  <span class="keyword">using</span> holding_t = <span class="keyword">typename</span> <a class="code hl_struct" href="structmpc_1_1holding.html">holding&lt;T&gt;::type</a>;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>  <span class="keyword">using</span> holding_t = <span class="keyword">typename</span> <a class="code hl_struct" href="structmpc_1_1holding.html">holding&lt;std::remove_cvref_t&lt;T&gt;</a>&gt;::type;</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>  <span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keyword">class</span> U&gt;</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structmpc_1_1holding__or.html">   13</a></span>  <span class="keyword">struct </span><a class="code hl_struct" href="structmpc_1_1holding__or.html">holding_or</a> : std::type_identity&lt;U&gt; {};</div>

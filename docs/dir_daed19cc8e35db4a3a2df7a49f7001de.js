@@ -8,6 +8,7 @@ var dir_daed19cc8e35db4a3a2df7a49f7001de =
     [ "control.hpp", "control_8hpp.html", null ],
     [ "data.hpp", "data_8hpp.html", null ],
     [ "functional.hpp", "functional_8hpp.html", null ],
+    [ "parser.hpp", "parser_8hpp.html", "parser_8hpp" ],
     [ "prelude.hpp", "prelude_8hpp.html", null ],
     [ "ranges.hpp", "ranges_8hpp.html", "ranges_8hpp" ],
     [ "stdfundamental.hpp", "stdfundamental_8hpp.html", "stdfundamental_8hpp" ],

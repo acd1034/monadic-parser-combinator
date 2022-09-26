@@ -99,6 +99,8 @@ $(document).ready(function(){initNavTree('namespacempc_1_1detail.html',''); init
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1append__op.html">append_op</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1bind__op.html">bind_op</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">bind :: forall a b. m a -&gt; (a -&gt; m b) -&gt; m b  <a href="structmpc_1_1detail_1_1bind__op.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -294,6 +296,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1tagged__union__impl_3_01std_1_1index__sequence_3_01_idx_8_8_8_01_4_00_01_args_8_8_8_01_4.html">tagged_union_impl&lt; std::index_sequence&lt; Idx... &gt;, Args... &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1uncons__op.html">uncons_op</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmpc_1_1detail_1_1with___state_t__op.html">with_StateT_op</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -366,6 +370,45 @@ template&lt;class From , class To &gt; </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:a69f79b25f94e4d7bf1796389157de750"><td class="memItemLeft" align="right" valign="top"><a id="a69f79b25f94e4d7bf1796389157de750" name="a69f79b25f94e4d7bf1796389157de750"></a>
+const auto&#160;</td><td class="memItemRight" valign="bottom"><b>alnum</b> = satisfy % mpc::isalnum or left % &quot;expecting alnum&quot;s</td></tr>
+<tr class="separator:a69f79b25f94e4d7bf1796389157de750"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10bdf96dd8796d8cdd1aa4d707a612a3"><td class="memItemLeft" align="right" valign="top"><a id="a10bdf96dd8796d8cdd1aa4d707a612a3" name="a10bdf96dd8796d8cdd1aa4d707a612a3"></a>
+const auto&#160;</td><td class="memItemRight" valign="bottom"><b>alpha</b> = satisfy % mpc::isalpha or left % &quot;expecting alpha&quot;s</td></tr>
+<tr class="separator:a10bdf96dd8796d8cdd1aa4d707a612a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4e146254c58acc29b67782aee67e3e0"><td class="memItemLeft" align="right" valign="top"><a id="ac4e146254c58acc29b67782aee67e3e0" name="ac4e146254c58acc29b67782aee67e3e0"></a>
+const auto&#160;</td><td class="memItemRight" valign="bottom"><b>lower</b> = satisfy % mpc::islower or left % &quot;expecting lower&quot;s</td></tr>
+<tr class="separator:ac4e146254c58acc29b67782aee67e3e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84895395ecb0c8f16f504b3fb175c09c"><td class="memItemLeft" align="right" valign="top"><a id="a84895395ecb0c8f16f504b3fb175c09c" name="a84895395ecb0c8f16f504b3fb175c09c"></a>
+const auto&#160;</td><td class="memItemRight" valign="bottom"><b>upper</b> = satisfy % mpc::isupper or left % &quot;expecting upper&quot;s</td></tr>
+<tr class="separator:a84895395ecb0c8f16f504b3fb175c09c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a611f4fed4003d6210509e7e94f6ea51f"><td class="memItemLeft" align="right" valign="top"><a id="a611f4fed4003d6210509e7e94f6ea51f" name="a611f4fed4003d6210509e7e94f6ea51f"></a>
+const auto&#160;</td><td class="memItemRight" valign="bottom"><b>digit</b> = satisfy % mpc::isdigit or left % &quot;expecting digit&quot;s</td></tr>
+<tr class="separator:a611f4fed4003d6210509e7e94f6ea51f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a829643e7a5b8910a2301193e3be4f10a"><td class="memItemLeft" align="right" valign="top"><a id="a829643e7a5b8910a2301193e3be4f10a" name="a829643e7a5b8910a2301193e3be4f10a"></a>
+const auto&#160;</td><td class="memItemRight" valign="bottom"><b>xdigit</b> = satisfy % mpc::isxdigit or left % &quot;expecting xdigit&quot;s</td></tr>
+<tr class="separator:a829643e7a5b8910a2301193e3be4f10a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b84d14431b380c84f367376f6c3c25a"><td class="memItemLeft" align="right" valign="top"><a id="a6b84d14431b380c84f367376f6c3c25a" name="a6b84d14431b380c84f367376f6c3c25a"></a>
+const auto&#160;</td><td class="memItemRight" valign="bottom"><b>cntrl</b> = satisfy % mpc::iscntrl or left % &quot;expecting cntrl&quot;s</td></tr>
+<tr class="separator:a6b84d14431b380c84f367376f6c3c25a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab48348d69bdf4a18f3c729008f9d3712"><td class="memItemLeft" align="right" valign="top"><a id="ab48348d69bdf4a18f3c729008f9d3712" name="ab48348d69bdf4a18f3c729008f9d3712"></a>
+const auto&#160;</td><td class="memItemRight" valign="bottom"><b>graph</b> = satisfy % mpc::isgraph or left % &quot;expecting graph&quot;s</td></tr>
+<tr class="separator:ab48348d69bdf4a18f3c729008f9d3712"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaaa99f5e0b1af200a4446e7f37bbd2e"><td class="memItemLeft" align="right" valign="top"><a id="adaaa99f5e0b1af200a4446e7f37bbd2e" name="adaaa99f5e0b1af200a4446e7f37bbd2e"></a>
+const auto&#160;</td><td class="memItemRight" valign="bottom"><b>space</b> = satisfy % mpc::isspace or left % &quot;expecting space&quot;s</td></tr>
+<tr class="separator:adaaa99f5e0b1af200a4446e7f37bbd2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86049c53afb96c4284f6f6d53d7e3d06"><td class="memItemLeft" align="right" valign="top"><a id="a86049c53afb96c4284f6f6d53d7e3d06" name="a86049c53afb96c4284f6f6d53d7e3d06"></a>
+const auto&#160;</td><td class="memItemRight" valign="bottom"><b>blank</b> = satisfy % mpc::isblank or left % &quot;expecting blank&quot;s</td></tr>
+<tr class="separator:a86049c53afb96c4284f6f6d53d7e3d06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56a18749b1a786392d6a909ec53123df"><td class="memItemLeft" align="right" valign="top"><a id="a56a18749b1a786392d6a909ec53123df" name="a56a18749b1a786392d6a909ec53123df"></a>
+const auto&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> = satisfy % mpc::isprint or left % &quot;expecting print&quot;s</td></tr>
+<tr class="separator:a56a18749b1a786392d6a909ec53123df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a310e6cb2c897e124fc7a9a843aa1f560"><td class="memItemLeft" align="right" valign="top"><a id="a310e6cb2c897e124fc7a9a843aa1f560" name="a310e6cb2c897e124fc7a9a843aa1f560"></a>
+const auto&#160;</td><td class="memItemRight" valign="bottom"><b>punct</b> = satisfy % mpc::ispunct or left % &quot;expecting punct&quot;s</td></tr>
+<tr class="separator:a310e6cb2c897e124fc7a9a843aa1f560"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa99144fefccdc2075939c1b8bcc0b2b0"><td class="memItemLeft" align="right" valign="top"><a id="aa99144fefccdc2075939c1b8bcc0b2b0" name="aa99144fefccdc2075939c1b8bcc0b2b0"></a>
+const auto&#160;</td><td class="memItemRight" valign="bottom"><b>any_char</b> = satisfy % (constant % true)</td></tr>
+<tr class="separator:aa99144fefccdc2075939c1b8bcc0b2b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae63c23ef9b93dbe50cc6b6bd984eccd"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
 <tr class="memitem:aae63c23ef9b93dbe50cc6b6bd984eccd"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacempc_1_1detail.html#aae63c23ef9b93dbe50cc6b6bd984eccd">is_implicitly_default_constructible_v</a></td></tr>
 <tr class="memdesc:aae63c23ef9b93dbe50cc6b6bd984eccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">A helper inline variable for <a class="el" href="structmpc_1_1detail_1_1is__implicitly__default__constructible.html" title="is_implicitly_default_constructible">is_implicitly_default_constructible</a>.  <a href="namespacempc_1_1detail.html#aae63c23ef9b93dbe50cc6b6bd984eccd">More...</a><br /></td></tr>

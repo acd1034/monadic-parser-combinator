@@ -9,6 +9,7 @@ var annotated_dup =
         ] ]
       ] ],
       [ "detail", "namespacempc_1_1detail.html", [
+        [ "append_op", "structmpc_1_1detail_1_1append__op.html", null ],
         [ "bind_op", "structmpc_1_1detail_1_1bind__op.html", null ],
         [ "clone_const", "structmpc_1_1detail_1_1clone__const.html", null ],
         [ "clone_cv", "structmpc_1_1detail_1_1clone__cv.html", null ],
@@ -90,6 +91,7 @@ var annotated_dup =
         [ "StateT_alternative_traits_empty< ST >", "structmpc_1_1detail_1_1_state_t__alternative__traits__empty_3_01_s_t_01_4.html", "structmpc_1_1detail_1_1_state_t__alternative__traits__empty_3_01_s_t_01_4" ],
         [ "tagged_union_impl", "structmpc_1_1detail_1_1tagged__union__impl.html", null ],
         [ "tagged_union_impl< std::index_sequence< Idx... >, Args... >", "structmpc_1_1detail_1_1tagged__union__impl_3_01std_1_1index__sequence_3_01_idx_8_8_8_01_4_00_01_args_8_8_8_01_4.html", null ],
+        [ "uncons_op", "structmpc_1_1detail_1_1uncons__op.html", null ],
         [ "with_StateT_op", "structmpc_1_1detail_1_1with___state_t__op.html", null ]
       ] ],
       [ "monads", "namespacempc_1_1monads.html", [
@@ -115,6 +117,7 @@ var annotated_dup =
       [ "_function_impl", "structmpc_1_1__function__impl.html", null ],
       [ "alternative_traits", "structmpc_1_1alternative__traits.html", null ],
       [ "alternative_traits< maybe< T1 > >", "structmpc_1_1alternative__traits_3_01maybe_3_01_t1_01_4_01_4.html", "structmpc_1_1alternative__traits_3_01maybe_3_01_t1_01_4_01_4" ],
+      [ "alternative_traits< mpc::either< mpc::ParseError, std::pair< T, mpc::String > > >", "structmpc_1_1alternative__traits_3_01mpc_1_1either_3_01mpc_1_1_parse_error_00_01std_1_1pair_3_0157774616cd39bb3849597b193ab8b884.html", null ],
       [ "alternative_traits< StateT< S, M > >", "structmpc_1_1alternative__traits_3_01_state_t_3_01_s_00_01_m_01_4_01_4.html", null ],
       [ "applicative_traits", "structmpc_1_1applicative__traits.html", null ],
       [ "applicative_traits< either< T1, T2 > >", "structmpc_1_1applicative__traits_3_01either_3_01_t1_00_01_t2_01_4_01_4.html", "structmpc_1_1applicative__traits_3_01either_3_01_t1_00_01_t2_01_4_01_4" ],
