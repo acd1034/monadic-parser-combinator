@@ -1,6 +1,8 @@
 #include <charconv>
 #include <mpc/parser.hpp>
 
+// Preparation for implementing an expression parser
+
 inline const auto spaces = mpc::many % mpc::space;
 
 inline constexpr auto token = mpc::partial([](auto&& parser) {
@@ -20,10 +22,6 @@ inline constexpr auto readint = //
       throw "Conversion from chars to integer failed";
   });
 
-inline constexpr auto readstr = mpc::partial([](mpc::similar_to<mpc::String> auto&& s) {
-  return std::string(s.begin(), s.end());
-});
-
 inline constexpr auto numop = //
   mpc::partial([](const char c, auto&& x, auto&& y) {
     switch (c) {
@@ -41,6 +39,7 @@ inline constexpr auto numop = //
   });
 
 int main() {
+  // Implementation of an expression parser
   // expr   = term ("+" term | "-" term)*
   // term   = factor ("*" factor | "/" factor)*
   // factor = number
@@ -53,7 +52,7 @@ int main() {
   const auto exprop = mpc::fmap(numop, char_token % '+' or char_token % '-');
   const auto expr = mpc::chainl1(term, exprop);
 
-  // test
+  // Test
   std::string_view sv = "1*2/3 + 3/4*5 - 5*6/7";
   std::int64_t ans    =  1*2/3 + 3/4*5 - 5*6/7 ;
   auto result = mpc::eval_StateT % expr % mpc::String(sv.begin(), sv.end());

@@ -41,10 +41,6 @@ inline constexpr auto readint = //
       throw "Conversion from chars to integer failed";
   });
 
-inline constexpr auto readstr = mpc::partial([](mpc::similar_to<mpc::String> auto&& s) {
-  return std::string(s.begin(), s.end());
-});
-
 inline constexpr auto numop = //
   mpc::partial([](const char c, auto&& x, auto&& y) {
     switch (c) {
