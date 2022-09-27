@@ -2,8 +2,11 @@
 #include <mpc/parser.hpp>
 
 inline const auto spaces = mpc::many % mpc::space;
-inline constexpr auto token = //
-  mpc::partial([](auto&& parser) { return mpc::discard2nd(MPC_FORWARD(parser), spaces); });
+
+inline constexpr auto token = mpc::partial([](auto&& parser) {
+  return mpc::discard2nd(MPC_FORWARD(parser), spaces);
+});
+
 inline constexpr auto char_token = mpc::compose(token, mpc::char1);
 
 inline constexpr auto readint = //
@@ -16,9 +19,11 @@ inline constexpr auto readint = //
     } else
       throw "Conversion from chars to integer failed";
   });
-inline constexpr auto readstr = //
-  mpc::partial(
-    [](mpc::similar_to<mpc::String> auto&& s) { return std::string(s.begin(), s.end()); });
+
+inline constexpr auto readstr = mpc::partial([](mpc::similar_to<mpc::String> auto&& s) {
+  return std::string(s.begin(), s.end());
+});
+
 inline constexpr auto numop = //
   mpc::partial([](const char c, auto&& x, auto&& y) {
     switch (c) {
@@ -36,12 +41,11 @@ inline constexpr auto numop = //
   });
 
 int main() {
-  using namespace mpc::operators::alternatives;
-
   // expr   = term ("+" term | "-" term)*
   // term   = factor ("*" factor | "/" factor)*
-  // factor = "(" expr ")" | number
+  // factor = number
   // number = [0-9]+
+  using namespace mpc::operators::alternatives;
   const auto number = token % (mpc::many1 % mpc::digit);
   const auto factor = mpc::fmap(readint, number);
   const auto termop = mpc::fmap(numop, char_token % '*' or char_token % '/');
@@ -49,6 +53,7 @@ int main() {
   const auto exprop = mpc::fmap(numop, char_token % '+' or char_token % '-');
   const auto expr = mpc::chainl1(term, exprop);
 
+  // test
   std::string_view sv = "1*2/3 + 3/4*5 - 5*6/7";
   std::int64_t ans    =  1*2/3 + 3/4*5 - 5*6/7 ;
   auto result = mpc::eval_StateT % expr % mpc::String(sv.begin(), sv.end());
