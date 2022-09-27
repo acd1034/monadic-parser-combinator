@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <charconv>
 #include <sstream> // std::ostringstream
-#include <utility> // std::exchange
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers_templated.hpp>
 #include <mpc/parser.hpp>
@@ -40,9 +39,9 @@ public:
 };
 
 inline constexpr auto equal_to =
-  mpc::overloaded(std::equal_to<>{}, [](const mpc::String& x, const std::string_view& y) {
-    return std::equal(x.begin(), x.end(), y.begin(), y.end());
-  });
+  mpc::overloaded{std::equal_to<>{}, [](const mpc::String& x, const std::string_view& y) {
+                    return std::equal(x.begin(), x.end(), y.begin(), y.end());
+                  }};
 
 template <class T>
 struct SucceedsInParsing : Catch::Matchers::MatcherGenericBase {
@@ -70,6 +69,9 @@ public:
     return ss.str();
   }
 };
+
+template <class T>
+SucceedsInParsing(std::string_view, T) -> SucceedsInParsing<T>;
 
 template <class T>
 struct SucceedsInParsing<std::list<T>> : Catch::Matchers::MatcherGenericBase {
@@ -103,6 +105,9 @@ public:
     return ss.str();
   }
 };
+
+template <class T>
+SucceedsInParsing(std::string_view, std::list<T>) -> SucceedsInParsing<std::list<T>>;
 
 TEST_CASE("parser min", "[parser][min]") {
   CHECK_THAT(mpc::satisfy % mpc::isdigit, SucceedsInParsing("0", '0'));

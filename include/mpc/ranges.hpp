@@ -28,14 +28,14 @@ namespace mpc::ranges::detail {
 
   struct begin_fn {
     template <class C>
-    constexpr auto operator()(C&& c) noexcept(noexcept(begin(c))) -> decltype(begin(c)) {
+    constexpr auto operator()(C&& c) const noexcept(noexcept(begin(c))) -> decltype(begin(c)) {
       return begin(c);
     }
   };
 
   struct end_fn {
     template <class C>
-    constexpr auto operator()(C&& c) noexcept(noexcept(end(c))) -> decltype(end(c)) {
+    constexpr auto operator()(C&& c) const noexcept(noexcept(end(c))) -> decltype(end(c)) {
       return end(c);
     }
   };
