@@ -56,7 +56,7 @@ public:
     : sv_(std::move(sv)), expected_(std::move(expected)) {}
   bool match(const auto& parser) const {
     auto result = mpc::eval_StateT % parser % mpc::String(sv_.begin(), sv_.end());
-    if (result.index() == 0)
+    if (result.index() != 1)
       return false;
     return equal_to(*mpc::snd(result), expected_);
   }
@@ -86,7 +86,7 @@ public:
     : sv_(std::move(sv)), expected_(std::move(expected)) {}
   bool match(const auto& parser) const {
     auto result = mpc::eval_StateT % parser % mpc::String(sv_.begin(), sv_.end());
-    if (result.index() == 0)
+    if (result.index() != 1)
       return false;
     auto x = *mpc::snd(std::move(result));
     return std::equal(x.begin(), x.end(), expected_.begin(), expected_.end(), equal_to);
