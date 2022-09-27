@@ -56,6 +56,7 @@ inline constexpr mpc::partial<add3way_op> add3way;
 
 TEST_CASE("prelude flip", "[prelude][flip]") {
   {
+    using namespace std::string_literals;
     CHECK(mpc::flip % add % "A"s % "B"s == "BA"s);
     CHECK(mpc::flip % add3way % "A"s % "B"s % "C"s == "BAC"s);
   }
