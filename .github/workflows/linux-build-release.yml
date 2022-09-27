@@ -17,13 +17,13 @@ jobs:
       matrix:
         pkg_name:
           - g++-11
-          # - clang-13
+          - clang-13
         std: [20]
         include:
           - pkg_name: g++-11
             compiler: g++-11
-          # - pkg_name: clang-13
-          #   compiler: clang++-13
+          - pkg_name: clang-13
+            compiler: clang++-13
 
     steps:
     - uses: actions/checkout@v2
