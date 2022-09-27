@@ -2662,7 +2662,7 @@ namespace mpc {
     // (1)
     explicit(not detail::is_implicitly_default_constructible_v<T>)
     constexpr single()
-      requires std::default_initializable<T> {}
+      requires std::default_initializable<T> =default;
 
     // (2)
     single(const single&) = default;
@@ -2674,14 +2674,14 @@ namespace mpc {
     explicit(not std::is_convertible_v<const T&, T>)
     constexpr single(const T& rhs)
       requires std::copy_constructible<T>
-      : instance_{rhs} {}
+      : instance_(rhs) {}
 
     // (5)
     template <class U = T>
     requires std::constructible_from<T, U&&>
     explicit(not std::is_convertible_v<U, T>)
     constexpr single(U&& rhs)
-      : instance_{std::forward<U>(rhs)} {}
+      : instance_(std::forward<U>(rhs)) {}
 
     // (6)
     template <tuple_like Tuple>
@@ -2691,19 +2691,19 @@ namespace mpc {
     )
     explicit(not std::is_convertible_v<std::tuple_element_t<0, Tuple>, T>)
     constexpr single(Tuple&& rhs)
-      : instance_{get<0>(std::forward<Tuple>(rhs))} {}
+      : instance_(get<0>(std::forward<Tuple>(rhs))) {}
 
     // (7)
     template <class... Args>
     requires std::constructible_from<T, Args&&...>
     constexpr single(std::in_place_t, Args&&... args)
-      : instance_{std::forward<Args>(args)...} {}
+      : instance_(std::forward<Args>(args)...) {}
 
     // (8)
     template <class U, class... Args>
     requires std::constructible_from<T, std::initializer_list<U>, Args&&...>
     constexpr single(std::in_place_t, std::initializer_list<U> il, Args&&... args)
-      : instance_{il, std::forward<Args>(args)...} {}
+      : instance_(il, std::forward<Args>(args)...) {}
 
     // assignment ops.
 
@@ -3184,14 +3184,14 @@ namespace mpc::ranges::detail {
 
   struct begin_fn {
     template <class C>
-    constexpr auto operator()(C&& c) noexcept(noexcept(begin(c))) -> decltype(begin(c)) {
+    constexpr auto operator()(C&& c) const noexcept(noexcept(begin(c))) -> decltype(begin(c)) {
       return begin(c);
     }
   };
 
   struct end_fn {
     template <class C>
-    constexpr auto operator()(C&& c) noexcept(noexcept(end(c))) -> decltype(end(c)) {
+    constexpr auto operator()(C&& c) const noexcept(noexcept(end(c))) -> decltype(end(c)) {
       return end(c);
     }
   };
