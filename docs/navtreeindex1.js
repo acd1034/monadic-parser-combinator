@@ -1,11 +1,12 @@
 var NAVTREEINDEX1 =
 {
-"namespacempc_1_1cpo.html#a7fdbc0223c46e98d77892d1f7b30e1ed":[1,0,0,1,11],
+"namespacempc_1_1cpo.html#a7c487c5d268537f3ad835773fd8a1340":[1,0,0,137],
 "namespacempc_1_1cpo.html#a7fdbc0223c46e98d77892d1f7b30e1ed":[1,0,0,114],
-"namespacempc_1_1cpo.html#a7fe1f50d194ba5f6c8878fb61bdc9202":[1,0,0,1,21],
+"namespacempc_1_1cpo.html#a7fdbc0223c46e98d77892d1f7b30e1ed":[1,0,0,1,11],
 "namespacempc_1_1cpo.html#a7fe1f50d194ba5f6c8878fb61bdc9202":[1,0,0,125],
-"namespacempc_1_1cpo.html#a8326f1624f8a413378413c0a618f517b":[1,0,0,1,5],
+"namespacempc_1_1cpo.html#a7fe1f50d194ba5f6c8878fb61bdc9202":[1,0,0,1,21],
 "namespacempc_1_1cpo.html#a8326f1624f8a413378413c0a618f517b":[1,0,0,108],
+"namespacempc_1_1cpo.html#a8326f1624f8a413378413c0a618f517b":[1,0,0,1,5],
 "namespacempc_1_1cpo.html#a864518f9a355f7e7c96a311949031a93":[1,0,0,136],
 "namespacempc_1_1cpo.html#a864518f9a355f7e7c96a311949031a93":[1,0,0,1,32],
 "namespacempc_1_1cpo.html#a8aec76ba90e971bdd17e8fa76b7c7315":[1,0,0,150],
@@ -36,8 +37,8 @@ var NAVTREEINDEX1 =
 "namespacempc_1_1cpo.html#ac26a35a4ebb345dfc477737fad4218ad":[1,0,0,158],
 "namespacempc_1_1cpo.html#ac7d9b66ef1f70c40059a7cf68268b431":[1,0,0,145],
 "namespacempc_1_1cpo.html#ac7d9b66ef1f70c40059a7cf68268b431":[1,0,0,1,40],
-"namespacempc_1_1cpo.html#acb013568ac918cba3600456074cb02f8":[1,0,0,1,51],
 "namespacempc_1_1cpo.html#acb013568ac918cba3600456074cb02f8":[1,0,0,159],
+"namespacempc_1_1cpo.html#acb013568ac918cba3600456074cb02f8":[1,0,0,1,51],
 "namespacempc_1_1cpo.html#ad467a3c953e24cc3ecb260ab7b65e6ca":[1,0,0,1,49],
 "namespacempc_1_1cpo.html#ad467a3c953e24cc3ecb260ab7b65e6ca":[1,0,0,157],
 "namespacempc_1_1cpo.html#ad6cc1b0bf14899eaff9c1de49b5e1b38":[1,0,0,119],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "structmpc_1_1applicatives_1_1detail_1_1fmap__op.html":[3,0,0,0,0,1],
 "structmpc_1_1applicatives_1_1detail_1_1lift_a2__op.html":[1,0,0,0,0,2],
 "structmpc_1_1applicatives_1_1detail_1_1lift_a2__op.html":[3,0,0,0,0,2],
-"structmpc_1_1detail_1_1_state_t__alternative__traits__combine.html":[3,0,0,1,76],
-"structmpc_1_1detail_1_1_state_t__alternative__traits__combine.html":[1,0,0,2,76]
+"structmpc_1_1detail_1_1_state_t__alternative__traits__combine.html":[3,0,0,1,76]
 };

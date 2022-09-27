@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"structmpc_1_1monad__traits_3_01either_3_01_t1_00_01_t2_01_4_01_4.html":[3,0,0,38],
 "structmpc_1_1monad__traits_3_01either_3_01_t1_00_01_t2_01_4_01_4_1_1bind__op.html":[1,0,0,40,0],
 "structmpc_1_1monad__traits_3_01either_3_01_t1_00_01_t2_01_4_01_4_1_1bind__op.html":[3,0,0,38,0],
 "structmpc_1_1monad__traits_3_01maybe_3_01_t1_01_4_01_4.html":[1,0,0,42],
