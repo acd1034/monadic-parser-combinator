@@ -124,10 +124,6 @@ Quick Example</h1>
 <div class="line">      <span class="keywordflow">throw</span> <span class="stringliteral">&quot;Conversion from chars to integer failed&quot;</span>;</div>
 <div class="line">  });</div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> readstr = <a class="code hl_struct" href="structmpc_1_1partial.html">mpc::partial</a>([](mpc::similar_to&lt;mpc::String&gt; <span class="keyword">auto</span>&amp;&amp; s) {</div>
-<div class="line">  <span class="keywordflow">return</span> std::string(s.begin(), s.end());</div>
-<div class="line">});</div>
-<div class="line"> </div>
 <div class="line"><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> numop = <span class="comment">//</span></div>
 <div class="line">  <a class="code hl_struct" href="structmpc_1_1partial.html">mpc::partial</a>([](<span class="keyword">const</span> <span class="keywordtype">char</span> c, <span class="keyword">auto</span>&amp;&amp; x, <span class="keyword">auto</span>&amp;&amp; y) {</div>
 <div class="line">    <span class="keywordflow">switch</span> (c) {</div>
