@@ -26,13 +26,29 @@ instance Alternative [] where
     (<|>) = (++)
 
 --------------------------------------------------------------------------------
--- Foldable
--- https://hackage.haskell.org/package/base-4.16.0.0/docs/Data-Foldable.html#t:Foldable
+-- class Foldable
+-- https://hackage.haskell.org/package/base-4.17.0.0/docs/Data-Foldable.html
 --------------------------------------------------------------------------------
+class Foldable t where
+    -- MINIMAL foldMap | foldr
+
+    foldMap :: Monoid m => (a -> m) -> t a -> m
+    foldMap f = foldr (mappend . f) mempty
+
+    foldr :: (a -> b -> b) -> b -> t a -> b
+    foldr f z t = appEndo (foldMap (Endo #. f) t) z
+
+-- where...
+-- Endo: endomorphism (自己準同型) a -> a
+newtype Endo a = Endo { appEndo :: a -> a }
+instance Monoid (Endo a) where
+    Endo f <> Endo g = Endo (f . g)
+    mempty = Endo id
+
 instance Foldable [] where
-foldr            :: (a -> b -> b) -> b -> [a] -> b
-foldr _ z []     =  z
-foldr f z (x:xs) =  f x (foldr f z xs)
+    foldr :: (a -> b -> b) -> b -> [a] -> b
+    foldr _ z []     =  z
+    foldr f z (x:xs) =  f x (foldr f z xs)
 
 --------------------------------------------------------------------------------
 -- class Traversable
