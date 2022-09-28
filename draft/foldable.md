@@ -26,6 +26,19 @@ instance Alternative [] where
     (<|>) = (++)
 
 --------------------------------------------------------------------------------
+-- class Semigroup
+-- https://hackage.haskell.org/package/base-4.17.0.0/docs/Prelude.html#t:Semigroup
+-- https://hackage.haskell.org/package/base-4.17.0.0/docs/src/GHC.Base.html#Semigroup
+--------------------------------------------------------------------------------
+class Semigroup a where
+    (<>) :: a -> a -> a
+
+-- https://hackage.haskell.org/package/base-4.17.0.0/docs/src/GHC.Base.html#line-300
+instance Semigroup [a] where
+    (<>) :: a -> a -> a
+    (<>) = (++)
+
+--------------------------------------------------------------------------------
 -- class Foldable
 -- https://hackage.haskell.org/package/base-4.17.0.0/docs/Data-Foldable.html
 --------------------------------------------------------------------------------
