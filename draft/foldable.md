@@ -35,8 +35,31 @@ class Semigroup a where
 
 -- https://hackage.haskell.org/package/base-4.17.0.0/docs/src/GHC.Base.html#line-300
 instance Semigroup [a] where
+    -- MINIMAL (<>)
+
     (<>) :: a -> a -> a
     (<>) = (++)
+
+--------------------------------------------------------------------------------
+-- class Monoid
+-- https://hackage.haskell.org/package/base-4.17.0.0/docs/Data-Monoid.html#g:1
+-- https://hackage.haskell.org/package/base-4.17.0.0/docs/src/GHC.Base.html#Monoid
+--------------------------------------------------------------------------------
+class Semigroup a => Monoid a where
+    -- MINIMAL mempty
+    mempty  :: a
+
+    mappend :: a -> a -> a
+    mappend = (<>)
+
+    mconcat :: [a] -> a
+    mconcat = foldr mappend mempty
+    --        ^~~~~ List の場合、Foldable で定義したい foldr が現れてしまっている
+
+-- https://hackage.haskell.org/package/base-4.17.0.0/docs/src/GHC.Base.html#line-307
+instance Monoid [a] where
+    mempty  = []
+    mconcat xss = [x | xs <- xss, x <- xs]
 
 --------------------------------------------------------------------------------
 -- class Foldable
@@ -50,15 +73,23 @@ class Foldable t where
 
     foldr :: (a -> b -> b) -> b -> t a -> b
     foldr f z t = appEndo (foldMap (Endo #. f) t) z
+    --                                   ^ この # は気にしなくてよさそう
 
 -- where...
 -- Endo: endomorphism (自己準同型) a -> a
+-- https://hackage.haskell.org/package/base-4.17.0.0/docs/src/Data.Semigroup.Internal.html#Endo
 newtype Endo a = Endo { appEndo :: a -> a }
-instance Monoid (Endo a) where
+instance Semigroup (Endo a) where
     Endo f <> Endo g = Endo (f . g)
+instance Monoid (Endo a) where
     mempty = Endo id
 
+-- https://hackage.haskell.org/package/base-4.17.0.0/docs/src/Data.Foldable.html#Foldable
 instance Foldable [] where
+    foldMap :: Monoid m => (a -> m) -> [a] -> m
+    foldMap = (mconcat .) . map
+    --         ^~~~~~~ List の mconcat は foldr を用いて定義されている。List の Foldable のインスタンス化は foldr を定義する他ない
+
     foldr :: (a -> b -> b) -> b -> [a] -> b
     foldr _ z []     =  z
     foldr f z (x:xs) =  f x (foldr f z xs)
@@ -77,7 +108,6 @@ class (Functor t, Foldable t) => Traversable t where
     sequenceA :: Applicative f => t (f a) -> f (t a)
     sequenceA = traverse id
 
--- instance Traversable []
 -- https://hackage.haskell.org/package/base-4.17.0.0/docs/src/Data.Traversable.html#line-297
 instance Traversable [] where
     traverse :: Applicative f => (a -> f b) -> [a] -> f [b]
